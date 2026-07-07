@@ -8,6 +8,33 @@ source and can be re-derived by someone who does not take your word for it.
 > screening agent) and a worked example are landing shortly from active development. Watch or
 > star to follow along.
 
+## What kind of thing is this
+
+It's a **Git repo you operate through a coding agent** — you clone it, open it in
+[Claude Code](https://claude.com/claude-code), and *talk to it* to run a review. That's the
+whole interface. There's no app to install, no server to host, no plugin to register, no web
+UI. The repo is the application.
+
+If that sounds strange, the closest familiar thing is a spreadsheet template — except instead
+of formulas waiting for input, it holds the *tools, rules, and instructions* an agent needs to
+do the work, and instead of clicking cells you describe what you want. A file called
+`CLAUDE.md` at the root tells the agent how to drive everything; you say "search PubMed for X
+and screen it against these criteria," and it runs the tools, records the decisions, and
+regenerates the report — all as plain files that stay in the repo.
+
+- **You use it, you don't deploy it.** Each review accretes inside the repo as durable files.
+  Your evidence, decisions, and report are yours, in a folder you own — not rows in someone's
+  database.
+- **Built and tested with Claude Code.** In principle any capable coding agent that can read
+  `CLAUDE.md` and run Python could operate it; Claude Code is what it's designed around and
+  proven on. Start there.
+- **Not a Claude Code plugin.** You don't install it into your agent; you point your agent at
+  it. The novelty is exactly this: a repository that behaves like an application when an agent
+  is holding it.
+
+You need: [Claude Code](https://claude.com/claude-code) (or a comparable agent) and Python.
+That's it — PubMed access needs no API key.
+
 ## The idea
 
 A systematic review is only worth as much as it can be trusted, and it can only be trusted to the
