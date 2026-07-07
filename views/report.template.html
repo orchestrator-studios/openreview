@@ -1,0 +1,680 @@
+<style>
+  :root{
+    --ground:#e9eded; --surface:#ffffff; --surface-2:#f4f7f7; --raise:#ffffff;
+    --ink:#1b2529; --ink-2:#4c595f; --ink-3:#7f8b90; --line:#d7dedf; --line-2:#e6ecec;
+    --accent:#2f6377; --accent-ink:#214b5b; --accent-soft:#dbe8ec;
+    --pos:#2c785a; --pos-soft:#d7e9e0; --neg:#ad4a37; --neg-soft:#f0ddd7;
+    --warn:#9a6f1f; --warn-soft:#efe3c9; --neutral:#6c777c; --neutral-soft:#e2e7e8;
+    --shadow:0 1px 2px rgba(20,40,48,.06),0 6px 18px rgba(20,40,48,.06);
+    --serif:"Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Menlo,Consolas,monospace;
+    --r:10px; --maxw:1160px;
+  }
+  :root[data-theme="dark"]{
+    --ground:#10161a; --surface:#192126; --surface-2:#1f292e; --raise:#202b31;
+    --ink:#e9eeef; --ink-2:#aab7bc; --ink-3:#77858b; --line:#2b373d; --line-2:#242f34;
+    --accent:#5ba2ba; --accent-ink:#a3d0df; --accent-soft:#1d353f;
+    --pos:#57b78c; --pos-soft:#183129; --neg:#d67c66; --neg-soft:#331e18;
+    --warn:#cca24e; --warn-soft:#312918; --neutral:#8a969b; --neutral-soft:#242f34;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#10161a; --surface:#192126; --surface-2:#1f292e; --raise:#202b31;
+      --ink:#e9eeef; --ink-2:#aab7bc; --ink-3:#77858b; --line:#2b373d; --line-2:#242f34;
+      --accent:#5ba2ba; --accent-ink:#a3d0df; --accent-soft:#1d353f;
+      --pos:#57b78c; --pos-soft:#183129; --neg:#d67c66; --neg-soft:#331e18;
+      --warn:#cca24e; --warn-soft:#312918; --neutral:#8a969b; --neutral-soft:#242f34;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  a{color:var(--accent-ink);}
+  h1,h2,h3{text-wrap:balance;margin:0;}
+  .num{font-variant-numeric:tabular-nums;}
+  .mono{font-family:var(--mono);}
+
+  /* top bar + tabs */
+  .topbar{position:sticky;top:0;z-index:40;background:var(--surface);border-bottom:1px solid var(--line);}
+  .topbar .wrap{display:flex;align-items:center;gap:18px;height:56px;}
+  .brand{font-family:var(--serif);font-weight:600;font-size:15px;white-space:nowrap;}
+  .brand small{color:var(--ink-3);font-family:var(--sans);font-weight:500;}
+  .tabs{display:flex;gap:2px;margin-left:auto;}
+  .tab{padding:8px 13px;border-radius:8px;color:var(--ink-2);font-size:13px;font-weight:500;
+    cursor:pointer;background:none;border:0;font-family:var(--sans);white-space:nowrap;}
+  .tab:hover{background:var(--surface-2);color:var(--ink);}
+  .tab.on{background:var(--accent-soft);color:var(--accent-ink);font-weight:600;}
+  .tab .cnt{font-family:var(--mono);font-size:11px;opacity:.7;margin-left:5px;}
+  .tgl{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;
+    height:32px;padding:0 11px;font-size:12.5px;cursor:pointer;font-family:var(--sans);}
+  .tgl:hover{color:var(--ink);border-color:var(--ink-3);}
+
+  header.hero{padding:30px 0 22px;border-bottom:1px solid var(--line-2);}
+  .eyebrow{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);
+    font-weight:600;display:flex;gap:9px;align-items:center;flex-wrap:wrap;}
+  .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);}
+  header.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.7vw,29px);
+    line-height:1.2;margin:11px 0 0;max-width:30ch;letter-spacing:-.01em;}
+  header.hero p.lede{color:var(--ink-2);font-size:14.5px;max-width:70ch;margin:9px 0 0;}
+
+  .panel{display:none;padding:26px 0 60px;}
+  .panel.on{display:block;}
+
+  /* methodology */
+  .ribbon{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:4px 0 30px;
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);}
+  .rnode{flex:1;min-width:130px;padding:14px 16px;border-right:1px solid var(--line-2);cursor:pointer;
+    background:none;border-top:0;border-bottom:0;border-left:0;text-align:left;font-family:var(--sans);color:inherit;transition:background .12s;}
+  .rnode:last-child{border-right:0;}
+  .rnode:hover{background:var(--surface-2);}
+  .rnode .rk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
+  .rnode .rv{font-family:var(--serif);font-size:26px;font-weight:600;margin-top:3px;line-height:1;}
+  .rnode .rs{font-size:11.5px;color:var(--ink-2);margin-top:4px;}
+  .rnode.final .rv{color:var(--pos);}
+  .rnode .arrow{color:var(--ink-3);}
+
+  .steps{display:flex;flex-direction:column;gap:0;}
+  .step{display:grid;grid-template-columns:38px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line-2);}
+  .step:first-child{border-top:0;}
+  .snum{width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);
+    font-family:var(--mono);font-weight:700;font-size:14px;display:grid;place-items:center;}
+  .step h3{font-family:var(--serif);font-size:18px;font-weight:600;}
+  .step .sdesc{color:var(--ink-2);font-size:13.5px;margin:6px 0 0;max-width:78ch;}
+  .step .sbody{margin-top:14px;}
+  .carry{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:12.5px;color:var(--ink-2);
+    background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;padding:7px 11px;}
+  .carry b{font-family:var(--serif);font-size:16px;color:var(--ink);font-weight:600;}
+  .recon{color:var(--pos);font-weight:600;font-family:var(--mono);font-size:12px;}
+
+  /* a drillable data button */
+  .drill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
+    border-radius:8px;padding:6px 10px;cursor:pointer;font-family:var(--sans);font-size:13px;color:var(--ink);
+    transition:border-color .12s,background .12s;text-align:left;}
+  .drill:hover{border-color:var(--accent);background:var(--surface-2);}
+  .drill .dv{font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent-ink);}
+  .drill .go{color:var(--ink-3);font-size:12px;}
+  .drill.pos .dv{color:var(--pos);}
+  .drill.neg .dv{color:var(--neg);}
+
+  /* tables inside steps */
+  .qtable,.rtable,.xtable{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;}
+  .qtable th,.rtable th,.xtable th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--ink-3);font-weight:600;padding:8px 9px;border-bottom:1px solid var(--line);}
+  .qtable td,.rtable td,.xtable td{padding:9px;border-bottom:1px solid var(--line-2);vertical-align:top;}
+  .qtable tr:hover td,.rtable tr.click:hover td{background:var(--surface-2);cursor:pointer;}
+  .qstr{font-family:var(--mono);font-size:11px;line-height:1.55;color:var(--ink-2);white-space:pre-wrap;
+    max-width:560px;}
+  .qtable td.n,.rtable td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
+  .rtable td.reason{font-family:var(--mono);font-size:11.5px;}
+  .rtable .bar{height:5px;border-radius:3px;background:var(--neutral);margin-top:6px;}
+  .totrow td{border-top:2px solid var(--line);font-weight:600;background:var(--surface-2);}
+  .xwrap{overflow-x:auto;border:1px solid var(--line-2);border-radius:10px;}
+  .xtable{margin-top:0;}
+  .xtable th{background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap;}
+  .xtable td{border-bottom:1px solid var(--line-2);}
+  .xtable td.study{white-space:nowrap;font-weight:500;}
+
+  .method-note{font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border-left:3px solid var(--accent);
+    padding:9px 13px;border-radius:0 8px 8px 0;margin-top:12px;max-width:80ch;}
+  .method-note b{color:var(--ink);}
+
+  /* records explorer */
+  .toolbar{position:sticky;top:56px;z-index:20;background:var(--ground);padding:8px 0 10px;
+    display:flex;flex-direction:column;gap:9px;border-bottom:1px solid var(--line-2);margin-bottom:8px;}
+  .toolrow{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+  .search{flex:1;min-width:220px;display:flex;align-items:center;gap:8px;background:var(--surface);
+    border:1px solid var(--line);border-radius:8px;padding:0 11px;height:36px;}
+  .search input{border:0;outline:0;background:transparent;color:var(--ink);font:inherit;flex:1;}
+  .search svg{flex:none;color:var(--ink-3);}
+  select.f{height:36px;border:1px solid var(--line);background:var(--surface);color:var(--ink);
+    border-radius:8px;padding:0 9px;font:inherit;font-size:13px;cursor:pointer;max-width:230px;}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;align-items:center;min-height:22px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:var(--accent-soft);color:var(--accent-ink);
+    border:1px solid var(--accent);border-radius:999px;padding:3px 6px 3px 11px;font-size:12px;font-weight:500;}
+  .chip button{border:0;background:transparent;color:inherit;cursor:pointer;font-size:14px;line-height:1;padding:0 2px;border-radius:50%;}
+  .chip button:hover{background:color-mix(in srgb,var(--accent) 25%,transparent);}
+  .chips .clear{color:var(--ink-3);font-size:12px;cursor:pointer;background:none;border:0;padding:2px 4px;}
+  .chips .clear:hover{color:var(--ink);text-decoration:underline;}
+  .rescount{font-size:12.5px;color:var(--ink-3);white-space:nowrap;margin-left:auto;}
+  .scopebanner{font-size:13px;color:var(--ink-2);padding:2px 0 4px;}
+  .scopebanner b{color:var(--ink);}
+
+  .list{display:flex;flex-direction:column;gap:7px;margin-top:4px;}
+  .rec{background:var(--surface);border:1px solid var(--line);border-radius:9px;overflow:hidden;box-shadow:var(--shadow);
+    content-visibility:auto;contain-intrinsic-size:0 66px;}
+  .rec .hd{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;padding:11px 14px;cursor:pointer;}
+  .rec .hd:hover{background:var(--surface-2);}
+  .rec .yr{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;}
+  .rec .ti{font-size:13.5px;font-weight:500;line-height:1.35;}
+  .rec .au{font-size:12px;color:var(--ink-3);margin-top:2px;}
+  .rec .rt{display:flex;align-items:center;gap:8px;justify-content:flex-end;flex-wrap:wrap;}
+  .prov{display:inline-flex;gap:3px;}
+  .prov i{width:16px;height:16px;border-radius:4px;font-style:normal;font-size:9.5px;font-weight:700;
+    display:grid;place-items:center;font-family:var(--mono);border:1px solid var(--line);color:var(--ink-3);background:var(--surface-2);}
+  .prov i.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+  :root[data-theme="dark"] .prov i.on{color:#0d1417;}
+  .pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  .pill.inc{background:var(--pos-soft);color:var(--pos);}
+  .pill.exc{background:var(--neutral-soft);color:var(--neutral);}
+  .pill.tone-positive{background:var(--pos-soft);color:var(--pos);}
+  .pill.tone-negative{background:var(--neg-soft);color:var(--neg);}
+  .pill.tone-neutral{background:var(--neutral-soft);color:var(--neutral);}
+  .pill.tone-warn{background:var(--warn-soft);color:var(--warn);}
+  .pill.tone-accent{background:var(--accent-soft);color:var(--accent-ink);}
+  .rlabel{font-family:var(--mono);font-size:11px;color:var(--ink-3);}
+  .rec .bd{display:none;padding:2px 14px 16px;border-top:1px solid var(--line-2);}
+  .rec.open .bd{display:block;}
+  .rec.open .hd{background:var(--surface-2);}
+  .trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;margin:12px 0 4px;color:var(--ink-2);}
+  .trail .seg{background:var(--surface-2);border:1px solid var(--line-2);border-radius:6px;padding:3px 8px;}
+  .trail .ar{color:var(--ink-3);}
+  .abs{font-size:13px;color:var(--ink-2);line-height:1.6;margin:10px 0;max-width:82ch;}
+  .kv{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:12.5px;margin-top:6px;}
+  .kv span{color:var(--ink-3);} .kv b{color:var(--ink-2);font-weight:600;}
+  .note{font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border-left:3px solid var(--accent);
+    padding:8px 12px;border-radius:0 7px 7px 0;margin-top:10px;}
+  .lnk{font-size:12px;margin-top:12px;display:inline-block;}
+  .screen-prov{font-size:12px;color:var(--ink-2);margin-top:12px;border:1px solid var(--line-2);border-radius:8px;padding:10px 12px;}
+  .screen-prov .sph{font-weight:600;color:var(--ink);font-size:11px;text-transform:uppercase;letter-spacing:.05em;}
+  .screen-prov .meth{font-family:var(--mono);font-size:11px;color:var(--ink-3);}
+  .screen-prov .pass{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:4px;}
+  .screen-prov .adj{color:var(--accent-ink);font-weight:600;margin-top:4px;}
+  .screen-prov .stg{margin-top:8px;}
+  .screen-prov .stg:first-child{margin-top:6px;}
+  .empty{text-align:center;color:var(--ink-3);padding:40px;font-size:13.5px;}
+
+  /* findings */
+  .fbars{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:26px;}
+  .fb{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:13px 15px;cursor:pointer;box-shadow:var(--shadow);transition:border-color .12s;}
+  .fb:hover{border-color:var(--accent);}
+  .fb .fbh{display:flex;align-items:center;gap:10px;}
+  .fb .swatch{width:10px;height:10px;border-radius:3px;}
+  .fb .fbn{font-weight:600;font-size:13.5px;} .fb .fbc{margin-left:auto;font-family:var(--serif);font-size:21px;font-weight:600;}
+  .fb .genes{font-size:12px;color:var(--ink-2);margin-top:9px;line-height:1.8;}
+  .gtag{display:inline-block;font-family:var(--mono);font-size:11px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;margin:2px 3px 0 0;color:var(--ink-2);}
+
+  /* protocol */
+  .pcard{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:16px;}
+  .pcard h3{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:10px;}
+  .pico{display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:13.5px;}
+  .pico dt{color:var(--accent-ink);font-weight:600;text-transform:capitalize;}
+  .pico dd{margin:0;color:var(--ink-2);}
+  ol.crit,ul.vocab{margin:0;padding-left:20px;font-size:13.5px;color:var(--ink-2);}
+  ol.crit li,ul.vocab li{margin:5px 0;}
+  ul.vocab{list-style:none;padding-left:0;display:flex;flex-wrap:wrap;gap:6px;}
+  ul.vocab li{background:var(--surface-2);border:1px solid var(--line-2);border-radius:6px;padding:3px 9px;font-family:var(--mono);font-size:11.5px;}
+  .cmd{font-family:var(--mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;
+    padding:10px 12px;color:var(--ink-2);white-space:pre-wrap;line-height:1.6;margin-top:8px;overflow-x:auto;}
+
+  footer{border-top:1px solid var(--line-2);padding:22px 0 60px;color:var(--ink-3);font-size:12.5px;}
+  footer code{font-family:var(--mono);background:var(--surface-2);padding:1px 5px;border-radius:4px;color:var(--ink-2);}
+  .sec-sub{color:var(--ink-2);font-size:13.5px;margin:2px 0 16px;max-width:74ch;}
+  .sec-h{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:2px;}
+
+  @media (max-width:820px){
+    .fbars{grid-template-columns:1fr;}
+    .tab .cnt{display:none;}
+    .rec .hd{grid-template-columns:40px 1fr;}
+    .rec .rt{grid-column:1/-1;justify-content:flex-start;padding-left:52px;}
+    .step{grid-template-columns:1fr;}
+    .snum{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+</style>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Living Review <small>· __SLUG__</small></div>
+    <div class="tabs" id="tabs"></div>
+    <button class="tgl" id="themeToggle" type="button">Theme</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span> Systematic review · PubMed / MEDLINE · run __DATE__</div>
+    <h1 id="qTitle"></h1>
+    <p class="lede" id="qLede"></p>
+  </header>
+
+  <section class="panel" id="panel-method"></section>
+  <section class="panel" id="panel-records"></section>
+  <section class="panel" id="panel-findings"></section>
+  <section class="panel" id="panel-protocol"></section>
+
+  <footer>
+    <p>Generated from <code>data/reviews/__SLUG__/</code> by <code>tools/build_report.py</code> — a
+      projection of the underlying data, not hand-edited. Re-run to regenerate. All counts, provenance and
+      exclusion reasons are read live from <code>records.json</code> and <code>protocol.json</code>.</p>
+    <p id="footmeta" style="margin-top:6px"></p>
+  </footer>
+</div>
+
+<script>
+const DATA = __DATA__;
+const P = DATA.protocol, R = DATA.records;
+const QORDER = (P.searches||[]).map(s => (s.note.match(/label=([^;]+)/)||[])[1]).filter(Boolean);
+const QINITIAL = {"broad":"B","gene-specific":"G","susceptibility":"S"};
+// extraction is topic-agnostic: everything below is derived from protocol.extraction_profile
+const PROFILE = P.extraction_profile || {fields:[], summary_field:null};
+const FIELDS = PROFILE.fields || [];
+const FIELD_BY_KEY = Object.fromEntries(FIELDS.map(f=>[f.key,f]));
+const SUMMARY = PROFILE.summary_field;
+const SUMMARY_LABEL = (FIELD_BY_KEY[SUMMARY]||{}).label || "Category";
+const CATVALUES = ((FIELD_BY_KEY[SUMMARY]||{}).categorical||{values:{}}).values || {};
+const TONE_COLOR = {positive:"var(--pos)",negative:"var(--neg)",neutral:"var(--neutral)",warn:"var(--warn)",accent:"var(--accent-ink)"};
+const EFFECTS = Object.keys(CATVALUES);
+const EFFECT_LABEL = Object.fromEntries(Object.entries(CATVALUES).map(([k,v])=>[k,v.label]));
+const EFFECT_COLOR = Object.fromEntries(Object.entries(CATVALUES).map(([k,v])=>[k,TONE_COLOR[v.tone]||"var(--neutral)"]));
+const EFFECT_TONE = Object.fromEntries(Object.entries(CATVALUES).map(([k,v])=>[k,v.tone||"neutral"]));
+const TABLE_FIELDS = FIELDS.filter(f=>f.in_table!==false);
+
+function el(tag, props, ...kids){
+  const n=document.createElement(tag); props=props||{};
+  for(const k in props){ const v=props[k]; if(v==null)continue;
+    if(k==="class")n.className=v; else if(k==="text")n.textContent=v;
+    else if(k.slice(0,2)==="on")n.addEventListener(k.slice(2),v); else n.setAttribute(k,v); }
+  for(const c of kids){ if(c==null||c===false)continue; n.append(c.nodeType?c:document.createTextNode(String(c))); }
+  return n;
+}
+const recEffects = r => (r.extraction&&r.extraction.arms||[]).map(a=>a[SUMMARY]);
+const cite = r => { const a=r.authors||[]; return (a[0]?a[0].split(" ")[0]:"?")+(a.length>1?" et al.":"")+" "+(r.year||"n.d."); };
+const isTaExc = r => r.status==="excluded" && r.screening_stage==="title-abstract";
+const isFtExc = r => r.status==="excluded" && r.screening_stage==="full-text";
+
+// ---------- analytics ----------
+const N = R.length;
+const nInc = R.filter(r=>r.status==="included").length;
+const nTaExc = R.filter(isTaExc).length;
+const nFtExc = R.filter(isFtExc).length;
+const nPassedTa = N - nTaExc;                    // survived first pass
+const searchByLabel = {};
+(P.searches||[]).forEach(s=>{ const m=s.note.match(/label=([^;]+)/); if(m) searchByLabel[m[1]]=s; });
+// per-query returned + cumulative-new in execution order
+const seen=new Set(); const qrows=[];
+let rawRetrievals=0;
+QORDER.forEach(lbl=>{
+  const ret=R.filter(r=>(r.found_by||[]).includes(lbl));
+  const nw=ret.filter(r=>!seen.has(r.pmid));
+  nw.forEach(r=>seen.add(r.pmid)); ret.forEach(r=>seen.add(r.pmid));
+  rawRetrievals+=ret.length;
+  qrows.push({label:lbl, s:searchByLabel[lbl], returned:ret.length, added:nw.length, cumulative:seen.size,
+              inc:ret.filter(r=>r.status==="included").length});
+});
+const dupesRemoved = rawRetrievals - N;
+// overlap by #queries
+const byCount={}; R.forEach(r=>{const c=(r.found_by||[]).length; byCount[c]=(byCount[c]||0)+1;});
+// reason breakdowns by stage
+function reasonBreak(pred){ const m={}; R.filter(pred).forEach(r=>{m[r.exclusion_reason]=(m[r.exclusion_reason]||0)+1;});
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]); }
+const taReasons = reasonBreak(isTaExc);
+const ftReasons = reasonBreak(isFtExc);
+const nGeneArms = R.filter(r=>r.status==="included").reduce((n,r)=>n+(r.extraction.arms||[]).length,0);
+const SCREEN_METHODS = new Set(); R.forEach(r=>Object.values(r.screening||{}).forEach(s=>SCREEN_METHODS.add(s.method)));
+const nNeedsAdj = R.filter(r=>r.status==="needs-adjudication").length;
+const SCREEN_METHOD_NOTE = SCREEN_METHODS.has("dual-independent")
+  ? "Records were screened by two independent slr-screener passes against the four criteria; agreements were auto-resolved and disagreements or low-confidence calls adjudicated by a human. Each record's passes, agreement, and adjudication are recorded and inspectable in the Records tab."
+  : "This corpus was screened single-pass against the four criteria, each record assigned the single most decisive exclusion reason from the controlled vocabulary, with borderline records retained rather than dropped. Every decision is recorded per record (see its screening provenance in the Records tab). The engine also supports dual-independent screening with human adjudication of conflicts and low-confidence calls (skills/screening.md).";
+
+// ---------- filter state ----------
+const S = { scope:"all", query:null, reason:null, effect:null, foundCount:null, search:"" };
+function scopePass(r){
+  switch(S.scope){
+    case "ta-passed": return !isTaExc(r);
+    case "ta-excluded": return isTaExc(r);
+    case "ft-excluded": return isFtExc(r);
+    case "included": return r.status==="included";
+    default: return true;
+  }
+}
+function matches(r){
+  if(!scopePass(r)) return false;
+  if(S.query && !(r.found_by||[]).includes(S.query)) return false;
+  if(S.reason && r.exclusion_reason!==S.reason) return false;
+  if(S.effect && !recEffects(r).includes(S.effect)) return false;
+  if(S.foundCount && (r.found_by||[]).length!==S.foundCount) return false;
+  if(S.search){ const q=S.search.toLowerCase();
+    if(![r.title,r.abstract,(r.authors||[]).join(" "),r.journal,r.pmid].join(" ").toLowerCase().includes(q)) return false; }
+  return true;
+}
+const SCOPE_LABEL = {"all":"All records","ta-passed":"Retained after title/abstract","ta-excluded":"Excluded at title/abstract","ft-excluded":"Excluded at full-text","included":"Included"};
+
+// ---------- hero ----------
+document.getElementById("qTitle").textContent = P.title;
+document.getElementById("qLede").textContent = P.question;
+
+// ---------- tabs ----------
+const TABS=[
+  {id:"method",label:"Methodology"},
+  {id:"records",label:"Records",cnt:N},
+  {id:"findings",label:"Findings",cnt:nInc},
+  {id:"protocol",label:"Protocol"},
+];
+const tabsEl=document.getElementById("tabs");
+let activeTab="method";
+TABS.forEach(t=>{
+  const b=el("button",{class:"tab",type:"button",onclick:()=>setTab(t.id)},t.label, t.cnt!=null?el("span",{class:"cnt num",text:t.cnt}):null);
+  b.dataset.tab=t.id; tabsEl.append(b);
+});
+function setTab(id){
+  activeTab=id;
+  document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on",b.dataset.tab===id));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("on",p.id==="panel-"+id));
+  window.scrollTo({top:0,behavior:"auto"});
+}
+
+// ---------- drill: set a clean filter and jump to Records ----------
+function drill(opts){
+  Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""},opts);
+  setTab("records");
+  syncControls(); render();
+}
+function drillBtn(text, count, opts, cls){
+  return el("button",{class:"drill"+(cls?" "+cls:""),type:"button",onclick:()=>drill(opts)},
+    el("span",{text:text}), el("span",{class:"dv num",text:count}), el("span",{class:"go",text:"→"}));
+}
+
+// ---------- METHODOLOGY ----------
+function buildMethod(){
+  const p=document.getElementById("panel-method");
+  p.append(el("div",{},
+    el("div",{class:"sec-h",text:"Methodology & audit trail"}),
+    el("p",{class:"sec-sub"},"The exact, reproducible path from search to the final included set. Every number below is a button — click it to open the Records tab filtered to precisely that set. Counts reconcile at each stage.")));
+
+  // ribbon
+  const ribbon=el("div",{class:"ribbon"});
+  const rnode=(k,v,s,opts,final)=>el("button",{class:"rnode"+(final?" final":""),type:"button",onclick:()=>drill(opts)},
+    el("div",{class:"rk",text:k}), el("div",{class:"rv num",text:v}), el("div",{class:"rs",text:s}));
+  ribbon.append(
+    el("div",{class:"rnode"}, el("div",{class:"rk",text:"Retrieved"}), el("div",{class:"rv num",text:rawRetrievals}), el("div",{class:"rs",text:QORDER.length+" queries, with overlap"})),
+    rnode("Unique records", N, "after de-duplication", {scope:"all"}),
+    rnode("Full-text assessed", nPassedTa, "passed title/abstract", {scope:"ta-passed"}),
+    rnode("Included", nInc, "met all criteria", {scope:"included"}, true),
+  );
+  p.append(ribbon);
+
+  const steps=el("div",{class:"steps"});
+
+  // Step 1 — search
+  const qtable=el("table",{class:"qtable"});
+  qtable.append(el("thead",{}, el("tr",{},
+    el("th",{text:"#"}),el("th",{text:"Query label"}),el("th",{text:"PubMed query (Boolean)"}),
+    el("th",{class:"n",text:"Hits"}),el("th",{class:"n",text:"New unique"}),el("th",{class:"n",text:"Cumulative"}))));
+  const qb=el("tbody");
+  qrows.forEach((q,i)=>{
+    const tr=el("tr",{onclick:()=>drill({query:q.label})},
+      el("td",{class:"n",text:i+1}),
+      el("td",{}, el("span",{class:"mono",text:q.label}), el("div",{style:"color:var(--pos);font-size:11px;margin-top:3px",text:q.inc+" later included"})),
+      el("td",{}, el("div",{class:"qstr",text:q.s.query})),
+      el("td",{class:"n",text:q.returned}),
+      el("td",{class:"n",text:"+"+q.added}),
+      el("td",{class:"n",text:q.cumulative}));
+    qb.append(tr);
+  });
+  qb.append(el("tr",{class:"totrow"},
+    el("td",{class:"n"}),el("td",{text:"Total"}),el("td",{text:"NCBI E-utilities · run "+"__DATE__"}),
+    el("td",{class:"n num",text:rawRetrievals}),el("td",{class:"n num",text:N}),el("td",{class:"n"})));
+  qtable.append(qb);
+  steps.append(el("div",{class:"step"},
+    el("div",{class:"snum",text:"1"}),
+    el("div",{},
+      el("h3",{text:"Information sources & search"}),
+      el("p",{class:"sdesc"},"PubMed/MEDLINE was searched via NCBI E-utilities on "+"__DATE__"+". Three complementary queries were run in the order shown; each is reproducible verbatim (see the Protocol tab for the exact commands). Click any row to see everything that query returned."),
+      el("div",{class:"sbody"}, qtable))));
+
+  // Step 2 — dedup
+  const otable=el("table",{class:"rtable"});
+  otable.append(el("thead",{}, el("tr",{}, el("th",{text:"Returned by…"}), el("th",{class:"n",text:"Records"}))));
+  const ob=el("tbody");
+  [1,2,3].filter(c=>byCount[c]).forEach(c=>{
+    ob.append(el("tr",{class:"click",onclick:()=>drill({foundCount:c})},
+      el("td",{text:c+(c===1?" query only":" queries")}),
+      el("td",{class:"n",text:byCount[c]})));
+  });
+  ob.append(el("tr",{class:"totrow"}, el("td",{text:"Unique records"}), el("td",{class:"n num",text:N})));
+  otable.append(ob);
+  steps.append(el("div",{class:"step"},
+    el("div",{class:"snum",text:"2"}),
+    el("div",{},
+      el("h3",{text:"De-duplication"}),
+      el("p",{class:"sdesc"},"Records were de-duplicated by PMID. The "+rawRetrievals+" raw retrievals collapsed to "+N+" unique records ("+dupesRemoved+" duplicate retrievals removed). Provenance is retained per record — a study returned by several queries is counted once but remembers all of them."),
+      el("div",{class:"sbody",style:"max-width:420px"}, otable),
+      el("span",{class:"carry"},"Carried forward: ",el("b",{class:"num",text:N})," unique records ",el("span",{class:"recon",text:"("+rawRetrievals+" − "+dupesRemoved+" = "+N+" ✓)"})))));
+
+  // Step 3 — title/abstract
+  steps.append(el("div",{class:"step"},
+    el("div",{class:"snum",text:"3"}),
+    el("div",{},
+      el("h3",{text:"Title / abstract screening"}),
+      el("p",{class:"sdesc"},"All "+N+" records were assessed against the four inclusion criteria from title and abstract. A record was excluded only when it clearly failed a criterion; anything that could not be confidently ruled out was carried to full-text (conservative rule). Each exclusion carries a single decisive reason."),
+      reasonTable(taReasons, nTaExc, "ta-excluded"),
+      el("div",{style:"display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"},
+        drillBtn("Excluded here", nTaExc, {scope:"ta-excluded"}, "neg"),
+        drillBtn("Retained for full-text", nPassedTa, {scope:"ta-passed"}, "pos")),
+      el("span",{class:"carry"},"Carried forward: ",el("b",{class:"num",text:nPassedTa})," records ",el("span",{class:"recon",text:"("+N+" − "+nTaExc+" = "+nPassedTa+" ✓)"})),
+      el("div",{class:"method-note"}, el("b",{text:"How screening was done. "}), SCREEN_METHOD_NOTE))));
+
+  // Step 4 — full-text
+  steps.append(el("div",{class:"step"},
+    el("div",{class:"snum",text:"4"}),
+    el("div",{},
+      el("h3",{text:"Full-text assessment"}),
+      el("p",{class:"sdesc"},"The "+nPassedTa+" retained records were assessed in full. "+nFtExc+" were excluded — each uses a genetic mesothelioma model but does not test how the genotype affects susceptibility (drug, biomarker, model-building, or fibre-toxicity studies)."),
+      reasonTable(ftReasons, nFtExc, "ft-excluded"),
+      el("div",{style:"display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"},
+        drillBtn("Excluded at full-text", nFtExc, {scope:"ft-excluded"}, "neg"),
+        drillBtn("Included", nInc, {scope:"included"}, "pos")),
+      el("span",{class:"carry"},"Carried forward: ",el("b",{class:"num",text:nInc})," included ",el("span",{class:"recon",text:"("+nPassedTa+" − "+nFtExc+" = "+nInc+" ✓)"})))));
+
+  // Step 5 — included
+  steps.append(el("div",{class:"step"},
+    el("div",{class:"snum",text:"5"}),
+    el("div",{},
+      el("h3",{text:"Included studies & data extraction"}),
+      el("p",{class:"sdesc"},nInc+" studies met all "+(P.inclusion_criteria||[]).length+" criteria. Structured data were extracted into "+nGeneArms+" "+((PROFILE.arm_noun||"arm"))+"s (a study reporting several conditions yields several arms). See the Findings tab for the full extraction table and the summary."),
+      el("div",{style:"display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"},
+        drillBtn("Included studies", nInc, {scope:"included"}, "pos"),
+        el("button",{class:"drill",type:"button",onclick:()=>setTab("findings")}, el("span",{text:"Open extraction table"}), el("span",{class:"go",text:"→"}))),
+      el("span",{class:"carry"},"Full reconciliation: ",el("span",{class:"recon",text:nTaExc+" + "+nFtExc+" + "+nInc+" = "+N+" ✓"})))));
+
+  p.append(steps);
+}
+function reasonTable(rows, total, scope){
+  const max=Math.max(...rows.map(r=>r[1]),1);
+  const t=el("table",{class:"rtable"});
+  t.append(el("thead",{}, el("tr",{}, el("th",{text:"Exclusion reason"}), el("th",{class:"n",text:"n"}))));
+  const b=el("tbody");
+  rows.forEach(([reason,ct])=>{
+    b.append(el("tr",{class:"click",onclick:()=>drill({scope:scope,reason:reason})},
+      el("td",{class:"reason"}, reason, el("div",{class:"bar",style:"width:"+Math.round(100*ct/max)+"%;max-width:220px"})),
+      el("td",{class:"n",text:ct})));
+  });
+  b.append(el("tr",{class:"totrow"}, el("td",{text:"Total excluded"}), el("td",{class:"n num",text:total})));
+  t.append(b);
+  return el("div",{style:"max-width:520px"}, t);
+}
+
+// ---------- RECORDS ----------
+let listEl,chipsEl,resEl,qInput,fScope,fQuery,fReason,fEffect,bannerEl;
+function buildRecords(){
+  const p=document.getElementById("panel-records");
+  p.append(el("div",{class:"sec-h",text:"Record explorer"}),
+    el("p",{class:"sec-sub"},"Every record at whatever point in the trace you choose. Filters combine; each is shown as a removable chip. Open a record for its abstract, its exact screening decision, and — for included studies — the extracted data."));
+  const bar=el("div",{class:"toolbar"});
+  const row1=el("div",{class:"toolrow"});
+  const search=el("label",{class:"search"});
+  search.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+  qInput=el("input",{type:"search",placeholder:"Search title, abstract, author, journal, PMID…",autocomplete:"off",oninput:()=>{S.search=qInput.value.trim();render();}});
+  search.append(qInput);
+  fScope=el("select",{class:"f",onchange:()=>{S.scope=fScope.value;render();}});
+  [["all","All records ("+N+")"],["ta-passed","Retained after title/abstract ("+nPassedTa+")"],["ta-excluded","Excluded at title/abstract ("+nTaExc+")"],["ft-excluded","Excluded at full-text ("+nFtExc+")"],["included","Included ("+nInc+")"]].forEach(([v,t])=>fScope.append(el("option",{value:v,text:t})));
+  fQuery=el("select",{class:"f",onchange:()=>{S.query=fQuery.value||null;render();}}); fQuery.append(el("option",{value:"",text:"Any query"})); QORDER.forEach(l=>fQuery.append(el("option",{value:l,text:"query: "+l})));
+  fReason=el("select",{class:"f",onchange:()=>{S.reason=fReason.value||null;render();}}); fReason.append(el("option",{value:"",text:"Any reason"}));
+  [...taReasons,...ftReasons].map(r=>r[0]).forEach(rz=>fReason.append(el("option",{value:rz,text:rz})));
+  fEffect=el("select",{class:"f",onchange:()=>{S.effect=fEffect.value||null;render();}}); fEffect.append(el("option",{value:"",text:"Any "+SUMMARY_LABEL.toLowerCase()})); EFFECTS.filter(e=>R.some(r=>recEffects(r).includes(e))).forEach(e=>fEffect.append(el("option",{value:e,text:EFFECT_LABEL[e]})));
+  row1.append(search,fScope,fQuery,fReason,fEffect);
+  const row2=el("div",{class:"toolrow"}); chipsEl=el("div",{class:"chips"}); resEl=el("div",{class:"rescount"}); row2.append(chipsEl,resEl);
+  bar.append(row1,row2); p.append(bar);
+  bannerEl=el("div",{class:"scopebanner"}); p.append(bannerEl);
+  listEl=el("div",{class:"list"}); p.append(listEl);
+}
+function provMarkers(r){
+  const wrap=el("span",{class:"prov"});
+  QORDER.forEach(l=>{ const on=(r.found_by||[]).includes(l);
+    wrap.append(el("i",{class:on?"on":"",title:l+(on?" — returned this":" — did not"),text:QINITIAL[l]||l[0].toUpperCase()})); });
+  return wrap;
+}
+function armCell(f, a){
+  const v=a[f.key];
+  if(f.key===SUMMARY && v!=null && v!=="") return el("td",{}, el("span",{class:"pill tone-"+(EFFECT_TONE[v]||"neutral"),text:EFFECT_LABEL[v]||v}));
+  return el("td",{text:(v==null||v==="")?"—":String(v)});
+}
+function extractionTable(ex){
+  const table=el("table",{class:"xtable"});
+  const h=el("tr"); TABLE_FIELDS.forEach(f=>h.append(el("th",{text:f.label}))); table.append(el("thead",{},h));
+  const tb=el("tbody");
+  (ex.arms||[]).forEach(a=>{ const tr=el("tr"); TABLE_FIELDS.forEach(f=>tr.append(armCell(f,a))); tb.append(tr); });
+  table.append(tb); return el("div",{class:"xwrap"},table);
+}
+const METHOD_LABEL={"dual-independent":"dual independent reviewers","single":"single reviewer","single-pass-legacy":"single pass (legacy)"};
+const STAGE_LABEL={"title-abstract":"Title / abstract","full-text":"Full text"};
+function screeningBlock(r){
+  const sc=r.screening; if(!sc||!Object.keys(sc).length) return null;
+  const box=el("div",{class:"screen-prov"}, el("div",{class:"sph",text:"Screening provenance"}));
+  ["title-abstract","full-text"].forEach(st=>{ const s=sc[st]; if(!s) return;
+    const stg=el("div",{class:"stg"},
+      el("div",{}, el("b",{text:STAGE_LABEL[st]+" "}), el("span",{class:"meth",text:"· "+(METHOD_LABEL[s.method]||s.method)+(s.agreement&&s.agreement!=="n/a"?" · "+s.agreement:"")})));
+    (s.passes||[]).forEach(p=>stg.append(el("div",{class:"pass",text:p.reviewer+": "+p.decision+(p.reason?" / "+p.reason:"")+(p.confidence?" ("+p.confidence+")":"")})));
+    if(s.adjudication) stg.append(el("div",{class:"adj",text:"adjudicated by "+s.adjudication.by+" -> "+s.adjudication.decision+(s.adjudication.reason?" / "+s.adjudication.reason:"")}));
+    box.append(stg);
+  });
+  return box;
+}
+function recRow(r){
+  const isInc=r.status==="included";
+  const rt=el("div",{class:"rt"}, provMarkers(r));
+  if(isInc){ [...new Set(recEffects(r))].forEach(e=>rt.append(el("span",{class:"pill tone-"+(EFFECT_TONE[e]||"neutral"),text:EFFECT_LABEL[e]||e}))); rt.append(el("span",{class:"pill inc",text:"included"})); }
+  else { rt.append(el("span",{class:"rlabel",text:r.exclusion_reason})); rt.append(el("span",{class:"pill exc",text:r.screening_stage==="full-text"?"excl · full-text":"excl · title/abs"})); }
+  const hd=el("div",{class:"hd"},
+    el("div",{class:"yr num",text:r.year||"—"}),
+    el("div",{}, el("div",{class:"ti",text:r.title}), el("div",{class:"au",text:(r.authors||[]).slice(0,4).join(", ")+((r.authors||[]).length>4?" …":"")+" · "+(r.journal||"")})), rt);
+  const bd=el("div",{class:"bd"}); const rec=el("div",{class:"rec"},hd,bd); let built=false;
+  hd.addEventListener("click",()=>{ rec.classList.toggle("open");
+    if(!built){ built=true;
+      const trail=el("div",{class:"trail"},
+        el("span",{class:"seg"},"Retrieved by "+(r.found_by||[]).join(", ")),
+        el("span",{class:"ar",text:"→"}),
+        el("span",{class:"seg"}, isInc?"Passed title/abstract":("Excluded at "+(r.screening_stage||"?"))),
+        isInc?el("span",{class:"ar",text:"→"}):null,
+        isInc?el("span",{class:"seg",text:"Full-text: included"}): (r.screening_stage==="full-text"?el("span",{class:"seg",text:"Reason: "+r.exclusion_reason}):null));
+      bd.append(trail);
+      if(r.abstract) bd.append(el("p",{class:"abs",text:r.abstract}));
+      bd.append(el("div",{class:"kv"},
+        el("span",{},"PMID ",el("b",{class:"mono",text:r.pmid})),
+        r.doi?el("span",{},"DOI ",el("b",{class:"mono",text:r.doi})):null,
+        el("span",{},"Status ",el("b",{text:r.status+(r.screening_stage?" ("+r.screening_stage+")":"")}))));
+      if(r.screening_note) bd.append(el("div",{class:"note"}, el("b",{text:(isInc?"Screening note: ":"Excluded — ")}), r.screening_note));
+      const sp=screeningBlock(r); if(sp) bd.append(sp);
+      if(isInc && r.extraction) bd.append(extractionTable(r.extraction));
+      bd.append(el("a",{class:"lnk",href:"https://pubmed.ncbi.nlm.nih.gov/"+r.pmid+"/",target:"_blank",rel:"noopener"},"Open on PubMed ↗"));
+    }});
+  return rec;
+}
+function chip(label,val,onclear){ return el("span",{class:"chip"}, label+": ", el("b",{text:val}), el("button",{type:"button",title:"Clear",onclick:onclear},"×")); }
+function syncControls(){
+  if(!fScope) return;
+  fScope.value=S.scope; fQuery.value=S.query||""; fReason.value=S.reason||""; fEffect.value=S.effect||""; qInput.value=S.search;
+}
+function renderChips(){
+  chipsEl.replaceChildren(); const a=[];
+  if(S.scope!=="all") a.push(chip("Scope",SCOPE_LABEL[S.scope],()=>{S.scope="all";render();}));
+  if(S.query) a.push(chip("Query",S.query,()=>{S.query=null;render();}));
+  if(S.reason) a.push(chip("Reason",S.reason,()=>{S.reason=null;render();}));
+  if(S.effect) a.push(chip(SUMMARY_LABEL,EFFECT_LABEL[S.effect]||S.effect,()=>{S.effect=null;render();}));
+  if(S.foundCount) a.push(chip("Returned by",S.foundCount+(S.foundCount===1?" query":" queries"),()=>{S.foundCount=null;render();}));
+  if(S.search) a.push(chip("Search","“"+S.search+"”",()=>{S.search="";render();}));
+  a.forEach(c=>chipsEl.append(c));
+  if(a.length>1) chipsEl.append(el("button",{class:"clear",type:"button",onclick:()=>{Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""});render();}},"clear all"));
+}
+function render(){
+  syncControls(); renderChips();
+  const rows=R.filter(matches).sort((a,b)=>(b.year||0)-(a.year||0));
+  resEl.textContent=rows.length+" of "+N+" records";
+  const parts=[];
+  if(S.scope!=="all") parts.push(SCOPE_LABEL[S.scope].toLowerCase());
+  if(S.query) parts.push("returned by the “"+S.query+"” query");
+  if(S.reason) parts.push("reason “"+S.reason+"”");
+  if(S.foundCount) parts.push("returned by "+S.foundCount+(S.foundCount===1?" query":" queries"));
+  if(S.effect) parts.push(EFFECT_LABEL[S.effect].toLowerCase());
+  bannerEl.replaceChildren();
+  if(parts.length) bannerEl.append(el("span",{},"Showing "), el("b",{text:rows.length+" records"}), el("span",{text:" — "+parts.join(", ")+"."}));
+  else bannerEl.append(el("span",{},"Showing all "), el("b",{text:N+" records"}), el("span",{text:" in the corpus."}));
+  listEl.replaceChildren();
+  if(!rows.length){ listEl.append(el("div",{class:"empty"},"No records match these filters.")); return; }
+  const frag=document.createDocumentFragment(); rows.forEach(r=>frag.append(recRow(r))); listEl.append(frag);
+}
+
+// ---------- FINDINGS ----------
+function buildFindings(){
+  const p=document.getElementById("panel-findings");
+  const FIRST=(TABLE_FIELDS[0]||{}).key;
+  p.append(el("div",{class:"sec-h",text:"Findings"}),
+    el("p",{class:"sec-sub"},"The "+nInc+" included studies, grouped by extracted "+SUMMARY_LABEL.toLowerCase()+". Click a group to inspect those studies; the full extraction table follows."));
+  const grid=el("div",{class:"fbars"});
+  const groups={}; R.filter(r=>r.status==="included").forEach(r=>(r.extraction.arms||[]).forEach(a=>{
+    const sv=a[SUMMARY]; (groups[sv]=groups[sv]||{studies:new Set(),genes:new Set()});
+    groups[sv].studies.add(r.pmid); if(a[FIRST]) groups[sv].genes.add(a[FIRST]); }));
+  EFFECTS.filter(e=>groups[e]).forEach(e=>{ const g=groups[e];
+    grid.append(el("div",{class:"fb",onclick:()=>drill({scope:"included",effect:e})},
+      el("div",{class:"fbh"}, el("span",{class:"swatch",style:"background:"+EFFECT_COLOR[e]}), el("span",{class:"fbn",text:EFFECT_LABEL[e]}), el("span",{class:"fbc num",text:g.studies.size})),
+      el("div",{class:"genes"}, ...[...g.genes].map(gn=>el("span",{class:"gtag",text:gn}))))); });
+  p.append(grid);
+  // full extraction table
+  p.append(el("div",{class:"sec-h",style:"font-size:16px;margin-top:8px",text:"Extraction table"}),
+    el("p",{class:"sec-sub"},"One row per "+((PROFILE.arm_noun||"arm"))+" across all included studies."));
+  const cols=["Study (PMID)"].concat(TABLE_FIELDS.map(f=>f.label));
+  const t=el("table",{class:"xtable"}); const h=el("tr"); cols.forEach(c=>h.append(el("th",{text:c}))); t.append(el("thead",{},h));
+  const tb=el("tbody");
+  R.filter(r=>r.status==="included").sort((a,b)=>{const va=(a.extraction.arms[0]||{})[FIRST]||"",vb=(b.extraction.arms[0]||{})[FIRST]||"";return va<vb?-1:va>vb?1:0;}).forEach(r=>{
+    (r.extraction.arms||[]).forEach(a=>{
+      const tr=el("tr");
+      tr.append(el("td",{class:"study"}, cite(r)+" ("+r.pmid+")"));
+      TABLE_FIELDS.forEach(f=>tr.append(armCell(f,a)));
+      tb.append(tr); }); });
+  t.append(tb); p.append(el("div",{class:"xwrap"},t));
+}
+
+// ---------- PROTOCOL ----------
+function buildProtocol(){
+  const p=document.getElementById("panel-protocol");
+  p.append(el("div",{class:"sec-h",text:"Protocol"}),
+    el("p",{class:"sec-sub"},"The review definition — question, criteria, and reproducible search — fixed before screening. This is the standard against which every record was judged."));
+  // question + pico
+  const pc=el("div",{class:"pcard"}); pc.append(el("h3",{text:"Question"}), el("p",{style:"font-size:14.5px;color:var(--ink);margin-bottom:14px",text:P.question}));
+  if(P.pico){ const dl=el("dl",{class:"pico"}); [["population","Population"],["exposure","Exposure"],["comparator","Comparator"],["outcome","Outcome"]].forEach(([k,lab])=>{ if(P.pico[k]){ dl.append(el("dt",{text:lab}), el("dd",{text:P.pico[k]})); } }); pc.append(dl); }
+  p.append(pc);
+  // criteria
+  const cc=el("div",{class:"pcard"}); cc.append(el("h3",{text:"Inclusion criteria (all must hold)"})); const ol=el("ol",{class:"crit"}); (P.inclusion_criteria||[]).forEach(c=>ol.append(el("li",{text:c}))); cc.append(ol);
+  cc.append(el("h3",{style:"margin-top:16px",text:"Exclusion reasons (controlled vocabulary)"})); const ul=el("ul",{class:"vocab"}); (P.exclusion_reasons||[]).forEach(r=>ul.append(el("li",{text:r}))); cc.append(ul);
+  p.append(cc);
+  // reproducibility
+  const rc=el("div",{class:"pcard"}); rc.append(el("h3",{text:"Reproducible search"}), el("p",{style:"font-size:13px;color:var(--ink-2)",text:"Exact commands run against NCBI E-utilities. Re-running appends only genuinely new records."}));
+  (P.searches||[]).forEach(s=>{ const lbl=(s.note.match(/label=([^;]+)/)||[])[1]||"";
+    rc.append(el("div",{class:"cmd",text:'python tools/pubmed_search.py __SLUG__ \\\n  --label '+lbl+' --date '+s.date+' \\\n  --query "'+s.query.replace(/"/g,'\\"')+'"'})); });
+  rc.append(el("div",{class:"cmd",style:"margin-top:12px",text:"python tools/validate.py __SLUG__\npython tools/build_views.py __SLUG__\npython tools/build_report.py __SLUG__"}));
+  p.append(rc);
+}
+
+// ---------- init ----------
+buildMethod(); buildRecords(); buildFindings(); buildProtocol();
+render(); setTab("method");
+document.getElementById("footmeta").textContent =
+  rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated __DATE__";
+const tgl=document.getElementById("themeToggle");
+tgl.addEventListener("click",()=>{ const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
+  document.documentElement.setAttribute("data-theme", cur==="dark"?"light":"dark"); });
+</script>

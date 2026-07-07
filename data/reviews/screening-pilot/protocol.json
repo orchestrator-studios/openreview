@@ -1,0 +1,123 @@
+{
+  "slug": "screening-pilot",
+  "title": "Screening pipeline pilot (mesothelioma criteria)",
+  "question": "In mice, how do genetic mutations (germline or engineered) affect susceptibility to malignant mesothelioma following asbestos exposure?",
+  "pico": {
+    "population": "In-vivo mice carrying a defined genetic modification (knockout, knock-in, transgenic, conditional, or spontaneous mutant)",
+    "exposure": "Asbestos or comparable mineral fibre (crocidolite, amosite, chrysotile), any route",
+    "comparator": "Wild-type / genetically unmodified littermates under the same exposure",
+    "outcome": "Malignant mesothelioma incidence, latency, or tumor burden"
+  },
+  "inclusion_criteria": [
+    "In-vivo mouse study (not solely in-vitro; not rat/human as the primary model)",
+    "A defined genetic modification whose effect on susceptibility is studied",
+    "Asbestos or mineral-fibre exposure is administered",
+    "Malignant mesothelioma is a measured outcome (incidence, latency, or burden)"
+  ],
+  "exclusion_reasons": [
+    "not-mouse",
+    "no-genetic-modification",
+    "no-asbestos-exposure",
+    "no-mesothelioma-outcome",
+    "in-vitro-only",
+    "review-or-commentary",
+    "not-primary-research",
+    "not-susceptibility-focus",
+    "wrong-language",
+    "duplicate"
+  ],
+  "extraction_profile": {
+    "arm_noun": "gene arm",
+    "summary_field": "effect_direction",
+    "fields": [
+      {
+        "key": "gene",
+        "label": "Gene",
+        "required": true
+      },
+      {
+        "key": "modification",
+        "label": "Modification",
+        "required": true,
+        "help": "e.g. heterozygous knockout, conditional deletion, transgenic"
+      },
+      {
+        "key": "mouse_model",
+        "label": "Mouse model",
+        "required": true,
+        "help": "strain / background / allele detail"
+      },
+      {
+        "key": "asbestos_type",
+        "label": "Asbestos",
+        "required": true,
+        "help": "crocidolite, amosite, chrysotile, or other fibre"
+      },
+      {
+        "key": "route",
+        "label": "Route",
+        "required": true,
+        "help": "intraperitoneal, intrapleural, inhalation, etc."
+      },
+      {
+        "key": "comparator",
+        "label": "Comparator",
+        "required": false
+      },
+      {
+        "key": "incidence",
+        "label": "MM incidence",
+        "required": false
+      },
+      {
+        "key": "latency",
+        "label": "Latency",
+        "required": false
+      },
+      {
+        "key": "effect_direction",
+        "label": "Effect",
+        "required": true,
+        "categorical": {
+          "values": {
+            "increased-susceptibility": {
+              "label": "Increased susceptibility",
+              "tone": "negative"
+            },
+            "decreased-susceptibility": {
+              "label": "Decreased susceptibility (protective)",
+              "tone": "positive"
+            },
+            "no-effect": {
+              "label": "No measurable effect",
+              "tone": "neutral"
+            },
+            "mixed": {
+              "label": "Mixed / modifier",
+              "tone": "warn"
+            },
+            "unclear": {
+              "label": "Unclear",
+              "tone": "neutral"
+            }
+          }
+        }
+      },
+      {
+        "key": "notes",
+        "label": "Notes",
+        "required": false,
+        "in_table": false
+      }
+    ]
+  },
+  "searches": [
+    {
+      "database": "PubMed",
+      "query": "(pilot — records sampled from mouse-genetics-mesothelioma)",
+      "date": "2026-07-07",
+      "count": 16,
+      "note": "label=pilot; sampled=16"
+    }
+  ]
+}

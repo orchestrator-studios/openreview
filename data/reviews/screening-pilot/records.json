@@ -1,0 +1,789 @@
+[
+  {
+    "pmid": "24928783",
+    "title": "Germline mutation of Bap1 accelerates development of asbestos-induced malignant mesothelioma.",
+    "abstract": "Malignant mesotheliomas are highly aggressive tumors usually caused by exposure to asbestos. Germline-inactivating mutations of BAP1 predispose to mesothelioma and certain other cancers. However, why mesothelioma is the predominate malignancy in some BAP1 families and not others, and whether exposure to asbestos is required for development of mesothelioma in BAP1 mutation carriers are not known. To address these questions experimentally, we generated a Bap1(+/-) knockout mouse model to assess its susceptibility to mesothelioma upon chronic exposure to asbestos. Bap1(+/-) mice exhibited a significantly higher incidence of asbestos-induced mesothelioma than wild-type (WT) littermates (73% vs. 32%, respectively). Furthermore, mesotheliomas arose at an accelerated rate in Bap1(+/-) mice than in WT animals (median survival, 43 weeks vs. 55 weeks after initial exposure, respectively) and showed increased invasiveness and proliferation. No spontaneous mesotheliomas were seen in unexposed Bap1(+/-) mice followed for up to 87 weeks of age. Mesothelioma cells from Bap1(+/-) mice showed biallelic inactivation of Bap1, consistent with its proposed role as a recessive cancer susceptibility gene. Unlike in WT mice, mesotheliomas from Bap1(+/-) mice did not require homozygous loss of Cdkn2a. However, normal mesothelial cells and mesothelioma cells from Bap1(+/-) mice showed downregulation of Rb through a p16(Ink4a)-independent mechanism, suggesting that predisposition of Bap1(+/-) mice to mesothelioma may be facilitated, in part, by cooperation between Bap1 and Rb. Drawing parallels to human disease, these unbiased genetic findings indicate that BAP1 mutation carriers are predisposed to the tumorigenic effects of asbestos and suggest that high penetrance of mesothelioma requires such environmental exposure.",
+    "authors": [
+      "Xu J",
+      "Kadariya Y",
+      "Cheung M",
+      "Pei J",
+      "Talarchek J",
+      "Sementino E",
+      "Tan Y",
+      "Menges CW",
+      "Cai KQ",
+      "Litwin S",
+      "Peng H",
+      "Karar J",
+      "Rauscher FJ",
+      "Testa JR"
+    ],
+    "year": 2014,
+    "journal": "Cancer research",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "unscreened",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Bap1+/- knockout mice chronically exposed to asbestos showed significantly higher mesothelioma incidence than WT; all four criteria met."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Bap1+/- knockout mice vs WT, chronic asbestos exposure, higher mesothelioma incidence and shorter latency — all criteria met."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "include"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "16166281",
+    "title": "A mouse model recapitulating molecular features of human mesothelioma.",
+    "abstract": "Malignant mesothelioma has been linked to asbestos exposure and generally has a poor prognosis because it is often diagnosed in advanced stages and is refractory to conventional therapy. Human malignant mesotheliomas accumulate multiple somatic genetic alterations, including inactivation of the NF2 and CDKN2A/ARF tumor suppressor genes. To better understand the significance of NF2 inactivation in malignant mesothelioma and identify tumor suppressor gene alterations that cooperate with NF2 loss of function in malignant mesothelioma pathogenesis, we treated Nf2 (+/-) knockout mice with asbestos to induce malignant mesotheliomas. Asbestos-exposed Nf2 (+/-) mice exhibited markedly accelerated malignant mesothelioma tumor formation compared with asbestos-treated wild-type (WT) littermates. Loss of the WT Nf2 allele, leading to biallelic inactivation, was observed in all nine asbestos-induced malignant mesotheliomas from Nf2 (+/-) mice and in 50% of malignant mesotheliomas from asbestos-exposed WT mice. For a detailed comparison with the murine model, DNA analyses were also done on a series of human malignant mesothelioma samples. Remarkably, similar to human malignant mesotheliomas, tumors from Nf2 (+/-) mice showed frequent homologous deletions of the Cdkn2a/Arf locus and adjacent Cdkn2b tumor suppressor gene, as well as reciprocal inactivation of Tp53 in a subset of tumors that retained the Arf locus. As in the human disease counterpart, malignant mesotheliomas from the Nf2 (+/-) mice also showed frequent activation of Akt kinase, which plays a central role in tumorigenesis and therapeutic resistance. Thus, this murine model of environmental carcinogenesis faithfully recapitulates many of the molecular features of human malignant mesothelioma and has significant implications for the further characterization of malignant mesothelioma pathogenesis and preclinical testing of novel therapeutic modalities.",
+    "authors": [
+      "Altomare DA",
+      "Vaslet CA",
+      "Skele KL",
+      "De Rienzo A",
+      "Devarajan K",
+      "Jhanwar SC",
+      "McClatchey AI",
+      "Kane AB",
+      "Testa JR"
+    ],
+    "year": 2005,
+    "journal": "Cancer research",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "unscreened",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Nf2+/- knockout mice treated with asbestos showed accelerated mesothelioma formation versus WT; genetic susceptibility outcome directly measured."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Nf2+/- knockout mice treated with asbestos show accelerated mesothelioma versus WT littermates; genetic susceptibility clearly studied."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "include"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "12151629",
+    "title": "Accelerated progression of asbestos-induced mesotheliomas in heterozygous p53+/- mice.",
+    "abstract": "Asbestos fibers produce diffuse malignant mesotheliomas in chronic rodent inhalation assays or after direct intrapleural or intraperitoneal injection. In vitro models have provided evidence that asbestos fibers are genotoxic carcinogens that can directly or indirectly generate reactive oxygen- and nitrogen-derived species that cause DNA damage. Heterozygous p53+/- mice show an increased incidence and reduced latency of malignant mesotheliomas induced by weekly intraperitoneal injections of crocidolite asbestos fibers. In this study, we investigated whether loss of heterozygosity (LOH) at the p53 tumor-suppressor gene locus contributes to accelerated tumor progression. LOH was found in 50% of the tumors produced in heterozygous p53+/- mice. In contrast to tumors that arise in p53+/+ mice or those that retained one p53 allele, LOH was associated with large tumor masses with central areas of necrosis, local invasion, and penetration of lymphatics. Increased tumor size was not associated with increased levels of cell proliferation as determined by BrdU incorporation, but it was correlated with a reduction in apoptosis as determined morphologically and by the TUNEL assay. Wild-type p53 protein is essential for cell cycle arrest in response to DNA damage and in maintenance of genomic stability. Cell lines established from tumors that showed LOH at the p53 tumor-suppressor gene locus were nearly tetraploid. These results suggest that p53 haplo-insufficiency sensitizes mice to the clastogenic or aneuploidogenic effects of crocidolite asbestos fibers, resulting in a shorter latent period. As solid tumors develop, spontaneous loss of the wild-type allele accompanied by decreased apoptosis and genetic instability is associated with accelerated tumor growth, invasion, and lymphatic dissemination.",
+    "authors": [
+      "Vaslet CA",
+      "Messier NJ",
+      "Kane AB"
+    ],
+    "year": 2002,
+    "journal": "Toxicological sciences : an official journal of the Society of Toxicology",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "unscreened",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Heterozygous p53+/- mice given crocidolite asbestos showed increased mesothelioma incidence and reduced latency versus WT."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "p53+/- mice given crocidolite asbestos show increased mesothelioma incidence and reduced latency versus WT; all criteria met."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "include"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "33318203",
+    "title": "Heterozygous germline BLM mutations increase susceptibility to asbestos and mesothelioma.",
+    "abstract": "Rare biallelic BLM gene mutations cause Bloom syndrome. Whether BLM heterozygous germline mutations (BLM+/-) cause human cancer remains unclear. We sequenced the germline DNA of 155 mesothelioma patients (33 familial and 122 sporadic). We found 2 deleterious germline BLM+/- mutations within 2 of 33 families with multiple cases of mesothelioma, one from Turkey (c.569_570del; p.R191Kfs*4) and one from the United States (c.968A>G; p.K323R). Some of the relatives who inherited these mutations developed mesothelioma, while none with nonmutated BLM were affected. Furthermore, among 122 patients with sporadic mesothelioma treated at the US National Cancer Institute, 5 carried pathogenic germline BLM+/- mutations. Therefore, 7 of 155 apparently unrelated mesothelioma patients carried BLM+/- mutations, significantly higher (P = 6.7E-10) than the expected frequency in a general, unrelated population from the gnomAD database, and 2 of 7 carried the same missense pathogenic mutation c.968A>G (P = 0.0017 given a 0.00039 allele frequency). Experiments in primary mesothelial cells from Blm+/- mice and in primary human mesothelial cells in which we silenced BLM revealed that reduced BLM levels promote genomic instability while protecting from cell death and promoted TNF-α release. Blm+/- mice injected intraperitoneally with asbestos had higher levels of proinflammatory M1 macrophages and of TNF-α, IL-1β, IL-3, IL-10, and IL-12 in the peritoneal lavage, findings linked to asbestos carcinogenesis. Blm+/- mice exposed to asbestos had a significantly shorter survival and higher incidence of mesothelioma compared to controls. We propose that germline BLM+/- mutations increase the susceptibility to asbestos carcinogenesis, enhancing the risk of developing mesothelioma.",
+    "authors": [
+      "Bononi A",
+      "Goto K",
+      "Ak G",
+      "Yoshikawa Y",
+      "Emi M",
+      "Pastorino S",
+      "Carparelli L",
+      "Ferro A",
+      "Nasu M",
+      "Kim JH",
+      "Suarez JS",
+      "Xu R",
+      "Tanji M",
+      "Takinishi Y",
+      "Minaai M",
+      "Novelli F",
+      "Pagano I",
+      "Gaudino G",
+      "Pass HI",
+      "Groden J",
+      "Grzymski JJ",
+      "Metintas M",
+      "Akarsu M",
+      "Morrow B",
+      "Hassan R",
+      "Yang H",
+      "Carbone M"
+    ],
+    "year": 2020,
+    "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "unscreened",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Blm+/- mice injected with asbestos had shorter survival and higher mesothelioma incidence versus controls; genetic susceptibility measured."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "Blm+/- mice injected with asbestos had shorter survival and higher mesothelioma incidence versus controls; susceptibility studied."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "include"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "23010873",
+    "title": "NLRP3 promotes inflammation-induced skin cancer but is dispensable for asbestos-induced mesothelioma.",
+    "abstract": "Asbestos exposure can result in serious and frequently lethal diseases, including malignant mesothelioma. The host sensor for asbestos-induced inflammation is the NLRP3 inflammasome and it is widely assumed that this complex is essential for asbestos-induced cancers. Here, we report that acute interleukin-1β production and recruitment of immune cells into peritoneal cavity were significantly decreased in the NLRP3-deficient mice after the administration of asbestos. However, NLRP3-deficient mice displayed a similar incidence of malignant mesothelioma and survival times as wild-type mice. Thus, early inflammatory reactions triggered by asbestos are NLRP3-dependent, but NLRP3 is not critical in the chronic development of asbestos-induced mesothelioma. Notably, in a two-stage carcinogenesis-induced papilloma model, NLRP3-deficient mice showed a resistance phenotype in two different strain backgrounds, suggesting a tumour-promoting role of NLRP3 in certain chemically-induced cancer types.",
+    "authors": [
+      "Chow MT",
+      "Tschopp J",
+      "Möller A",
+      "Smyth MJ"
+    ],
+    "year": 2012,
+    "journal": "Immunology and cell biology",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "unscreened",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "NLRP3-deficient mice given asbestos compared to WT for mesothelioma incidence and survival; genetic modification's susceptibility effect studied."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "high",
+            "justification": "NLRP3-deficient mice vs WT given asbestos, mesothelioma incidence and survival measured; genetic modification effect on susceptibility studied."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "include"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "29928505",
+    "title": "Absence of calretinin protein expression in malignant mesotheliomas from asbestos-exposed NF2+/- mice and mouse mesothelioma cell lines from various mouse strains.",
+    "abstract": "Calretinin is the most widespread positive marker for the immunohistochemical identification of malignant mesothelioma (MM) and was proposed to serve as a blood-based biomarker. Functionally, evidence has accumulated that calretinin might be implicated in MM tumorigenesis. We aimed to identify calretinin (CR; Calb2) in murine MM and reactive mesothelial cells in granuloma from asbestos-exposed NF2+/- mice, a line heterozygous for the tumor suppressor merlin (NF2), used as a mouse MM model. Additionally, we sought to ascertain the presence of calretinin in MM cell lines from other mouse strains. We also intended to investigate the role of calretinin in mesotheliomagenesis by comparing the survival of asbestos-exposed NF2+/- and NF2+/-CR-/- mice. NF2+/- and NF2+/-CR-/- mice, both lines on a C57Bl/6J background, were exposed to asbestos following an established protocol. Tumor histology and asbestos-induced mortality were assessed. MM and granuloma from NF2+/- mice were analyzed with immunohistochemical methods for calretinin expression. Levels of Calb2 mRNA and calretinin expression in tumors and MM cell lines of various mouse strains were determined by RT-qPCR and Western blot analysis, respectively. No expression of calretinin at the protein level was detected, neither in MM from NF2+/- mice, NF2+/- MM-derived cell lines nor immortalized mesothelial cells of mouse origin. At the mRNA level we detected Calb2 expression in MM cell lines from different mouse strains. Survival of NF2+/- and NF2+/-CR-/- mice exposed to asbestos showed no significant difference in a log-rank (Kaplan-Meier) comparison. The concomitant determination of calretinin and mesothelin blood levels has been proposed for early detection of human MM. Mouse MM models based on asbestos exposure are assumed to yield helpful information on the time course of appearance of mesothelin and calretinin in the blood of asbestos-treated mice determining the earliest time point for interventions. However, the observed absence of calretinin in MM from NF2+/- mice and derived cell lines, as well as from MM cells from Balb/c and C3H mice likely precludes the use of calretinin as a biomarker for mouse MM. The results also indicate possible species differences with respect to an involvement of calretinin in the formation of MM.",
+    "authors": [
+      "Blum W",
+      "Henzi T",
+      "Châtel-Soulet HE",
+      "Pecze L",
+      "Rodriguez JW",
+      "Vrugt B",
+      "Schwaller B"
+    ],
+    "year": 2018,
+    "journal": "Biomarker research",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "unscreened",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "medium",
+            "justification": "Asbestos-exposed NF2+/- versus NF2+/-CR-/- mice compared for mesothelioma survival; calretinin knockout susceptibility effect assessed despite biomarker focus."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "medium",
+            "justification": "NF2+/- and NF2+/-CR-/- mice exposed to asbestos, survival compared between genotypes; biomarker-focused but genotype susceptibility comparison present."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "include"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "36355620",
+    "title": "Inflammation as a chemoprevention target in asbestos-induced malignant mesothelioma.",
+    "abstract": "Malignant mesothelioma (MM) is an incurable cancer of the serosal lining that is often caused by exposure to asbestos. Therefore, novel agents for the prevention and treatment of this disease are urgently needed. Asbestos induces the release of pro-inflammatory cytokines such as IL-1β and IL-6, which play a role in MM development. IL-6 is a component of the JAK-STAT3 pathway that contributes to inflammation-associated tumorigenesis. Glycoprotein 130 (gp130), the signal transducer of this signaling axis, is an attractive drug target because of its role in promoting neoplasia via the activation of downstream STAT3 signaling. The anticancer drug, SC144, inhibits the interaction of gp130 with the IL-6 receptor (IL6R), effectively blunting signaling from this inflammatory axis. To test whether the inflammation-related release of IL-6 plays a role in the formation of MM, we evaluated the ability of SC144 to inhibit asbestos-induced carcinogenesis in a mouse model. The ability of sulindac and anakinra, an IL6R antagonist/positive control, to inhibit MM formation in this model was tested in parallel. Asbestos-exposed Nf2+/-;Cdkn2a+/- mice treated with SC144, sulindac or anakinra showed significantly prolonged survival compared to asbestos-exposed vehicle-treated mice. STAT3 activity was markedly decreased in MM specimens from SC144-treated mice. Furthermore, SC144 inhibited STAT3 activation by IL-6 in cultured normal mesothelial cells, and in vitro treatment of MM cells with SC144 markedly decreased the expression of STAT3 target genes. The emerging availability of newer, more potent SC144 analogs showing improved pharmacokinetic properties holds promise for future trials, benefitting individuals at high risk of this disease.",
+    "authors": [
+      "Kadariya Y",
+      "Sementino E",
+      "Shrestha U",
+      "Gorman G",
+      "White JM",
+      "Ross EA",
+      "Clapper ML",
+      "Neamati N",
+      "Miller MS",
+      "Testa JR"
+    ],
+    "year": 2022,
+    "journal": "Carcinogenesis",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "not-susceptibility-focus",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "not-susceptibility-focus",
+            "confidence": "medium",
+            "justification": "Fixed Nf2+/-;Cdkn2a+/- genotype used as background to test drug chemoprevention; no genotype comparison studying genetic effect on susceptibility."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "not-susceptibility-focus",
+            "confidence": "medium",
+            "justification": "Nf2+/-;Cdkn2a+/- genotype is fixed model background; study compares chemopreventive drugs versus vehicle, not the genetic modification's effect on susceptibility."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "not-susceptibility-focus"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "26680231",
+    "title": "Consistent gene expression profiles in MexTAg transgenic mouse and wild type mouse asbestos-induced mesothelioma.",
+    "abstract": "The MexTAg transgenic mouse model of mesothelioma replicates many aspects of human mesothelioma, including induction by asbestos, pathogenicity and response to cytotoxic chemotherapy, despite high levels of the SV40 large T Antigen (TAg) in the mesothelial compartment. This model enables analysis of the molecular events associated with asbestos induced mesothelioma and is utilised here to investigate the molecular dynamics of tumours induced in these mice, using gene expression patterns as a read out. Gene expression of MexTAg mesothelioma cell lines bearing a high or low number of copies of the TAg transgene were compared to wild type mouse mesotheliomas and normal mouse mesothelial cells using Affymetrix microarray. These data were then compared to a similar published human microarray study using the same platform. The main expression differences between transgenic mouse and wild type mouse mesotheliomas occurred for genes involved in cell cycle regulation and DNA replication, as would be expected from overexpression of the TAg oncogene. Quantitative PCR confirmed that E2F and E2F regulated genes were significantly more upregulated in MexTAg mesotheliomas and MexTAg mesothelial cells compared to wild type mesotheliomas. Like human mesothelioma, both MexTAg and wild type mesotheliomas had more genes underexpressed than overexpressed compared to normal mouse mesothelial cells. Most notably, the cdkn2 locus was deleted in the wild type mouse mesotheliomas, consistent with 80 % human mesotheliomas, however, this region was not deleted in MexTAg mesotheliomas. Regardless of the presence of TAg, all mouse mesotheliomas had a highly concordant set of deregulated genes compared to normal mesothelial cells that overlapped with the deregulated genes between human mesotheliomas and mesothelial cells. This investigation demonstrates that the MexTAg mesotheliomas are comparable with wild type mouse mesotheliomas in their representation of human mesothelioma at the molecular level, with some key gene expression differences that are attributable to the TAg transgene expression. Of particular note, MexTAg mesothelioma development was not dependent on cdkn2 deletion.",
+    "authors": [
+      "Robinson C",
+      "Dick IM",
+      "Wise MJ",
+      "Holloway A",
+      "Diyagama D",
+      "Robinson BW",
+      "Creaney J",
+      "Lake RA"
+    ],
+    "year": 2015,
+    "journal": "BMC cancer",
+    "found_by": [
+      "broad"
+    ],
+    "status": "excluded",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "not-susceptibility-focus",
+            "confidence": "medium",
+            "justification": "Study profiles gene expression differences between MexTAg and WT mesotheliomas; mesothelioma susceptibility (incidence/latency/burden) by genotype not the measured outcome."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "low",
+            "justification": "MexTAg transgenic vs WT asbestos mesothelioma compared, but outcome is gene expression rather than incidence/latency; borderline, retained conservatively."
+          }
+        ],
+        "agreement": "conflict",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "not-susceptibility-focus"
+        },
+        "adjudication": {
+          "by": "human",
+          "decision": "exclude",
+          "reason": "not-susceptibility-focus",
+          "note": "Expression profiling, not a genotype-susceptibility comparison"
+        }
+      }
+    },
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "not-susceptibility-focus"
+  },
+  {
+    "pmid": "22292488",
+    "title": "The antioxidants vitamins A and E and selenium do not reduce the incidence of asbestos-induced disease in a mouse model of mesothelioma.",
+    "abstract": "Epidemiological evidence indicates that supplementation with some dietary factors is associated with a lower incidence of cancer. An effective cancer prevention strategy for the millions of people worldwide who have been exposed to asbestos could have enormous benefit. We tested whether dietary supplementation of the antioxidants vitamin A, E, and selenium could alter the pattern of disease in the MexTAg transgenic mouse model, in which mice uniformly develop mesothelioma after asbestos exposure. We focused on antioxidants because one of the most widely accepted hypotheses for the mechanism by which asbestos fibers cause cancer proposes the involvement of reactive oxygen and nitrogen species. We compared the survival of MexTAg mice that had been inoculated with asbestos fed on diets supplemented with 250,000 IU/kg vitamin A (retinoic acid), or 1,000 mg/kg vitamin E (α-tocopherol acetate) or 3 mg/kg selenium, or both vitamin E and selenium concurrently and, additionally, diets deficient in each antioxidant. We found that neither the time to develop symptoms of disease nor overall survival times were altered by any of the diets. We conclude that the data do not support the notion that dietary antioxidants will moderate the rate of mesothelioma in asbestos-exposed populations.",
+    "authors": [
+      "Robinson C",
+      "Woo S",
+      "Walsh A",
+      "Nowak AK",
+      "Lake RA"
+    ],
+    "year": 2012,
+    "journal": "Nutrition and cancer",
+    "found_by": [
+      "broad"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "not-susceptibility-focus",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "not-susceptibility-focus",
+            "confidence": "medium",
+            "justification": "Dietary antioxidant intervention in fixed-genotype MexTAg mice; no genetic modification whose effect on susceptibility is studied."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "not-susceptibility-focus",
+            "confidence": "medium",
+            "justification": "MexTAg genotype fixed across arms; study tests dietary antioxidants versus diet, not the genetic modification's effect on mesothelioma susceptibility."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "not-susceptibility-focus"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "18303189",
+    "title": "Induction of mesothelioma in p53+/- mouse by intraperitoneal application of multi-wall carbon nanotube.",
+    "abstract": "Nanomaterials of carbon origin tend to form various shapes of particles in micrometer dimensions. Among them, multi-wall carbon nanotubes (MWCNT) form fibrous or rod-shaped particles of length around 10 to 20 micrometers with an aspect ratio of more than three. Fibrous particles of this dimension including asbestos and some man-made fibers are reported to be carcinogenic, typically inducing mesothelioma. Here we report that MWCNT induces mesothelioma along with a positive control, crocidolite (blue asbestos), when administered intraperitoneally to p53 heterozygous mice that have been reported to be sensitive to asbestos. Our results point out the possibility that carbon-made fibrous or rod-shaped micrometer particles may share the carcinogenic mechanisms postulated for asbestos. To maintain sound activity of industrialization of nanomaterials, it would be prudent to implement strategies to keep good control of exposure to fibrous or rod-shaped carbon materials both in the workplace and in the future market until the biological/ carcinogenic properties, especially of their long-term biodurability, are fully assessed.",
+    "authors": [
+      "Takagi A",
+      "Hirose A",
+      "Nishimura T",
+      "Fukumori N",
+      "Ogata A",
+      "Ohashi N",
+      "Kitajima S",
+      "Kanno J"
+    ],
+    "year": 2008,
+    "journal": "The Journal of toxicological sciences",
+    "found_by": [
+      "broad",
+      "gene-specific",
+      "susceptibility"
+    ],
+    "status": "excluded",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "low",
+            "justification": "p53+/- mice with crocidolite asbestos positive control developed mesothelioma; asbestos arm in genetic model cannot be confidently ruled out."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "low",
+            "justification": "p53+/- mice with crocidolite asbestos positive control develop mesothelioma; nanotube-focused with no genotype comparison, but retained conservatively as borderline."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "not-susceptibility-focus"
+        },
+        "adjudication": {
+          "by": "human",
+          "decision": "exclude",
+          "reason": "not-susceptibility-focus",
+          "note": "Primary exposure is MWCNT; asbestos only positive control, no genotype comparison"
+        }
+      }
+    },
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "not-susceptibility-focus"
+  },
+  {
+    "pmid": "7935323",
+    "title": "Modulation of platelet-derived growth factor-beta mRNA expression and cell growth in a human mesothelioma cell line by a hammerhead ribozyme.",
+    "abstract": "Malignant mesothelioma in humans is a rare disease, but it has recently received much public attention and concern because of its strong relationship to exposure to asbestos. We have found overexpression of the gene for platelet-derived growth factor (PDGF)-beta in several mesothelioma xenografts in nude mice. Because some mesothelioma cell lines such as VAMT-1 overexpress PDGF-beta and PDGF-beta receptors, it was considered that an autocrine loop involving PDGF-beta and its receptor may contribute to the malignant phenotype of these cells. To investigate this possibility we have developed a hammerhead ribozyme against PDGF-beta mRNA. This c-sis ribozyme was able to cleave an artificial PDGF-beta RNA substrate in a cell-free system. Transduction of this ribozyme, with the aid of a constitutive expression vector, in the VAMT-1 cell line led to a decrease in the PDGF-beta mRNA level. The ribozyme expressed in these cells was functional in cleaving the artificial RNA substrate in vitro. Ribonuclease protection assays using the ribozyme and whole PDGF-beta mRNA showed that this ribozyme was capable of cleaving the whole mRNA in vivo. Transfectant clones containing the wild-type ribozyme showed decreased cell growth, in parallel with the decreases in PDGF-beta expression. The disabled ribozyme was inactive in the cleavage reaction in vitro and in decreasing the cell growth rate in vivo. Our data indicate that in some mesothelioma cells the PDGF-beta autocrine loop may be functional and transduction of the PDGF-beta ribozyme leads to a significant reduction of cell growth. The c-sis ribozyme may be applicable in the treatment of patients with malignant mesothelioma.",
+    "authors": [
+      "Dorai T",
+      "Kobayashi H",
+      "Holland JF",
+      "Ohnuma T"
+    ],
+    "year": 1994,
+    "journal": "Molecular pharmacology",
+    "found_by": [
+      "broad"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "no-asbestos-exposure",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "no-asbestos-exposure",
+            "confidence": "high",
+            "justification": "Ribozyme therapy study on human mesothelioma cell line and xenografts; no asbestos administered and no mouse genetic susceptibility tested."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "in-vitro-only",
+            "confidence": "high",
+            "justification": "Ribozyme therapy study in human mesothelioma cell line VAMT-1; no in-vivo mouse genetic susceptibility experiment or asbestos exposure administered."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "no-asbestos-exposure"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "4455505",
+    "title": "Inhalation carcinogenesis from various forms of asbestos.",
+    "abstract": "",
+    "authors": [
+      "Reeves AL",
+      "Puro HE",
+      "Smith RG"
+    ],
+    "year": 1974,
+    "journal": "Environmental research",
+    "found_by": [
+      "susceptibility"
+    ],
+    "status": "excluded",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "include",
+            "confidence": "low",
+            "justification": "No abstract; title on asbestos inhalation carcinogenesis is field-relevant and cannot be ruled out per conservative rule."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "include",
+            "confidence": "low",
+            "justification": "No abstract; title on asbestos inhalation carcinogenesis is topic-adjacent, cannot confidently rule out; retained per no-abstract conservative rule."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "no-genetic-modification"
+        },
+        "adjudication": {
+          "by": "human",
+          "decision": "exclude",
+          "reason": "no-genetic-modification",
+          "note": "No genetic modification studied (no abstract; title is general asbestos carcinogenesis)"
+        }
+      }
+    },
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "no-genetic-modification"
+  },
+  {
+    "pmid": "8381434",
+    "title": "Secreted extracellular domains of macrophage scavenger receptors form elongated trimers which specifically bind crocidolite asbestos.",
+    "abstract": "Macrophage scavenger receptors, which have been implicated in the development of atherosclerosis and other macrophage-mediated events, are trimeric integral membrane glycoproteins whose extracellular domains have been predicted to include alpha-helical coiled-coil, collagenous and globular structures. To elucidate further the structural and functional properties of these receptors, we generated transfected Chinese hamster ovary cells which express secreted extracellular domains of the type I and type II bovine scavenger receptors and developed a solid-phase bead-binding assay to assess their ligand-binding properties. The secreted receptors exhibited the distinctive high-affinity, broad polyanionic ligand-binding specificity and the pH dependence of binding which characterize the membrane-anchored cell-surface forms of the receptors. Both the type I and type II secreted receptors were trimeric glycoproteins comprising disulfide-linked dimers and noncovalently associated monomers. Gel filtration and glycerol-gradient centrifugation established that the type II trimers were highly elongated and did not associate into higher order oligomers at the low concentrations used in these experiments. Crocilodite asbestos, which is phagocytosed by alveolar macrophages and can cause asbestosis and mesothelioma, bound efficiently to secreted type I receptors and less well to the type II receptors. This binding was specific in that it was competed by a variety of well established scavenger receptor ligands but not by negative controls. These studies have identified a new type of insoluble scavenger receptor ligand, and have raised the possibility that scavenger receptors may play a role in mediating the physiological and pathological interactions of inspired particles with alveolar macrophages.",
+    "authors": [
+      "Resnick D",
+      "Freedman NJ",
+      "Xu S",
+      "Krieger M"
+    ],
+    "year": 1993,
+    "journal": "The Journal of biological chemistry",
+    "found_by": [
+      "broad"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "in-vitro-only",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "in-vitro-only",
+            "confidence": "high",
+            "justification": "In-vitro biochemical study of scavenger-receptor binding to asbestos in transfected CHO cells; no mouse mesothelioma outcome."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "in-vitro-only",
+            "confidence": "high",
+            "justification": "Biochemical study of scavenger receptor binding to asbestos in transfected CHO cells; no in-vivo mouse model or mesothelioma outcome."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "in-vitro-only"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "2545604",
+    "title": "Translocation of subcutaneously injected chrysotile fibres: potential cocarcinogenic effect on lung cancer induced in rats by inhalation of radon and its daughters.",
+    "abstract": "Exposure to radon 222 and its daughters has been shown to induce lung cancer in rats. The cocarcinogenic effect of intrapleurally injected mineral fibres in rats which have previously inhaled radon has also been established. The aim of this work was to establish whether a similar process could be induced at a distance from the lungs by subcutaneous injection of chrysotile fibres. Three groups of animals were used: (1) 109 rats which inhaled radon only (dose: 1600 working-level months (WLM]; (2) 109 rats given a subcutaneous injection in the sacrococcygeal region of 20 mg of chrysotile fibres after inhalation of the same dose of radon; and (3) 105 rats injected with fibres only. No mesotheliomas occurred in any of the 3 groups. The incidence of lung cancer was 55% in group 2, 49% in group 1 and 1% in group 3. Statistical analysis using Pike's model showed that the carcinogenic insult was slightly higher in group 2 than in group 1. Electron microscopy analysis of fibre translocation from the injection site showed that less than 1% of injected fibres migrated to the regional lymph-nodes and only about 0.01% to the lungs. After injection, the mean length of the fibres recovered in lung parenchyma increased with time, suggesting that short fibres are cleared by pulmonary macrophages whereas long fibres are trapped in the alveolar walls. Although the high tumour incidence observed in group 1 might have masked the cocarcinogenic effect induced by the fibres, it is possible that this effect can occur only at short distances.(ABSTRACT TRUNCATED AT 250 WORDS)",
+    "authors": [
+      "Monchaux G",
+      "Chameaud J",
+      "Morlier JP",
+      "Janson X",
+      "Morin M",
+      "Bignon J"
+    ],
+    "year": 1989,
+    "journal": "IARC scientific publications",
+    "found_by": [
+      "susceptibility"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "not-mouse",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "not-mouse",
+            "confidence": "high",
+            "justification": "Study conducted in rats with chrysotile and radon; no mice and no mesotheliomas occurred."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "not-mouse",
+            "confidence": "high",
+            "justification": "Study conducted in rats with chrysotile and radon; no mesotheliomas occurred and no genetic modification involved."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "not-mouse"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "26695618",
+    "title": "Overexpression or absence of calretinin in mouse primary mesothelial cells inversely affects proliferation and cell migration.",
+    "abstract": "The Ca(2+)-binding protein calretinin is currently used as a positive marker for identifying epithelioid malignant mesothelioma (MM) and reactive mesothelium, but calretinin's likely role in mesotheliomagenesis remains unclear. Calretinin protects immortalized mesothelial cells in vitro from asbestos-induced cytotoxicity and thus might be implicated in mesothelioma formation. To further investigate calretinin's putative role in the early steps of MM generation, primary mesothelial cells from calretinin knockout (CR-/-) and wildtype (WT) mice were compared. Primary mouse mesothelial cells from WT and CR-/- mice were investigated with respect to morphology, marker proteins, proliferation, cell cycle parameters and mobility in vitro. Overexpression of calretinin or a nuclear-targeted variant was achieved by a lentiviral expression system. CR-/- mice have a normal mesothelium and no striking morphological abnormalities compared to WT animals were noted. Primary mouse mesothelial cells from both genotypes show a typical \"cobblestone-like\" morphology and express mesothelial markers including mesothelin. In cells from CR-/- mice in vitro, we observed more giant cells and a significantly decreased proliferation rate. Up-regulation of calretinin in mesothelial cells of both genotypes increases the proliferation rate and induces a cobblestone-like epithelial morphology. The length of the S/G2/M phase is unchanged, however the G1 phase is clearly prolonged in CR-/- cells. They are also much slower to close a scratch in a confluent cell layer (2D-wound assay). In addition to a change in cell morphology, an increase in proliferation and mobility is observed, if calretinin overexpression is targeted to the nucleus. Thus, both calretinin and nuclear-targeted calretinin increase mesothelial cell proliferation and consequently, speed up the scratch-closure time. The increased rate of scratch closure in WT cells is the result of two processes: an increased proliferation rate and augmented cell mobility of the border cells migrating towards the empty space. We hypothesize that the differences in proliferation and mobility between WT and CR-/- mesothelial cells are the likely result from differences in their developmental trajectories. The mechanistic understanding of the function of calretinin and its putative implication in signaling pathways in normal mesothelial cells may help understanding its role during the processes that lead to mesothelioma formation and could possibly open new avenues for mesothelioma therapy, either by directly targeting calretinin expression or indirectly by targeting calretinin-mediated downstream signaling.",
+    "authors": [
+      "Blum W",
+      "Pecze L",
+      "Felley-Bosco E",
+      "Schwaller B"
+    ],
+    "year": 2015,
+    "journal": "Respiratory research",
+    "found_by": [
+      "broad",
+      "susceptibility"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "in-vitro-only",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "in-vitro-only",
+            "confidence": "high",
+            "justification": "In-vitro study of calretinin knockout mouse primary mesothelial cell proliferation and migration; no asbestos exposure or in-vivo mesothelioma outcome."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "in-vitro-only",
+            "confidence": "high",
+            "justification": "Primary calretinin-knockout mouse mesothelial cells studied in vitro for proliferation and migration; no asbestos exposure or mesothelioma outcome in vivo."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "in-vitro-only"
+        }
+      }
+    }
+  },
+  {
+    "pmid": "27549627",
+    "title": "Mesothelioma response to carbon nanotubes is associated with an early and selective accumulation of immunosuppressive monocytic cells.",
+    "abstract": "The asbestos-like toxicity of some engineered carbon nanotubes (CNT), notably their capacity to induce mesothelioma, is a serious cause of concern for public health. Here we show that carcinogenic CNT induce an early and sustained immunosuppressive response characterized by the accumulation of monocytic Myeloid Derived Suppressor Cells (M-MDSC) that counteract effective immune surveillance of tumor cells. Wistar rats and C57BL/6 mice were intraperitoneally injected with carcinogenic multi-walled Mitsui-7 CNT (CNT-7) or crocidolite asbestos. Peritoneal mesothelioma development and immune cell accumulation were assessed until 12 months. Leukocyte sub-populations were identified by recording expression of CD11b/c and His48 by flow cytometry. The immunosuppressive activity on T lymphocytes of purified peritoneal leukocytes was assessed in a co-culture assay with activated spleen cells. We demonstrate that long and short mesotheliomagenic CNT-7 injected in the peritoneal cavity of rats induced, like asbestos, an early and selective accumulation of monocytic cells (CD11b/c(int) and His48(hi)) which possess the ability to suppress polyclonal activation of T lymphocytes and correspond to M-MDSC. Peritoneal M-MDSC persisted during the development of peritoneal mesothelioma in CNT-7-treated rats but were only transiently recruited after non-carcinogenic CNT (CNT-M, CNT-T) injection. Peritoneal M-MDSC did not accumulate in mice which are resistant to mesothelioma development. Our data provide new insights into the initial pathogenic events induced by CNT, adding a new component to the adverse outcome pathway leading to mesothelioma development. The specificity of the M-MDSC response after carcinogenic CNT exposure highlights the interest of this response for detecting the ability of new nanomaterials to cause cancer.",
+    "authors": [
+      "Huaux F",
+      "d'Ursel de Bousies V",
+      "Parent MA",
+      "Orsi M",
+      "Uwambayinema F",
+      "Devosse R",
+      "Ibouraadaten S",
+      "Yakoub Y",
+      "Panin N",
+      "Palmai-Pallag M",
+      "van der Bruggen P",
+      "Bailly C",
+      "Marega R",
+      "Marbaix E",
+      "Lison D"
+    ],
+    "year": 2016,
+    "journal": "Particle and fibre toxicology",
+    "found_by": [
+      "susceptibility"
+    ],
+    "status": "excluded",
+    "screening_stage": "title-abstract",
+    "exclusion_reason": "no-genetic-modification",
+    "screening": {
+      "title-abstract": {
+        "method": "dual-independent",
+        "passes": [
+          {
+            "reviewer": "screener-A",
+            "decision": "exclude",
+            "reason": "no-genetic-modification",
+            "confidence": "medium",
+            "justification": "Nanotube/asbestos mesothelioma study in rats and mice examining immune cells; species/strain differences, no defined genetic modification studied."
+          },
+          {
+            "reviewer": "screener-B",
+            "decision": "exclude",
+            "reason": "no-genetic-modification",
+            "confidence": "medium",
+            "justification": "Wild-type C57BL/6 mice and rats given carbon nanotubes/asbestos; immunosuppressive cell study with no defined genetic modification of susceptibility."
+          }
+        ],
+        "agreement": "agree",
+        "outcome": {
+          "decision": "exclude",
+          "reason": "no-genetic-modification"
+        }
+      }
+    }
+  }
+]

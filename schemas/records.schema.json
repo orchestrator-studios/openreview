@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "records.schema.json",
+  "title": "Records file",
+  "description": "All candidate records for one review, each with screening decision and (if included) extraction.",
+  "type": "array",
+  "items": { "$ref": "#/definitions/record" },
+  "definitions": {
+    "record": {
+      "type": "object",
+      "required": ["pmid", "title", "status", "found_by"],
+      "additionalProperties": false,
+      "properties": {
+        "pmid": { "type": "string", "pattern": "^[0-9]+$" },
+        "doi": { "type": "string" },
+        "title": { "type": "string", "minLength": 1 },
+        "abstract": { "type": "string" },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+        "journal": { "type": "string" },
+        "found_by": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Which search queries surfaced this record (traceability rule).",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "status": {
+          "type": "string",
+          "description": "Resolved outcome. 'needs-adjudication' = the two screening passes disagreed or flagged low confidence and the record is awaiting a human decision.",
+          "enum": ["unscreened", "included", "excluded", "needs-adjudication"]
+        },
+        "screening_stage": {
+          "type": "string",
+          "enum": ["title-abstract", "full-text"]
+        },
+        "exclusion_reason": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "screening_note": { "type": "string" },
+        "screening": { "$ref": "#/definitions/screening" },
+        "extraction": { "$ref": "#/definitions/extraction" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "excluded" } } },
+          "then": { "required": ["exclusion_reason", "screening_stage"] }
+        },
+        {
+          "if": { "properties": { "status": { "const": "included" } } },
+          "then": { "required": ["extraction"] }
+        }
+      ]
+    },
+    "screening": {
+      "type": "object",
+      "description": "Per-stage screening provenance: the independent passes, their agreement, any adjudication, and the resolved outcome. Optional so single-pass and dual-review reviews both validate.",
+      "additionalProperties": false,
+      "properties": {
+        "title-abstract": { "$ref": "#/definitions/stageScreen" },
+        "full-text": { "$ref": "#/definitions/stageScreen" }
+      }
+    },
+    "stageScreen": {
+      "type": "object",
+      "required": ["method", "passes", "outcome"],
+      "additionalProperties": false,
+      "properties": {
+        "method": { "type": "string", "enum": ["dual-independent", "single", "single-pass-legacy"] },
+        "passes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["reviewer", "decision"],
+            "additionalProperties": false,
+            "properties": {
+              "reviewer": { "type": "string" },
+              "decision": { "type": "string", "enum": ["include", "exclude"] },
+              "reason": { "type": "string" },
+              "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+              "justification": { "type": "string" },
+              "model": { "type": "string" }
+            }
+          }
+        },
+        "agreement": { "type": "string", "enum": ["agree", "conflict", "n/a"] },
+        "adjudication": {
+          "type": "object",
+          "required": ["by", "decision"],
+          "additionalProperties": false,
+          "properties": {
+            "by": { "type": "string", "description": "'human' or an agent id" },
+            "decision": { "type": "string", "enum": ["include", "exclude"] },
+            "reason": { "type": "string" },
+            "note": { "type": "string" }
+          }
+        },
+        "outcome": {
+          "type": "object",
+          "required": ["decision"],
+          "additionalProperties": false,
+          "properties": {
+            "decision": { "type": "string", "enum": ["include", "exclude", "needs-adjudication"] },
+            "reason": { "type": "string" }
+          }
+        }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "description": "Structured data pulled from an included study. One entry per arm (a study reporting several conditions yields several arms). The specific per-arm fields are defined by the review's extraction_profile in protocol.json and enforced by validate.py — this schema validates only the envelope so the engine stays topic-agnostic.",
+      "required": ["arms"],
+      "additionalProperties": false,
+      "properties": {
+        "arms": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "object", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}

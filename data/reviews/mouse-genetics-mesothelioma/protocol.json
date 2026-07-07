@@ -1,0 +1,78 @@
+{
+  "slug": "mouse-genetics-mesothelioma",
+  "title": "Genetic mutations and susceptibility to asbestos-induced mesothelioma in mice",
+  "question": "In mice, how do genetic mutations (germline or engineered) affect susceptibility to malignant mesothelioma following asbestos exposure?",
+  "pico": {
+    "population": "In-vivo mice carrying a defined genetic modification (knockout, knock-in, transgenic, conditional, or spontaneous mutant)",
+    "exposure": "Asbestos or comparable mineral fibre (crocidolite, amosite, chrysotile), any route",
+    "comparator": "Wild-type / genetically unmodified littermates under the same exposure",
+    "outcome": "Malignant mesothelioma incidence, latency, or tumor burden"
+  },
+  "inclusion_criteria": [
+    "In-vivo mouse study (not solely in-vitro; not rat/human as the primary model)",
+    "A defined genetic modification whose effect on susceptibility is studied",
+    "Asbestos or mineral-fibre exposure is administered",
+    "Malignant mesothelioma is a measured outcome (incidence, latency, or burden)"
+  ],
+  "exclusion_reasons": [
+    "not-mouse",
+    "no-genetic-modification",
+    "no-asbestos-exposure",
+    "no-mesothelioma-outcome",
+    "in-vitro-only",
+    "review-or-commentary",
+    "not-primary-research",
+    "not-susceptibility-focus",
+    "wrong-language",
+    "duplicate"
+  ],
+  "extraction_profile": {
+    "arm_noun": "gene arm",
+    "summary_field": "effect_direction",
+    "fields": [
+      { "key": "gene", "label": "Gene", "required": true },
+      { "key": "modification", "label": "Modification", "required": true, "help": "e.g. heterozygous knockout, conditional deletion, transgenic" },
+      { "key": "mouse_model", "label": "Mouse model", "required": true, "help": "strain / background / allele detail" },
+      { "key": "asbestos_type", "label": "Asbestos", "required": true, "help": "crocidolite, amosite, chrysotile, or other fibre" },
+      { "key": "route", "label": "Route", "required": true, "help": "intraperitoneal, intrapleural, inhalation, etc." },
+      { "key": "comparator", "label": "Comparator", "required": false },
+      { "key": "incidence", "label": "MM incidence", "required": false },
+      { "key": "latency", "label": "Latency", "required": false },
+      { "key": "effect_direction", "label": "Effect", "required": true,
+        "categorical": {
+          "values": {
+            "increased-susceptibility": { "label": "Increased susceptibility", "tone": "negative" },
+            "decreased-susceptibility": { "label": "Decreased susceptibility (protective)", "tone": "positive" },
+            "no-effect": { "label": "No measurable effect", "tone": "neutral" },
+            "mixed": { "label": "Mixed / modifier", "tone": "warn" },
+            "unclear": { "label": "Unclear", "tone": "neutral" }
+          }
+        }
+      },
+      { "key": "notes", "label": "Notes", "required": false, "in_table": false }
+    ]
+  },
+  "searches": [
+    {
+      "database": "PubMed",
+      "query": "(mesothelioma) AND (asbestos OR crocidolite OR amosite OR chrysotile OR \"mineral fiber\" OR \"mineral fibre\" OR erionite) AND (mice OR mouse OR murine) AND (knockout OR \"knock-out\" OR transgenic OR heterozygous OR deficient OR \"deficient mice\" OR mutant OR mutation OR genetic OR genetically OR conditional OR \"gene deletion\" OR haploinsufficient)",
+      "date": "2026-07-07",
+      "count": 251,
+      "note": "label=broad; fetched=251; added=251"
+    },
+    {
+      "database": "PubMed",
+      "query": "(mesothelioma) AND (asbestos OR crocidolite OR amosite OR chrysotile OR erionite) AND (mice OR mouse OR murine) AND (Nf2 OR Cdkn2a OR \"p16INK4a\" OR Ink4a OR Arf OR Trp53 OR Tp53 OR Bap1 OR Nlrp3 OR Lats2 OR Tsc1 OR \"beta-catenin\" OR Wt1 OR Nf2/Cdkn2a)",
+      "date": "2026-07-07",
+      "count": 79,
+      "note": "label=gene-specific; fetched=79; added=7"
+    },
+    {
+      "database": "PubMed",
+      "query": "(mesothelioma) AND (asbestos OR crocidolite OR amosite OR chrysotile OR erionite) AND (mice OR mouse OR murine) AND (susceptibility OR susceptible OR predisposition OR tumor suppressor OR \"tumour suppressor\" OR carcinogenesis OR knockout OR null OR \"-/-\")",
+      "date": "2026-07-07",
+      "count": 202,
+      "note": "label=susceptibility; fetched=202; added=66"
+    }
+  ]
+}
