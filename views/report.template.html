@@ -271,9 +271,14 @@
   /* eval gate (now folded into the top of Findings, scoped to #evalbox) */
   #evalbox .eval{border-radius:12px;padding:15px 18px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);}
   #evalbox .eval.pass{border-left:4px solid var(--pos);} #evalbox .eval.paused{border-left:4px solid var(--warn);background:var(--warn-soft);}
-  #evalbox .eval .eh{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:15.5px;font-weight:600;}
+  #evalbox .eval .eh{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:15.5px;font-weight:600;cursor:pointer;user-select:none;}
   #evalbox .eval.pass .eh{color:var(--pos);} #evalbox .eval.paused .eh{color:var(--warn);}
-  #evalbox .eval .ex{font-size:13px;color:var(--ink);margin:8px 0 10px;}
+  #evalbox .eval .ehl{flex:1;}
+  #evalbox .ecaret{color:var(--ink-3);font-size:11px;transition:transform .15s ease;}
+  #evalbox .eval.open .ecaret{transform:rotate(90deg);}
+  #evalbox .ebody{display:none;}
+  #evalbox .eval.open .ebody{display:block;}
+  #evalbox .eval .ex{font-size:13px;color:var(--ink);margin:10px 0 10px;}
   #evalbox .eval .muted{color:var(--ink-3);font-size:13px;}
   #evalbox .checks{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
   #evalbox .chk{display:grid;grid-template-columns:18px 1fr;gap:9px;align-items:start;font-size:12.5px;}
@@ -553,6 +558,8 @@ const TABS=[
 const tabsEl=document.getElementById("tabs");
 let activeTab="pipeline";
 let deleted=false;   // set once the live view learns its review was deleted (see showDeleted)
+let evalOpen=null;   // user's manual expand/collapse of the quality gate; null = follow the default
+let evalLastStatus=null;   // reset the manual override when the gate's status actually changes
 TABS.forEach(t=>{
   const b=el("button",{class:"tab",type:"button",onclick:()=>setTab(t.id)},t.label, t.cnt!=null?el("span",{class:"cnt num",text:t.cnt}):null);
   b.dataset.tab=t.id; tabsEl.append(b);
@@ -891,15 +898,26 @@ function renderEval(ev){
     return;
   }
   const paused=ev.status==="paused", advN=(ev.advisories||[]).length;
-  const card=el("div",{class:"eval "+(paused?"paused":"pass")});
-  card.append(el("div",{class:"eh"}, el("span",{text:paused?"⏸":"✓"}),
-    el("span",{text:paused?"Paused for your review":("Evaluation passed"+(advN?" · "+advN+" advisory":""))})));
-  if(ev.explanation) card.append(el("div",{class:"ex",text:ev.explanation}));
+  // Collapsed by default when it passed (just the one-line "passed"); expanded when paused, so what
+  // needs a human is visible. A manual toggle sticks across live re-renders until the status changes.
+  if(ev.status!==evalLastStatus){ evalOpen=null; evalLastStatus=ev.status; }
+  const open = evalOpen!==null ? evalOpen : paused;
+  const card=el("div",{class:"eval "+(paused?"paused":"pass")+(open?" open":"")});
+  const head=el("div",{class:"eh",role:"button",tabindex:"0"},
+    el("span",{text:paused?"⏸":"✓"}),
+    el("span",{class:"ehl",text:paused?"Paused for your review":("All quality checks passed"+(advN?" · "+advN+" advisory":""))}),
+    el("span",{class:"ecaret",text:"▸"}));
+  const toggle=()=>{ const now=!card.classList.contains("open"); card.classList.toggle("open",now); evalOpen=now; };
+  head.addEventListener("click",toggle);
+  head.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
+  const body=el("div",{class:"ebody"});
+  if(ev.explanation) body.append(el("div",{class:"ex",text:ev.explanation}));
   const checks=el("div",{class:"checks"});
   (ev.checks||[]).forEach(c=>{ const cls=c.ok?"ok":(c.severity==="advisory"?"adv":"fail"); const icon=c.ok?"✓":(c.severity==="advisory"?"!":"✗");
     checks.append(el("div",{class:"chk "+cls}, el("div",{class:"ci",text:icon}),
       el("div",{}, el("span",{class:"cl",text:c.label}), el("span",{class:"cd",text:" — "+c.detail})))); });
-  card.append(checks); box.append(card);
+  body.append(checks);
+  card.append(head, body); box.append(card);
 }
 
 // ---------- init ----------
