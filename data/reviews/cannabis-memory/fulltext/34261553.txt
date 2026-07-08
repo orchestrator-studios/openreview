@@ -1,0 +1,630 @@
+Introduction
+With growing legalization, cannabis use in the USA has increased exponentially, surpassing daily use of alcohol for the first time [1]. Among past-year cannabis users, about one in seven uses cannabis for medical reasons [2], with approximately half of them reporting anxiety or sleep disturbances as the main medical reasons for use [3–5], despite the lack of high-certainty scientific evidence for its safety and efficacy [6, 7]. Anxiety disorders and sleep disturbances commonly co-occur with approximately 60–80% of individuals experiencing anxiety disorders reporting difficulties in sleep initiation and maintenance. This bidirectional relationship is characterized by a mutually exacerbating phenomenon, where sleep disturbances intensify anxiety symptoms, and conversely, anxiety can also precipitate sleep disturbances. Furthermore, improvements in sleep quality have been observed to correlate with a reduction in anxiety symptom severity and vice versa [8–10].
+Previous research has established a reciprocal relationship between sleep disturbances and anxiety, highlighting potential sequential, parallel, and interacting biological, psychological, and social mechanisms linking these conditions [11]. For example, human molecular imaging studies have uncovered potential neurotransmitter mechanisms in the brain, such as the adenosine signaling, which is involved in the regulation of anxiety, arousal, and sleep. Cannabidiol has also been shown to inhibit the adenosine transporter, thereby increasing adenosine signaling and potentially contributing to these effects [12, 13].
+The temporality in which these events occur and evolve is still under debate, with recent evidence, suggesting that sleep disturbances might play an etiological role in the development of anxiety and that treating sleep disturbances might prevent the development of anxiety symptoms [11]. In this regard, the administration of cannabis might disrupt some of the biological mechanisms linking sleep disturbances and anxiety. For example, preclinical and clinical studies suggest that CBD administration may exert anxiolytic and sedative effects by modulating serotonin and dopamine pathways implicated in sleep-wake cycles and the regulation of affective states [14, 15].
+Most evidence supporting cannabis use as a therapeutic alternative for reducing anxiety symptoms or improving sleep is based on observational studies that generally do not report product characteristics and dosages in detail. For instance, recent observational studies have focused on describing the perceived effect of cannabis on anxiety symptoms or sleep quality, regardless of dosage [16–18]. Intervention studies with potential to evaluate causal effects of specific cannabis dosages have focused on evaluating cannabis efficacy among individuals with specific health conditions like Parkinson’s disease, epilepsy, pain, and Tourette syndrome [19–22]. Evidence on the association between the effect of specific dosages or cannabinoid products for the treatment of anxiety or sleep disturbances is emerging [23–28]. However, few studies have examined the effects of cannabinoids on both anxiety and sleep, despite their well-documented co-occurrence [10, 29, 30].
+Given the significant number of Americans using cannabis to treat anxiety symptoms and sleep disturbances [5, 31], the comorbid nature of these conditions, and the lack of scientific literature addressing whether cannabinoids could be effective in treating both conditions, our review focused exclusively on studies investigating the impact of cannabinoid use on both anxiety and sleep. We aimed to determine whether potential benefits of cannabis on anxiety coincide with improvements in sleep quality and to identify the types of cannabinoids and dosages at which these effects occur. To our knowledge, this is the first review examining these questions, which can shed light on the design of future studies. Specifically, in this scoping review, we synthesize evidence on the effects of cannabinoids on anxiety symptoms and sleep disturbances from studies conducted worldwide among people using cannabis for any purposes, reporting the content and dosage of specific cannabinoids. We also evaluate the risk of bias of such evidence.
+Methods
+The protocol was published on medRxiv (DOI: 10.1101/2022.12.15.22283524). We followed the updated extension guideline for reporting scoping reviews (PRISMA-ScR) [32].
+Eligibility Criteria and Search Strategy
+We included original studies of any design as long as they provided evidence associating cannabis dosages (as frequency, quantity, or both) with both anxiety and sleep. No studies were excluded based on cannabis preparation type (i.e., vaping, edibles, topicals, elixirs, and others). Studies were excluded if they did not include a specific measurement of cannabis dosage (frequency or quantity) or did not report measurements of both anxiety and sleep. We considered studies conducted in humans regardless of the language and year of publication. An exhaustive search was conducted in PubMed, EMBASE, Cochrane Database of Systematic Reviews, Cochrane Central Register of Controlled Trials, CINAHL, LILACS, and PsycINFO (complete search strategies available in the protocol). Other sources included consultations with experts, reference lists from key publications, and clinical trials online registries. We also retrieved primary studies from systematic reviews published between 2022 and 2025.
+Selection of Studies and Data Collection
+After a calibration period comprising 10% of retrieved documents, 6 independent reviewers (GG, PG, EC, BC, RH, and JGP) screened all the titles and abstracts using Rayyan. Selected documents were reviewed in full text to check for eligibility by two independent reviewers; all discrepancies were resolved by consensus with two senior authors (CLQ and KV). We extracted data using a predesigned format. A second author checked the included information by reviewing the full article. Risk of bias assessment was conducted using the Joanna Briggs Institute (JBI) critical appraisal checklists [33], which evaluate risks of bias due to selection of participants, administration of intervention/exposure, measurement of the outcome, confounding factors, and selective reporting. One reviewer evaluated each study on the JBI checklist and labeled it as low, moderate, or high risk of bias, based on the scoring convention used by Goplen et al. [34]. A second reviewer randomly checked 10% of the quality assessments. Discrepancies were resolved in group discussions by all reviewers.
+Data Charting
+The main findings were organized in prespecified tables. We a priori decided to group the information by inclusion criteria and outcome measurements. All studies in this review included assessments of anxiety and sleep, together. These studies were divided into four groups: (1) studies among people with anxiety also assessing sleep outcomes, (2) studies among people with sleep disturbances also assessing anxiety as an outcome, (3) studies among people with both anxiety and sleep disturbances, used as inclusion criteria, and (4) studies with inclusion criteria other than anxiety and sleep disturbances, but with both anxiety and sleep as primary or secondary outcomes. Using this approach, we intended to provide researchers with a comprehensive scheme to propose future research. We summarized the key components from the selected studies, including sample characteristics, type of cannabis and dosage used, anxiety measurements, sleep measurements, and association estimates between cannabis use and our outcomes of interest.
+Results
+Among 1,132 retrieved documents, we screened 1,001 studies after removing duplicates. During the screening phase, we selected 332 documents for full-text review and included 29 original studies matching our eligibility criteria. The main reasons for exclusion were not having cannabis dosage information (n = 121), not considering anxiety and sleep measurements as outcomes (n = 64), and having other study designs (n = 62; i.e., reports of single patient experiences, a protocol with no published results, and reviews; see Fig. 1). Additionally, a number of studies were excluded from review because they focused on cannabis-dependent populations and were designed to track the effects of stopping cannabis treatment.
+PRISMA flow diagram showing study identification, screening, and inclusion.
+Cannabinoids and Dosages in Studies among People with Anxiety
+Two studies published in 2022 included individuals with anxiety symptoms as inclusion criteria [35, 36] (see Table 1). The first one used a quasi-experimental design to evaluate a 4-week course of 30 mg of oral CBD extract (<1 mg THC) among people with moderate to severe anxiety (≥16 on the Beck Anxiety Inventory [BAI] or ≥11 on the Overall Anxiety Severity and Impairment Scale [OASIS]) [35]. At the end of the follow-up period, anxiety measurements were reduced by 79.9% (p < 0.001) and 70.25% (p < 0.001), according to the BAI and OASIS instruments, respectively. Sleep showed an improvement of 36.43% using the Pittsburgh Sleep Quality Index (PSQI) instrument. The second study was conducted as a prospective observational registry on 64 participants with generalized anxiety disorder [36]. The median CBD dosage was 16.3 mg (IQR: 1–20 mg) at baseline and 4.5 mg (IQR: 0–20 mg) in the 6-month follow-up. In contrast, the median THC dosage was 13 mg (IQR: 1–23.75 mg) at baseline and 28 mg (IQR: 13.75–50 mg) in the 6-month follow-up. Most participants (90.6%) received these cannabinoids through an oral oil formulation. Median anxiety measures changed from 11.5 points (IQR: 9–19) to 6 points (IQR: 4–12.5) using the GAD-7 instrument (p = 0.004). Sleep Quality Scale measurement increased from 4 points (IQR: 2–6) to 6 points (IQR: 5–7; p = 0.002). Effect sizes were not reported in either studies).
+Studies among people with anxiety and/or sleep disturbances as inclusion criteria
+Adults cannabis naïve or abstinent from regular cannabis use.
+Beck Anxiety Inventory (BAI): ≥16.
+Overall Anxiety Severity and Impairment Scale (OASIS): ≥11.
+Country: USA.
+n = 24.
+Full-spectrum, high-CBD product
+Route of administration: Under the tongue 3 times/day, total daily dosage ∼30 mg of CBD/day for 4 weeks
+Dose: Average 3.48±0.60 mL/day of study product, equivalent to 34.73±6.03 mg/day CBD and 0.80±0.14 mg/day THC.
+Instrument: Pittsburgh Sleep Quality Inventory (PSQI)
+Result: Sleep disturbances ↓ vs. baseline at week 4: −3.36 [−4.97, −1.75]; −36.43%, p ≤ 0.010 for 5 time points, p ≤ 0.025 for 2 time points
+Instrument: BAI.
+Results: Anxiety ↓ vs. baseline at week 4: −16.21 [−21.03, −11.40], −79.93%, p < 0.001
+Instrument: OASIS.
+Results: Anxiety ↓ vs. baseline at week 4: −7.93 [−9.79, −6.07], −70.25%
+Instrument: STAI state
+Results: Anxiety ↓ vs. baseline at week 4: −13.07 [-19.83, −6.32], −28.42%; STAI trait: −15.79 [−21.00, −10.57], −28.05%
+Instrument: Clinician-rated HAM-A
+Results: Anxiety ↓ vs. baseline at weeks 4–16.43 [−19.25, −13.60], −82.73%; all p values <0.001
+Patients with GAD in treatment with medical cannabis products.
+Region: UK.
+n = 64.
+Comparison groups: CBD, THC and CBD+THC
+Median 2 cannabis products prescribed at each interval, both THC and CBD at the baseline. The majority of patients (n = 58, 90.6%) were prescribed Adven 50 (Curaleaf, Guernsey, UK)
+Dose: Median CBD dose at baseline = 16.3 mg; 20 mg, 15 mg, 4.5 mg at 1st, 3rd, and 6th months
+Median THC dose at baseline = 13 mg; 32 mg, 20.5 mg, 28 mg at 1st, 3rd, and 6th months
+Instrument: Sleep quality scale (SQS), 1 – terrible; 10 – excellent
+Results: Sleep quality ↑ vs. baseline for all groups:
+Baseline to 1 month = 4.00 [2.00, 6.00] to 6.00 [4.00, 8.00], p < 0.001.
+Baseline to 3 months = 2.00 [1.00, 5.00] to 6.00 [4.75, 7.00], p < 0.001.
+Baseline to 6 months = 2.00 [1.25, 5.00] to 6.00 [5.00, 7.00], p = 0.002
+Instrument: GAD-7
+Results: Anxiety ↓ vs. baseline at all time points:
+1 month: 7.00 [4.00, 14.00] vs. 11.50 [7.00, 19.00]; p < 0.001
+3 months: 8.00 [6.00, 12.00] vs. 17.00 [10.00, 21.00], p < 0.001
+6 months: 6.00 [4.00, 12.50] vs. 17.00 [14.00, 21.00], p = 0.004
+Instrument: EQ-5D-5L Anxiety and Depression subscale
+Results: Anxiety ↓ vs. baseline at all time points:
+1 month: 3.00 [2.00, 3.00] vs. 3.00 [2.00, 4.00]; p < 0.001
+3 months: 3.00 [2.00, 3.00] vs. 4.00 [3.00, 5.00]; p = 0.007
+6 months: 2.00 [2.00, 4.00] vs. 4.00 [3.00, 5.00], p = 0.019
+Adults with moderate-severe insomnia (Insomnia Severity Index ≥ 15).
+Country: Australia
+n = 30
+CBD/placebo
+Route of administration: Oral, oil
+Dose: 1.5 mL of the oil treatment (150 mg CBD) nightly, 60 min before bed
+Instrument: Insomnia severity symptomology (ISI)
+Results: No change: MD = −1.9; SE: 1.5; p > 0.05; 95% CI: −5, 1.1; d = −0.5)
+Instrument: Self-reported daily sleep quality
+Results: Sleep quality ↑ at week 1 of dosing compared to control: MD = 0.5; SE: 0.2; p = 0.025; 95% CI: 0.1, 0.9; d = 0.5.
+No improvement at week 2 of dosing (p > 0.05)
+Instrument: Sleep-onset latency, wake after sleep onset, total sleep time
+Results: No changes in self-reported measures
+Instrument: Actigraphy-sleep-onset latency, sleep efficiency, wake after sleep onset, total sleep time
+Results: No. of awakenings ↓ in CBD group compared to placebo at the end of run-in week but not at week 1 and week 2, p = 0.04:
+MD = −2.9; SE: 1.5; p = 0.054; 95% CI: −5.9, 0.1; d = 0.5
+No changes in other actigraphy measures
+Instrument: Trait anxiety (State-Trait Anxiety Index [STAI-T])
+Results: No change at 2 weeks vs. baseline compared to placebo control: MD = 1.7; SE: 1.6; p > 0.05; 95% CI: −1.6, 4.9; d = 0.4
+Adults with Parkinson’s disease and rapid eye movement sleep behavior disorder
+Country: Brazil
+n = 33
+CBD/placebo
+Route of administration:
+Oral, capsule
+Dose:
+1st week: 75 mg
+2nd week: 150 mg
+3rd–12 week: 300 mg
+Instrument: Sleep diary
+Results: Nights with REM behavior sleep disorder during week 14:
+CBD group:
+Mean (SD) = 2.07 (2.02)
+Placebo group:
+Mean (SD) = 2.95 (2.0). p value: NR.
+Instrument: PSQI
+Results: 12 weeks:
+CBD group:
+Mean (SD) = 4.69 (1.92)
+Placebo group:
+Mean (SD) = 6.5 (3.85). p value: 0.239
+Instrument: Parkinson Anxiety Scale
+Results: 12 weeks:
+CBD group:
+Mean (SD) = 12.1 (7.7)
+Placebo group:
+Mean (SD) = 14.7 (8.3). p value for interaction: 0.667
+Adults with chronic pain, insomnia, anxiety, or depressive symptoms
+Country: USA.
+n = 186
+THC, cannabidiol (CBD), primary metabolites, and 15 other cannabinoids
+Comparison groups: Medical cannabis, immediate acquisition group: 3–4 times/week on average; most people used cannabis with only THC (44%). Control (waitlist) group: <1/week; most people used cannabis with only THC (24.3%)
+Instrument: Athens Insomnia Scale, range: 0–24
+Results: Insomnia symptoms ↓ at week 12 vs. baseline compared to waitlist control: MD −2.90, 95% CI [−4.31, −1.51], p < 0.001
+Instrument: Hospital Anxiety and Depression Scale (HADS), range: 0–21, 0–7 normal, 8–10 borderline anxiety, 11–21 anxiety
+Results: No change at 12 weeks vs. baseline compared to waitlist control: MD -0.1 [-1.1, 1.0], p = 0.90, adjusted p = 0.93
+Adult patients with anxiety or poor sleep
+Country: Italy
+n = 20
+Dose:
+1.5 mg melatonin and 2.5 mg CBD oil, administered at night
+Instrument:
+PSQI (Pittsburg Sleep Quality Index)
+Results:
+Sleep problems ↓ for all patients. Scores displayed in graph only, no p value reported
+Instrument:
+HAM-A questionnaire
+Results:
+Anxiety ↓ at 3 months vs. baseline, MD -4 [CI not reported], p < 0.03
+Adult psychiatric outpatients with primary concerns of anxiety (n = 47) or poor sleep (n = 25)
+Country: USA
+CBD
+Route of administration: Oral, capsule
+Dose: Most patients: 25 mg CBD/day
+For primary anxiety, in the morning, after breakfast
+For primary sleep issues, in the evening, after dinner
+Some patients −50 mg/day or 75 mg/day. One patient with schizoaffective disorder received gradually increasing dose up to 175 mg/day
+Instrument: PSQI (Pittsburg Sleep Quality Index), range 0–21, higher = worse; >5 – poor sleep
+Results: At 1 month, sleep problems ↓ in 66.7% (48/72) patients; improvements sustained at 3 months; however, large attrition (37.5% of patients remained); confidence intervals or p values not reported
+Anxiety group
+Mean(SD) PSQI:
+At baseline = 10.98 (3.43)
+At 1 month = 8.88 (3.68)
+Sleep disorder group
+Mean(SD) PSQI: at baseline = 13.08 (3.03)
+At 1 month = 10.64 (3.89)
+Instrument: The Hamilton Anxiety Rating Scale (range 0–56, <17 – mild anxiety; >25 – severe anxiety
+Results: At 1 month, anxiety ↓ at 1 month vs. baseline in 79.2% (57/72) patients; improvements not sustained by 3 months; however, large attrition (37.5% of patients remained); confidence intervals or p values not reported
+MD, mean difference; SD, standard deviation; h, hour(s).
+Cannabinoids and Dosages in Studies among People with Sleep Disturbances
+Two clinical trials tested CBD among people with moderate to severe insomnia [37], and individuals with Parkinson’s disease and rapid eye movement sleep behavior disorder [38] (see Table 1). The first study used 150 mg of CBD oil daily during a 3-week period (a run-in week, followed by two other treatment weeks). Actigraphy showed a reduction in the number of awakenings during the placebo run-in period only (p = 0.04), and self-reported sleep quality was improved after 1 week of treatment (p = 0.025), but no difference was observed after 2 weeks of treatment (p > 0.05). Insomnia Severity Index (ISI) score and other self-reported measures did not change after 2 weeks of treatment. Anxiety symptoms did not change from baseline to end of follow-up. The second study included individuals with Parkinson’s disease and REM sleep behavior disorder. After 12 weeks of 300 mg CBD capsules (including a 3-week titration period), the number of nights with REM sleep behavior disorder and the Parkinson Anxiety Scale scores did not significantly improve compared to the placebo group (p = 0.239 for sleep measurements).
+Cannabinoids and Dosages in Studies among People with Both Anxiety and Sleep Disturbances Used as Inclusion Criteria
+Three studies (one clinical trial and two case series) included participants with either anxiety or sleep disturbances [39–41] (see Table 1). The clinical trial randomized participants to receive either an immediate medical marijuana (MJ) card or a 12-week delayed card. The intervention group used THC-dominant vape products mainly (44%), among other routes of administration (oral: 31%; smoked: 18%) and CBD/THC content (equal CBD and THC: 17%; CBD dominant: 11%). Anxiety symptoms did not show improvement at the end of follow-up using the Hospital Anxiety and Depression Scale (mean difference: −0.1; 95% CI: −1.1–1.0). In contrast, insomnia showed a statistically significant improvement based on the Athens Insomnia Scale (mean difference: −2.90; 95% CI: −4.31 to −1.51; higher scores indicate more sleep difficulties). The first of the case series followed 20 patients using 2.5 mg of CBD extract plus 1.5 mg of melatonin for 3 months. Anxiety symptoms and sleep quality, measured with the Hamilton Anxiety Rating Scale (HAM-A) and PSQI instruments, respectively, were statistically significant improved by the end of the follow-up (p < 0.03; no effect size estimated). The other case series followed 25 adults with sleep disorders and 47 with anxiety. The participants received 25 mg–75 mg of CBD/day during 3 months. After the first month, individuals with sleep disorder reduced the mean PSQI score from 13.08 (SD: 3.03) to 10.64 (SD: 3.89). Individuals with anxiety reduced the HAM-A mean score from 23.87 (SD: 9.87) to 18.02 (SD: 7.56). At the 3-month follow-up, the PSQI mean scores changed to 9.33 (SD: 4.63) and the HAM-A to 16.36 (SD: 9.8).
+Cannabinoids and Dosages in Studies with Anxiety and Sleep as Outcomes
+Twenty-two studies evaluated the effect of cannabis on anxiety and sleep disturbances as outcomes, rather than as inclusion criteria (see Table 2). Overall, five randomized clinical trials were published between 1999 and 2022 [42–46], including 4 among patients with specific conditions and one among healthy adults [42]. One quasi-experimental study was published in 2022 among adult patients with chronic noncancer pain who had both prior and ongoing opioid treatment [47]. Three cohort studies reported between 2019 and 2021, including participants with cancer, those receiving palliative care, and individuals with other chronic conditions [48–50]. Two cross-sectional studies, published in 2016 and 2020, included women with pelvic and perineal pain and healthy young adults with regular cannabis use [51, 52]. Finally, eleven case series were published between 2017 and 2022, describing cannabis use in patients with various chronic conditions [53–63].
+Studies among people with anxiety and sleep disturbances as outcomes
+Young healthy adults, mean age 25.9±6.1; 50% male; abstinent from cannabis for 6 weeks, no history of chronic alcohol/drug use; no anti-inflammatory or sleep medications/calorie-matched placebo
+Country: U. S. A.
+n = 28
+Dose/route of administration: One 50 mg CBD oral liquid gel capsule/day for 8 weeks, after dinner, 1–1.5 h before bed
+Instrument: Leeds Sleep Evaluation Questionnaire (LSEQ): visual analog scale (VAS);“getting to sleep” (GTS), “quality of sleep” (QOS), “awake following sleep” (AFS), and “behavior following wakening” (BFW)
+Results: No sig. group*time effects in GTS or BFW. QOS ↑ by 79.2% in CBD group compared to 24.5% increase in placebo group (p = 0.002)
+Instrument: Fitbit tracker for 7 days prior to the intervention and during week 7 of the 8 week intervention
+Results: No group* time effects on sleep duration or efficiency
+Instrument: General Anxiety Disorder-7 (GAD-7)
+Results: No sig. group*time effect; Mean % Change (CBD): −32.3; Mean % Change (Placebo): −22.1
+Children 5–11 years old, with autism spectrum disorder/placebo control
+Country: Brazil
+n = 64
+Extract, concentration 0.5% (5 mg/mL). Ratio 9 CBD: 1 THC
+Dose/route of administration: Low concentration (2.5 mg/mL), 3 drops, twice/day. The starting dose: 6 drops daily, increased by 2 drops daily, twice/week if necessary and the maximum dose – 70 drops daily over 12 weeks
+Instrument: Caregiver-reported hours of sleep/day ↑ in both groups after 12 weeks
+Results: Mean (SD) control group: 0.28 (0.59) treatment group: 0.77 (1.61), p = 0.0711
+Instrument: Caregiver-reported anxiety ↓ after 12 weeks in treatment group compared to placebo
+Results: Mean (SD) control group: 2.90 (1.23) treatment group: 1.84 (1.39), p = 0.0159
+Patients 18+ years old with hand osteoarthritis and psoriatic arthritis/placebo control
+Country: Denmark
+n = 129
+Synthetic CBD
+Dose: 10 mg/day, titrated to 10 mg twice/day after 2 weeks, 10 mg thrice daily until end of 12 weeks treatment period for those with <20 mm reduction in VAS pain at 4 weeks
+Instrument: Pittsburgh Sleep Quality Index (PSQI)
+Results: No effects on sleep disturbances after 4 weeks in treatment group compared to control.
+Mean change (95% CI) after 12 weeks:
+– CBD: 0.13 [−0.7, 0.83] Placebo: 0.84 [−0.28, 1.96]
+– Between-Group Difference: − 0.71 [−1.99, 0.55], p = 0.27
+Instrument: Hospital Anxiety and Depression Scale (HADS)
+Results: No effects on anxiety after 4 weeks in treatment group compared to control
+Mean change (95% CI) in anxiety scores after 12 weeks:
+– CBD: 0.07 [−0.63, 0.69] Placebo: 0.59 [-0.16, 1.35]
+– Between-group difference: – 0.69 [-0.41, 2.75], p = 0.14
+Male participants 18+ years old with crack-cocaine dependence and abstinence for up to 30 days/placebo control
+Country: Brazil
+n = 31
+CBD
+Route of administration: Capsules of 99.9% pure CBD powder dissolved in corn oil
+Dose: 150 mg twice/day for 10 days
+Instrument: visual analog sleep scales (VAS): disturbances, effectiveness (quality and duration), and supplementation (additional sleep periods outside the main sleep)
+Results: Sleep disturbances ↓ in control group after 10 days, no differences between treatment/placebo groups
+Within-group differences final assessments minus baseline:
+M (SD)
+Disturbances
+– CBD: −0.73 (15.5); p = 0.99
+– Placebo: −9.93 (21.2); p = 0.27
+Effectiveness
+– CBD: 3.73 (10.6); p = 0.4
+– Placebo: −1 (11.1); p = 0.56
+Supplementation
+– CBD: −0.64 (8); p = 0.77
+– Placebo: −3.5 (6.5); p = 0.07
+Between-group differences
+CBD vs. placebo
+Disturbances: p = 0.27
+Effectiveness: p = 0.37
+Supplementation: p = 0.54
+Instrument:Beck Anxiety Inventory (BAI)
+Results: Anxiety ↓ in both groups after 10 days, no differences between treatment/placebo groups
+Within-group differences, final assessments minus baseline:
+Mean (SD)
+– CBD: −8.64 (9.6); p = 0.02
+– Placebo: −8 (9.4); p < 0.01
+– Between-group differences CBD vs. placebo – p = 0.8
+Phase 1 (single-blind flexible-dose phase): 18–80 years old individuals wish diabetic peripheral neuropathic pain. If pain score >4 (0–10 scale), continued regular pain medications and nabilone as adjuvant.
+n = 37
+Phase 2 (randomized double-blind maintenance phase): Phase 1 participants who completed at least 75% of their phase 1 daily pain diaries, achieved ≥ 30% pain relief, and did not experience intolerable side effects.
+n = 26
+Country: Canada.
+Route of administration: Capsules of nabilone.
+Phase 1: 4 weeks of flexible doses of 1, 2, or 4 mg/day as tolerated.
+Phase 2: 5 weeks of 1–4 mg/day taken as 2 daily doses 12 h apart.
+Taper phase – 1 weeks.
+Instrument: Medical Outcomes Study Sleep Scale (MOSSS). Higher = worse
+Results: Sleep problems ↓ in nabilone group compared to placebo after 5 weeks
+Mean (SD)
+– Nabilone: 27.1 (2.1)
+– Placebo: 33 (2.6); p < 0.05
+Instrument: Visual analog scale (VAS) for sleep disruption
+Results: Sleep disruption severity ↓ in nabilone group compared to placebo in weeks 6,8, and 9; p < 0.05
+Means not reported numerically, only in figure.
+Instrument: Hospital Anxiety and Depression Scale (HADS)
+Results: Anxiety ↓ in nabilone group compared to placebo after 5 weeks
+Mean (SD)
+– Nabilone: 5 (0.7)
+– Placebo: 7.9 (1.4); p < 0.05
+Adult patients with chronic noncancer pain on long-term opioid treatment
+n = 9
+Country: Australia
+THC+CBD: 10 mg THC/10 mg CBD per ml
+Route of administration:
+Oral
+Dose:
+– Day 1: 2.5 mg THC/2.5 mg CBD, single dose
+– Day 2: 2.5 mg THC/2.5 mg CBD, single dose
+– Week 2: single dose of 5 mg THC/5 mg CBD after twice daily 2.5 mg THC/2.5 mg CBD for 7 days
+– Day 22: single dose of 7.5 mg THC/7.5 mg CBD after twice daily 5 mg THC/5 mg CBD for 7 days
+– Day 29: single dose of 12.5 mg THC/12.5 mg CBD after twice daily 7.5 mg THC/7.5 mg CBD for 7 days
+Sleep-onset latency:
+Week 1:
+– Mean (SD): 2.4 (0.6)
+Week 2:
+– Mean (SD): 1.9 (0.5). p = 0.021
+Self-reported total hours of sleep in the previous week:
+Baseline:
+– Mean (SD): 39.1 (9.3)
+Day 29:
+– Mean (SD): 52.8 (13.7). p = 0.143
+Insomnia Severity Index (ISI):
+Baseline:
+– Mean (SD): 17.4 (5.8)
+Day 22:
+– Mean (SD): 8.9 (4.1). p = 0.002
+Sleep quality:
+Baseline:
+– Mean (SD): 3.2 (0.8)
+Day 22:
+– Mean (SD): 2.0 (1.1). p = 0.015
+Depression, Anxiety, and Stress Scale (DASS-21)
+Anxiety score:
+Baseline:
+– Mean (SD): 8.2 (6.6)
+Day 15:
+– Mean (SD): 5.4 (5.5). p = 0.022
+Day 29:
+– Mean (SD): 5.4 (6.4). p = 0.054
+Exposure group: patients using medical cannabis (n = 524) and caregivers of children/dependent adults using medical cannabis (n = 284)
+n = 808, 22% <18 years old, 63% female, 79% white
+Control group: Patients considering to use medical cannabis (n = 271) and caregivers considering medical cannabis for a dependent child/adult (n = 197)
+n = 468, 21% <18 years old, 62% female, 79% White
+Country: USA.
+CBD, CBG, CBD:THC, CBN, CBD-dominant, THC-dominant
+Comparison groups:
+CBD-dominant: 58% participants
+THC-dominant: 13% patients
+Balanced THC/CBD: 5% participants
+Minor cannabinoid dominant (cannabigerol (CBG), cannabinol (CBN)): 3% participants
+Did not know/report chemotype of product: 21%
+Routes of administration:
+Cannabis tinctures or oils for oral ingestion: 47%
+Dried cannabis flowers: 9% ‘‘Edibles’’: 8%
+Concentrates: 3%
+Other formulations/topicals/suppositories: 3%
+Did not report formulation: 31%
+Instrument:
+Pittsburgh Sleep Quality Index (PSQI); score range: 0–21
+Results:
+Cross-sectional results:
+– PSQI Global Sleep Score ↑ in cannabis users vs. control at baseline (t(758) = 3.03, p < 0.01)
+– Sleep quality ↑ (t(938) = 3.96, p < 0.001),
+– Sleep latency ↓ (t(954) = 3.29, p < 0.01)
+– Sleep duration ↑ (t(954) = 2.28, p < 0.05)
+– Sleep disturbances ↓ (t(951) = 2.77, p < 0.01)
+Longitudinal results:
+– PSQI Global Sleep Score ↑ (b = 1.15, p < 0.01) in cannabis users vs. control at an average of 284 days
+Instrument:
+Children’s Sleep Habits Questionnaire-Abbreviated (CSHQ-A); score range: 22–110
+Results:
+Better overall sleep habits (t(224) = 2.90, p < 0.01), faster sleep onset (t(316) = 4.91, p < 0.001), night awakenings ↓ (t(293) = 2.99, p < 0.01), parasomnias ↓ (t(267) = 3.12, p < 0.01) in cannabis users vs. control at baseline
+Instrument:
+Hospital Anxiety and Depression Scale (HADS); score range: 0–21
+Results:
+Anxiety ↓ (t(1,151) = 4.38, p < 0.001) in cannabis users vs. control at baseline
+Longitudinal results: anxiety ↓ (b = 1.58, p < 0.001) in cannabis users vs. control at an average of 284 days
+Patients with cancer in chemotherapy, 18+ years old. Exclusion criteria: brain tumors or CNS metastasis, past cannabis use, cognitive impairment or dementia
+n = 34
+Country: Israel
+Comparison groups: Balanced CBD/THC: n = 1 (6%) Twice as much THC/CBD: n = 4 (24%)
+Three times THC/CBD: n = 12 (71%)
+Routes of administration: Smoking, inhalation, or oil
+Dose: The cannabis license allows 30 g per month
+Instrument: The global quality of life scale (EORTC), insomnia subscale
+Results: Insomnia ↓ in cannabis group at time 3 compared to control (p = 0.038)
+Instrument: Hospital Anxiety and Depression Scale (HADS); score range: 0–21
+Results: Results not reported
+Medical cannabis users with (neuropathic pain, anorexia, PTSD, insomnia, anxiety symptoms, or depressive symptoms. Retrospective cohort study of electronic records in the Strainprint app
+n = 2431
+Countries: USA and Canada
+THC and CBD, THC %
+Data collected via patient reports on the Strainprint mobile app, prepopulated with laboratory-verified products – cannabis use, the symptoms treated, strain name, producer, dose, method of ingestion
+Route of administration: Vaporizer delivery only
+Instrument: Self-reported insomnia severity on a scale 0–10 collected via Strainprint
+Results: Logistic regression outcome: Efficacy of cannabis, defined as a three-point reduction in insomnia (1.5 standard deviation units)
+Mean pre-use severity,: 7.19
+Mean post-use severity: 3.18
+Insomnia ↓ by 70.9%, 95% CI: 67.4–74.1
+Response ↑ with ↑ THC % (OR: 2.93; 95% CI: 1.75–4.91; p < 0.001)
+Instrument: Self-reported anxiety severity on a scale 0–10 collected via Strainprint
+Results: Logistic regression outcome: Efficacy of cannabis, defined as a three-point reduction in anxiety symptoms (1.5 standard deviation units)
+Mean pre-use severity: 5.85
+Mean post-use severity: 2.21
+Anxiety symptoms not significantly ↓ (OR: 1.13; 95% CI: 0.77–1.64; p = 0.53)
+Women with pelvic and perineal pain, dyspareunia, or endometriosis
+Country: USA
+n = 113
+CBD; THC
+Routes of administration: Topical, ingestion, and inhalation
+Dose: CBD: 1–2000 mg/day, and THC: 1–70 mg/day
+Comparison groups:
+CBD users (n = 6)
+THC users (n = 3)
+CBD + THC users [14]
+Instruments: 1 question for sleeplessness or insomnia improvement (yes/no)
+Results: Improvement in THC users (100%), CBD+THC users (73.3%, and CBD users (50%); p value: 0.08
+Instruments: 1 question for anxiety improvement (yes/no)
+Results: No differences between groups; p value: 0.45
+Adult alcohol and marijuana users and nonusers (non-marijuana use in the last month)
+Country: USA.
+n = 98
+Marijuana
+Route of administration: Inhalation
+Frequency of use: Daily: at least 6 days per week
+Non-daily: 1–5 days per week
+Instruments: Pittsburgh Sleep Quality Index (PSQI):
+– Sleep disturbance: global PSQI score > 5
+– Insomnia Severity Index (ISI): -Insomnia: score ≥10
+Epworth Sleepiness Scale (ESS):
+– Problematic daytime sleepiness: score ≥10
+Results: No differences in PSQI-Sleep disturbance between daily users (55.1%), non-daily users (34.5%), and nonusers (45.0%); p value: 0.2
+Less insomnia (ISI score) among non-daily users (10.3%) compared to nonusers (20%), and daily users (38.8%); p = value: 0.02
+No differences in problematic daytime sleepiness; p = value: 0.52
+Covariate adjusted regression analyses revealed mean PSQI and ISI scores were significantly lower for non-daily users and controls relative to the daily users
+Instruments:
+The Psychiatric Diagnostic Screening Questionnaire. Higher scores reflect more anxiety symptoms
+Results:
+Generalized anxiety: No differences between daily users (mean = 3.94; SD = 3.52), non-daily users (Mean = 2.79; SD = 3.02), and nonusers (mean = 2.15; SD = 2.72). p value: 0.08
+Adults with chronic pain (>3 months) and initiating medical cannabis
+Region: UK.
+n = 190
+CBD and THC
+Route of administration:
+Oral or sublingual oil predominantly. Other prescriptions included vaporized dry flower preparation for inhalation
+Dose:
+Median initial daily THC dose: 2.0 mg (0.0 mg–442.0 mg)
+Median initial daily CBD dose: 20.0 mg (range: 0.0 mg–188.0 mg)
+Instrument:
+Sleep Quality Questionnaire (SQS) over the past 7 day
+Results:
+Statistically significant improvements were observed at 1, 3, and 6 months for SQS (p < 0.001)
+Instruments:
+GAD-7 and EQ-5D-5L anxiety and depression subscale
+Results:
+Statistically significant improvements were observed at 1, 3, and 6 months for GAD-7 scores: baseline to 1 month (p = 0.25), baseline to 3rd month (p = 0.001), and baseline to 6 month (p = 0.032)
+EQ-5D-5L anxiety and depression subscale improvement was noticed only from baseline to 1 month p = 0.002; No differences from baseline to 3rd month (p = 0.137), and baseline to 6 month (p = 0.372)
+Adult patients using medical cannabis for palliative care, cancer pain and chemotherapy-induced nausea and vomiting
+Region: UK.
+n = 16
+CBD and THC
+Dose:
+CBD: 50 mg/mL oil; median CBD initial dose: 32.0 mg (Range: 20–384 mg)
+THC: 20 mg/mL oil preparation; 120 mg per day on average (range: 20–400 mg)
+Instrument:
+Single-Item Sleep Quality Scale (SQS)
+Results:
+No significant improvement at 1-month and 3-month compared to baseline (p > 0.05).*
+GAD-7 with no significant improvement at 1-month and 3-month compared to baseline (p > 0.05).*
+Adult patients with fibromyalgia and chronic noncancer pain initiating medical cannabis
+Country: Canada
+n = 323
+THC dominant; CBD dominant; THC:CBD 1:1
+Cannabis type: dried flower, oil
+At baseline, the mean±SD authorized dose was 1.53±1.1 grams/day (recommended by physician, not actual amount taken.)
+Instrument:
+Pain-related sleep problem using the Brief Pain Inventory
+Results:
+Reduction of sleep problems from baseline (7.06) to each of the follow-up time points (4.7 at 4 months, 4.5 at 6 months, 3.1 at 9 months; p < 0.001).*
+Instrument:
+Edmonton Symptom Assessment System (ESAS)
+Results:
+Reduction of negative affect from baseline (4.6) to each of the follow-up time points (3.1 at 3 months, 3.1 at 6 months, 3.1 at 9 months; p < 0.001). Depression and anxiety reported together.*
+Adult medical cannabis users with post-traumatic stress disorder
+Country: Canada
+n = 647
+Medicinal cannabis; hybrid THC and CBD strains
+Week 4 STRAINS: StellioMR (very indica-dominant, 23–26% THC, 0% CBD), SedamenMR (very indica-dominant, 21–24% THC, 0% CBD), AlaskaMR (very sativa-dominant, 20–23% THC, 0% CBD), and LuminariumMR (very sativa-dominant, 25–28% THC, 0% CBD)
+Week 10 STRAINS: SedamenMR, LuminariumMR, MidnightMR (sativa-leaning, 8–11% THC, 11–14% CBD), and Avideke lMR (indica-leaning, 0.1–0.8%, THC, 15–18% CBD)
+Dosages provided for PTSD vs. non-PTSD scripts; PTSD dosages vs. responses (N = 195), p < 0.0001
+0.0–2.0 g 79 (40.51%)
+2.1–4.0 g 42 (21.54%)
+4.1–6.0 g 19 (9.74%)
+6.1–8.0 g 14 (7.18%)
+8.1–10.0 g or more 41 (21.03%)
+Significantly more PTSD patients reported taking higher doses than non-PTSD patients (21.03% using 8.1 g or more vs. 1.77%, p < 0.0001)
+Self-report of perceived changes in sleep quality
+Of participants with sleep problems (n = 142)
+– Worsened: 11.3%
+– No change: 14.1%
+– Improved: 70.4% no sleep problems after 4 months – 4.2% (p < 0.0001)
+Self-report of perceived changes in anxiety symptoms
+Of participants with anxiety (n = 157)
+– Worsened: 11.5%
+– No change: 9.6%
+– Improved: 78.3% no anxiety after 4 months – 0.6% (p < 0.0001)
+Individuals aged 3–25 years with ASD
+Country: Israel
+n = 53
+Cannabinoid oil solution at a concentration of 30% and 1:20 ratio of CBD:THC.
+Recommended daily dose
+– CBD – 16 mg/kg (max 600 mg),
+THC – 0.8 mg/kg (max 40 mg)
+Parent reports on symptoms, compared to baseline: improvement, no change, or worsening
+Sleep problems (n = 21)
+– Improved: 71.4%
+– did not change: 23.8%,
+– worsened: 1 patient (4.7%)
+Non-inferior to standard treatment (melatonin, 60% improved based on literature) but difference not statistically significant (p = 0.4)
+Parent reports on symptoms, compared to baseline: improvement, no change, or worsening
+Anxiety (n = 17)
+– Improved: 47.1%
+– Did not change: 29.4%
+– Worsened: 23.5%
+Non-inferior to standard treatment (SSRI-s) based on literature but difference not statistically significant (p = 0.23)
+Adults with advanced metastatic cancer 57% female, M age 64 (52–72)
+n = 108
+THC-dominant (n = 56), CBD-dominant (n = 19), and mixed products (n = 33)
+Route of administration:
+Sublingual oil, inflorescence inhalation
+Dose:
+THC-dominant: 600 (400–725) mg/month of CBD; 3,000 (2000–3,600) mg/month of THC.
+CBD-dominant:
+2000 (2000–3,000) mg/month of CBD; 1,000 (600–1,000) mg/month of THC.
+Mixed product: 2000 (1,500–2000) mg/month of CBD; 2000 (1,400–2000) mg/month of THC.
+Instrument: PSQI global score (0–21, higher = worse)
+Results:
+Sleep quality ↑ from BL to 1 month
+Median (IQR) at BL = 12 (9–15)
+At time 1 = 9 (5.2–12); p < 0.01
+Instrument: Sleep duration (h)
+Results: Sleep duration ↑ from BL to 1 month
+Median (IQR) at baseline = 5 (4–6.5),
+At 1 month = 6 (5–7.5); p < 0.05
+Instrument: Sleep latency (min)
+Results: Sleep latency did not change Median (IQR) at BL = 45 (30–60)
+At 1 month = 30 [15–60]; p = 0.10
+Comparison of THC-dominant, CBD-dominant, and mixed products: No superiority for any product group; except for sleep duration – THC dominant
+Instrument: GAD-7
+Results: Anxiety did not change from BL to 1 month
+Median (IQR) at baseline = 8 (2.8–14)
+At Time 1 = 5 (2–11); p = 0.28
+Adults using medical cannabis
+Country: Canada
+n = 629
+CBD and THC
+Dose:
+Dried flower: THC ranged from <1% to 23%. CBD ranged from <0.7% to 14%
+Oil: THC ranged from <1 mg/mL to 23 mg/mL. CBD ranged from <1 mg/mL to 20 mg/mL
+Soft gel: THC ranged from <1 mg to 10 mg. CBD ranged from <1 mg to 20 mg
+Instruments and results:
+Self-reported via mobile app. Not specific instrument reported. Compared to baseline, first time use and last time use showed improvement (all p < 0.001).*
+Instruments and results:
+Self-reported via mobile app. Not specific instrument reported. Compared to baseline, first time use and last time use showed improvement (all p < 0.001).*
+Adults aged 5–60 years with stable multiple sclerosis, non-responders to antispasmodic medication
+Country: Thailand
+n = 7
+Government Pharmaceutical Organization cannabis extract (GPOCE) formulation THC:CBD 1:1 (2.7 mg: 2.5 mg: 0.1 mL). Other GPOCE elements, such as terpenes and flavonoids, were not listed by the manufacture
+THC:CBD 1:1
+The starting dose was 0.1 mL in the first week. During the second week, the dosage increased to 0.1 mL twice a day for 3 days. After the second week, the dosage could be increased every 3 days but not more than 1.5 times the previous dosage, with the time between doses of not less than 4 h. The maximum allowable dosage was 1 mL per day, equivalent to 27 mg THC and 25 mg of CBD.
+Instrument: Numerical Rating Scale (NRS) for sleep (0–10). Change in M and IQR from baseline for primary and secondary outcomes was analyzed using related sample Wilcoxon signed rank test
+Results: A reduction of sleep (insomnia) observed after treatment, although these results did not achieve statistical significance. Baseline: 7 (0–8); After treatment: 0 (0–0), p value: 0.109.*
+Instrument: Numerical Rating Scale (NRS) for anxiety (0–10). Change in M and IQR from baseline for primary and secondary outcomes was analyzed using related sample Wilcoxon signed rank test
+Results: A reduction of anxiety observed after treatment, although not statistically significant. Baseline: 2 (0–3); After treatment: 0 (0–0), p = 0.109.*
+Adult new medical cannabis users
+Country: USA.
+n = 54
+Routes of administration: smoke – 13 (55.56%); vape – 27 (50.00%); oromucosal (Oil, tincture, solution) – 33 (61.11%)
+Oral (edible, tablet, capsule) – 22 (40.74%); cutaneous (lotion, salve) – 5 (9.26%)
+THC, CBD.
+Medical cannabis uses/week; M(SD):
+– 3 months: 9.29 (6.28)
+– 6 months: 10.20 (8.25)
+– 12 months: 11.19 (7.86)
+THC mg/week; M (SD):
+– 3 months: 63.97 (184.18)
+– 6 months: 41.89 (78.78)
+– 12 months: 35.99 (48.86)
+CBD mg/week; M (SD):
+– 3 months: 153.90 (287.79)
+– 6 months: 201.64 (321.38)
+– 12 months: 113.50 (251.47)
+Pittsburgh Sleep Quality Index (PSQI):
+Sleep problems ↓ baseline to 3 months (eta-squared = 0.19, p < 0.01),
+Baseline to 6 months (eta-squared = 0.22, p < 0.01),
+Baseline to 12 months (eta-squared = 0.43, p < 0.01)
+Beck Anxiety Inventory (BAI):
+Anxiety ↓ baseline to 3 months (eta-squared = 0.06, p = 0.09),
+Baseline to 6 months (eta-squared = 0.13, p = 0.02),
+Baseline to 12 months (eta-squared = 0.14, p = 0.02)
+State Trait Anxiety Index (STAI):
+State anxiety ↓
+– Baseline to 3 months (eta-squared = 0.4, p = 0.18)
+– Baseline to 6 months (eta-squared = 0.22, p < 0.01),
+– Baseline to 12 months (eta-squared = 0.05, p = 0.21)
+Trait anxiety
+– Baseline to 3 months (eta-squared = 0.18, p < 0.01),
+– Baseline to 6 months (eta-squared = 0.26, p < 0.01),
+– Baseline to 12 months (eta-squared = 0.29, p < 0.01)
+Patients with fibromyalgia and pain visual analog scale (VAS) scores ≥4 on standard analgesic treatment
+Country: Italy
+n = 66
+Dried, pulverized and homogenized flowers of Cannabis sativa L. Bedrocan – 22% THC, (220 mg/g) < 1% CBD, and Bediol – 6.3% THC (63 mg/g), 8% CBD (80 mg/g). Cannabis plant extract was diluted in oil (1 g of cannabis in 10 g of olive oil)
+Prescribed dose – 10 to 30 drops/day. Subsequent dose escalations allowed, max 120 drops/day
+Pittsburgh Sleep Quality Index (PSQI):
+Sleep problems ↓ baseline to 3 months
+Baseline to 6 months
+(>30% decrease = clinically significant)§
+– 29 patients improved >30%
+– 9 patients worsened >30%
+The Zung Self-Rating Anxiety Scale (ZSR-A):
+Anxiety ↓ baseline to 3 months
+Baseline to 6 months
+(>30% decrease = clinically significant)§
+– 7 patients improved >30%
+– 4 patients worsened >30%
+Adults reporting pain as reason for cannabis use and having WASI IQ scores ≥75
+Country: USA.
+n = 37
+Average CBD at 3 months: 202.18 mg/week±345.23 mg/week
+Average THC at 3 months: 93.29 mg/week±228.12 mg/week
+Route of administration at 3 months:
+Smoke flower: 25%
+Vape flower: 30.6%
+Vape oil/pen: 22.2%
+Sublingual and oral oil/solution/tincture: 61.1%
+Edible: 27.8%
+Capsule: 2.8%
+Instrument:
+PSQI
+Result:
+Baseline:
+– Mean (SD): 9 (2.9)
+3 months:
+– Mean (SD): 7 (4.0). p value: 0.11
+Instrument:
+Beck Anxiety Inventory
+Result:
+Baseline:
+– Mean (SD): 8.7 (6.4)
+3 months:
+– Mean (SD): 9.4 (9.6). p value: 0.62
+SD, standard deviation; IQR, interquartile range; RCT, randomized controlled trial.
+§ p value not reported.
+*Effect size not reported.
+Among the included clinical trials, four studies tested CBD extract [42–45]. The population included individuals with autism spectrum disorder (ASD), osteoarthritis, crack-cocaine dependence, and healthy participants. Selected CBD dosages ranged from 2.5 mg to 300 mg per day, with no significant improvement in sleep disturbances. Only one study, conducted among children with ASD, reported improvement in anxiety symptoms (p = 0.0159; no association estimate calculated) [43]. Nabilone was also tested in one trial [46]. Participants with diabetic peripheral neuropathic pain were randomized to receive 1–4 mg/day of synthetic nabilone (adjusted according to pain levels) or placebo for 5 weeks. Anxiety symptoms, measured by the Hospital Anxiety and Depression Scale, and sleep disturbances, measured by the Medical Outcomes Study Sleep Scale, improved after the follow-up period (anxiety: p < 0.05, ANCOVA, F = 2.24; sleep: p < 0.05, ANCOVA, F = 1.91).
+The quasi-experimental study tested up to 15 mg/day of a 1:1 ratio of THC:CBD oil. All participants (n = 9) had noncancer pain and were receiving long-term opioid treatment [47]. Three out of four sleep measures showed statistically significant differences compared to baseline or week 1: sleep-onset latency at week 2 (p = 0.021), Insomnia Severity Index at day 29 (p = 0.002), and sleep quality at day 22 (p = 0.015). Self-reported total hours of sleep in the previous week did not show a statistically significant difference (p = 0.21). Anxiety symptoms, measured with the Depression, Anxiety, and Stress Scale (DASS-21), showed a statistically significant decrease from baseline to day 15 (p = 0.022), but not by day 29 (p = 0.054).
+Cohort studies analyzed different cannabinoids, including CBD, THC, cannabigerol (CBG), and cannabinol (CBN) [48–50]. Dosages were reported in different formats. One study measured median daily CBD intake as 40 mg (range: 1–1,050 mg/day), and median THC daily intake as 1.4 mg/day (range: 0.1–40.3 mg/day) [48]. The two other cohort studies did not report doses in quantity/day. Instead, cannabis dose was described according to the maximum prescribed per license (30 g/month) and a THC:CBD ratio calculated as THC/(THC+CBD), ranging from 0% to 100% [49, 50]. Anxiety symptoms improved in one of the two cohort studies that assessed this outcome (Hospital Anxiety and Depression Scale [HADS]: p < 0.001) [48]; the second cohort study reported inconclusive results (OR = 1.13, 95% CI: 0.77–1.64) [50]. Regarding sleep, two studies measured insomnia, and one assessed overall sleep quality. Insomnia outcomes showed inconsistencies: one study reported a reduction in symptoms among cannabis users (p = 0.03; no effect size estimated), while another found an increased risk of insomnia (OR = 2.93, 95% CI: 1.75–4.91) [49, 50]. On the other hand, cannabis use was associated with improved sleep quality, measured by the PSQI (p < 0.01) [48].
+Two cross-sectional studies reported cannabis use among individuals with different medical conditions. One study was conducted among women with pelvic and perineal pain, dyspareunia, or endometriosis reported CBD dosage in a range from 1 to 2000 mg/day, and THC doses from 1 to 70 mg/day [51]. Compared to controls, this study found a decrease in anxiety symptoms in the cannabis group (p < 0.001) and better sleep quality (p < 0.01). The second study was conducted among alcohol and MJ users [52]. Participants were classified as daily MJ smokers (6–7 days per week), non-daily smokers (1–5 days per week), and nonusers. The prevalence of Insomnia was a statistically different between daily users (38.8%), non-daily users (10.3%), and nonusers (20%) (p = 0.02). There were no statistically significant differences between the groups in quality of sleep, problematic daytime sleepiness, or generalized anxiety.
+Nine case series were included, following patients using cannabis for approved medical conditions. These studies reported follow-up data points that support inferences about causal relationships. Four of these case series were derived from national cannabis prospective registries [53–56], focusing on patients with chronic pain, palliative care needs, fibromyalgia, and PTSD. Median CBD doses ranged from 20 mg/day to 32 mg/day, while median THC doses ranged from 1.3 to 2 mg/day. All registry-based studies reported improvement in sleep quality over time, measured using a single-item question (p < 0.05). Regarding anxiety, two studies used the GAD-7 instrument and showed a reduction over 6 months [53, 54]. One study reported improvement in anxiety symptoms after 4 months of use, using a non-standardized instrument (p < 0.0001) [56], while another did not report anxiety measurements [55].
+An additional case series was conducted among children with ASD [57]. The median CBD and THC doses were 90 mg (IQR: 45–143 mg) and 7 mg (IQR: 4–11 mg), respectively. Among 21 patients with sleep problems, 71.4% reported improvement. Similarly, among 17 patients with anxiety symptoms, 47.1% reported improvement.
+The remaining six case series described participants using cannabis for multiple sclerosis, fibromyalgia, cancer, chronic pain, and other medical conditions not otherwise specified [58–63]. Cannabis doses were reported heterogeneously (see Table 2). Three studies described sleep improvement at the end of follow-up using the visual analog scale and PSQI (p < 0.05) [58, 59, 61]. Two studies reported improvement in anxiety symptoms using the Beck Anxiety Inventory (p < 0.05) [59, 61].
+Risk of Bias
+According to the JBF quality assessments, most studies were classified as low risk of bias (20 out of 29; 70%). Four studies (14%) were rated as moderate risk and five (17%) as high risk. As expected, well-executed randomized controlled trials had the fewest risk of bias [64]. Cohort studies showed risk of bias due to poorly defined interventions – such as not reporting specific cannabinoid content – and potential selection bias from incomplete reporting of outcome data. Case series designs frequently demonstrated selection bias, resulting from underreported inclusion and exclusion criteria, as well as underreported demographic characteristics (e.g., race and education) of patients recruited from clinics or dispensaries. These studies also often failed to compare drop-outs to participants who completed follow-up.
+Additional sources of bias in case series included confounding due to lack of adjustment for comorbidities and concurrent medications, poorly defined interventions resulting from the use of multiple cannabis formulations, measurement bias due to non-validated outcome instruments, and the absence of objective dosage measurements.
+Discussion
+The review of 29 papers examining the effects of cannabis on both sleep and anxiety suggest that use or administration of cannabis products might improve both sleep and anxiety symptoms. Specifically, 13 of the 29 papers (∼45%) presented evidence of a positive effect of cannabis products on both sleep disturbances and anxiety. However, the clinical significance of these findings remains uncertain, as most studies failed to report effect sizes, used heterogeneous assessment tools, in some cases non-standardized, varied substantially in follow-up duration, and failed to include a control group, or did not address confounding factors.
+The 13 papers identified encompassed one clinical trial, one longitudinal study, two quasi-experimental studies, and nine case series. Nine of the 13 studies described the use of products with different quantities of CBD and THC, one was a clinical trial of nabilone, and one cohort study reported the use of CBD. The doses used or administered, or the type of products varied substantially between and within studies, limiting the possibility to determine an effective dose for the outcomes under study. For instance, the clinical trial reporting an effect on anxiety and sleep included adult patients with hand osteoarthritis and psoriatic arthritis. It evaluated nabilone at doses of 1–8 mg/day; and evaluated anxiety and sleep standardized instruments (e.g., Medical Outcomes Study Sleep and Hospital Anxiety and Depression scales). In the case of the cohort study, participants included individuals or caregivers of children or dependent adults using medical cannabis and individuals in these groups considering using medical cannabis. The products and doses varied (e.g., 47% of participants used tinctures or oils containing CBD, CBG, CBD:THC, or CBN) at personalized doses. Assessment of anxiety and sleep outcomes were assessed using standardized scales (e.g., PSQI or the Hospital Anxiety and Depression scales).
+The quasi-experimental study included 9 patients with chronic noncancer pain on long-term opioids treatment. Participants used THC:CBD at similar ratios, with doses ranging from 2.5 mg on day one to 12.5 mg on day 29. Sleep was evaluated using multiple instruments (e.g., sleep-onset latency, self-reported hours of sleep, insomnia severity index, and subjective sleep quality), while anxiety was measured with the Depression, Anxiety, and Stress Scale. Finally, among case series reporting improvements in anxiety and sleep, only 2 focused specifically on patients with a diagnosis of generalized anxiety disorder (GAD) or severe anxiety symptoms. These studies tested multiple doses and products with CBD ranging from 4.5 to 20 mg/day, THC ranging from 13 to 32 mg/day, and full-spectrum high-CBD products at doses of 34.73 ± 6.03 mg/day of CBD and 0.80 ± 0.14 mg/day of THC. Outcomes were assessed using standardized tools, including the GAD-7, BAI, STAI state, EQ-5D-5L, the Anxiety and Depression subscale, PSQI, and the Sleep Quality Scale. Additional case series examined sleep and anxiety outcomes among diverse populations such as adults initiating medical cannabis for chronic pain, fibromyalgia, or other conditions. The products and doses used in those studies varied substantially, as well as the duration of treatment. Although the studies provided specific doses, it was not clear whether a study participant used multiple products, or if doses varied by product across the study period. In terms of the products examined, most studies in our review focused primarily on the effects of CBD and/or THC, with only one study exploring the use of minor cannabinoids such as CBG and CBN [48]. Notably, while CBD products often contain minor cannabinoids, details regarding their composition and concentrations are commonly omitted from product labeling [65], which impedes linking a specific effect to a product or dosage. Furthermore, the use of different cannabinoid products – alone or in combination and at different dosages – may activate distinct molecular pathways, including both classical and atypical cannabinoid receptors as well as other targets [66, 67]. This may partly account for the variability observed in anxiolytic or hypnotic effects across studies. For instance, THCs effects on anxiety are thought to be dose dependent, driven primarily by CB1 receptor binding, as well as interactions with serotonin 1A (5-HT1A) receptors and the opioid system [68]. By contrast, CBD’s anxiolytic effects involve indirect agonism of CB1 receptors, allosteric modulation of serotonin 1A receptors, and interactions with the transient receptor potential vanilloid ion channel receptor family [69]. The paucity of studies evaluating anxiolytic or anxiogenic effects over time at specific doses, combinations, and ratios poses an additional limitation to link a given effect to a mechanism of action.
+Among the 15 studies reporting improvements in anxiety, two did not provide evidence of improvements on sleep. These two studies were RCTs conducted among 64 children aged 5–11 years with a diagnosis of ASD, and 31 adults with a diagnosis of crack-cocaine dependence who had been abstinent for up to 30 days. The products used included extracts with a 9:1 CBD:THC ratio (doses ranging from 0.8 to 8.7 mg/day) and CBD at doses of 300 mg/day. While the study on children with CBD relied on caregiver reports on sleep and anxiety, the second study used standardized measures for sleep (e.g., visual analog sleep scale) and anxiety (e.g., BAI). Given the well-documented increase in sleep disturbances among children with ASD [61] and individuals with drug use disorders [62], these results should be interpreted with caution, and highlight the need for further research. Similarly, in the registry study of patients with generalized anxiety disorder [36], median CBD dosage decreased while THC dosage increased over time, making it challenging to differentiate the specific contribution of each cannabinoid to the reported improvements.
+Strengths, Limitations, and Future Directions
+This review has several notable strengths. First, it employed an independent, peer-reviewed process and synthesis based on PRISMA guidelines, which maximizes both reliability and reproducibility. Second, we describe each included study in detail, including an assessment of potential risk of bias. Third, we did not restrict studies based on language, allowing for the incorporation of more internationally conducted studies.
+In terms of potential limitations, we excluded studies without sufficient statistical inference relating dose or frequency to our outcomes of interest. Additionally, several studies were excluded because they focused on a cannabis-dependent population and were designed to assess the effects of discontinuing cannabis treatment.
+Conclusion
+Altogether, this scoping review suggests that determining an effective dose for improving both sleep and anxiety is not currently possible. This is due to the limited number of studies specifically targeting individuals with anxiety or sleep disturbances as inclusion criteria and assessing both outcomes. In addition, the methodological heterogeneity among the included studies decreases the reliability of the effect of cannabis on anxiety and sleep. This includes diverse cannabis products and doses between and within studies. Despite the well-established relationship between anxiety and sleep, there are a limited number of studies evaluating concurrent sleep patterns in individuals meeting the criteria for anxiety or concurrent anxiety symptoms in individuals with sleep disturbances.
+In the future, it is essential to assess the effect of cannabinoid-specific doses on anxiety and sleep. Future research should prioritize studies that include individuals with diagnosed anxiety or sleep disorders as part of the inclusion criteria. Finally, more studies are needed to determine dose-response relationships based on patient characteristics such as sex, age, and history of cannabis use.
+Acknowledgments
+We acknowledge the support of Elizabeth Castaneda for her contributions to project administration during the screening phase of this study.
+Statement of Ethics
+This study complied with the relevant ethical guidelines for research involving secondary data and followed the PRISMA-ScR guidelines for scoping reviews. This manuscript represents original work and has not been published or submitted for publication elsewhere. The completed PRISMA-ScR Checklist, indicating the location of each reporting item within the manuscript, is provided as online supplementary material (for all online suppl. material, see https://doi.org/10.1159/000548890).
+Conflict of Interest Statement
+J.G.P. and C.L.Q. receive partial support from the Consortium for Medical Marijuana Clinical Outcomes Research. All other authors declare no conflicts of interest.
+Funding Sources
+This study was sponsored by state funding to the Consortium for Medical Marijuana Clinical Outcomes Research.
+Author Contributions
+Conceptualization and methodology: Juan G. Perez and Catalina Lopez-Quintero. Investigation (screening): Gabriela A. Garcia, Pranav S. Gupta, Benjamin Z. Churba, Ryan Hossain, Liva G. LaMontagne, Juan G. Perez, and Catalina Lopez-Quintero. Formal analysis: Juan G. Perez, Liva G. LaMontagne, and Catalina Lopez-Quintero. Writing – original draft: Juan G. Perez, Catalina Lopez-Quintero, Benjamin Z. Churba, and Liva G. LaMontagne. Writing – review and editing: Gabriela A. Garcia, Krishna Vaddiparti, Pranav S. Gupta, and Ryan Hossain. Supervision: Catalina Lopez-Quintero. Project administration: Juan G. Perez.

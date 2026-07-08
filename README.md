@@ -182,10 +182,13 @@ failures (for example a corpus screened single-pass rather than dual-independent
 that do not pause. So the branch every pass reaches — good to compile, or needs a human — is expressed as
 visible, data-derived checks, never a hidden decision.
 
-When the evaluation passes, one action remains: **export**. The dashboard's Export button regenerates the
-self-contained HTML report from the same data-access layer and opens it — the deep, drillable view (full
-records explorer, methodology trace, extraction table, protocol) travels as a single file, while the dashboard
-stays live. The dashboard is where you *work*; the report is what you *ship*.
+The dashboard *is* the review view — one thing, a flow across **Protocol · Pipeline activity · Findings ·
+Eval**, with the full records always one click away (any count opens them, filtered). **Pipeline activity**
+is the heart: a snapshot **bar** on top (retrieved − duplicates = unique — the current disposition, green
+included / red excluded / neutral in-screening) above the **PRISMA flow** (the stage-by-stage funnel every
+SLR reader knows), and every number in either is a link into the records. One **Export** button freezes that
+exact view to a single self-contained HTML file — same view, same numbers, no server needed. The dashboard
+is where you *work*; the export is what you *ship* — but they are the same view, live or frozen.
 
 ---
 
@@ -203,7 +206,7 @@ shape of the data it extracts.
 | `tools/repo.py` | The one data-access layer: where data lives, how it is read/written, and the canonical projections | *That every surface reads the same numbers* — chat, dashboard, and static views all draw from here |
 | `skills/` | The written procedures: the review workflow, screening, extraction, the evaluation gate | The method, in words, so it can be audited and repeated |
 | `.claude/agents/` | The versioned `slr-screener` — the reviewer's fixed instructions | *How articles are judged* — the exact standard, not an improvised prompt |
-| `views/` | View *logic*: the reusable templates — static `report.template.html` and live `dashboard.template.html` | *How* the evidence is rendered — one set of templates, every review |
+| `views/` | View *logic*: `report.template.html` — the one review-view template, served live as the dashboard and frozen as the export — and `index.template.html`, the front-page list of reviews | *How* the evidence is rendered — one template, every review, live or frozen |
 | `data/reviews/<slug>/` | One review's system of record — `protocol.json`, `records.json`, the screening trail, and its rendered `views/` | The evidence, every decision on it, and the evidence made legible |
 
 The domain lives in the review, not the engine. A review's `protocol.json` declares its
@@ -232,9 +235,10 @@ extract       structured fields per study → 27 gene arms
 views         PRISMA account · extraction table · synthesis · interactive report
 ```
 
-You watch this funnel fill on the **live dashboard** as screening runs, and every count is a link in the
-static HTML report: click it and you land on exactly the records behind it. `291 + 10 + 23 = 324` is shown
-reconciling, not asserted — in both places, because both read the one projection in `tools/repo.py`.
+You watch this funnel fill on the live dashboard as screening runs, and every count — in the snapshot bar and
+in the PRISMA flow — is a link: click it and the records behind it open, filtered to exactly that set.
+`291 + 10 + 23 = 324` is shown reconciling, not asserted — because the dashboard, the export, and the files
+all read the one projection in `tools/repo.py`.
 
 ---
 
@@ -275,8 +279,8 @@ python tools/screen.py adjudicate <slug> --stage title-abstract --pmid <id> --de
 
 # watch it live while you work — open / (the index of reviews), your front door
 python tools/server.py                  # /                 — every review, live; new ones appear on their own
-#                                        # /dashboard/<slug> — one review's state machine + pipeline, live
-#                                        # /report/<slug>    — Export: regenerate the report and open it
+#                                        # /dashboard/<slug> — one review's live view (Protocol · Pipeline activity · Findings · Eval)
+#                                        # /report/<slug>    — Export: the same view frozen to a single file
 
 # always, after any change to data
 python tools/validate.py  <slug>        # schemas are law; provenance and reasons are checked
@@ -285,13 +289,13 @@ python tools/build_report.py <slug>     # regenerate the interactive audit repor
 ```
 
 The **live dashboard** (`python tools/server.py`, then open `/`) is the everyday view: the index lists every
-review and lights up the moment Claude creates a new one; each review's page polls the data-access layer and
-moves as records are screened, so you keep it open beside the chat. The **static
-report** at `data/reviews/<slug>/views/<slug>-report.html` is the self-contained, shareable snapshot — a
-single file with tabs for **Methodology** (the reconciling trace, every count drillable), **Records** (the
-full corpus at any filter point, each with its provenance), **Findings**, and **Protocol** (the criteria and
-the exact, copy-pasteable search commands). Both render the same projection; the dashboard is live, the
-report travels.
+review and lights up the moment Claude creates a new one; each review's page — a flow across **Protocol ·
+Pipeline activity · Findings · Eval**, with the records one click away — polls the data-access layer and
+moves as screening lands, so you keep it open beside the chat. The **export** at
+`data/reviews/<slug>/views/<slug>-report.html` is that identical view frozen to one self-contained HTML file:
+same tabs, same numbers, no server needed, made to share. (The search strategy shows as plain query text by
+default; the exact CLI commands are one toggle away.) Both are the same projection — the dashboard is live,
+the export travels.
 
 ---
 
@@ -337,8 +341,9 @@ accountability for the included set.
 - `data/reviews/mouse-genetics-mesothelioma/` — the live review: protocol, records, screening trail, views.
 - `data/reviews/mouse-genetics-mesothelioma/views/mouse-genetics-mesothelioma-report.html` — the shareable
   snapshot; open it and start distrusting a number until you have followed it home.
-- `tools/repo.py` — the data-access layer every surface reads from; `views/report.template.html` and
-  `views/dashboard.template.html` — the templates it feeds, reused by every review.
+- `tools/repo.py` — the data-access layer every surface reads from; `views/report.template.html` — the one
+  review-view template it feeds, served live as the dashboard and frozen as the export.
+- `docs/dashboard-spec.md` — the review view's layout (the flow, the bar, the PRISMA flow), in brief.
 
 ## License
 

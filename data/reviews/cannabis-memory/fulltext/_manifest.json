@@ -54,5 +54,880 @@
     "chars": 0,
     "pmcid": null,
     "url": null
+  },
+  "41260151": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 26143,
+    "pmcid": "12656195",
+    "url": null
+  },
+  "41178441": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 45158,
+    "pmcid": "13050079",
+    "url": null
+  },
+  "40996525": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 44453,
+    "pmcid": "13007496",
+    "url": null
+  },
+  "40938490": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 34084,
+    "pmcid": "12815984",
+    "url": null
+  },
+  "40840668": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 25128,
+    "pmcid": "12543359",
+    "url": null
+  },
+  "39412674": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 37966,
+    "pmcid": "12000385",
+    "url": null
+  },
+  "40748375": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32383,
+    "pmcid": "12657187",
+    "url": null
+  },
+  "41189327": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 27454,
+    "pmcid": "12586318",
+    "url": null
+  },
+  "41044207": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 30548,
+    "pmcid": "12494744",
+    "url": null
+  },
+  "40760056": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 42947,
+    "pmcid": "12779070",
+    "url": null
+  },
+  "40702165": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 38028,
+    "pmcid": "12518716",
+    "url": null
+  },
+  "40690867": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": "https://doi.org/10.1016/j.comppsych.2025.152620"
+  },
+  "40616362": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 22123,
+    "pmcid": "12228000",
+    "url": null
+  },
+  "40040421": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 31465,
+    "pmcid": "12975459",
+    "url": null
+  },
+  "39874032": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 30323,
+    "pmcid": "11775743",
+    "url": null
+  },
+  "39765275": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29286,
+    "pmcid": "11798582",
+    "url": null
+  },
+  "39153080": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 42267,
+    "pmcid": "11774964",
+    "url": null
+  },
+  "38900958": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "11908874",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11908874/pdf/sbae097.pdf"
+  },
+  "38251910": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 35400,
+    "pmcid": "12274316",
+    "url": null
+  },
+  "41160460": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 7116,
+    "pmcid": "13334057",
+    "url": null
+  },
+  "40267585": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 53084,
+    "pmcid": "12943572",
+    "url": null
+  },
+  "39292455": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 26388,
+    "pmcid": "11411392",
+    "url": null
+  },
+  "39024968": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": "https://www.msard-journal.com/article/S2211-0348(24)00336-5/pdf"
+  },
+  "39003387": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 62560,
+    "pmcid": "11246434",
+    "url": null
+  },
+  "38971339": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 51343,
+    "pmcid": "12930413",
+    "url": null
+  },
+  "38917114": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": "https://www.tandfonline.com/doi/pdf/10.1080/00952990.2024.2362832?needAccess=true"
+  },
+  "38863046": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 16991,
+    "pmcid": "11190449",
+    "url": null
+  },
+  "38832949": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 23469,
+    "pmcid": "12954630",
+    "url": null
+  },
+  "38490083": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 27951,
+    "pmcid": "12095604",
+    "url": null
+  },
+  "38383055": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "11286033",
+    "url": "https://www.ajnr.org/content/ajnr/early/2024/02/21/ajnr.A8215.full.pdf"
+  },
+  "38091780": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 25583,
+    "pmcid": "10829878",
+    "url": null
+  },
+  "37732960": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32854,
+    "pmcid": "10954585",
+    "url": null
+  },
+  "37726210": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": null
+  },
+  "37594767": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": "https://boris.unibe.ch/185570/"
+  },
+  "37553288": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 33958,
+    "pmcid": "10841263",
+    "url": null
+  },
+  "36201240": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 31303,
+    "pmcid": "12116753",
+    "url": null
+  },
+  "38044339": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 72669,
+    "pmcid": "12653933",
+    "url": null
+  },
+  "37497695": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 34486,
+    "pmcid": "11650694",
+    "url": null
+  },
+  "37252877": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 51411,
+    "pmcid": "13187516",
+    "url": null
+  },
+  "37202444": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 59083,
+    "pmcid": "10195824",
+    "url": null
+  },
+  "37108689": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 28434,
+    "pmcid": "10142622",
+    "url": null
+  },
+  "36992383": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 34547,
+    "pmcid": "10058939",
+    "url": null
+  },
+  "36775907": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32819,
+    "pmcid": "10423301",
+    "url": null
+  },
+  "36750134": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 44586,
+    "pmcid": "10481756",
+    "url": null
+  },
+  "36598543": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 30385,
+    "pmcid": "9879826",
+    "url": null
+  },
+  "36380220": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29627,
+    "pmcid": "10156730",
+    "url": null
+  },
+  "37088409": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 44932,
+    "pmcid": "10226818",
+    "url": null
+  },
+  "36780161": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29702,
+    "pmcid": "9926328",
+    "url": null
+  },
+  "36592102": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "11375744",
+    "url": "https://doi.org/10.5080/u26956"
+  },
+  "35933470": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29800,
+    "pmcid": "9357061",
+    "url": null
+  },
+  "35690891": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 65282,
+    "pmcid": "12032589",
+    "url": null
+  },
+  "35486121": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 41816,
+    "pmcid": "9110435",
+    "url": null
+  },
+  "35438304": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 22899,
+    "pmcid": "11215802",
+    "url": null
+  },
+  "35430960": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 23110,
+    "pmcid": "9794455",
+    "url": null
+  },
+  "35314358": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 33699,
+    "pmcid": "9136933",
+    "url": null
+  },
+  "35293008": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 39101,
+    "pmcid": "9311233",
+    "url": null
+  },
+  "34708254": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 38093,
+    "pmcid": "12238766",
+    "url": null
+  },
+  "34694424": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 35413,
+    "pmcid": "13138723",
+    "url": null
+  },
+  "34583547": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 19217,
+    "pmcid": "8958184",
+    "url": null
+  },
+  "34184776": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 39879,
+    "pmcid": "8714869",
+    "url": null
+  },
+  "34092379": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": null
+  },
+  "33517837": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 49420,
+    "pmcid": "13253619",
+    "url": null
+  },
+  "35255711": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 24749,
+    "pmcid": "9426660",
+    "url": null
+  },
+  "35983959": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 40827,
+    "pmcid": "11138203",
+    "url": null
+  },
+  "35551928": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 78650,
+    "pmcid": "13269127",
+    "url": null
+  },
+  "35367279": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 38432,
+    "pmcid": "13297324",
+    "url": null
+  },
+  "35293520": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 19991,
+    "pmcid": "9169481",
+    "url": null
+  },
+  "35029706": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 21039,
+    "pmcid": "13291339",
+    "url": null
+  },
+  "34694178": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 27183,
+    "pmcid": "8600580",
+    "url": null
+  },
+  "34618512": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "12628663",
+    "url": null
+  },
+  "34536664": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29714,
+    "pmcid": "13213852",
+    "url": null
+  },
+  "34261559": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32209,
+    "pmcid": "12977087",
+    "url": null
+  },
+  "34261558": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/8288450"
+  },
+  "34261553": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 59958,
+    "pmcid": "12695116",
+    "url": null
+  },
+  "34261552": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 44453,
+    "pmcid": "13007496",
+    "url": null
+  },
+  "34261551": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 34378,
+    "pmcid": "13234577",
+    "url": null
+  },
+  "34261549": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 39422,
+    "pmcid": "8486043",
+    "url": null
+  },
+  "34261548": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29262,
+    "pmcid": "8830784",
+    "url": null
+  },
+  "33866072": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32979,
+    "pmcid": "9357512",
+    "url": null
+  },
+  "33856944": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 26599,
+    "pmcid": "9698443",
+    "url": null
+  },
+  "33638699": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 34104,
+    "pmcid": "12039315",
+    "url": null
+  },
+  "33618197": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 36640,
+    "pmcid": "8047806",
+    "url": null
+  },
+  "33497715": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 40639,
+    "pmcid": "11857941",
+    "url": null
+  },
+  "33340172": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 39290,
+    "pmcid": "7978126",
+    "url": null
+  },
+  "33246899": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 83214,
+    "pmcid": "13144443",
+    "url": null
+  },
+  "33155343": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 42947,
+    "pmcid": "12779070",
+    "url": null
+  },
+  "33080597": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 68985,
+    "pmcid": "12794654",
+    "url": null
+  },
+  "32964502": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 27454,
+    "pmcid": "12586318",
+    "url": null
+  },
+  "32951441": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 20786,
+    "pmcid": "10310357",
+    "url": null
+  },
+  "32881239": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 24952,
+    "pmcid": "7925696",
+    "url": null
+  },
+  "32124274": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 79628,
+    "pmcid": "12934826",
+    "url": null
+  },
+  "31814047": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 56066,
+    "pmcid": "8062355",
+    "url": null
+  },
+  "33740561": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 52011,
+    "pmcid": "8359088",
+    "url": null
+  },
+  "33524507": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 33493,
+    "pmcid": "7965351",
+    "url": null
+  },
+  "31994476": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 40203,
+    "pmcid": "12339998",
+    "url": null
+  },
+  "31991525": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32223,
+    "pmcid": "9187039",
+    "url": null
+  },
+  "34215784": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 89681,
+    "pmcid": "8253757",
+    "url": null
+  },
+  "33427016": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 26277,
+    "pmcid": "12921724",
+    "url": null
+  },
+  "32871501": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 31959,
+    "pmcid": "10637877",
+    "url": null
+  },
+  "32862065": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 27195,
+    "pmcid": "12414559",
+    "url": null
+  },
+  "32800084": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "7437560",
+    "url": null
+  },
+  "32762272": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 27928,
+    "pmcid": "7436497",
+    "url": null
+  },
+  "32758262": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 58282,
+    "pmcid": "7409464",
+    "url": null
+  },
+  "32536252": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 45970,
+    "pmcid": "11849221",
+    "url": null
+  },
+  "32526487": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 22123,
+    "pmcid": "12228000",
+    "url": null
+  },
+  "32520316": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "7287943",
+    "url": "https://jamanetwork.com/journals/jamapsychiatry/articlepdf/2767219/jamapsychiatry_bidwell_2020_oi_200022.pdf"
+  },
+  "32386395": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 43162,
+    "pmcid": "7608353",
+    "url": null
+  },
+  "32360692": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 49158,
+    "pmcid": "13255862",
+    "url": null
+  },
+  "32307027": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 30979,
+    "pmcid": "7483189",
+    "url": null
+  },
+  "32154789": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 44927,
+    "pmcid": "7093776",
+    "url": null
+  },
+  "31951069": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 32060,
+    "pmcid": "10011848",
+    "url": null
+  },
+  "31877268": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 6903,
+    "pmcid": "11987560",
+    "url": null
+  },
+  "31822320": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 31570,
+    "pmcid": "7205577",
+    "url": null
+  },
+  "31668830": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 25899,
+    "pmcid": "6954333",
+    "url": null
+  },
+  "31615592": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 38030,
+    "pmcid": "12925671",
+    "url": null
+  },
+  "31246068": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 24185,
+    "pmcid": "6933103",
+    "url": null
+  },
+  "31211388": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "7306169",
+    "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/7306169"
+  },
+  "32377689": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "7947183",
+    "url": "https://academic.oup.com/cercor/article-pdf/30/9/4949/36509572/bhaa087.pdf"
+  },
+  "32041881": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 22320,
+    "pmcid": "7060677",
+    "url": null
+  },
+  "31683245": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 21437,
+    "pmcid": "11156409",
+    "url": null
+  },
+  "31407943": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 34607,
+    "pmcid": "7303896",
+    "url": null
+  },
+  "31349209": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 49420,
+    "pmcid": "13253619",
+    "url": null
+  },
+  "31250074": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 39658,
+    "pmcid": "6892757",
+    "url": null
+  },
+  "31245962": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": "6821511",
+    "url": "http://jpn.ca/wp-content/uploads/2019/10/44-6-414.pdf"
+  },
+  "31220785": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 65400,
+    "pmcid": "12249921",
+    "url": null
   }
 }

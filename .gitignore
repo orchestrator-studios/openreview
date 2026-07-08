@@ -17,3 +17,6 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# Bash stack traces
+*.stackdump

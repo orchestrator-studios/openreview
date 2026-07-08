@@ -320,6 +320,17 @@
   #panel-protocol .qtext{background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;padding:11px 13px;font-family:var(--mono);font-size:12.5px;color:var(--ink);white-space:pre-wrap;line-height:1.55;}
   #panel-protocol .cmdtoggle{margin-top:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;}
   #panel-protocol .cmdtoggle:hover{color:var(--ink);}
+  /* records folded under pipeline: a modal */
+  #pipetools{display:flex;justify-content:flex-end;margin-bottom:6px;}
+  .recbtn{border:1px solid var(--accent);background:var(--accent-soft);color:var(--accent-ink);border-radius:9px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;}
+  .recbtn:hover{background:var(--accent);color:#fff;}
+  .recmodal{position:fixed;inset:0;z-index:100;}
+  .recmodal[hidden]{display:none;}
+  .recmodal-backdrop{position:absolute;inset:0;background:rgba(12,22,28,.5);}
+  .recmodal-box{position:relative;z-index:1;background:var(--ground);width:min(1100px,100%);margin:0 auto;height:100%;overflow:auto;box-shadow:0 0 40px rgba(0,0,0,.3);padding:0 22px 48px;}
+  .recmodal-close{position:sticky;top:12px;float:right;margin-top:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;height:32px;padding:0 12px;font-size:13px;cursor:pointer;z-index:2;}
+  .recmodal-close:hover{color:var(--ink);}
+  .recbody{clear:both;}
 </style>
 
 <div class="topbar">
@@ -341,6 +352,7 @@
 
   <section class="panel" id="panel-protocol"></section>
   <section class="panel" id="panel-pipeline">
+    <div id="pipetools"></div>
     <div id="pipesteps"></div>
     <div id="pipenext"></div>
     <div id="pipebar"></div>
@@ -348,7 +360,14 @@
   </section>
   <section class="panel" id="panel-findings"></section>
   <section class="panel" id="panel-eval"></section>
-  <section class="panel" id="panel-records"></section>
+
+  <div id="recmodal" class="recmodal" hidden>
+    <div class="recmodal-backdrop" id="recmodalBackdrop"></div>
+    <div class="recmodal-box">
+      <button class="recmodal-close" id="recmodalClose" type="button">✕ Close</button>
+      <div id="panel-records" class="recbody"></div>
+    </div>
+  </div>
 
   <footer>
     <p>Generated from <code>data/reviews/__SLUG__/</code> by <code>tools/build_report.py</code> — a
@@ -464,7 +483,6 @@ const TABS=[
   {id:"pipeline",label:"Pipeline activity"},
   {id:"findings",label:"Findings",cnt:nInc},
   {id:"eval",label:"Eval"},
-  {id:"records",label:"Records",cnt:N},
 ];
 const tabsEl=document.getElementById("tabs");
 let activeTab="pipeline";
@@ -482,9 +500,12 @@ function setTab(id){
 // ---------- drill: set a clean filter and jump to Records ----------
 function drill(opts){
   Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""},opts);
-  setTab("records");
-  syncControls(); render();
+  syncControls(); render(); openRecords();
 }
+function openRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hidden=false; document.body.style.overflow="hidden"; } }
+function closeRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
+// direct activation: clears every filter, then opens the modal on the full corpus
+function openAllRecords(){ Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""}); syncControls(); render(); openRecords(); }
 function drillBtn(text, count, opts, cls){
   return el("button",{class:"drill"+(cls?" "+cls:""),type:"button",onclick:()=>drill(opts)},
     el("span",{text:text}), el("span",{class:"dv num",text:count}), el("span",{class:"go",text:"→"}));
@@ -783,10 +804,17 @@ function buildProtocol(){
 // Updates in place on every live poll — the green/red bar moves as screening lands.
 // ---------- Pipeline activity: the bar (corpus snapshot) + the PRISMA flow ----------
 function renderPipeline(proj){
-  const steps=document.getElementById("pipesteps"), nx=document.getElementById("pipenext"), bar=document.getElementById("pipebar"), pr=document.getElementById("prisma");
-  [steps,nx,bar,pr].forEach(e=>{ if(e) e.replaceChildren(); });
+  const tools=document.getElementById("pipetools"), steps=document.getElementById("pipesteps"), nx=document.getElementById("pipenext"), bar=document.getElementById("pipebar"), pr=document.getElementById("prisma");
+  [tools,steps,nx,bar,pr].forEach(e=>{ if(e) e.replaceChildren(); });
   if(!proj || !bar) return;
   const wf=proj.workflow||{}, a=proj.accounting;
+  // direct access to the records modal (clears filters); every count below also opens it, filtered
+  if(tools){
+    const n=(proj.totals||{}).unique||0;
+    const b=el("button",{class:"recbtn",type:"button",text:"Browse all "+n+" records →"});
+    b.addEventListener("click",openAllRecords);
+    tools.append(b);
+  }
   // horizontal position indicator — where we are in the overall flow, current stage highlighted
   const phases=wf.phases||[];
   if(steps && phases.length){
@@ -896,6 +924,10 @@ function renderEval(ev){
 buildProtocol(); buildFindings(); buildRecords(); buildEval(DATA.projection);
 renderPipeline(DATA.projection);
 render(); setTab("pipeline");
+// records modal close affordances
+document.getElementById("recmodalClose").addEventListener("click", closeRecords);
+document.getElementById("recmodalBackdrop").addEventListener("click", closeRecords);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeRecords(); });
 document.getElementById("footmeta").textContent =
   rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated __DATE__";
 const tgl=document.getElementById("themeToggle");
