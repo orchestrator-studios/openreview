@@ -9,7 +9,7 @@ serves it over HTTP, read fresh on each request.
 
 Routes
     GET /                                  → index: the reviews, linking to dashboards
-    GET /dashboard/<slug>                  → the live dashboard page (views/dashboard.template.html)
+    GET /dashboard/<slug>                  → the live review view (report.template.html, served live)
     GET /api/reviews                       → [{slug, title, totals}]  (list)
     GET /api/reviews/<slug>                → {protocol, records}      (full review)
     GET /api/reviews/<slug>/pipeline       → the canonical funnel projection (polled live)
@@ -28,7 +28,6 @@ from urllib.parse import urlparse
 import build_report
 import repo
 
-TEMPLATE = repo.ROOT / "views" / "dashboard.template.html"
 INDEX_TEMPLATE = repo.ROOT / "views" / "index.template.html"
 
 

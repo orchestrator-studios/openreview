@@ -1,0 +1,406 @@
+Background
+There is a worldwide growing interest and investments in using medical cannabinoids for the treatment of numerous diseases. Furthermore, in 2020, the United Nations (UN) finally recognized the medical value of cannabinoids and removed cannabis from Schedule IV of the 1961 Single Convention on Narcotic Drugs. This allows, in a less restricted manner, the use of medical cannabinoids. It is therefore of critical importance to thoroughly review the grade of evidence of the effectiveness of medical cannabinoids to inform policy and clinical decisions.
+Previous systematic reviews have been limited in their coverage of all relevant diseases, but most importantly primarily ignored the fact that medical cannabinoid products—a term that encompasses all plant-derived and synthetic derivatives—differ in their pharmacology [1–5]. The synthetic cannabinoids dronabinol, which is ( −)-trans-Δ9-tetrahydrocannabinol (THC) (Marinol® and Syndros®), and nabilone—a synthetic cannabinoid with structural similarities to THC (Cesamet®), are partial agonists at the cannabinoid receptor 1 (CB1) and with somehow lower affinity at CB2 receptors [6]. Both cannabinoids have indications as appetite stimulants, antiemetics, cannabis addiction, sleep apnea and analgesics and are approved by the FDA for HIV/AIDS-induced loss of appetite and chemotherapy-induced nausea and vomiting. Cannabidiol (CBD; Epidolex®) acts as a negative allosteric modulator at CB1 receptors [7] and also acts at several other receptors, such as CB2 receptors, serotonin 1A receptors, opioid receptors and several ligand-gated ion channels [8]; it represents the only CBD formulation approved by both USA and Europe for the treatment of seizures associated with Dravet syndrome, Lennox-Gastaut syndrome or tuberous sclerosis complex. Nabiximols, a cannabis-derived extract that contains equal quantities of THC and CBD (Sativex®), was approved in 2010 in the UK for symptoms associated to MS, and exported to more than 28 countries from Asia, Africa, the Middle East, Europe (Spain, Czech Republic, Germany, Denmark, Sweden, Italy, Austria, France, Poland) and Canada. Moreover, plant-derived medical cannabis contains almost 150 phytocannabinoids, though most of them have neither been isolated nor pharmacologically characterized [9]. THC and CBD can vary largely in concentrations across different medical cannabis products and can thereby differ in their pharmacological properties. Therefore, a systematic review (SR) that does not consider the different pharmacological properties of medical cannabinoids can be misleading.
+The aim of this SR and meta-analysis is to examine possible therapeutic differences for medical cannabinoids in all relevant medical conditions.
+Results
+Our 32 searches identified 6308 abstracts. Figure 1 shows a flow diagram depicting our selection procedure for the SR and meta-analysis resulting in 53 (dronabinol), 35 (nabilone), 27 (CBD) and 37 (nabiximols) selected RCTs (see Additional file 2). The list of indications by cannabinoid and characteristics of the studies are shown in Tables 1 and 2 and the full description is presented in Additional file 2: Tables S2-5 [10–160]. The summary of findings from the 152 RCTs analysed resulting in 84 comparisons (23 outcomes, 12,123 participants) is shown in Table 3 and the GRADE summary in Fig. 2. Low risk of bias was judged in 26, 6, 26 and 19% and high risk of bias was found in 5, 9, 1 and 2 studies of the dronabinol, nabilone, CBD and nabiximols trials, respectively (Additional file 3: Figs. S1-8, for references see Tables S2-5). The complete risk of bias assessment for each RCT can be found in Additional file 3: Table S6 (for references see Tables S2-5).Fig. 1PRISMA flowchart of the studiesTable 1List of indications by cannabinoidIndicationDronabinolNabiloneCBDNabiximolsChronic painxxxxSpasticityxxxNausea/appetitexxxxAmyotrophic lateral sclerosisxxChorea HuntingtonxxxDystoniaxxxEpilepsyxGlaucomaxxIrritable bowel diseasexMultiple sclerosisxxParkinsonxxADHDxAnorexia nervosaxAnxietyxxxxDementiaxxDepressionxxxxPTSDxxSchizophrenia/psychosisxxSleepxxxxSubstance abusexxxxTourettexRetentionxxxxAdverse eventsxxxxTable 2Characteristics of included studiesInterventionIndicationNo. of studiesParallel/crossoverMaximum doseComparatorTreatment length (weeks)DronabinolChronic pain169/78–129.6 mg. Most common: 2.5–15 mg (n = 11)PlaceboAcute to 156. Most common: acute (n = 5)10/120 mgActive8Spasticity64/22.5–60 mgPlacebo < 1 week to 144. Most common: 4 (n = 2)Nausea, vomiting, loss of appetite146/85–129.6 mg. Most common: 5–20 mg (n = 12)PlaceboAcute to 6. Most common: 1–5 days (n = 8)63/35–100 mg. Most common: 5–10 (n = 3)ActiveAcute to 9.8. Most common: acute (n = 4)ALS10/110 mgPlacebo2Dystonia10/115 mgPlacebo8Glaucoma10/15 mgPlaceboAcuteIBS21/12.5–10 mgPlaceboAcuteMS33/025–8 mgPlacebo14 (n = 2), 156 (n = 1)Anorexia Nervosa10/15 mgPlacebo410/130 mgActive2Anxiety83/55–30 mg. Most common: 10 mg (n = 6)PlaceboAcute to 7.3. Most common: acute (n = 6)21/130–50 mgActiveAcute to 6Depression84/45–30 mg. Most common: 5–10 mg (n = 7)Placebo < 1 week to 156. Most common: less than 1 week (n = 4)21/130–50 mgActiveAcute and 6Dementia31/21.5–5 mgPlacebo1 to 6PTSD11/07.5 mgPlaceboAcutePsychosis/schizophrenia10/12.5–5 mgPlaceboAcuteSleep84/42.5–129.6 mg. Most common: 10 mg (n = 3), 129.6 mg (n = 2)Placebo < 1 week to 14. Most common: less than 1 week to 2 (n = 5)21/130 mgActive2 and 6SUDs41/35–40 mgPlaceboAcute (n = 2), < 1 week and 811/030 mgActive6Tourette21/15–10 mgPlaceboAcute and 6NabiloneChronic pain96/30.25–4 mg. Most common: 2 mg (n = 5)Placebo4 to 9. Most common: 4 (n = 4)30/30.5–2 mgActive2 to 8Spasticity20/21 mgPlacebo4Nausea, vomiting, loss of appetite63/30.5–6 mg. Most common: 0.5–2 mg (n = 4)PlaceboAcute/ < 1 week (n = 3) to 6–8 (n = 3)113/81–8 mg. Most common: 1–4 mg (n = 10)ActiveAcute to 1Huntington10/11 and 2 mgPlacebo5Dystonia10/10.03 mgPlaceboAcuteParkinson21/10.06 and 2 mgPlaceboAcute and 4Anxiety85/31–8 mgPlacebo < 1 week to 1020/20.5 and 2 mgActive6 and 8Dementia10/12 mgPlacebo6Depression54/11–5 mgPlaceboAcute to 10. Most common: 4–5 (n = 3)20/20.5 and 2 mgActive6 and 8PTSD10/13 mgPlacebo7Sleep74/31–8 mg. Most common: 1–4 mg (n = 6)Placebo < 1 week to 820/20.5, 1 and 2 mgActive2 and 6SUDs31/22, 6 and 8 mgPlacebo < 1 week (n = 2) and 10CannabidiolChronic pain11/020 mg, 30 mgPlacebo12Nausea, vomiting, loss of appetite11/0200 mgPlacebo13Huntington10/110 mgPlacebo6Epilepsy66/010–300 mg. Most common: 10–20 mg (n = 4)Placebo14 (n = 4), 16 and 18Parkinson32/175 and 300 mgPlaceboAcute, 6 and 12Anxiety119/2400–800 mg. Most common: 300 mg (n = 4), 400 mg (n = 3)PlaceboAcute to 12. Most common: acute to < 1 week (n = 5)Depression66/075–400 mgPlacebo1 to 13Psychosis/schizophrenia43/1300 mg, 600 mg (n = 2) and 1000 mgPlaceboAcute (n = 2) and 6 (n = 2)11/0800 mgActive4Sleep99/010–1000 mg. Most common: 10–20 mg (n = 5)Placebo1 to 14. Most common: 12–14 (n = 5)SUDs76/2400–800 mg. Most common doses: 800 mg (n = 5)PlaceboAcute to 13. Most common: < 1 week (n = 4)NabiximolsChronic pain2016/410.8–129.6 mg THC: 10–120 mg CBD. Most common: 32.4 mg THC: 30 mg:CBD (n = 7), 129.6 mg THC: 120 mg CBD (n = 5)Placebo2 to 14. Most common: 5 (n = 6), 12 (n = 4)Spasticity146/48.1–129.6 mg THC: 7.5–120 mg CBD. Most common: 32.4 mg THC: 30 mg:CBD (n = 6), 129.6 mg THC: 120 mg CBD (n = 2)Placebo2 to 14. Most common: 12 (n = 3), 6 (n = 3), 4 (n = 3)Nausea, vomiting, loss of appetite86/25–129.6 mg THC: 2–120 mg CBDPlacebo < 1 week to 12. Most common: < 1 week (n = 3)ALS11/032.4 mg THC: 30 mg CBDPlacebo6Chorea Hunington10/132.4 mg THC: 30 mg CBDPlacebo12Dystonia10/132.4 mg THC: 30 mg CBDPlacebo12Glaucoma10/1CBD: THC (1:21). 20, 40 mgPlaceboAcuteMS54/130–129.6 mg THC: 10.8–120 mg CBDPlacebo2 to 14. Most common: 14 (n = 2)ADHD11/037.8 mg THC: 35 mg CBDPlacebo6Depression85/332.4–129.6 mg THC: 30–120 mg CBD. Most common: 32.4 mg THC: 30 mg:CBD (n = 2)Placebo < 1 week to 12. Most common: 12 (n = 3)Anxiety63/330–129.6 mg THC: 10.8–120 mg CBDPlacebo3 to 12. Most common: 12 (n = 2)Sleep2218/416.2–129.6 mg THC: 15–120 mg CBD. Most common: 32.4 mg THC: 30 mg:CBD (n = 6), 129.6 mg THC: 120 mg CBD (n = 4)Placebo < 1 week to 14. Most common: 5 (n = 6), 12 (n = 4)SUDs43/164.8–113.4 mg THC: 60–105 mg CBDPlacebo < 1 week to 12. Most common: 12 (n = 2)Table 3Summary of findings. GRADE Working Group grades of evidence. High quality: Further research is very unlikely to change our confidence in the estimate of effect. Moderate quality: Further research is likely to have an important impact on our confidence in the estimate of effect and may change the estimate. Low quality: Further research is very likely to have an important impact on our confidence in the estimate of effect and is likely to change the estimate. Very low quality: We are very uncertain about the estimateComparisonNo. of participants (studies)I2 (%)GRADERelative effect (95% CI)Anticipated absolute effectsOutcomeRisk with controlRisk difference with CannabinoidsChronic painDronabinol vs Placebo1395 (15 RCTs)53⨁⨁⨁◯MODERATE cSMD 0.31 lower(0.46 lower to 0.15 lower)Dronabinol vs Active14 (1 RCT)SMD 0.73 higher(0.1 lower to 1.56 higher)Nabilone vs Placebo363 (9 RCTs)70⨁⨁◯◯LOW c,gSMD 0.41 lower(0.76 lower to 0.06 lower)Nabilone vs Active262 (3 RCTs)83⨁◯◯◯VERY LOW c,eSMD 0.08 lower(0.54 lower to 0.38 higher)Cannabidiol vs Placebo129 (1 RCT)SMD 0.01 higher(0.34 lower to 0.35 higher)Nabiximols vs Placebo3238 (21 RCTs)65⨁⨁⨁◯MODERATE cSMD 0.23 lower(0.34 lower to 0.12 lower)SpasticityDronabinol vs Placebo704 (6 RCTs)52⨁⨁◯◯LOW c,fSMD 0.08 lower(0.34 lower to 0.17 higher)Nabilone vs Placebo44 (2 RCTs)68⨁◯◯◯VERY LOW a,c,gSMD 0.7 lower(1.56 lower to 0.16 higher)Nabiximols vs Placebo1658 (14 RCTs)68⨁⨁⨁◯MODERATE cSMD 0.36 lower(0.54 lower to 0.19 lower)Nausea/vomitingDronabinol vs Placebo495 (8 RCTs)61⨁⨁◯◯LOW c,fSMD 0 .21 lower(0.49 lower to 0.07 higher)Dronabinol vs Active308 (5 RCTs)0⨁⨁◯◯LOW a,gSMD 0.28 lower(0.47 lower to 0.1 lower)Nabilone vs Placebo603 (4 RCTs)61⨁⨁◯◯LOW c,fSMD 0.09 lower(0.36 lower to 0.18 higher)Nabilone vs Active627 (11 RCTs)46⨁⨁◯◯LOW b,cSMD 0.44 lower(0.62 lower to 0.26 lower)Nabiximols vs Placebo393 (6 RCTs)56⨁◯◯◯VERY LOW a,eSMD 0.23 lower(0.55 lower to 0.08 higher)AppetiteDronabinol vs Placebo599 (10 RCTs)81⨁⨁⨁◯MODERATE cSMD 0.51 lower(0.87 lower to 0.15 lower)Dronabinol vs Active795 (3 RCTs)86⨁⨁◯◯LOW c,fSMD 0.02 lower(0.39 lower to 0.34 higher)Nabilone vs Placebo187 (4 RCTs)74⨁◯◯◯VERY LOW c,eSMD 0.44 lower(0.98 lower to 0.11 higher)Nabilone vs Active130 (3 RCTs)85⨁◯◯◯VERY LOW a,d, gSMD 0.24 higher(0.51 lower to 0.99 higher)Cannabidiol vs Placebo27 (1 RCT)SMD 0.1 higher(0.66 lower to 0.85 higher)Nabiximols vs Placebo430 (6 RCTs)66⨁⨁◯◯LOW c,fSMD 0.25 lower(0.61 lower to 0.1 higher)Amyotrophic lateral sclerosisDronabinol vs Placebo22 (1 RCT)SMD 0.26 higher(0.17 lower to 0.68 higher)Nabiximols vs Placebo59 (1 RCT)SMD 0.38 higher(0.13 lower to 0.90 higher)Chorea HuntingtonNabilone vs Placebo74 (1 RCT)SMD 0.45 lower(0.79 lower to 0.11 lower)Cannabidiol vs Placebo30 (1 RCT)SMD 0.18 higher(0.33 lower to 0.69 higher)Nabiximols vs Placebo50 (1 RCT)SMD 0.17 higher(0.23 lower to 0.56 higher)DystoniaDronabinol vs Placebo14 (1 RCT)SMD 0.05 higher(0.69 lower to 0.79 higher)Nabilone vs Placebo26 (1 RCT)SMD 0.49 lower(1.07 lower to 0.08 higher)Nabiximols vs Placebo50 (1 RCT)SMD 0(0.39 lower to 0.39 higher)EpilepsyCannabidiol vs Placebo956 (6 RCTs)0⨁⨁⨁⨁HIGHSMD 0.5 lower(0.62 lower to 0.38 lower)GlaucomaDronabinol vs Placebo12 (1 RCT)SMD 1.28 lower(2.36 lower to 0.2 lower)Nabiximols vs Placebo12 (1 RCT)SMD 0.82 higher(0.1 lower to 1.75 higher)IBSDronabinol vs Placebo81 (2 RCTs)85⨁◯◯◯VERY LOW c,eSMD 0(1.09 lower to 1.09 higher)MSDronabinol vs Placebo660 (2 RCTs)74⨁⨁◯◯LOW c,fSMD 0.15 lower(0.51 lower to 0.22 higher)Nabiximols vs Placebo863 (5 RCTs)65⨁⨁◯◯LOW c,fSMD 0.14 lower(0.38 lower to 0.11 higher)ParkinsonNabilone vs Placebo51 (2 RCTs)46⨁◯◯◯VERY LOW c,eSMD 0.38 lower(1.05 lower to 0.29 higher)Cannabidiol vs Placebo101 (3 RCTs)0⨁⨁⨁◯MODERATE gSMD 0.41 lower(0.75 lower to 0.08 lower)ADHDNabiximols vs Placebo30 (1 RCT)SMD 0.83 lower(1.58 lower to 0.09 lower)Anorexia nervosaDronabinol vs Placebo48 (1 RCT)SMD 0.47 lower(0.89 lower to 0.05 lower)Dronabinol vs Active22 (1 RCT)SMD 0.06 lower(0.65 lower to 0.53 higher)AnxietyDronabinol vs Placebo113 (4 RCTs)49⨁⨁◯◯LOW eSMD 0.03 lower(0.47 lower to 0.41 higher)Dronabinol vs Active278 (1 RCT)SMD 0.14 higher(0.03 lower to 0.31 higher)Nabilone vs Placebo147 (6 RCTs)84⨁◯◯◯VERY LOW a,c,eSMD 0.59 lower(1.4 lower to 0.22 higher)Nabilone vs Active192 (2 RCTs)11⨁⨁◯◯LOW eSMD 0.11 lower(0.33 lower to 0.11 higher)Cannabidiol vs Placebo481 (11 RCTs)78⨁◯◯◯VERY LOW c,eSMD 0.34 lower(0.73 lower to 0.06 higher)Nabiximols vs Placebo258 (6 RCTs)43⨁⨁◯◯LOW eSMD 0.06 higher(0.23 lower to 0.34 higher)DementiaDronabinol vs Placebo115 (3 RCTs)3⨁⨁◯◯LOW eSMD 0.27 lower(0.57 lower to 0.04 higher)Nabilone vs Placebo76 (1 RCT)SMD 0.53 lower(0.87 lower to 0.19 lower)DepressionDronabinol vs Placebo700 (7 RCTs)83⨁⨁◯◯LOW c,fSMD 0.15 lower(0.49 lower to 0.19 higher)Dronabinol vs Active278 (1 RCT)SMD 0.14 higher(0.03 lower to 0.31 higher)Nabilone vs Placebo76 (3 RCTs)0⨁⨁◯◯LOW eSMD 0.03 lower(0.48 lower to 0.43 higher)Nabilone vs Active192 (2 RCTs)0⨁⨁◯◯LOW eSMD 0.03 lower(0.23 lower to 0.17 higher)Cannabidiol vs Placebo301 (6 RCTs)0⨁⨁◯◯LOW eSMD 0.12 higher(0.09 lower to 0.34 higher)Nabiximols vs Placebo413 (7 RCTs)43⨁⨁⨁◯MODERATE fSMD 0.12 lower(0.36 lower to 0.13 higher)PTSDDronabinol vs Placebo46 (1 RCT)SMD 0.63 lower(1.22 lower to 0.03 lower)Nabilone vs Placebo18 (1 RCT)SMD 0.88 lower(1.65 lower to 0.11 lower)Schizophrenia/psychosisDronabinol vs Placebo26 (1 RCT)SMD 0.89 higher(0.25 higher to 1.53 higher)Cannabidiol vs Placebo152 (3 RCTs)70⨁◯◯◯VERY LOW c,fSMD 0.24 lower(0.81 lower to 0.33 higher)Cannabidiol vs Active39 (1 RCT)SMD 0.05 higher(0.58 lower to 0.68 higher)SleepDronabinol vs Placebo683 (7 RCTs)64⨁⨁◯◯LOW c,fSMD 0.13 lower(0.39 lower to 0.12 higher)Dronabinol vs Active22 (1 RCT)SMD 1.12 higher(0.37 higher to 1.87 higher)Nabilone vs Placebo175 (6 RCTs)77⨁◯◯◯VERY LOW c,gSMD 0.58 lower(1.14 lower to 0.01 lower)Nabilone vs Active200 (2 RCTs)91⨁◯◯◯VERY LOW d,eSMD 0.21 lower(0.97 lower to 0.55 higher)Cannabidiol vs Placebo961 (8 RCTs)46⨁⨁◯◯LOW a,cSMD 0.06 lower(0.23 lower to 0.11 higher)Nabiximols vs Placebo3659 (23 RCTs)61⨁⨁⨁◯MODERATE cSMD 0.24 lower(0.35 lower to 0.14 lower)SUDsDronabinol vs Placebo196 (3 RCTs)0⨁⨁◯◯LOW a,gSMD 0.47 lower(0.73 lower to 0.2 lower)Dronabinol vs Active60 (1 RCT)SMD 0.85 lower(1.41 lower to 0.29 lower)Nabilone vs Placebo70 (3 RCTs)0⨁⨁◯◯LOW a,gSMD 0.55 lower(0.93 lower to 0.18 lower)Cannabidiol vs Placebo353 (7 RCTs)81⨁◯◯◯VERY LOW c,eSMD 0.2 lower(0.63 lower to 0.24 higher)Nabiximols vs Placebo237 (4 RCTs)59⨁⨁⨁◯MODERATE gSMD 0.48 lower(0.92 lower to 0.04 lower)TouretteDronabinol vs Placebo41 (2 RCTs)0⨁⨁⨁◯MODERATE gSMD 1.01 lower(1.58 lower to 0.44 lower)RetentionDronabinol vs Placebo3285 (37 RCTs)65⨁⨁◯◯LOW c,fOR 1.11(0.80 to 1.53)194 per 1.00017 more per 1.000(33 fewer to 75 more)Dronabinol vs Active1079 (8 RCTs)32⨁◯◯◯VERY LOW a,eOR 1.03(0.76 to 1.40)422 per 1.0007 more per 1.000(65 fewer to 83 more)Nabilone vs Placebo1070 (16 RCTs)0⨁◯◯◯VERY LOW a,eOR 0.99(0.76 to 1.29)143 per 1.0001 fewer per 1.000(30 fewer to 34 more)Nabilone vs Active1004 (13 RCTs)0⨁◯◯◯VERY LOW a,eOR 0.99(0.79 to 1.25)205 per 1.0002 fewer per 1.000(36 fewer to 39 more)Cannabidiol vs Placebo1775 (22 RCTs)41⨁◯◯◯VERY LOW c,gOR 1.38(0.77 to 2.47)71 per 1.00024 more per 1.000(15 fewer to 88 more)Nabiximols vs Placebo4643 (33 RCTs)44⨁⨁◯◯LOW c,fOR 1.17(0.92 to 1.49)170 per 1.00023 more per 1.000(11 fewer to 64 more)Adverse eventsDronabinol vs Placebo2707 (37 RCTs)56⨁⨁◯◯LOW cOR 2.16(1.59 to 2.94)320 per 1.000184 more per 1.000(108 more to 260 more)Dronabinol vs Active925 (8 RCTs)67⨁⨁◯◯LOW a,cOR 2.75(1.43 to 5.26)466 per 1.000240 more per 1.000(89 more to 355 more)Nabilone vs Placebo996 (16 RCTs)76⨁⨁⨁◯MODERATE cOR 3.12(1.52 to 6.42)226 per 1.000251 more per 1.000(81 more to 426 more)Nabilone vs Active909 (13 RCTs)71⨁⨁◯◯LOW a,cOR 2.47(1.45 to 4.20)223 per 1.000192 more per 1.000(71 more to 324 more)Cannabidiol vs Placebo1736 (22 RCTs)58⨁⨁⨁◯MODERATE cOR 1.82(1.08 to 3.07)482 per 1.000147 more per 1.000(19 more to 259 more)Nabiximols vs Placebo4404 (33 RCTs)74⨁⨁⨁◯MODERATE cOR 1.97(1.48 to 2.64)536 per 1.000159 more per 1.000(95 more to 217 more)*The basis for the assumed risk (e.g. the median control group risk across studies) is provided in footnotes. The risk difference (and its 95% confidence interval) is based on the assumed risk in the comparison group and the relative effect of the intervention (and its 95% CI). CI confidence interval, OR odds ratio. aModerate-High risk of bias; bMany high risk of bias; cModerate-Substantial heterogeneity; dHigh heterogeneity; eOptimal information size not met, CI overlaps no effect; fOptimal information size met, CI overlaps no effect; gOptimal information size not met, CI excludes no effectFig. 2GRADE summary graph. Percentage of studies showing high, moderate, low, very low evidence and single RCTs for each cannabinoid type (A) and outcome (B)
+PRISMA flowchart of the studies
+List of indications by cannabinoid
+Characteristics of included studies
+Summary of findings. GRADE Working Group grades of evidence. High quality: Further research is very unlikely to change our confidence in the estimate of effect. Moderate quality: Further research is likely to have an important impact on our confidence in the estimate of effect and may change the estimate. Low quality: Further research is very likely to have an important impact on our confidence in the estimate of effect and is likely to change the estimate. Very low quality: We are very uncertain about the estimate
+⨁⨁⨁◯
+MODERATE c
+SMD 0.31 lower
+(0.46 lower to 0.15 lower)
+SMD 0.73 higher
+(0.1 lower to 1.56 higher)
+⨁⨁◯◯
+LOW c,g
+SMD 0.41 lower
+(0.76 lower to 0.06 lower)
+⨁◯◯◯
+VERY LOW c,e
+SMD 0.08 lower
+(0.54 lower to 0.38 higher)
+SMD 0.01 higher
+(0.34 lower to 0.35 higher)
+⨁⨁⨁◯
+MODERATE c
+SMD 0.23 lower
+(0.34 lower to 0.12 lower)
+⨁⨁◯◯
+LOW c,f
+SMD 0.08 lower
+(0.34 lower to 0.17 higher)
+⨁◯◯◯
+VERY LOW a,c,g
+SMD 0.7 lower
+(1.56 lower to 0.16 higher)
+⨁⨁⨁◯
+MODERATE c
+SMD 0.36 lower
+(0.54 lower to 0.19 lower)
+⨁⨁◯◯
+LOW c,f
+SMD 0 .21 lower
+(0.49 lower to 0.07 higher)
+⨁⨁◯◯
+LOW a,g
+SMD 0.28 lower
+(0.47 lower to 0.1 lower)
+⨁⨁◯◯
+LOW c,f
+SMD 0.09 lower
+(0.36 lower to 0.18 higher)
+⨁⨁◯◯
+LOW b,c
+SMD 0.44 lower
+(0.62 lower to 0.26 lower)
+⨁◯◯◯
+VERY LOW a,e
+SMD 0.23 lower
+(0.55 lower to 0.08 higher)
+⨁⨁⨁◯
+MODERATE c
+SMD 0.51 lower
+(0.87 lower to 0.15 lower)
+⨁⨁◯◯
+LOW c,f
+SMD 0.02 lower
+(0.39 lower to 0.34 higher)
+⨁◯◯◯
+VERY LOW c,e
+SMD 0.44 lower
+(0.98 lower to 0.11 higher)
+⨁◯◯◯
+VERY LOW a,d, g
+SMD 0.24 higher
+(0.51 lower to 0.99 higher)
+SMD 0.1 higher
+(0.66 lower to 0.85 higher)
+⨁⨁◯◯
+LOW c,f
+SMD 0.25 lower
+(0.61 lower to 0.1 higher)
+SMD 0.26 higher
+(0.17 lower to 0.68 higher)
+SMD 0.38 higher
+(0.13 lower to 0.90 higher)
+SMD 0.45 lower
+(0.79 lower to 0.11 lower)
+SMD 0.18 higher
+(0.33 lower to 0.69 higher)
+SMD 0.17 higher
+(0.23 lower to 0.56 higher)
+SMD 0.05 higher
+(0.69 lower to 0.79 higher)
+SMD 0.49 lower
+(1.07 lower to 0.08 higher)
+SMD 0
+(0.39 lower to 0.39 higher)
+⨁⨁⨁⨁
+HIGH
+SMD 0.5 lower
+(0.62 lower to 0.38 lower)
+SMD 1.28 lower
+(2.36 lower to 0.2 lower)
+SMD 0.82 higher
+(0.1 lower to 1.75 higher)
+⨁◯◯◯
+VERY LOW c,e
+SMD 0
+(1.09 lower to 1.09 higher)
+⨁⨁◯◯
+LOW c,f
+SMD 0.15 lower
+(0.51 lower to 0.22 higher)
+⨁⨁◯◯
+LOW c,f
+SMD 0.14 lower
+(0.38 lower to 0.11 higher)
+⨁◯◯◯
+VERY LOW c,e
+SMD 0.38 lower
+(1.05 lower to 0.29 higher)
+⨁⨁⨁◯
+MODERATE g
+SMD 0.41 lower
+(0.75 lower to 0.08 lower)
+SMD 0.83 lower
+(1.58 lower to 0.09 lower)
+SMD 0.47 lower
+(0.89 lower to 0.05 lower)
+SMD 0.06 lower
+(0.65 lower to 0.53 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.03 lower
+(0.47 lower to 0.41 higher)
+SMD 0.14 higher
+(0.03 lower to 0.31 higher)
+⨁◯◯◯
+VERY LOW a,c,e
+SMD 0.59 lower
+(1.4 lower to 0.22 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.11 lower
+(0.33 lower to 0.11 higher)
+⨁◯◯◯
+VERY LOW c,e
+SMD 0.34 lower
+(0.73 lower to 0.06 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.06 higher
+(0.23 lower to 0.34 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.27 lower
+(0.57 lower to 0.04 higher)
+SMD 0.53 lower
+(0.87 lower to 0.19 lower)
+⨁⨁◯◯
+LOW c,f
+SMD 0.15 lower
+(0.49 lower to 0.19 higher)
+SMD 0.14 higher
+(0.03 lower to 0.31 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.03 lower
+(0.48 lower to 0.43 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.03 lower
+(0.23 lower to 0.17 higher)
+⨁⨁◯◯
+LOW e
+SMD 0.12 higher
+(0.09 lower to 0.34 higher)
+⨁⨁⨁◯
+MODERATE f
+SMD 0.12 lower
+(0.36 lower to 0.13 higher)
+SMD 0.63 lower
+(1.22 lower to 0.03 lower)
+SMD 0.88 lower
+(1.65 lower to 0.11 lower)
+Schizophrenia
+/psychosis
+SMD 0.89 higher
+(0.25 higher to 1.53 higher)
+⨁◯◯◯
+VERY LOW c,f
+SMD 0.24 lower
+(0.81 lower to 0.33 higher)
+SMD 0.05 higher
+(0.58 lower to 0.68 higher)
+⨁⨁◯◯
+LOW c,f
+SMD 0.13 lower
+(0.39 lower to 0.12 higher)
+SMD 1.12 higher
+(0.37 higher to 1.87 higher)
+⨁◯◯◯
+VERY LOW c,g
+SMD 0.58 lower
+(1.14 lower to 0.01 lower)
+⨁◯◯◯
+VERY LOW d,e
+SMD 0.21 lower
+(0.97 lower to 0.55 higher)
+⨁⨁◯◯
+LOW a,c
+SMD 0.06 lower
+(0.23 lower to 0.11 higher)
+⨁⨁⨁◯
+MODERATE c
+SMD 0.24 lower
+(0.35 lower to 0.14 lower)
+⨁⨁◯◯
+LOW a,g
+SMD 0.47 lower
+(0.73 lower to 0.2 lower)
+SMD 0.85 lower
+(1.41 lower to 0.29 lower)
+⨁⨁◯◯
+LOW a,g
+SMD 0.55 lower
+(0.93 lower to 0.18 lower)
+⨁◯◯◯
+VERY LOW c,e
+SMD 0.2 lower
+(0.63 lower to 0.24 higher)
+⨁⨁⨁◯
+MODERATE g
+SMD 0.48 lower
+(0.92 lower to 0.04 lower)
+⨁⨁⨁◯
+MODERATE g
+SMD 1.01 lower
+(1.58 lower to 0.44 lower)
+⨁⨁◯◯
+LOW c,f
+OR 1.11
+(0.80 to 1.53)
+17 more per 1.000
+(33 fewer to 75 more)
+⨁◯◯◯
+VERY LOW a,e
+OR 1.03
+(0.76 to 1.40)
+7 more per 1.000
+(65 fewer to 83 more)
+⨁◯◯◯
+VERY LOW a,e
+OR 0.99
+(0.76 to 1.29)
+1 fewer per 1.000
+(30 fewer to 34 more)
+⨁◯◯◯
+VERY LOW a,e
+OR 0.99
+(0.79 to 1.25)
+2 fewer per 1.000
+(36 fewer to 39 more)
+⨁◯◯◯
+VERY LOW c,g
+OR 1.38
+(0.77 to 2.47)
+24 more per 1.000
+(15 fewer to 88 more)
+⨁⨁◯◯
+LOW c,f
+OR 1.17
+(0.92 to 1.49)
+23 more per 1.000
+(11 fewer to 64 more)
+⨁⨁◯◯
+LOW c
+OR 2.16
+(1.59 to 2.94)
+184 more per 1.000
+(108 more to 260 more)
+⨁⨁◯◯
+LOW a,c
+OR 2.75
+(1.43 to 5.26)
+240 more per 1.000
+(89 more to 355 more)
+⨁⨁⨁◯
+MODERATE c
+OR 3.12
+(1.52 to 6.42)
+251 more per 1.000
+(81 more to 426 more)
+⨁⨁◯◯
+LOW a,c
+OR 2.47
+(1.45 to 4.20)
+192 more per 1.000
+(71 more to 324 more)
+⨁⨁⨁◯
+MODERATE c
+OR 1.82
+(1.08 to 3.07)
+147 more per 1.000
+(19 more to 259 more)
+⨁⨁⨁◯
+MODERATE c
+OR 1.97
+(1.48 to 2.64)
+159 more per 1.000
+(95 more to 217 more)
+*The basis for the assumed risk (e.g. the median control group risk across studies) is provided in footnotes. The risk difference (and its 95% confidence interval) is based on the assumed risk in the comparison group and the relative effect of the intervention (and its 95% CI). CI confidence interval, OR odds ratio. aModerate-High risk of bias; bMany high risk of bias; cModerate-Substantial heterogeneity; dHigh heterogeneity; eOptimal information size not met, CI overlaps no effect; fOptimal information size met, CI overlaps no effect; gOptimal information size not met, CI excludes no effect
+GRADE summary graph. Percentage of studies showing high, moderate, low, very low evidence and single RCTs for each cannabinoid type (A) and outcome (B)
+Primary outcomes
+Chronic pain
+The meta-analysis (Fig. 3) showed the beneficial effect of cannabinoids on chronic pain (SMD − 0.26, 95% CI − 0.35 to − 0.17; P < 0.00001). Further subgroup analyses indicated that compared to placebo, dronabinol [10, 11, 95, 106, 139, 150, 161, 12, 23, 34, 45, 56, 72, 73, 84] and nabiximols [10, 33–44, 46–52] were associated with significant improvements and moderate evidence (Fig. 2B) in conditions causing chronic pain (dronabinol SMD − 0.31; nabiximols SMD − 0.25, P < 0.0001). Trials using nabilone vs placebo [114, 115, 118, 119, 122, 124–126, 162] (but not vs active [120, 121, 123]) also reported a significant effect (SMD − 0.41, P = 0.02), but the evidence on this effect was low (Fig. 2B). The to date single RCTs with CBD vs placebo [153] and dronabinol vs active drug [69] reported no effect.Fig. 3Chronic pain forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Chronic pain forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Spasticity with MS and paraplegia
+When all RCTs were pooled (Fig. 4), a significant effect favouring cannabinoids was found (SMD − 0.31, 95% CI − 0.45 to − 0.16; P < 0.0001). Yet, subgroup analyses indicated that only nabiximols [38, 40–44, 46, 47, 49, 53–55, 57, 58] were associated with improvements in spasticity (SMD − 0.36, 95% CI − 0.54 to − 0.19; P < 0.0001), and the limited number of studies found with dronabinol [12, 67, 70–72, 150] /nabilone [126, 127] did not provide enough evidence.Fig. 4Spasticity forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Spasticity forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Nausea and vomiting
+The meta-analysis of nausea and vomiting (Additional file 4: Fig. S9) including all studies showed a general efficacy of cannabinoids (SMD − 0.29, 95% CI − 0.39 to − 0.18; P < 0.00001). Confidence on the results from earlier trials reporting improvements in nausea and vomiting versus an active comparator (dronabinol [77, 80, 83, 87]: SMD − 0.28, P = 0.003; nabilone [129–138, 141]: SMD − 0.44, P < 0.00001) is low due to the lack of methodical rigor. Dronabinol [10, 76, 79, 81, 82, 85, 88, 91], nabilone [115, 140, 142, 162] and nabiximols [10, 59, 60, 62, 63, 85]) were not better than placebo.
+Appetite
+The meta-analysis (Fig. 5) showed the efficacy of cannabinoids for increasing appetite scores compared to the control arms (SMD − 0.26, P = 0.005). Only the combination of dronabinol-placebo [10, 74–76, 82, 85, 88–90, 92] (but not vs active [78, 83, 86]) retained the stimulating effect on appetite (SMD − 0.51, 95% CI − 0.87 to − 0.15; P = 0.006). Low/very low evidence and a lack of significance was found for nabilone (vs placebo [114, 115, 143, 162]: SMD − 044, P = 0.12; vs active [129, 137, 138]: SMD 0.24), CBD [154] (SMD 0.10, P = 0.80) or nabiximols [10, 40, 61–63, 85] (SMD − 0.25, P = 0.16).Fig. 5Appetite forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Appetite forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Amyotrophic lateral sclerosis
+To date, only one cross-over RCT with dronabinol [75] and one parallel RCT with nabiximols [40] have been carried out in patients suffering from ALS (Additional file 4: Fig. S10). The two trials did not report any improvement in ALS scores and the pooled effect indicated an almost significant effect favouring placebo (SMD 0.31, P = 0.07).
+Chorea Huntington
+The meta-analysis of the three included studies (Additional file 4: Fig. S11) showed a tendency towards favouring cannabinoids with significant subgroup differences (P = 0.03). That is, the calculated SMD from a single study with nabilone [144] (SMD − 0.45, 95% CI − 0.79 to − 0.11; P = 0.009) but not with CBD [155] or nabiximols [64] (SMD 0.18, P = 0.48 / SMD 0.17, P = 0.4) was significant.
+Dystonia
+Results with the three small cross-over studies (Additional file 4: Fig. S12) showed a potential benefit of nabilone [145] (SMD − 0.49, P = 0.09) and a lack of effect of nabiximols [64] (SMD 0) and dronabinol [73] (SMD 0.05).
+Epilepsy
+First reported by an early small study [156] and recently by a series of publications from a large international clinical trial [13, 157–160], CBD was associated with a significant decrease in seizure frequencies (Fig. 6, SMD − 0.50, 95% CI − 0.62 to 0.38; P < 0.00001).Fig. 6Epilepsy forest plot. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Epilepsy forest plot. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Glaucoma
+Only a very small cross-over trial [94] tested the effects of dronabinol and nabiximols on ocular hypertension (Additional file 4: Fig. S13). Dronabinol produced a transient benefit (SMD − 1.28, 95% CI − 2.36 to − 0.20; P = 0.02), while nabiximols (CBD combined with small amounts of dronabinol) resulted in a transient worsening (SMD − 0.82, P = 0.08).
+Irritable bowel syndrome
+Two (one parallel [106] and one cross-over [96]) studies tested the effect of acute dronabinol administration on colonic and visceral symptoms (Additional file 4: Fig. S14). Individual results favoured dronabinol and placebo, respectively, resulting in an overall no effect (SMD 0) with a very low evidence.
+Multiple sclerosis
+Nabiximols [41, 43, 49, 58, 65] or/and dronabinol [97, 117] did not improve symptoms associated with MS (Additional file 4: Fig. S15, overall SMD − 0.13, 95% CI − 0.31 to 0.05; P = 0.15), and none of the subgroups achieved significant improvements (dronabinol SMD − 0.15, P = 0.43; nabiximols SMD − 0.14, P = 0.28).
+Parkinson’s disease
+Meta-analysis from all studies (Fig. 7) favoured cannabinoids (SMD − 0.41, 95% CI − 0.69 to − 0.13; P = 0.004), and subgroup analyses indicated that CBD [14–16] (SMD − 0.41, 95% CI − 0.75 to − 0.08; P = 0.02) but not nabilone [125, 146] (SMD − 0.38; P = 0.27) was associated with a significant improvement in parkinsonian symptoms.Fig. 7Parkinson’ disease forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Parkinson’ disease forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+ADHD
+One small parallel RCT [66] comparing nabiximols with placebo in ADHD found significant differences in scores of hyperactivity and impulsivity (SMD − 0.83, 95% CI − 1.58 to − 0.09; P = 0.03).
+Anorexia nervosa
+Two small cross-over RCTs with dronabinol [98, 100] (Additional file 4: Fig. S16) found an increase in body weight when compared with placebo (SMD − 0.47; P = 0.03), but not with diazepam (SMD − 0.06, P = 0.84).
+Anxiety
+Measurements of anxiety were included in dronabinol vs placebo trials in 4 RCTs [23, 45, 92, 102] and vs prochlorperazine in one study [86]; nabilone in comparison with placebo trials in 6 RCTs [118, 119, 125, 143, 148, 151] and versus active comparators in two RCTs [121, 123]; in 11 RCTs [15–18, 20–22, 24, 25, 153, 163] comparing CBD to placebo and in six nabiximols trials [48, 53, 61–64]. The meta-analysis including all studies (Additional file 4: Fig. S17) showed that cannabinoids attenuate anxiety levels (SMD − 0.19, 95% CI − 0.37 to − 0.00; P = 0.05), but none of the subgroup analysis showed a significant improvement in anxiety. The quality of evidence of these results was low or very low (Fig. 2B).
+Dementia
+Disturbed, agitated behaviour in dementia was assessed in 4 RCTs (Additional file 4: Fig. S18), with an overall significant effect (SMD − 0.37, 95% CI − 0.61 to − 0.13; P = 0.002); however, the evidence for specific cannabinoids is low or missing (Fig. 2B). While the three studies with dronabinol [74, 105, 107] collectively did not reach significance (SMD − 0.27, P = 0.09), a single study with nabilone [114] reported a significant reduction (SMD − 0.53, 95% CI − 0.87 to − 0.19; P = 0.002).
+Depression
+Symptoms of depression caused by diverse medical conditions were evaluated with dronabinol in seven RCTs versus placebo [12, 23, 45, 75, 92, 102, 117] and in one study versus prochlorperazine [86]; with nabilone, three studies comparing placebo [118, 125, 151] and two comparing an active drug [121, 123] were carried out; placebo was compared with CBD in 6 RCTs [15, 19, 22, 24, 153, 154] and with nabiximols in 7 RCTs [48, 49, 53, 61–64]. The overall meta-analysis (Additional file 4: Fig. S19, SMD − 0.04, P = 0.53) was consistent with the results found in all subgroups reporting minor or no attenuations of depressive symptoms. CBD and nabilone did not modify depressive symptoms, and dronabinol and nabiximols showed a minor improvement compared with placebo (dronabinol: SMD − 0.15, P = 0.39; nabiximols: SMD − 0.12, P = 0.35), but the evidence was moderate only for nabiximols (Fig. 2B).
+PTSD
+Two small studies with dronabinol [104] and nabilone [152] (Additional file 4: Fig. S20) found significant improvements compared with placebo (dronabinol: SMD − 0.63, 95% CI − 1.22 to − 0.03; P = 0.04; nabilone: SMD − 0.88, 95% CI − 1.65 to − 0.11; P = 0.03).
+Schizophrenia and psychosis
+The trials evaluating PANNS symptoms (Additional file 4: Fig. S21) showed no effect of cannabinoids (SMD 0.04, P = 0.89) but with subgroup differences (P = 0.03). Thus, a study with dronabinol [108] found a deterioration (SMD 0.89, 95% CI 0.25 to 1.53; P = 0.007), whereas CBD [25, 26, 28, 164] had no effect but the grade of evidence was very low (Fig. 2B).
+Sleep
+Several trials included within their outcomes sleep measurements (Fig. 8). From the studies with dronabinol, seven [10, 12, 34, 75, 92, 109, 150] were compared to placebo and one cross-over [100] with diazepam; with nabilone, 6 trials [118, 125, 143, 149, 152, 162] used placebo and two trials [120, 123] used active comparators; and eight CBD [13, 15, 19, 22, 153, 157–159] and 23 nabiximols [10, 33–35, 37, 38, 40, 41, 43, 44, 46–52, 57, 58, 61–63] used placebo. The overall meta-analysis showed a clear improvement in sleep scores (SMD − 0.20, 95% CI − 0.29 to − 0.11; P < 0.0001), but also significant subgroup differences (P = 0.005). Significant effects favouring cannabinoids were restricted to trials comparing nabilone and nabiximols with placebo. Although nabiximols demonstrated the highest efficacy (SMD − 0.24, 95% CI − 0.35 to − 0.14; P < 0.00001) and a moderate quality evidence (Fig. 2B), meta-regression did not indicate a significant superiority versus nabilone (additional file 5, Q = 1.96, P = 0.1618).Fig. 8Sleep forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Sleep forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Substance abuse
+The overall analysis (Fig. 9) indicates that cannabinoids have a beneficial effect in the treatment of drug dependence (SMD − 0.41, 95% CI − 0.63 to − 0.19; P = 0.0003), an effect seen in all subgroup analyses except for CBD [19, 20, 22, 24, 30–32]. Although dronabinol [92, 110, 111] showed the highest efficacy (vs placebo: SMD − 0.47, P = 0.0006; vs. active [101]: SMD − 0.85; P = 0.003), followed by nabilone [143, 149, 151] (SMD − 0.55, 95% CI − 0.93 to − 0.18; P = 0.003), confidence on those results was low and the moderate evidence on the effect estimate was provided only by nabiximols [61–63, 68] (SMD − 0.48, 95% CI − 0.92 to − 0.04; P = 0.03) (Fig. 2B). Further meta-regression analysis indicated that the differences in the effect sizes were not related to the cannabinoid type (Additional file 5).Fig. 9SUDs forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+SUDs forest plot, stratified according to cannabinoid type and comparator used. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Tourette
+The two studies [103, 112] reporting the superiority of dronabinol over placebo in attenuating tics severity suggest that dronabinol may be beneficial for Tourette syndrome with a moderate grade of evidence (Fig. 2B) (Fig. 10, SMD − 1.01, 95% CI − 1.58 to − 0.44; P = 0.0005).Fig. 10Tourette forest plot. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Tourette forest plot. The horizontal lines indicate 95% CIs. The diamond markers represent the subtotal and overall weighed standardized mean difference (SMD) mean difference and 95% CI. The vertical line shows the line of no effect
+Secondary outcomes
+Dropouts and adverse events were analysed in 45 trials with dronabinol (37 vs placebo [10–12, 23, 34, 45, 70–76, 79, 81, 83–85, 88, 89, 91, 92, 94–96, 98, 102, 105–110, 112, 139, 150, 161] and 8 vs active comparators [69, 78, 80, 82, 86, 87, 100, 101]), 29 with nabilone (16 vs placebo [114, 118, 119, 124–127, 140, 142, 144–148, 151, 152] and 13 vs active drugs [120, 121, 123, 129, 130, 132–138, 141]) and in 22 and 33 with CBD [13–22, 26, 29, 30, 32, 153–160] and nabiximols [10, 33–38, 40–44, 46–55, 57–60, 64–66, 68, 85, 94], respectively vs placebo (Additional file 6).
+Retention
+Overall retention (Additional file 6: Fig. S22) for all cannabinoids was better in control arms, although not significantly different (OR 1.12, P = 0.1). After subgroup analyses, this result remained in CBD-containing medications versus placebo (OR 1.38, 95% CI 0.77 to 2.47 and OR 1.17, 95% CI 0.92 to 1.49) while dronabinol/nabilone subgroups had an almost identical proportion of dropouts in each treatment arm, regardless of the comparator used. The low/very low evidence of these results (Fig. 2B) suggests that retention may be influenced by other or additional factors than the treatment.
+Adverse events
+Despite the fact that the dropout rate in cannabinoid-treated patients does not differ from placebo or active comparators, all cannabinoids produce significant adverse events (Additional file 6: Fig. S23). The evidence was low for dronabinol versus placebo (OR 2.16, 95% CI 1.59 to 2.94; P < 0.00001) also in trials using active comparators (OR 2.75, 95% CI 1.43 to 5.26; P = 0.002), but nabiximols and nabilone were associated with a high number of participants reporting adverse events in comparison to placebo (nabiximols OR 1.97, 95% CI 1.48 to 2.64; nabilone OR 3.12, 95% CI 1.52 to 6.42). Though nabiximols showed the highest significance (P < 0.00001) and CBD the lowest (OR 1.82, 95% CI 1.08 to 3.07; P = 0.02), meta-regression analysis did not indicate significant differences (Additional file 5: Q = 0.04, P = 0.8424). It is also important to consider the severity and the adverse event-related dropouts. That is, severe or serious adverse events were reported only by 4.5% of the CBD trials followed by dronabinol and nabilone (5.4% and 6.3%), dronabinol versus active comparators (12.5%), nabiximols (15.2%) and nabilone versus active comparators with 23.1%; lowest adverse event-related dropouts were found with dronabinol and CBD (24.3% and 27.3%), followed by nabilone (vs placebo 43.8%, vs active comparator 53.8%), nabiximols (54.5%) and dronabinol vs active comparators (62.5%).
+Discussion
+Previous SRs and meta-analyses on cannabinoids [1–5] (and many others) did not consider, or only considered via sensitivity analysis, that medical cannabinoids and medical plant-derived cannabis products differ largely in their pharmacological mode of action [6–9] and pharmacokinetics [165]. For the first time, we provide pharmacology-based comparative systematic results for dronabinol, nabilone, CBD and nabiximols for all relevant medical indications. As shown in Fig. 2A, the confidence on the effect estimate strongly differs for these four medications. That is, high quality of evidence is seen only with CBD (6.7% of all CBD trials), and moderate quality of evidence is higher with CBD-containing (CBD 13.3%, nabiximols 37.5%) cannabinoids than with THC-containing (dronabinol 10%, nabilone 4.3%) medications. Notably, these differences are not directly related to a better efficacy, as the proportion of the 152 trials reporting positive results on their primary outcomes did not differ between cannabinoids (dronabinol 52%, nabilone 70%, CBD 52% and nabiximols 57%), resulting in an overall positive effect (data not shown, SMD − 0.33, 95% CI − 0.40 to 0.26; P = 0.0004). Although further meta-regression analyses did not show any specific impact of the cannabinoid type, we still found other differences for the four medications. First, CBD shows with a high grade of evidence effectiveness in the treatment of epilepsy (in particular for Dravet syndrome and Lennox-Gastaut syndrome). Second, there is an overall significant effect of cannabinoids on the improvement of chronic pain, but only dronabinol and nabiximols had moderate evidence. Third, although we found an overall significant effect of cannabinoids on appetite stimulation (especially in HIV/AIDS patients), this effect might be driven by dronabinol with a moderate grade of evidence. Fourth, although the overall effect in Parkinson favoured cannabinoids, only CBD seems to have an effect. Fifth, there was an overall significant effect of cannabinoids on improvement in sleep quality and disturbances and this effect was mainly driven by nabiximols. CBD does not improve sleep but the evidence for this is low. Therefore, it is unclear whether the THC or CBD component of nabiximols (because of low or very low evidence) induces this therapeutic effect. Finally, dronabinol and nabilone improves with a low grade of evidence nausea and vomiting due to chemotherapy. However, this effect is only significant in comparison to active comparators such as prochlorperazine that is not well tolerated by patients undergoing chemotherapy [166] and thus speaks against the use of THC-containing medications for the treatment of nausea and vomiting.
+A dichotomy of THC vs. CBD-containing medications is also seen with respect to alterations of physiological functions such as appetite in all medical indications. A recent meta-analysis shows that pharmaceutical THC (dronabinol, nabilone) has no negative effect on appetite, whereas CBD decreases appetite (OR = 2.46 [1.74:4.01] with moderate evidence) [167].
+In summary, all medical cannabinoid medications differ in their pharmacology, in their therapeutic profile, and in their profile of adverse events.
+The strengths of our study are that we performed for the first time a pharmacology-based comparative systematic analysis of medical cannabinoids. Whole plant-derived cannabis products were excluded from our analysis, as those products have a complex and undefined pharmacology. Thus, we also excluded cannabinoid products with undefined mixtures and other non-approved synthetic cannabinoids in order to reduce heterogeneity. We also excluded studies on healthy individuals and studies with no RCT design to reduce heterogeneity and increase the grade of evidence of our interpretations. Finally, data analysis using SMD allowed the inclusion of a large variety of measurements in the evaluation of the outcomes and allowed us to include many more RCTs for all relevant medical indications than in a previous extensive meta-analysis [3].
+There are also limitations. One limitation is the exclusion of an important number of studies (15% of all studies, 31% of all comparisons) that were unable to be graded as they are single RCTs for ALS, Chorea Huntington, dystonia, glaucoma, ADHD, anorexia and PTSD, and therefore could not be included in our conclusions (Fig. 2). Due to missing trials, which was especially the case with CBD for many indications, a second limitation is that we were often unable to directly compare all cannabinoid types, which strongly restricted our conclusions. A third limitation is the inclusion of several RCTs with small study sizes. Small study sizes are of particular concern as it has been previously demonstrated that effects are larger in small studies using cannabinoids [2, 168]. Differences in sample characteristics, durations of the trials and doses or route of administration contributed to heterogeneity in some comparisons, thus limiting the confidence on the findings and the meta-analyses results. In this regard, a systematic meta-regression approach adding those variables as covariates was not possible due to the small number of studies.
+In conclusion, medical cannabinoids have an overall positive therapeutic effect for epilepsy, chronic pain, spasticity, appetite, Parkinson’s disease, sleep, SUDs and Tourette. Cannabinoids produce significant adverse events and there is low to moderate grade of evidence for this conclusion depending on the type of cannabinoid. Adverse events produced by cannabinoids do not influence retention in clinical trials, as the dropout rate in cannabinoid-treated patients does not differ from placebo or active comparators. CBD trials reported less adverse events than trials with other medical cannabinoids, but regression analysis did not show any significant differences between these medications; noteworthy, CBD trials reported the lowest percentage of serious adverse events (4.5% of all trials compared with 23% of all nabilone trials).
+Most importantly, significant therapeutic effects of medical cannabinoids underlie a large variability in the grade of evidence that depends on the type of cannabinoid. Thus, CBD has a significant therapeutic effect for epilepsy and Parkinson’s disease. The grade of evidence for the treatment of CBD for these conditions is high/moderate. There is moderate evidence for dronabinol for the treatment of chronic pain, appetite and Tourette. Moderate evidence is obtained for nabiximols for having significant therapeutic effects on chronic pain, spasticity, sleep and SUDs. All other significant therapeutic effects of medical cannabinoids have either low, very low or even no grade of evidence, which is the case of single RCTs. In conclusion, dronabinol, nabilone, CBD and nabiximols not only differ in their pharmacology but also in their therapeutic profile. Therefore, future SRs and meta-analyses should consider the pharmacology of cannabinoids.
+Conclusions
+Cannabinoids are effective therapeutics for several medical indications if their specific pharmacological properties are considered. We suggest that future systematic studies in the cannabinoid field should be based upon their specific pharmacology.
+Methods
+Methodological details are provided in Additional file 1 [169–172].
+Study design
+This systematic review followed the Preferred Reporting Items for Systematic Reviews and Meta-analyses (PRISMA) guidelines [173] and was registered at PROSPERO (CRD42021229932).
+Search strategy and selection criteria
+We searched in eight databases using Medical Subject Heading (MeSH) terms on all literature published until May 2021 (updated in October 2021) separately for dronabinol, nabilone, cannabidiol and nabiximols (Fig. 1, Additional file 2: Table S1) [12, 59, 94, 174–263]. Studies identified by our search that fulfilled the inclusion criteria given below were reviewed by both authors and disagreements were solved through discussion or by consulting colleagues with long-standing expertise in the field of medical cannabinoids. The inclusion criteria were as follows:Type of studies: randomized controlled parallel and cross-over trials (RCTs) with allocation concealment that was blinded (single or double blinded) which examined the study objective. We excluded all other study designs, including cohort studies, case control studies, outcome research, case studies, case series, expert opinion and conference abstracts.Type of participants: humans of any age or sex, with a medical condition or health problem of any type.Types of interventions: four medical cannabinoids: dronabinol, nabilone, cannabidiol and nabiximols for the treatment of any medical condition. We excluded natural cannabis-based formulations (i.e. smoked marijuana). If a study compared one type of cannabinoid to another or one type of cannabinoid with another active drug, we included both arms. The following indications were included: chronic pain; spasticity with multiple sclerosis and paraplegia; nausea, vomiting or loss of appetite; gastroenterological, neurodegenerative and other neurological diseases including: amyotrophic lateral sclerosis, irritable bowel syndrome, multiple sclerosis (tremor and bladder dysfunction), Chorea Huntington, epilepsy, dystonia, Parkinson and glaucoma, and psychiatric disorders including ADHD, anorexia nervosa, anxiety disorders, dementia, depression, psychotic disorders and schizophrenia, PTSD, sleeping disorders, substance abuse disorders and Tourette.Types of outcomes measures: Eligible outcomes were patient-important and disease-specific outcomes (primary outcomes), retention and adverse events (secondary outcomes).
+Type of studies: randomized controlled parallel and cross-over trials (RCTs) with allocation concealment that was blinded (single or double blinded) which examined the study objective. We excluded all other study designs, including cohort studies, case control studies, outcome research, case studies, case series, expert opinion and conference abstracts.
+Type of participants: humans of any age or sex, with a medical condition or health problem of any type.
+Types of interventions: four medical cannabinoids: dronabinol, nabilone, cannabidiol and nabiximols for the treatment of any medical condition. We excluded natural cannabis-based formulations (i.e. smoked marijuana). If a study compared one type of cannabinoid to another or one type of cannabinoid with another active drug, we included both arms. The following indications were included: chronic pain; spasticity with multiple sclerosis and paraplegia; nausea, vomiting or loss of appetite; gastroenterological, neurodegenerative and other neurological diseases including: amyotrophic lateral sclerosis, irritable bowel syndrome, multiple sclerosis (tremor and bladder dysfunction), Chorea Huntington, epilepsy, dystonia, Parkinson and glaucoma, and psychiatric disorders including ADHD, anorexia nervosa, anxiety disorders, dementia, depression, psychotic disorders and schizophrenia, PTSD, sleeping disorders, substance abuse disorders and Tourette.
+Types of outcomes measures: Eligible outcomes were patient-important and disease-specific outcomes (primary outcomes), retention and adverse events (secondary outcomes).
+Data were extracted based on the PICO (Population, Intervention, Comparator and Outcome) format. Risk of bias was assessed using the Cochrane Collaboration’s tool for assessing risk of bias as outlined in the Cochrane Handbook for Systematic Reviews of Interventions [169] and contained in Review Manager (RevMan) version 5.4.1. (The Cochrane Collaboration, 2020). Grading of evidence was assessed using GRADEpro [170]. Both assessments were completed independently by both reviewer authors.
+Data synthesis and statistical analysis
+All analyses were conducted using Review Manager (RevMan) version 5.4.1. (The Cochrane Collaboration, 2020). Dichotomous and continuous outcomes were pooled as odds ratios (ORs) and standardized mean difference (SMD), respectively using random effects. For cross-over trials, SMD and SE were calculated with the correlation coefficient estimated at 0.5, according to the Becker-Balagtas marginal method [171]. Heterogeneity was assessed using the I2 statistic. Analyses were stratified by outcome and conducted with subgroup analyses by cannabinoid type and comparator. For direct comparisons between two subgroups, meta-regression was performed using type of cannabinoid as covariate.
+Supplementary Information
+Additional file 1. Methodological details.Additional file 2. Abbreviations and characteristics of excluded and included studies.Additional file 3. Risk of bias assessments of included studies.Additional file 4. Forest-plot for primary outcomes.Additional file 5. Meta-regression analysis.Additional file 6. Forest-plot for secondary outcomes: retention and adverse events.
+Additional file 1. Methodological details.
+Additional file 2. Abbreviations and characteristics of excluded and included studies.
+Additional file 3. Risk of bias assessments of included studies.
+Additional file 4. Forest-plot for primary outcomes.
+Additional file 5. Meta-regression analysis.
+Additional file 6. Forest-plot for secondary outcomes: retention and adverse events.

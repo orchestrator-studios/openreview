@@ -20,6 +20,13 @@ pipeline updates as the work lands), and **the files themselves** (the ground tr
 result is a review whose every number can be traced back to its source and re-derived by someone who does
 not take your word for it.
 
+The dashboard is built around a **live PRISMA flow** — the identification → screening → included funnel every
+systematic reviewer already reads — except every count is a button. Click *excluded at title/abstract*, a
+single exclusion reason, or *included*, and the exact records behind it open, filtered to that set. Above it
+sits a reconciling snapshot bar (*retrieved − duplicates = unique*, green included / red excluded), and it
+all moves as screening lands. The audit trail isn't a diagram you draw at the end; it's the interface you
+work in.
+
 It ships with one finished review already inside — a study of how genetic mutations affect mice's
 susceptibility to asbestos-induced mesothelioma — so there is something real to look at from the first minute.
 

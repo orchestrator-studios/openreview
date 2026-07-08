@@ -64,63 +64,14 @@
   .panel{display:none;padding:26px 0 60px;}
   .panel.on{display:block;}
 
-  /* methodology */
-  .ribbon{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:4px 0 30px;
-    border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);}
-  .rnode{flex:1;min-width:130px;padding:14px 16px;border-right:1px solid var(--line-2);cursor:pointer;
-    background:none;border-top:0;border-bottom:0;border-left:0;text-align:left;font-family:var(--sans);color:inherit;transition:background .12s;}
-  .rnode:last-child{border-right:0;}
-  .rnode:hover{background:var(--surface-2);}
-  .rnode .rk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
-  .rnode .rv{font-family:var(--serif);font-size:26px;font-weight:600;margin-top:3px;line-height:1;}
-  .rnode .rs{font-size:11.5px;color:var(--ink-2);margin-top:4px;}
-  .rnode.final .rv{color:var(--pos);}
-  .rnode .arrow{color:var(--ink-3);}
 
-  .steps{display:flex;flex-direction:column;gap:0;}
-  .step{display:grid;grid-template-columns:38px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line-2);}
-  .step:first-child{border-top:0;}
-  .snum{width:34px;height:34px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);
-    font-family:var(--mono);font-weight:700;font-size:14px;display:grid;place-items:center;}
-  .step h3{font-family:var(--serif);font-size:18px;font-weight:600;}
-  .step .sdesc{color:var(--ink-2);font-size:13.5px;margin:6px 0 0;max-width:78ch;}
-  .step .sbody{margin-top:14px;}
-  .carry{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:12.5px;color:var(--ink-2);
-    background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;padding:7px 11px;}
-  .carry b{font-family:var(--serif);font-size:16px;color:var(--ink);font-weight:600;}
-  .recon{color:var(--pos);font-weight:600;font-family:var(--mono);font-size:12px;}
-
-  /* a drillable data button */
-  .drill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
-    border-radius:8px;padding:6px 10px;cursor:pointer;font-family:var(--sans);font-size:13px;color:var(--ink);
-    transition:border-color .12s,background .12s;text-align:left;}
-  .drill:hover{border-color:var(--accent);background:var(--surface-2);}
-  .drill .dv{font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent-ink);}
-  .drill .go{color:var(--ink-3);font-size:12px;}
-  .drill.pos .dv{color:var(--pos);}
-  .drill.neg .dv{color:var(--neg);}
-
-  /* tables inside steps */
-  .qtable,.rtable,.xtable{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;}
-  .qtable th,.rtable th,.xtable th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;
-    color:var(--ink-3);font-weight:600;padding:8px 9px;border-bottom:1px solid var(--line);}
-  .qtable td,.rtable td,.xtable td{padding:9px;border-bottom:1px solid var(--line-2);vertical-align:top;}
-  .qtable tr:hover td,.rtable tr.click:hover td{background:var(--surface-2);cursor:pointer;}
-  .qstr{font-family:var(--mono);font-size:11px;line-height:1.55;color:var(--ink-2);white-space:pre-wrap;
-    max-width:560px;}
-  .qtable td.n,.rtable td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
-  .rtable td.reason{font-family:var(--mono);font-size:11.5px;}
-  .rtable .bar{height:5px;border-radius:3px;background:var(--neutral);margin-top:6px;}
-  .totrow td{border-top:2px solid var(--line);font-weight:600;background:var(--surface-2);}
+  /* extraction table (Findings) */
   .xwrap{overflow-x:auto;border:1px solid var(--line-2);border-radius:10px;}
-  .xtable{margin-top:0;}
-  .xtable th{background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap;}
-  .xtable td{border-bottom:1px solid var(--line-2);}
+  .xtable{width:100%;border-collapse:collapse;font-size:12.5px;}
+  .xtable th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--ink-3);font-weight:600;padding:8px 9px;background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap;}
+  .xtable td{padding:9px;border-bottom:1px solid var(--line-2);vertical-align:top;}
   .xtable td.study{white-space:nowrap;font-weight:500;}
-
-  .method-note{font-size:12.5px;color:var(--ink-2);background:var(--surface-2);border-left:3px solid var(--accent);
-    padding:9px 13px;border-radius:0 8px 8px 0;margin-top:12px;max-width:80ch;}
-  .method-note b{color:var(--ink);}
 
   /* records explorer */
   .toolbar{position:sticky;top:56px;z-index:20;background:var(--ground);padding:8px 0 10px;
@@ -415,8 +366,6 @@ const nInc = R.filter(r=>r.status==="included").length;
 const nTaExc = R.filter(isTaExc).length;
 const nFtExc = R.filter(isFtExc).length;
 const nPassedTa = N - nTaExc;                    // survived first pass (completed-review view)
-const PROJ = DATA.projection || {};              // canonical projection, correct at any stage
-const nScreened = N - ((PROJ.totals||{}).unscreened || 0);  // records with a screening decision so far
 const searchByLabel = {};
 (P.searches||[]).forEach(s=>{ const m=s.note.match(/label=([^;]+)/); if(m) searchByLabel[m[1]]=s; });
 // per-query returned + cumulative-new in execution order
@@ -506,118 +455,6 @@ function openRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hi
 function closeRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
 // direct activation: clears every filter, then opens the modal on the full corpus
 function openAllRecords(){ Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""}); syncControls(); render(); openRecords(); }
-function drillBtn(text, count, opts, cls){
-  return el("button",{class:"drill"+(cls?" "+cls:""),type:"button",onclick:()=>drill(opts)},
-    el("span",{text:text}), el("span",{class:"dv num",text:count}), el("span",{class:"go",text:"→"}));
-}
-
-// ---------- METHODOLOGY ----------
-function buildMethod(){
-  const p=document.getElementById("panel-method");
-  p.append(el("div",{},
-    el("div",{class:"sec-h",text:"Methodology & audit trail"}),
-    el("p",{class:"sec-sub"},"The exact, reproducible path from search to the final included set. The at-a-glance funnel and where-we-are are in the header above; this is the reproducible detail behind them. Every number below is a button — click it to open the Records tab filtered to precisely that set. Counts reconcile at each stage.")));
-
-  const steps=el("div",{class:"steps"});
-
-  // Step 1 — search
-  const qtable=el("table",{class:"qtable"});
-  qtable.append(el("thead",{}, el("tr",{},
-    el("th",{text:"#"}),el("th",{text:"Query label"}),el("th",{text:"PubMed query (Boolean)"}),
-    el("th",{class:"n",text:"Hits"}),el("th",{class:"n",text:"New unique"}),el("th",{class:"n",text:"Cumulative"}))));
-  const qb=el("tbody");
-  qrows.forEach((q,i)=>{
-    const tr=el("tr",{onclick:()=>drill({query:q.label})},
-      el("td",{class:"n",text:i+1}),
-      el("td",{}, el("span",{class:"mono",text:q.label}), el("div",{style:"color:var(--pos);font-size:11px;margin-top:3px",text:q.inc+" later included"})),
-      el("td",{}, el("div",{class:"qstr",text:q.s.query})),
-      el("td",{class:"n",text:q.returned}),
-      el("td",{class:"n",text:"+"+q.added}),
-      el("td",{class:"n",text:q.cumulative}));
-    qb.append(tr);
-  });
-  qb.append(el("tr",{class:"totrow"},
-    el("td",{class:"n"}),el("td",{text:"Total"}),el("td",{text:"NCBI E-utilities · run "+"__DATE__"}),
-    el("td",{class:"n num",text:rawRetrievals}),el("td",{class:"n num",text:N}),el("td",{class:"n"})));
-  qtable.append(qb);
-  steps.append(el("div",{class:"step"},
-    el("div",{class:"snum",text:"1"}),
-    el("div",{},
-      el("h3",{text:"Information sources & search"}),
-      el("p",{class:"sdesc"},"PubMed/MEDLINE was searched via NCBI E-utilities on "+"__DATE__"+". Three complementary queries were run in the order shown; each is reproducible verbatim (see the Protocol tab for the exact commands). Click any row to see everything that query returned."),
-      el("div",{class:"sbody"}, qtable))));
-
-  // Step 2 — dedup
-  const otable=el("table",{class:"rtable"});
-  otable.append(el("thead",{}, el("tr",{}, el("th",{text:"Returned by…"}), el("th",{class:"n",text:"Records"}))));
-  const ob=el("tbody");
-  [1,2,3].filter(c=>byCount[c]).forEach(c=>{
-    ob.append(el("tr",{class:"click",onclick:()=>drill({foundCount:c})},
-      el("td",{text:c+(c===1?" query only":" queries")}),
-      el("td",{class:"n",text:byCount[c]})));
-  });
-  ob.append(el("tr",{class:"totrow"}, el("td",{text:"Unique records"}), el("td",{class:"n num",text:N})));
-  otable.append(ob);
-  steps.append(el("div",{class:"step"},
-    el("div",{class:"snum",text:"2"}),
-    el("div",{},
-      el("h3",{text:"De-duplication"}),
-      el("p",{class:"sdesc"},"Records were de-duplicated by PMID. The "+rawRetrievals+" raw retrievals collapsed to "+N+" unique records ("+dupesRemoved+" duplicate retrievals removed). Provenance is retained per record — a study returned by several queries is counted once but remembers all of them."),
-      el("div",{class:"sbody",style:"max-width:420px"}, otable),
-      el("span",{class:"carry"},"Carried forward: ",el("b",{class:"num",text:N})," unique records ",el("span",{class:"recon",text:"("+rawRetrievals+" − "+dupesRemoved+" = "+N+" ✓)"})))));
-
-  // Step 3 — title/abstract
-  steps.append(el("div",{class:"step"},
-    el("div",{class:"snum",text:"3"}),
-    el("div",{},
-      el("h3",{text:"Title / abstract screening"}),
-      el("p",{class:"sdesc"},"All "+N+" records were assessed against the four inclusion criteria from title and abstract. A record was excluded only when it clearly failed a criterion; anything that could not be confidently ruled out was carried to full-text (conservative rule). Each exclusion carries a single decisive reason."),
-      reasonTable(taReasons, nTaExc, "ta-excluded"),
-      el("div",{style:"display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"},
-        drillBtn("Excluded here", nTaExc, {scope:"ta-excluded"}, "neg"),
-        drillBtn("Retained for full-text", nPassedTa, {scope:"ta-passed"}, "pos")),
-      el("span",{class:"carry"},"Carried forward: ",el("b",{class:"num",text:nPassedTa})," records ",el("span",{class:"recon",text:"("+N+" − "+nTaExc+" = "+nPassedTa+" ✓)"})),
-      el("div",{class:"method-note"}, el("b",{text:"How screening was done. "}), SCREEN_METHOD_NOTE))));
-
-  // Step 4 — full-text
-  steps.append(el("div",{class:"step"},
-    el("div",{class:"snum",text:"4"}),
-    el("div",{},
-      el("h3",{text:"Full-text assessment"}),
-      el("p",{class:"sdesc"},"The "+nPassedTa+" retained records were assessed in full. "+nFtExc+" were excluded — each uses a genetic mesothelioma model but does not test how the genotype affects susceptibility (drug, biomarker, model-building, or fibre-toxicity studies)."),
-      reasonTable(ftReasons, nFtExc, "ft-excluded"),
-      el("div",{style:"display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"},
-        drillBtn("Excluded at full-text", nFtExc, {scope:"ft-excluded"}, "neg"),
-        drillBtn("Included", nInc, {scope:"included"}, "pos")),
-      el("span",{class:"carry"},"Carried forward: ",el("b",{class:"num",text:nInc})," included ",el("span",{class:"recon",text:"("+nPassedTa+" − "+nFtExc+" = "+nInc+" ✓)"})))));
-
-  // Step 5 — included
-  steps.append(el("div",{class:"step"},
-    el("div",{class:"snum",text:"5"}),
-    el("div",{},
-      el("h3",{text:"Included studies & data extraction"}),
-      el("p",{class:"sdesc"},nInc+" studies met all "+(P.inclusion_criteria||[]).length+" criteria. Structured data were extracted into "+nGeneArms+" "+((PROFILE.arm_noun||"arm"))+"s (a study reporting several conditions yields several arms). See the Findings tab for the full extraction table and the summary."),
-      el("div",{style:"display:flex;gap:10px;flex-wrap:wrap;margin-top:6px"},
-        drillBtn("Included studies", nInc, {scope:"included"}, "pos"),
-        el("button",{class:"drill",type:"button",onclick:()=>setTab("findings")}, el("span",{text:"Open extraction table"}), el("span",{class:"go",text:"→"}))),
-      el("span",{class:"carry"},"Full reconciliation: ",el("span",{class:"recon",text:nTaExc+" + "+nFtExc+" + "+nInc+" = "+N+" ✓"})))));
-
-  p.append(steps);
-}
-function reasonTable(rows, total, scope){
-  const max=Math.max(...rows.map(r=>r[1]),1);
-  const t=el("table",{class:"rtable"});
-  t.append(el("thead",{}, el("tr",{}, el("th",{text:"Exclusion reason"}), el("th",{class:"n",text:"n"}))));
-  const b=el("tbody");
-  rows.forEach(([reason,ct])=>{
-    b.append(el("tr",{class:"click",onclick:()=>drill({scope:scope,reason:reason})},
-      el("td",{class:"reason"}, reason, el("div",{class:"bar",style:"width:"+Math.round(100*ct/max)+"%;max-width:220px"})),
-      el("td",{class:"n",text:ct})));
-  });
-  b.append(el("tr",{class:"totrow"}, el("td",{text:"Total excluded"}), el("td",{class:"n num",text:total})));
-  t.append(b);
-  return el("div",{style:"max-width:520px"}, t);
-}
 
 // ---------- RECORDS ----------
 let listEl,chipsEl,resEl,qInput,fScope,fQuery,fReason,fEffect,bannerEl;
