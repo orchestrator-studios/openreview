@@ -98,13 +98,13 @@ yourself, or just want to explore the bundled example first? `python tools/serve
 finished example inside — a real PubMed review on genetic susceptibility to asbestos-induced mesothelioma in
 mice — so there's something to explore from the first minute.)*
 
-**3. Follow along.** Click the card the moment it appears. It opens on the **Protocol** — the question and
-criteria Claude just wrote — so the first thing you do is check what it set out to find. Then move across the
-stops at the top: **Pipeline activity** as the funnel fills, **Findings** for the included studies, **Eval**
-for the quality gate. Every number is a link — click it to see the exact papers behind it. The dashboard also
-pings you at the two moments that matter: when your review first appears, and when it reaches the evaluation
-gate (passed, or paused for a decision only you can make) — so you can leave it open beside your chat and look
-over when it calls.
+**3. Follow along.** The dashboard interrupts you — with a pop-up, not a quiet card — at the two moments that
+matter. First, the moment Claude finishes the **protocol**: a modal shows you the question and criteria it
+set out to find, and *"See it"* drops you into the review on **Pipeline activity**, where you watch the search
+funnel fill. Then, when the review reaches the **evaluation gate**, a second modal announces it — passed, or
+paused for a decision only you can make. In between, move across the stops at the top (**Pipeline activity**,
+**Findings**, **Eval**) and click any number to see the exact papers behind it. Leave the page open beside
+your chat and it calls you when there's something to see.
 
 **4. Expect some back-and-forth.** A review isn't a one-way conveyor. Claude loops back when it should —
 re-running or widening the queries after seeing the first results were too broad or too thin, re-screening a

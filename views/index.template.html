@@ -101,31 +101,35 @@
   .rev.ex{border-style:dashed;}
   .exlabel{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin-bottom:-2px;}
 
-  /* first-review call-to-action */
-  .firstcta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px;
-    padding:16px 20px;border:1px solid var(--accent);border-radius:14px;background:var(--accent-soft);
-    color:var(--ink);box-shadow:var(--shadow);animation:ctapop .5s ease-out;transition:background .15s;}
-  @keyframes ctapop{0%{transform:scale(.98);opacity:.3;}100%{transform:scale(1);opacity:1;}}
-  .firstcta:hover{background:var(--accent);color:#fff;}
-  .firstcta .fc-k{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-ink);}
-  .firstcta:hover .fc-k,.firstcta:hover .fc-s{color:#fff;}
-  .firstcta .fc-t{font-family:var(--serif);font-size:19px;font-weight:600;margin-top:3px;line-height:1.2;}
-  .firstcta .fc-s{font-size:13px;color:var(--ink-2);margin-top:4px;}
-  .firstcta .fc-go{flex:none;font-weight:600;font-size:14px;border:1px solid currentColor;border-radius:9px;padding:9px 15px;white-space:nowrap;}
+  @keyframes ctapop{0%{transform:scale(.96);opacity:0;}100%{transform:scale(1);opacity:1;}}
 
-  /* eval-ready alert — fires when a review reaches the evaluation gate (passes, or pauses for you) */
-  .evalcta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px;
-    padding:16px 20px;border-radius:14px;box-shadow:var(--shadow);animation:ctapop .5s ease-out;
-    transition:filter .15s;color:var(--ink);}
-  .evalcta:hover{filter:brightness(1.03);}
-  .evalcta.pass{border:1px solid var(--pos);background:var(--pos-soft);}
-  .evalcta.paused{border:1px solid var(--warn);background:var(--warn-soft);}
-  .evalcta .ec-k{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
-  .evalcta.pass .ec-k{color:var(--pos);} .evalcta.paused .ec-k{color:var(--warn);}
-  .evalcta .ec-t{font-family:var(--serif);font-size:19px;font-weight:600;margin-top:3px;line-height:1.2;}
-  .evalcta .ec-s{font-size:13px;color:var(--ink-2);margin-top:4px;max-width:70ch;}
-  .evalcta .ec-go{flex:none;font-weight:600;font-size:14px;border:1px solid currentColor;border-radius:9px;padding:9px 15px;white-space:nowrap;}
-  .evalcta.pass .ec-go{color:var(--pos);} .evalcta.paused .ec-go{color:var(--warn);}
+  /* milestone modal — the loud interrupt at protocol-defined and evaluation-ready */
+  .amodal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .amodal[hidden]{display:none;}
+  .amodal-backdrop{position:absolute;inset:0;background:rgba(12,22,28,.55);}
+  .amodal-box{position:relative;z-index:1;background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    box-shadow:0 16px 54px rgba(0,0,0,.36);width:min(560px,100%);max-height:86vh;overflow:auto;
+    padding:24px 26px 20px;border-top:4px solid var(--accent);animation:ctapop .34s ease-out;}
+  .amodal-box.pass{border-top-color:var(--pos);} .amodal-box.paused{border-top-color:var(--warn);}
+  .am-k{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);}
+  .amodal-box.pass .am-k{color:var(--pos);} .amodal-box.paused .am-k{color:var(--warn);}
+  .am-t{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.2;margin:7px 0 0;color:var(--ink);}
+  .am-q{color:var(--ink-2);font-size:14px;line-height:1.5;margin:8px 0 0;}
+  .am-body{margin-top:15px;border-top:1px solid var(--line-2);padding-top:14px;display:flex;flex-direction:column;gap:13px;}
+  .am-body .lbl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;}
+  .am-body ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:13px;line-height:1.5;}
+  .am-body li{margin:3px 0;}
+  .am-q2{color:var(--ink-2);font-size:13px;line-height:1.55;}
+  .am-chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .am-chip{font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-2);color:var(--ink-2);}
+  .am-muted{color:var(--ink-3);font-size:12px;margin-top:14px;}
+  .am-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px;}
+  .am-cancel{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:10px;height:40px;padding:0 16px;font-size:13.5px;cursor:pointer;}
+  .am-cancel:hover{color:var(--ink);border-color:var(--ink-3);}
+  .am-go{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:10px;font-weight:600;
+    font-size:14px;color:#fff;background:var(--accent);border:1px solid var(--accent);white-space:nowrap;cursor:pointer;}
+  .amodal-box.pass .am-go{background:var(--pos);border-color:var(--pos);} .amodal-box.paused .am-go{background:var(--warn);border-color:var(--warn);}
+  .am-go:hover{filter:brightness(1.06);}
   footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink-3);font-size:12px;}
   footer code{font-family:var(--mono);color:var(--ink-2);}
 </style></head>
@@ -154,14 +158,18 @@
   </footer>
 </div>
 
+<div id="amodal" class="amodal" hidden></div>
+
 <script>
 const POLL_MS = Math.max(2, +(new URLSearchParams(location.search).get("poll")) || 4) * 1000;
 const $ = id => document.getElementById(id);
-let known = null;           // Set of slugs seen so far (null until first load)
-let hadUserReviews = false; // have we seen a user (non-example) review yet this session?
-let ctaSlug = null;         // first user review's slug — keep its "open it" prompt up until clicked
+let known = null;           // Set of slugs seen so far (null until first load) — drives the "fresh" card pop
+let protoSeen = null;       // Set of slugs whose protocol we've already announced (null until first-load seed)
 let evState = new Map();    // slug -> last-seen eval status ('pending'|'paused'|'pass')
-let evAlerts = new Map();   // slug -> {slug,kind,title} for reviews that reached the gate while watching
+let evSeen = new Set();     // slugs whose evaluation milestone we've already announced
+let dismissed = new Set();  // announcement keys the user cancelled — never re-raise this session
+let modalQueue = [];        // pending milestone announcements, shown one at a time
+let activeKey = null;       // key of the announcement currently on screen (null = none)
 
 function el(tag, props, ...kids){
   const n=document.createElement(tag); props=props||{};
@@ -230,30 +238,29 @@ function render(list){
   const examples = list.filter(r=>r.example);
   const children = [];
 
-  // Eval-ready alert: the counterpart to the birth CTA. When a user review crosses the
-  // evaluation gate — passes, or pauses needing a decision — while the user is watching,
-  // raise a persistent banner so the verdict pulls them back to the tab. State is seeded
-  // silently on the first load (known===null), so a review already finished at page-open
-  // (the bundled example, or a review left overnight) never fires — only a transition we
-  // actually witness does.
-  for(const r of users){
-    const now = r.eval_status || "pending";
-    if(known!==null && evState.get(r.slug)==="pending" && (now==="pass"||now==="paused") && !evAlerts.has(r.slug))
-      evAlerts.set(r.slug, {slug:r.slug, kind:now, title:r.title||r.slug});
-    evState.set(r.slug, now);
+  // Milestone announcements — the two loud interrupts. (1) A protocol is defined: a brand-new
+  // user review appears (the server lists a review the instant its protocol exists). (2) A review
+  // reaches the evaluation gate (pass/paused). Both seed silently on the first load, so anything
+  // already present at page-open (the example, or reviews from a prior session) never fires — only
+  // a transition we witness while watching raises a modal.
+  if(protoSeen===null){
+    protoSeen = new Set(users.map(r=>r.slug));
+    for(const r of users) evState.set(r.slug, r.eval_status||"pending");
+  } else {
+    for(const r of users){
+      if(!protoSeen.has(r.slug)){
+        protoSeen.add(r.slug);
+        enqueueModal({kind:"protocol", slug:r.slug, title:r.title||r.slug, question:r.question||""});
+      }
+      const now = r.eval_status||"pending";
+      if(evState.get(r.slug)==="pending" && (now==="pass"||now==="paused") && !evSeen.has(r.slug)){
+        evSeen.add(r.slug);
+        enqueueModal({kind:"eval", ev:now, slug:r.slug, title:r.title||r.slug});
+      }
+      evState.set(r.slug, now);
+    }
   }
-  for(const slug of [...evAlerts.keys()]) if(!slugs.has(slug)) evAlerts.delete(slug);
-  for(const a of evAlerts.values()) if(slugs.has(a.slug)) children.push(evalCta(a));
-
-  // First-review call-to-action: the instant the user's first own review appears (while they're
-  // watching — not on a reload), guide them into it with a loud, obvious prompt. It persists across
-  // polls until they click through, so it never just flashes and vanishes.
-  if(users.length && !hadUserReviews && known!==null && !ctaSlug) ctaSlug = users[0].slug;
-  hadUserReviews = hadUserReviews || users.length>0;
-  if(ctaSlug){
-    const r = users.find(u=>u.slug===ctaSlug);
-    if(r) children.push(firstReviewCta(r));
-  }
+  pumpModal();
 
   // Guidance shows while the user has no review of their own — whether the workspace is
   // truly empty or holds only the bundled example. Once they have their own, it steps aside.
@@ -277,26 +284,105 @@ function render(list){
   known=slugs;
 }
 
-function firstReviewCta(r){
-  return el("a",{class:"firstcta",href:"/dashboard/"+encodeURIComponent(r.slug)},
-    el("div",{},
-      el("div",{class:"fc-k",text:"✨ Your review is ready"}),
-      el("div",{class:"fc-t",text:r.title||r.slug}),
-      el("div",{class:"fc-s",text:"Claude has created it. Open it to watch the search and screening happen live."})),
-    el("span",{class:"fc-go",text:"Open it →"}));
+// ---------- milestone modals ----------
+function modalKey(a){ return a.kind+":"+a.slug+(a.ev?":"+a.ev:""); }
+function enqueueModal(a){
+  a.key = modalKey(a);
+  if(dismissed.has(a.key) || a.key===activeKey || modalQueue.some(x=>x.key===a.key)) return;
+  modalQueue.push(a);
 }
+function pumpModal(){
+  if(activeKey) return;                              // one at a time
+  let a;
+  while((a=modalQueue.shift())){ if(!dismissed.has(a.key)) break; a=null; }
+  if(!a) return;
+  activeKey = a.key;
+  showModal(a);
+}
+function closeModal(dismiss){
+  if(dismiss && activeKey) dismissed.add(activeKey);
+  activeKey = null;
+  const host=$("amodal"); host.hidden=true; host.replaceChildren(); document.body.style.overflow="";
+  pumpModal();                                       // show the next queued milestone, if any
+}
+function actionsRow(href, goText, muted){
+  const cancel=el("button",{class:"am-cancel",type:"button",text:"Cancel",onclick:()=>closeModal(true)});
+  const go=el("a",{class:"am-go",href:href,text:goText,onclick:()=>{ if(activeKey) dismissed.add(activeKey); }});
+  return el("div",{},
+    muted?el("div",{class:"am-muted",text:muted}):null,
+    el("div",{class:"am-actions"}, cancel, go));
+}
+async function showModal(a){
+  const host=$("amodal");
+  const box=el("div",{class:"amodal-box"+(a.kind==="eval"?" "+a.ev:"")});
+  const backdrop=el("div",{class:"amodal-backdrop",onclick:()=>closeModal(true)});
+  host.replaceChildren(backdrop, box);
+  host.hidden=false; document.body.style.overflow="hidden";
 
-function evalCta(a){
-  const pass = a.kind==="pass";
-  return el("a",{class:"evalcta"+(pass?" pass":" paused"),href:"/dashboard/"+encodeURIComponent(a.slug)},
-    el("div",{},
-      el("div",{class:"ec-k",text: pass ? "✓ Evaluation passed" : "⏸ Evaluation paused — needs you"}),
-      el("div",{class:"ec-t",text:a.title}),
-      el("div",{class:"ec-s",text: pass
-        ? "Every quality check cleared. Open the review to read the findings — then Export freezes the whole thing to one shareable file."
-        : "The quality gate found checks that need your decision before this review is done. Open it to see what's waiting and resolve it in chat."})),
-    el("span",{class:"ec-go",text: pass ? "Open it →" : "Resolve it →"}));
+  if(a.kind==="protocol"){
+    box.append(
+      el("div",{class:"am-k",text:"✨ A protocol has been defined"}),
+      el("div",{class:"am-t",text:a.title}),
+      el("div",{class:"am-q",text:a.question}));
+    const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading the protocol…"}));
+    box.append(body,
+      actionsRow("/dashboard/"+encodeURIComponent(a.slug), "See it →",
+        "Opening it drops you into the live pipeline — the search is already under way."));
+    try{
+      const rev=await (await fetch("/api/reviews/"+encodeURIComponent(a.slug),{cache:"no-store"})).json();
+      body.replaceChildren(...protocolSummary(rev.protocol||{}));
+    }catch(e){ body.replaceChildren(el("div",{class:"am-q2",text:"(Couldn't load the protocol here — open the review to see it.)"})); }
+  } else {
+    const pass=a.ev==="pass";
+    box.append(
+      el("div",{class:"am-k",text: pass?"✓ Evaluation passed":"⏸ Evaluation paused — needs you"}),
+      el("div",{class:"am-t",text:a.title}));
+    const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading the evaluation…"}));
+    box.append(body,
+      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+"#eval", "See it →",
+        pass?"Open it to read the findings — Export freezes the whole thing to one shareable file."
+            :"Open it to see what's waiting and resolve it in chat."));
+    try{
+      const p=await (await fetch("/api/reviews/"+encodeURIComponent(a.slug)+"/pipeline",{cache:"no-store"})).json();
+      body.replaceChildren(...evalSummary((p.workflow||{}).evaluation||{}, pass));
+    }catch(e){ body.replaceChildren(); }
+  }
 }
+function protocolSummary(p){
+  const out=[];
+  const pico=p.pico||{}; const row=[];
+  [["Population","population"],["Exposure","exposure"],["Comparator","comparator"],["Outcome","outcome"]]
+    .forEach(([lab,k])=>{ if(pico[k]) row.push(lab+": "+pico[k]); });
+  if(row.length) out.push(el("div",{}, el("div",{class:"lbl",text:"PICO"}), el("div",{class:"am-q2",text:row.join(" · ")})));
+  if((p.inclusion_criteria||[]).length){
+    const ul=el("ul"); p.inclusion_criteria.forEach(c=>ul.append(el("li",{text:c})));
+    out.push(el("div",{}, el("div",{class:"lbl",text:"Inclusion criteria"}), ul));
+  }
+  if((p.exclusion_reasons||[]).length){
+    const chips=el("div",{class:"am-chips"}); p.exclusion_reasons.forEach(x=>chips.append(el("span",{class:"am-chip",text:x})));
+    out.push(el("div",{}, el("div",{class:"lbl",text:"Exclusion reasons"}), chips));
+  }
+  const s=p.searches||[];
+  if(s.length) out.push(el("div",{}, el("div",{class:"lbl",text:"Search strategy"}),
+    el("div",{class:"am-q2",text:s.length+" quer"+(s.length===1?"y":"ies")+" · "+(s[0].database||"PubMed")+(s[0].date?" · "+s[0].date:"")})));
+  if(!out.length) out.push(el("div",{class:"am-q2",text:"Protocol defined. Open the review for the full detail."}));
+  return out;
+}
+function evalSummary(ev, pass){
+  const out=[];
+  if(pass){
+    out.push(el("div",{class:"am-q2",text:"Every quality check cleared — the review is complete and ready to read or export."}));
+    if((ev.advisories||[]).length) out.push(el("div",{class:"am-q2",text:ev.advisories.length+" advisory note"+(ev.advisories.length===1?"":"s")+" to review."}));
+  } else {
+    out.push(el("div",{class:"am-q2",text:ev.explanation||"Some checks need your decision before this review is done."}));
+    if((ev.failures||[]).length){
+      const ul=el("ul"); ev.failures.forEach(f=>ul.append(el("li",{text:(f.label||"")+" — "+(f.detail||"")})));
+      out.push(el("div",{}, el("div",{class:"lbl",text:"To resolve"}), ul));
+    }
+  }
+  return out;
+}
+document.addEventListener("keydown", e=>{ if(e.key==="Escape" && activeKey) closeModal(true); });
 
 async function poll(){
   try{

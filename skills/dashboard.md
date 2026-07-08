@@ -49,9 +49,12 @@ unless the user asks; it's a harmless read-only local server.
 
 ## What the user sees, and how to narrate it
 
-The review view opens on the stop that matches its phase (context-aware default): a freshly created
-review lands on **Protocol**, so the first thing the user can review is the question and criteria you
-just wrote — point them there ("open the card; it opens on the Protocol so you can check the criteria
-before the search fills in"). As screening starts it lands on **Pipeline activity**; a paused review
-lands on **Eval**; a finished one lands on **Findings**. The nav stops across the top
-(Protocol · Pipeline activity · Findings · Eval, plus Records) are always there to move between.
+Two milestones raise a **pop-up modal** on whatever dashboard page the user has open, so they never
+miss the moment: (1) when you finish writing the protocol, the reviews page pops a modal summarizing
+it — the user clicks through into the review, which opens on **Pipeline activity** so they watch the
+funnel fill; (2) when the review reaches the evaluation gate, a modal announces it passed or paused,
+landing them on **Eval**. So the beat you're playing into is: write the protocol (→ the protocol modal
+fires on its own), then run the search (→ they're watching the pipeline fill). Don't tell the user to
+go hunt for the Protocol tab — the modal already showed it to them. The review view otherwise opens on
+the stop that matches its phase (Pipeline activity in progress, Eval when paused, Findings when
+complete); the nav stops across the top are always there to move between.

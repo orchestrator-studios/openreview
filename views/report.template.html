@@ -291,6 +291,29 @@
   .help ul{margin:0 0 12px;padding-left:20px;color:var(--ink-2);}
   .help li{margin:6px 0;line-height:1.55;}
   .help b{color:var(--ink);font-weight:600;} .help i{color:var(--ink-2);font-style:italic;}
+  /* milestone modal — the evaluation-ready interrupt, fired live on this page */
+  @keyframes ampop{0%{transform:scale(.96);opacity:0;}100%{transform:scale(1);opacity:1;}}
+  .amodal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .amodal[hidden]{display:none;}
+  .amodal-backdrop{position:absolute;inset:0;background:rgba(12,22,28,.55);}
+  .amodal-box{position:relative;z-index:1;background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    box-shadow:0 16px 54px rgba(0,0,0,.36);width:min(560px,100%);max-height:86vh;overflow:auto;
+    padding:24px 26px 20px;border-top:4px solid var(--pos);animation:ampop .34s ease-out;}
+  .amodal-box.paused{border-top-color:var(--warn);}
+  .am-k{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pos);}
+  .amodal-box.paused .am-k{color:var(--warn);}
+  .am-t{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.2;margin:7px 0 0;color:var(--ink);}
+  .am-body{margin-top:15px;border-top:1px solid var(--line-2);padding-top:14px;display:flex;flex-direction:column;gap:12px;}
+  .am-body .lbl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;}
+  .am-body ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:13px;line-height:1.5;}
+  .am-q2{color:var(--ink-2);font-size:13px;line-height:1.55;}
+  .am-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;}
+  .am-cancel{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:10px;height:40px;padding:0 16px;font-size:13.5px;cursor:pointer;}
+  .am-cancel:hover{color:var(--ink);border-color:var(--ink-3);}
+  .am-go{display:inline-flex;align-items:center;height:40px;padding:0 18px;border-radius:10px;font-weight:600;
+    font-size:14px;color:#fff;background:var(--pos);border:1px solid var(--pos);white-space:nowrap;cursor:pointer;}
+  .amodal-box.paused .am-go{background:var(--warn);border-color:var(--warn);}
+  .am-go:hover{filter:brightness(1.06);}
   .recbody{clear:both;}
   /* snapshot / backup markers (frozen export only) */
   .snap{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--warn);
@@ -355,7 +378,8 @@
         <p>A review reads left to right, and you can jump to any stop at any time:</p>
         <ul>
           <li><b>Protocol</b> — the question and the criteria Claude set out to find <i>before</i> it saw any
-            results. A new review opens here so you can check it first.</li>
+            results. (When the protocol is first defined, the reviews page shows it to you in a pop-up; this
+            view then opens on Pipeline activity, and the Protocol is always one click away here.)</li>
           <li><b>Pipeline activity</b> — where the work is: the search funnel (retrieved → de-duplicated →
             screened → included), stage by stage.</li>
           <li><b>Findings</b> — the studies that made it in, and the data pulled from each.</li>
@@ -402,6 +426,8 @@
     <p id="footmeta" style="margin-top:6px"></p>
   </footer>
 </div>
+
+<div id="amodal" class="amodal" hidden></div>
 
 <script>
 const DATA = __DATA__;
@@ -527,6 +553,31 @@ function openRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hi
 function closeRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
 function openHelp(){ const m=document.getElementById("helpmodal"); if(m){ m.hidden=false; document.body.style.overflow="hidden"; } }
 function closeHelp(){ const m=document.getElementById("helpmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
+// The evaluation-ready milestone, fired live on this page (the counterpart to the index modals).
+function closeEvalModal(){ const h=document.getElementById("amodal"); if(h){ h.hidden=true; h.replaceChildren(); document.body.style.overflow=""; } }
+function showEvalModal(ev, status){
+  const pass = status==="pass";
+  const host=document.getElementById("amodal"); if(!host) return;
+  const box=el("div",{class:"amodal-box"+(pass?"":" paused")});
+  box.append(
+    el("div",{class:"am-k",text: pass?"✓ Evaluation passed":"⏸ Evaluation paused — needs you"}),
+    el("div",{class:"am-t",text:P.title}));
+  const body=el("div",{class:"am-body"}); box.append(body);
+  if(pass){
+    body.append(el("div",{class:"am-q2",text:"Every quality check cleared — this review is complete and ready to read or export."}));
+  } else {
+    body.append(el("div",{class:"am-q2",text:(ev&&ev.explanation)||"Some checks need your decision before this review is done."}));
+    if(ev&&(ev.failures||[]).length){
+      const ul=el("ul"); ev.failures.forEach(f=>ul.append(el("li",{text:(f.label||"")+" — "+(f.detail||"")})));
+      body.append(el("div",{}, el("div",{class:"lbl",text:"To resolve"}), ul));
+    }
+  }
+  box.append(el("div",{class:"am-actions"},
+    el("button",{class:"am-cancel",type:"button",text:"Cancel",onclick:closeEvalModal}),
+    el("button",{class:"am-go",type:"button",text:"See the evaluation →",onclick:()=>{ closeEvalModal(); setTab("eval"); }})));
+  host.replaceChildren(el("div",{class:"amodal-backdrop",onclick:closeEvalModal}), box);
+  host.hidden=false; document.body.style.overflow="hidden";
+}
 // direct activation: clears every filter, then opens the modal on the full corpus
 function openAllRecords(){ Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""}); syncControls(); render(); openRecords(); }
 
@@ -832,15 +883,17 @@ function renderEval(ev){
 }
 
 // ---------- init ----------
-// Context-aware landing stop: open on whatever matters most for the review's current phase.
-// A freshly created review (protocol written, search not yet meaningful) lands on Protocol so
-// the user reviews the criteria first; once screening is underway it lands on Pipeline activity;
-// a paused review lands on Eval (that's what needs them); a finished one lands on Findings.
+// Context-aware landing stop. An explicit #hash wins (the index modals link to #eval to drop the
+// user straight onto the evaluation). Otherwise open on whatever matters most for the phase: a
+// finished review on Findings, a paused one on Eval (that's what needs them), everything else —
+// including a freshly created review — on Pipeline activity, where the funnel fills live. The
+// Protocol is one click away and, at creation, its key content was already shown in the modal.
 function defaultTab(){
+  const h=(location.hash||"").replace("#","");
+  if(TABS.some(t=>t.id===h)) return h;
   const wf=(DATA.projection&&DATA.projection.workflow)||{};
   if(wf.complete) return "findings";
   if(wf.evaluation&&wf.evaluation.status==="paused") return "eval";
-  if(["protocol","queries-written","queries-run","dedup"].includes(wf.phase)) return "protocol";
   return "pipeline";
 }
 buildProtocol(); buildFindings(); buildRecords(); buildEval(DATA.projection);
@@ -852,7 +905,7 @@ document.getElementById("recmodalBackdrop").addEventListener("click", closeRecor
 document.getElementById("helpBtn").addEventListener("click", openHelp);
 document.getElementById("helpmodalClose").addEventListener("click", closeHelp);
 document.getElementById("helpmodalBackdrop").addEventListener("click", closeHelp);
-document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeRecords(); closeHelp(); } });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeRecords(); closeHelp(); closeEvalModal(); } });
 document.getElementById("footmeta").textContent =
   rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated __DATE__";
 const tgl=document.getElementById("themeToggle");
@@ -880,12 +933,20 @@ if (LIVE) {
   const pill = el("button",{id:"refreshPill",type:"button",onclick:()=>location.reload()},"↻ Data changed — refresh");
   document.body.append(pill);
   let sig = null;
+  // Seed the eval milestone from the baked-in projection so a review already past the gate at
+  // page-open (e.g. arriving here from the index "evaluation ready" modal) doesn't re-fire.
+  let evPrev = ((DATA.projection&&DATA.projection.workflow&&DATA.projection.workflow.evaluation)||{}).status || "pending";
+  let evShown = false;
   async function livePoll(){
     try{
       const r = await fetch("/api/reviews/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
       if(!r.ok) throw 0;
       const p = await r.json(), t = p.totals||{}, wf = p.workflow||{};
       renderPipeline(p); renderEval((p.workflow||{}).evaluation);   // bar + PRISMA + eval update in place, live
+      // evaluation-ready milestone: fire the modal once, on a witnessed pending → pass/paused flip
+      const evNow = (wf.evaluation||{}).status || "pending";
+      if(evPrev==="pending" && (evNow==="pass"||evNow==="paused") && !evShown){ evShown=true; showEvalModal(wf.evaluation||{}, evNow); }
+      evPrev = evNow;
       const s = JSON.stringify([t.unique,t.included,t.ta_excluded,t.ft_excluded,t.needs_adjudication,t.extraction_arms,wf.phase,wf.blocked]);
       const dot=document.getElementById("liveDot"); if(dot){dot.classList.remove("beat");void dot.offsetWidth;dot.classList.add("beat");}
       const lt=document.getElementById("liveTxt"); if(lt) lt.textContent = wf.blocked?"needs you":(wf.complete?"complete":(wf.phase_label||"live"));
