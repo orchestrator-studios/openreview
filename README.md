@@ -107,15 +107,15 @@ mice — so there's something to explore from the first minute.)*
 
 **3. Follow along.** The dashboard interrupts you — with a pop-up, not a quiet card — at the two moments that
 matter. First, the moment Claude finishes the **protocol**: a modal shows you the question and criteria it
-set out to find, and *"See it"* drops you into the review on **Pipeline activity**, where you watch the search
-funnel fill. Then, when the review reaches the **evaluation gate**, a second modal announces it — passed, or
-paused for a decision only you can make. In between, move across the stops at the top (**Pipeline activity**,
-**Findings**, **Eval**) and click any number to see the exact papers behind it. Leave the page open beside
-your chat and it calls you when there's something to see.
+set out to find, and *"See it"* drops you into the review on **Search & screening**, where you watch the
+funnel fill. Then, when the review is done, a second modal tells you **the report is ready** — or that it's
+paused for a decision only you can make. In between, move across the stops at the top (**Search & screening**,
+**Findings**) and click any number to see the exact papers behind it. Leave the page open beside your chat
+and it calls you when there's something to see.
 
 **4. Expect some back-and-forth.** A review isn't a one-way conveyor. Claude loops back when it should —
 re-running or widening the queries after seeing the first results were too broad or too thin, re-screening a
-batch, filling a gap the Eval gate flagged. The highlighted stage shows where it is *right now*; watching it
+batch, filling a gap the quality gate flagged. The highlighted stage shows where it is *right now*; watching it
 step backward is the review getting better, not breaking. And it's real work — a thorough search can return
 hundreds of records, and screening each one twice (two independent AI passes) runs for a while and spends
 Claude usage as it goes. Ask for a narrower question or a calibration sample if you want the first run small.
@@ -126,22 +126,21 @@ it. (There's also a **How this works** button on the dashboard itself.)
 ## What you see
 
 Everything a review produces lives in one **interactive report** — the same view you watch live on the
-dashboard and the one the export freezes to a file. It reads left to right as four stops, and *every number
+dashboard and the one the export freezes to a file. It reads left to right as three stops, and *every number
 in it is a link*:
 
 - **Protocol** — your question and PICO, the inclusion criteria, the controlled list of exclusion reasons, and
   the search strategy. The queries are shown in plain text, with the exact PubMed commands one toggle away for
   anyone who wants to reproduce them from a terminal.
-- **Pipeline activity** — the live **PRISMA flow** every systematic reviewer knows: records identified →
+- **Search & screening** — the live **PRISMA flow** every systematic reviewer knows: records identified →
   duplicates removed → excluded at title/abstract → assessed at full text → included, under a reconciling
   snapshot bar (*retrieved − duplicates = unique*, split green included / red excluded / neutral in-screening).
   No count is a dead end — click *excluded at title/abstract*, a single exclusion reason, *assessed at full
   text*, or *included*, and the exact papers behind that number open.
-- **Findings** — the included studies and a **compiled extraction table**: the structured fields pulled from
-  each study, one row per study arm, grouped and colour-coded by the outcome that matters, ready to read or
-  drop into a write-up.
-- **Eval** — a quality gate: completeness and integrity checks that either pass, or pause the review and tell
-  you exactly what needs a human.
+- **Findings** — the results, gated by quality. At the top, a **quality gate** — completeness and integrity
+  checks that either pass, or pause the review and tell you exactly what needs a human. Below it, the included
+  studies and a **compiled extraction table**: the structured fields pulled from each study, one row per study
+  arm, grouped and colour-coded by the outcome that matters, ready to read or drop into a write-up.
 
 **The records explorer is where the audit trail pays off.** From any count you land in a searchable,
 filterable list of exactly those papers — and opening any one shows its abstract, **which query (or queries)

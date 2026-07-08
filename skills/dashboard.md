@@ -51,10 +51,11 @@ unless the user asks; it's a harmless read-only local server.
 
 Two milestones raise a **pop-up modal** on whatever dashboard page the user has open, so they never
 miss the moment: (1) when you finish writing the protocol, the reviews page pops a modal summarizing
-it — the user clicks through into the review, which opens on **Pipeline activity** so they watch the
-funnel fill; (2) when the review reaches the evaluation gate, a modal announces it passed or paused,
-landing them on **Eval**. So the beat you're playing into is: write the protocol (→ the protocol modal
-fires on its own), then run the search (→ they're watching the pipeline fill). Don't tell the user to
-go hunt for the Protocol tab — the modal already showed it to them. The review view otherwise opens on
-the stop that matches its phase (Pipeline activity in progress, Eval when paused, Findings when
-complete); the nav stops across the top are always there to move between.
+it — the user clicks through into the review, which opens on **Search & screening** so they watch the
+funnel fill; (2) when the review is done, a modal announces **the report is ready** (or that it's
+paused for a decision), landing them on **Findings**. So the beat you're playing into is: write the
+protocol (→ the protocol modal fires on its own), then run the search (→ they're watching the funnel
+fill). Don't tell the user to go hunt for the Protocol tab — the modal already showed it to them. There
+are three stops: **Protocol**, **Search & screening**, and **Findings** (which carries the quality gate
+at its top — there's no separate Eval tab). The review view otherwise opens on the stop that matches its
+phase (Search & screening in progress, Findings when paused or complete).

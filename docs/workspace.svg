@@ -49,7 +49,7 @@
 
     <!-- nav stops -->
     <text x="60" y="216" font-size="12.5">
-      <tspan class="ink3">Protocol</tspan><tspan class="ink3">   ·   </tspan><tspan fill="#214b5b" font-weight="700">● Pipeline activity</tspan><tspan class="ink3">   ·   </tspan><tspan class="ink3">Findings</tspan><tspan class="ink3">   ·   </tspan><tspan class="ink3">Eval</tspan>
+      <tspan class="ink3">Protocol</tspan><tspan class="ink3">   ·   </tspan><tspan fill="#214b5b" font-weight="700">● Search &amp; screening</tspan><tspan class="ink3">   ·   </tspan><tspan class="ink3">Findings</tspan>
     </text>
 
     <!-- reconciling line + stacked bar -->

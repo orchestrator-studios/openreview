@@ -268,18 +268,18 @@
   #prisma .prow.drop .pcount{color:var(--neg);} #prisma .prow.incl .pcount{color:var(--pos);}
   #prisma .preason{border:none;background:none;color:var(--ink-3);font-size:12px;cursor:pointer;padding:1px 4px;border-radius:5px;font-family:var(--mono);text-align:left;}
   #prisma .preason:hover{background:var(--surface-2);color:var(--ink);}
-  /* eval gate */
-  #panel-eval .eval{border-radius:12px;padding:15px 18px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);}
-  #panel-eval .eval.pass{border-left:4px solid var(--pos);} #panel-eval .eval.paused{border-left:4px solid var(--warn);background:var(--warn-soft);}
-  #panel-eval .eval .eh{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:15.5px;font-weight:600;}
-  #panel-eval .eval.pass .eh{color:var(--pos);} #panel-eval .eval.paused .eh{color:var(--warn);}
-  #panel-eval .eval .ex{font-size:13px;color:var(--ink);margin:8px 0 10px;}
-  #panel-eval .eval .muted{color:var(--ink-3);font-size:13px;}
-  #panel-eval .checks{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
-  #panel-eval .chk{display:grid;grid-template-columns:18px 1fr;gap:9px;align-items:start;font-size:12.5px;}
-  #panel-eval .chk .ci{font-weight:700;font-family:var(--mono);line-height:1.35;}
-  #panel-eval .chk.ok .ci{color:var(--pos);} #panel-eval .chk.fail .ci{color:var(--warn);} #panel-eval .chk.adv .ci{color:var(--warn);}
-  #panel-eval .chk .cl{font-weight:600;color:var(--ink);} #panel-eval .chk .cd{color:var(--ink-2);}
+  /* eval gate (now folded into the top of Findings, scoped to #evalbox) */
+  #evalbox .eval{border-radius:12px;padding:15px 18px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);}
+  #evalbox .eval.pass{border-left:4px solid var(--pos);} #evalbox .eval.paused{border-left:4px solid var(--warn);background:var(--warn-soft);}
+  #evalbox .eval .eh{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:15.5px;font-weight:600;}
+  #evalbox .eval.pass .eh{color:var(--pos);} #evalbox .eval.paused .eh{color:var(--warn);}
+  #evalbox .eval .ex{font-size:13px;color:var(--ink);margin:8px 0 10px;}
+  #evalbox .eval .muted{color:var(--ink-3);font-size:13px;}
+  #evalbox .checks{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  #evalbox .chk{display:grid;grid-template-columns:18px 1fr;gap:9px;align-items:start;font-size:12.5px;}
+  #evalbox .chk .ci{font-weight:700;font-family:var(--mono);line-height:1.35;}
+  #evalbox .chk.ok .ci{color:var(--pos);} #evalbox .chk.fail .ci{color:var(--warn);} #evalbox .chk.adv .ci{color:var(--warn);}
+  #evalbox .chk .cl{font-weight:600;color:var(--ink);} #evalbox .chk .cd{color:var(--ink-2);}
   /* protocol: search strategy shown as query text, commands optional */
   #panel-protocol .qblock{margin:12px 0;}
   #panel-protocol .qmeta{display:flex;gap:10px;align-items:baseline;margin-bottom:5px;}
@@ -376,7 +376,6 @@
     <div id="prisma"></div>
   </section>
   <section class="panel" id="panel-findings"></section>
-  <section class="panel" id="panel-eval"></section>
 
   <div id="recmodal" class="recmodal" hidden>
     <div class="recmodal-backdrop" id="recmodalBackdrop"></div>
@@ -400,12 +399,12 @@
         <ul>
           <li><b>Protocol</b> — the question and the criteria Claude set out to find <i>before</i> it saw any
             results. (When the protocol is first defined, the reviews page shows it to you in a pop-up; this
-            view then opens on Pipeline activity, and the Protocol is always one click away here.)</li>
-          <li><b>Pipeline activity</b> — where the work is: the search funnel (retrieved → de-duplicated →
-            screened → included), stage by stage.</li>
-          <li><b>Findings</b> — the studies that made it in, and the data pulled from each.</li>
-          <li><b>Eval</b> — a quality gate that either passes the review or pauses it and tells you exactly
-            what needs a human.</li>
+            view then opens on Search &amp; screening, and the Protocol is always one click away here.)</li>
+          <li><b>Search &amp; screening</b> — where the work is: the search funnel (retrieved → de-duplicated →
+            screened → included), stage by stage, filling live.</li>
+          <li><b>Findings</b> — the results. At the top sits a <b>quality gate</b> — completeness and integrity
+            checks that either pass, or pause the review and say exactly what needs a human — and below it, the
+            included studies and the extraction table.</li>
           <li><b>Records</b> — every paper, searchable, each with its full provenance and screening trail.
             It's where every number lands when you click it.</li>
         </ul>
@@ -418,8 +417,8 @@
         <h3>The flow isn't a one-way conveyor</h3>
         <p>Watching the highlighted stage move <i>backward</i> is normal — it's the review getting better, not
           breaking. Claude loops back when the results tell it to: re-running or widening the queries after a
-          search came back too broad or too thin, re-screening a batch, or filling a gap the Eval gate flagged.
-          The highlighted stage always shows where things stand <i>right now</i>.</p>
+          search came back too broad or too thin, re-screening a batch, or filling a gap the quality gate
+          flagged. The highlighted stage always shows where things stand <i>right now</i>.</p>
 
         <h3>Three ways to use Claude alongside this page</h3>
         <ul>
@@ -433,8 +432,8 @@
 
         <h3>It calls you when it needs you</h3>
         <p>The <b>reviews page</b> (the ‹ openreview link, top-left) alerts you at the moments that matter:
-          when a review first appears, and when it reaches the Eval gate — passed, or <b>paused</b> for a
-          screening conflict or a check only you can decide. And the <b>Download</b> button freezes this whole
+          when a review first appears, and when the <b>report is ready</b> — passed, or <b>paused</b> for a
+          screening conflict or a check only you can decide. And the <b>Export</b> button freezes this whole
           view to a single self-contained HTML file — same numbers, no server needed — to email or attach.</p>
       </div>
     </div>
@@ -548,9 +547,8 @@ document.getElementById("qLede").textContent = P.question;
 // ---------- tabs ----------
 const TABS=[
   {id:"protocol",label:"Protocol"},
-  {id:"pipeline",label:"Pipeline activity"},
+  {id:"pipeline",label:"Search & screening"},
   {id:"findings",label:"Findings",cnt:nInc},
-  {id:"eval",label:"Eval"},
 ];
 const tabsEl=document.getElementById("tabs");
 let activeTab="pipeline";
@@ -599,7 +597,7 @@ function showEvalModal(ev, status){
   box.append(el("div",{class:"am-actions"},
     el("button",{class:"am-cancel",type:"button",text:"Cancel",onclick:closeEvalModal}),
     pass ? el("button",{class:"am-go",type:"button",text:"See the findings →",onclick:()=>{ closeEvalModal(); setTab("findings"); }})
-         : el("button",{class:"am-go",type:"button",text:"Resolve it →",onclick:()=>{ closeEvalModal(); setTab("eval"); }})));
+         : el("button",{class:"am-go",type:"button",text:"Resolve it →",onclick:()=>{ closeEvalModal(); setTab("findings"); }})));
   host.replaceChildren(el("div",{class:"amodal-backdrop",onclick:closeEvalModal}), box);
   host.hidden=false; document.body.style.overflow="hidden";
 }
@@ -730,7 +728,12 @@ function render(){
 function buildFindings(){
   const p=document.getElementById("panel-findings");
   const FIRST=(TABLE_FIELDS[0]||{}).key;
-  p.append(el("div",{class:"sec-h",text:"Findings"}),
+  // Quality gate, folded in at the top of Findings: is this set of results complete and sound?
+  p.append(el("div",{class:"sec-h",text:"Quality gate"}),
+    el("p",{class:"sec-sub",text:"Completeness and integrity checks over the whole review. Blocking checks pause the review and call for a human; advisories are surfaced but don't pause. Cleared before you trust the findings below."}),
+    el("div",{id:"evalbox"}));
+  renderEval((DATA.projection.workflow||{}).evaluation);
+  p.append(el("div",{class:"sec-h",style:"margin-top:22px",text:"Findings"}),
     el("p",{class:"sec-sub"},"The "+nInc+" included studies, grouped by extracted "+SUMMARY_LABEL.toLowerCase()+". Click a group to inspect those studies; the full extraction table follows."));
   const grid=el("div",{class:"fbars"});
   const groups={}; R.filter(r=>r.status==="included").forEach(r=>(r.extraction.arms||[]).forEach(a=>{
@@ -789,7 +792,7 @@ function buildProtocol(){
 // ---------- live head: corpus accounting + state, from the canonical projection ----------
 // Correct at any stage (an in-progress review shows records as "In screening", not "assessed").
 // Updates in place on every live poll — the green/red bar moves as screening lands.
-// ---------- Pipeline activity: the bar (corpus snapshot) + the PRISMA flow ----------
+// ---------- Search & screening: the bar (corpus snapshot) + the PRISMA flow ----------
 function renderPipeline(proj){
   const tools=document.getElementById("pipetools"), steps=document.getElementById("pipesteps"), nx=document.getElementById("pipenext"), bar=document.getElementById("pipebar"), pr=document.getElementById("prisma");
   [tools,steps,nx,bar,pr].forEach(e=>{ if(e) e.replaceChildren(); });
@@ -880,14 +883,6 @@ function buildPrisma(proj){
 }
 
 // ---------- Eval: the quality gate ----------
-function buildEval(proj){
-  const p=document.getElementById("panel-eval"); if(!p) return;
-  p.replaceChildren(el("div",{},
-    el("div",{class:"sec-h",text:"Evaluation"}),
-    el("p",{class:"sec-sub",text:"The quality gate: completeness and integrity checks over the whole review. Blocking checks pause the review and call for a human; advisories are surfaced but do not pause."})));
-  p.append(el("div",{id:"evalbox"}));
-  renderEval((proj.workflow||{}).evaluation);
-}
 function renderEval(ev){
   const box=document.getElementById("evalbox"); if(!box) return;
   box.replaceChildren();
@@ -908,20 +903,21 @@ function renderEval(ev){
 }
 
 // ---------- init ----------
-// Context-aware landing stop. An explicit #hash wins (the index modals link to #eval to drop the
-// user straight onto the evaluation). Otherwise open on whatever matters most for the phase: a
-// finished review on Findings, a paused one on Eval (that's what needs them), everything else —
-// including a freshly created review — on Pipeline activity, where the funnel fills live. The
+// Context-aware landing stop. An explicit #hash wins (the index modals link to #findings to drop the
+// user onto the results + quality gate). Otherwise open on whatever matters most for the phase: a
+// finished or paused review on Findings (the quality gate sits at its top), everything else —
+// including a freshly created review — on Search & screening, where the funnel fills live. The
 // Protocol is one click away and, at creation, its key content was already shown in the modal.
 function defaultTab(){
-  const h=(location.hash||"").replace("#","");
+  let h=(location.hash||"").replace("#","");
+  if(h==="eval") h="findings";        // Eval is folded into Findings now
   if(TABS.some(t=>t.id===h)) return h;
   const wf=(DATA.projection&&DATA.projection.workflow)||{};
-  if(wf.complete) return "findings";
-  if(wf.evaluation&&wf.evaluation.status==="paused") return "eval";
+  // a finished or paused review lands on Findings (the gate sits at its top); otherwise the live funnel
+  if(wf.complete || (wf.evaluation&&wf.evaluation.status==="paused")) return "findings";
   return "pipeline";
 }
-buildProtocol(); buildFindings(); buildRecords(); buildEval(DATA.projection);
+buildProtocol(); buildFindings(); buildRecords();
 renderPipeline(DATA.projection);
 render(); setTab(defaultTab());
 // records modal close affordances

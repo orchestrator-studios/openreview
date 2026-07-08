@@ -5,18 +5,19 @@ The agreed structure for the per-review view. Build to this; don't deviate witho
 ## Navigation — a top-level flow, plus Records
 
 ```
-   Protocol  →  Pipeline activity  →  Findings  →  Eval        [ Records ]
+   Protocol  →  Search & screening  →  Findings        [ Records ]
 ```
 
-- The four arrowed stops are the review's flow (left → right), current stop highlighted.
+- The three arrowed stops are the review's flow (left → right), current stop highlighted.
 - **Records** is not a flow step — it's always reachable, and it's where every drill-down lands.
+- The quality gate (formerly its own "Eval" stop) is **folded into the top of Findings** — see ③.
 
 ## The stops
 
 **① Protocol** — the definition, read-only: question / PICO, inclusion criteria, exclusion-reason
 vocabulary, search strategy (queries), extraction profile. Reference, not execution.
 
-**② Pipeline activity** — two views, stacked, both fully clickable:
+**② Search & screening** — two views, stacked, both fully clickable:
 
 - **Bar (top)** — the corpus *right now*, one reconciling snapshot: `Retrieved − Duplicates =
   Unique`, then a stacked bar of the unique records split Included (green) / Excluded (red) /
@@ -30,10 +31,10 @@ vocabulary, search strategy (queries), extraction profile. Reference, not execut
 
 The bar and the flow are **different lenses on the same numbers** (state vs. funnel) — both live, neither replaces the other.
 
-**③ Findings** — the results: included studies + extracted data (extraction table / synthesis).
-Any article group → Records.
-
-**④ Eval** — the quality gate: the evaluation checklist (blocking vs. advisory), pass / paused status.
+**③ Findings** — the results, gated by quality. At the **top**, the quality gate: the evaluation
+checklist (blocking vs. advisory), pass / paused status. **Below it**, the included studies + extracted
+data (extraction table / synthesis). Any article group → Records. (There is no separate Eval stop; the
+gate lives here so "are these results sound?" sits directly above the results themselves.)
 
 **Records** — one screen: the article list, opened **pre-filtered** by whatever group was clicked
 (all retrieved · duplicates · unique · excluded-at-T/A · a specific reason · passed-T/A ·

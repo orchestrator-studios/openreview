@@ -345,7 +345,7 @@ async function showModal(a){
       el("div",{class:"am-t",text:a.title}));
     const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading…"}));
     box.append(body,
-      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+(pass?"#findings":"#eval"),
+      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+"#findings",
         pass?"See the findings →":"Resolve it →",
         pass?"The full report is compiled — the included studies, the data table, and the quality checks."
             :"A few checks need your decision before the report is final — resolve them in chat."));

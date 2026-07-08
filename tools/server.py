@@ -123,9 +123,10 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/health":
                 return self._send(200, {"ok": True})
 
-            # the review view (docs/dashboard-spec.md): flow nav Protocol · Pipeline activity ·
-            # Findings · Eval · Records; Pipeline activity = the bar + the PRISMA flow, every count
-            # drilling into Records. Served live here; the same template frozen is the export (/report).
+            # the review view (docs/dashboard-spec.md): flow nav Protocol · Search & screening ·
+            # Findings (+ Records); Search & screening = the bar + the PRISMA flow, every count drilling
+            # into Records; the quality gate sits at the top of Findings. Served live here; the same
+            # template frozen is the export (/report).
             if parts[0] in ("dashboard", "pipeline") and len(parts) == 2:
                 slug = parts[1]
                 if not repo.has_protocol(slug):
