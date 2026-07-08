@@ -9,20 +9,20 @@ _Generated from data by `tools/build_views.py` — do not edit by hand._
 
 ## Flow
 - Records after de-duplication: **324**
-- Excluded at title/abstract: **291**
-- Excluded at full-text: **10**
-- **Included: 23**
+- Excluded at title/abstract: **281**
+- Excluded at full-text: **16**
+- **Included: 27**
 
 ## Exclusion reasons
 | Reason | n |
 |---|---|
-| not-mouse | 116 |
-| in-vitro-only | 52 |
-| review-or-commentary | 46 |
-| no-genetic-modification | 42 |
-| no-asbestos-exposure | 28 |
-| not-susceptibility-focus | 10 |
-| no-mesothelioma-outcome | 6 |
+| not-mouse | 78 |
+| no-asbestos-exposure | 64 |
+| in-vitro-only | 48 |
+| review-or-commentary | 43 |
+| no-genetic-modification | 35 |
+| not-susceptibility-focus | 18 |
+| no-mesothelioma-outcome | 10 |
 | not-primary-research | 1 |
 
 ## Included studies
@@ -30,19 +30,23 @@ _Generated from data by `tools/build_views.py` — do not edit by hand._
 - Kadariya et al. 2024 — Low Exposures to Amphibole or Serpentine Asbestos in Germline Bap1-mutant Mice Induce Mesothelioma Characterized by an Immunosuppressive Tumor Microenvironment. (PMID 38592450)
 - Suarez et al. 2023 — HMGB1 released by mesothelial cells drives the development of asbestos-induced mesothelioma. (PMID 37729199)
 - Farahmand et al. 2023 — Asbestos accelerates disease onset in a genetic model of malignant pleural mesothelioma. (PMID 37441092)
+- Song et al. 2022 — Mesothelioma Mouse Models with Mixed Genomic States of Chromosome and Microsatellite Instability. (PMID 35804881)
 - Bononi et al. 2020 — Heterozygous germline BLM mutations increase susceptibility to asbestos and mesothelioma. (PMID 33318203)
 - Funahashi et al. 2020 — Mth1 deficiency provides longer survival upon intraperitoneal crocidolite injection in female mice. (PMID 32183600)
+- Yoshida 2019 — Beyond Stanton and Pott hypothesis; carbon nanotubes-induced malignant mesothelioma as a disease of gene loss. (PMID 30773744)
 - Funahashi et al. 2018 — Global overexpression of divalent metal transporter 1 delays crocidolite-induced mesothelial carcinogenesis in male mice. (PMID 30309285)
 - Blum et al. 2018 — Absence of calretinin protein expression in malignant mesotheliomas from asbestos-exposed NF2+/- mice and mouse mesothelioma cell lines from various mouse strains. (PMID 29928505)
 - Kadariya et al. 2016 — Inflammation-Related IL1β/IL1R Signaling Promotes the Development of Asbestos-Induced Malignant Mesothelioma. (PMID 26935421)
 - Kadariya et al. 2016 — Bap1 Is a Bona Fide Tumor Suppressor: Genetic Evidence from Mouse Models Carrying Heterozygous Germline Bap1 Mutations. (PMID 26896281)
 - Napolitano et al. 2016 — Minimal asbestos exposure in germline BAP1 heterozygous mice is associated with deregulated inflammatory response and increased risk of mesothelioma. (PMID 26119930)
+- Larson et al. 2016 — Investigating palygorskite's role in the development of mesothelioma in southern Nevada: Insights into fiber-induced carcinogenicity. (PMID 27705545)
 - Xu et al. 2014 — Germline mutation of Bap1 accelerates development of asbestos-induced malignant mesothelioma. (PMID 24928783)
 - Menges et al. 2014 — Tumor suppressor alterations cooperate to drive aggressive mesotheliomas with enriched cancer stem cells via a p53-miR-34a-c-Met axis. (PMID 24371224)
 - Chow et al. 2012 — NLRP3 promotes inflammation-induced skin cancer but is dispensable for asbestos-induced mesothelioma. (PMID 23010873)
 - Altomare et al. 2011 — Losses of both products of the Cdkn2a/Arf locus contribute to asbestos-induced mesothelioma development and cooperate to accelerate tumorigenesis. (PMID 21526190)
 - Robinson et al. 2011 — MexTAg mice exposed to asbestos develop cancer that faithfully replicates key features of the pathogenesis of human mesothelioma. (PMID 20850297)
 - Altomare et al. 2009 — Activated TNF-alpha/NF-kappaB signaling via down-regulation of Fas-associated factor 1 in asbestos-induced mesotheliomas from Arf knockout mice. (PMID 19223589)
+- Takagi et al. 2008 — Induction of mesothelioma in p53+/- mouse by intraperitoneal application of multi-wall carbon nanotube. (PMID 18303189)
 - Andujar et al. 2007 — Clinico-pathological features and somatic gene alterations in refractory ceramic fibre-induced murine mesothelioma reveal mineral fibre-induced mesothelioma identities. (PMID 17272307)
 - Robinson et al. 2006 — A novel SV40 TAg transgenic model of asbestos-induced mesothelioma: malignant transformation is dose dependent. (PMID 17108115)
 - Altomare et al. 2005 — A mouse model recapitulating molecular features of human mesothelioma. (PMID 16166281)

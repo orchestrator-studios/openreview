@@ -1,0 +1,142 @@
+[
+  {
+    "pmid": "39474071",
+    "decision": "exclude",
+    "reason": "not-susceptibility-focus",
+    "confidence": "medium",
+    "justification": "Uses asbestos-exposed MexTAg CC mouse tumors to build a prognostic survival gene signature; does not study genetic effect on susceptibility."
+  },
+  {
+    "pmid": "38694815",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "CC-MexTAg cross exposed to asbestos; host genetics affect MM latency/survival with QTL and modifier genes identified for susceptibility."
+  },
+  {
+    "pmid": "38592450",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Germline Bap1-mutant mice given asbestos show higher MM incidence and earlier onset versus wild-type; clear genetic susceptibility study."
+  },
+  {
+    "pmid": "37729199",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Conditional mesothelial HMGB1-knockout mice exposed to asbestos show delayed, reduced mesothelioma incidence and improved survival."
+  },
+  {
+    "pmid": "37441092",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Genetic mesothelioma mouse model plus amosite asbestos; asbestos accelerates MM onset and tumour burden."
+  },
+  {
+    "pmid": "36355620",
+    "decision": "exclude",
+    "reason": "not-susceptibility-focus",
+    "confidence": "medium",
+    "justification": "Chemoprevention drug study in a fixed genetic model; genotype's effect on susceptibility is not the variable studied."
+  },
+  {
+    "pmid": "36221913",
+    "decision": "exclude",
+    "reason": "not-susceptibility-focus",
+    "confidence": "medium",
+    "justification": "ADAR2 RNA-editing study focused on chemoresistance and tumor microenvironment, not on genetic effect on mesothelioma susceptibility."
+  },
+  {
+    "pmid": "34944051",
+    "decision": "exclude",
+    "reason": "not-susceptibility-focus",
+    "confidence": "medium",
+    "justification": "RBM8A RNA-editing translational-regulation mechanism, mainly cell-based; no engineered genetic modification affecting in-vivo mesothelioma susceptibility."
+  },
+  {
+    "pmid": "34815344",
+    "decision": "exclude",
+    "reason": "no-mesothelioma-outcome",
+    "confidence": "medium",
+    "justification": "Biochemical BAP1-HMGB1-HDAC1 gene-environment mechanism; no mouse mesothelioma incidence, latency, or burden measured."
+  },
+  {
+    "pmid": "34389715",
+    "decision": "exclude",
+    "reason": "not-susceptibility-focus",
+    "confidence": "medium",
+    "justification": "Translatome and mTOR-inhibitor therapy study; genetic loss is background, not a studied determinant of susceptibility."
+  },
+  {
+    "pmid": "33318203",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Blm+/- mice exposed to asbestos show shorter survival and higher mesothelioma incidence; germline mutation increases susceptibility."
+  },
+  {
+    "pmid": "32999071",
+    "decision": "include",
+    "confidence": "low",
+    "justification": "Conditional HMGB1-knockout mice, asbestos; measures mesothelial transformation/foci rather than tumor incidence, but genetic modification and susceptibility mechanism integral."
+  },
+  {
+    "pmid": "32183600",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Mth1/Mutyh/Ogg1 knockout mice given crocidolite; mesothelioma incidence and survival compared across genotypes."
+  },
+  {
+    "pmid": "32123850",
+    "decision": "exclude",
+    "reason": "not-susceptibility-focus",
+    "confidence": "medium",
+    "justification": "Tests zeolite intervention in a transgenic mesothelioma model; fixed genotype, gene's effect on susceptibility not studied."
+  },
+  {
+    "pmid": "30773744",
+    "decision": "include",
+    "confidence": "low",
+    "justification": "No abstract; on-topic title links carbon-nanotube-induced mesothelioma to gene loss; fibre-type and content ambiguous, cannot confidently exclude."
+  },
+  {
+    "pmid": "30317900",
+    "decision": "exclude",
+    "reason": "no-mesothelioma-outcome",
+    "confidence": "medium",
+    "justification": "p53 mice exposed to MWCNTs developed no lung/pleural tumors; focus is pulmonary granuloma and immune response, not mesothelioma."
+  },
+  {
+    "pmid": "30309285",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "DMT1-transgenic mice given crocidolite; mesothelioma incidence and survival compared to wild-type, showing delayed carcinogenesis."
+  },
+  {
+    "pmid": "29928505",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Asbestos-exposed NF2+/- and NF2+/-CR-/- mice; mesothelioma and survival assessed across genotypes."
+  },
+  {
+    "pmid": "26935421",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Asc-deficient mice exposed to asbestos show delayed onset and reduced mesothelioma incidence versus wild-type."
+  },
+  {
+    "pmid": "26896281",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Heterozygous germline Bap1-mutant mice; asbestos exposure significantly increases aggressive mesothelioma incidence versus wild-type."
+  },
+  {
+    "pmid": "26119930",
+    "decision": "include",
+    "confidence": "high",
+    "justification": "Germline BAP1+/- mice with minimal asbestos exposure show significantly higher mesothelioma incidence; genetic susceptibility study."
+  },
+  {
+    "pmid": "35804881",
+    "decision": "include",
+    "confidence": "low",
+    "justification": "Cdkn2a+/-;Nf2+/- mice chronically injected with asbestos yield MMe cells; genetic modification, asbestos, and mesothelioma present but susceptibility focus ambiguous."
+  }
+]

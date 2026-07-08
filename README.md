@@ -111,8 +111,9 @@ HTML file you can email or attach to a submission — same numbers, no server ne
 - **Screening reads titles and abstracts, not full text.** PubMed gives us those; true full-text retrieval
   (PMC, publisher PDFs) isn't built yet. The bundled example's extracted data is drawn from abstracts too —
   treat it as a demonstration of shape, not a clinical dataset.
-- **The bundled example was screened in a single pass** (labelled as such in the data). The engine does
-  dual-independent screening; re-screening that corpus to the higher bar is a rerun, not yet done.
+- **Conflicts and low-confidence calls in the bundled example were adjudicated with a light touch** — the
+  agreed decisions accepted and borderline title/abstract cases carried to full text — rather than
+  hand-reviewed one by one. It's a demonstration of the mechanism working end to end, not a clinical result.
 
 ## Under the hood
 

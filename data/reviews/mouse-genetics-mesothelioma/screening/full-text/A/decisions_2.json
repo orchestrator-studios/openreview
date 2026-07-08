@@ -1,0 +1,23 @@
+[
+  {"pmid":"27705545","decision":"include","confidence":"low","justification":"MexTAg vs Balb/c mice, crocidolite exposure, MM incidence differs by genotype; fiber-focused but genotype susceptibility data present."},
+  {"pmid":"26680231","decision":"exclude","reason":"not-susceptibility-focus","confidence":"low","justification":"Compares gene expression profiles of MexTAg vs WT tumors; molecular characterization rather than genetic effect on susceptibility."},
+  {"pmid":"25877069","decision":"exclude","reason":"in-vitro-only","confidence":"medium","justification":"Establishes immortalized mesothelial and mesothelioma cell lines; no in-vivo asbestos-induced mesothelioma susceptibility outcome measured."},
+  {"pmid":"24928783","decision":"include","confidence":"high","justification":"Bap1+/- mice show higher asbestos-induced MM incidence and shorter latency than WT; direct susceptibility study."},
+  {"pmid":"24371224","decision":"include","confidence":"high","justification":"Nf2+/-;Cdkn2a+/- germline knockouts accelerate asbestos-induced MM onset versus WT; clear genetic susceptibility study."},
+  {"pmid":"23010873","decision":"include","confidence":"high","justification":"NLRP3-deficient mice, asbestos exposure, MM incidence and survival measured against WT; susceptibility effect assessed."},
+  {"pmid":"22537085","decision":"exclude","reason":"no-asbestos-exposure","confidence":"medium","justification":"Exposure is multi-wall carbon nanotubes, not asbestos or mineral fibre; dose-response study in p53+/- mice."},
+  {"pmid":"22292488","decision":"exclude","reason":"not-susceptibility-focus","confidence":"medium","justification":"Dietary antioxidant intervention in MexTAg model; no genotype comparison of genetic effect on susceptibility."},
+  {"pmid":"21526190","decision":"include","confidence":"high","justification":"Ink4a+/- and Arf+/- mice show increased incidence and shorter latency of asbestos-induced MM versus WT."},
+  {"pmid":"20850297","decision":"include","confidence":"high","justification":"MexTAg transgenic mice develop asbestos-induced MM at 100% vs 30% WT; genotype susceptibility explicitly compared."},
+  {"pmid":"19852844","decision":"exclude","reason":"not-mouse","confidence":"medium","justification":"Study analyzes human MPM specimens and in-vitro transfected cells; mouse knockout only cited as prior background."},
+  {"pmid":"19223589","decision":"include","confidence":"high","justification":"Arf knockout mice show accelerated asbestos-induced malignant mesothelioma; genetic effect on susceptibility studied."},
+  {"pmid":"18303189","decision":"include","confidence":"low","justification":"p53+/- mice, crocidolite positive control induces MM; asbestos and genetic model present though carbon-nanotube focused, no genotype comparison."},
+  {"pmid":"17272307","decision":"include","confidence":"high","justification":"Nf2+/- mice develop mesothelioma after refractory ceramic (mineral) fibre exposure; genetic model with fibre-induced MM."},
+  {"pmid":"17108115","decision":"include","confidence":"high","justification":"MexTAg SV40 TAg transgenic mice, asbestos-induced MM, dose-dependent transformation compared across copy number and WT."},
+  {"pmid":"16319530","decision":"exclude","reason":"not-susceptibility-focus","confidence":"low","justification":"Characterizes somatic tumor-suppressor alteration profiles in asbestos-induced murine/human MM; focus on mutation profiling not susceptibility."},
+  {"pmid":"16166281","decision":"include","confidence":"high","justification":"Nf2+/- knockout mice show markedly accelerated asbestos-induced MM versus WT; classic genetic susceptibility study."},
+  {"pmid":"12802287","decision":"include","confidence":"high","justification":"Nf2 hemizygous mice develop asbestos-induced peritoneal mesothelioma at higher frequency than WT; explicit susceptibility finding."},
+  {"pmid":"12151629","decision":"include","confidence":"high","justification":"p53+/- mice show increased incidence and reduced latency of asbestos-induced mesothelioma; genetic susceptibility measured."},
+  {"pmid":"9400702","decision":"include","confidence":"low","justification":"p53-deficient mice and crocidolite mesothelioma susceptibility on-topic; abstract thin and partly hypothesis-framed."},
+  {"pmid":"1459729","decision":"exclude","reason":"no-genetic-modification","confidence":"medium","justification":"Establishes murine mesothelioma model in BALB/c and CBA strains; no defined genetic modification whose susceptibility effect is studied."}
+]
