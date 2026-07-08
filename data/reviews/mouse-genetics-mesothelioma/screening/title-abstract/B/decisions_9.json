@@ -1,0 +1,6 @@
+[
+  {"pmid":"4121226","decision":"exclude","reason":"no-genetic-modification","confidence":"high","justification":"1973 fibre carcinogenesis study on fibroblast anchorage; no defined genetic modification studied, predates engineered-mouse genetics."},
+  {"pmid":"5087349","decision":"exclude","reason":"no-genetic-modification","confidence":"high","justification":"Intrapleural asbestos in unspecified experimental animals; no genetic modification and no mesothelioma outcome stated."},
+  {"pmid":"5732308","decision":"exclude","reason":"no-genetic-modification","confidence":"high","justification":"Generic 1968 experimental asbestos carcinogenesis; no defined genetic modification, predates engineered-mouse susceptibility studies."},
+  {"pmid":"5219566","decision":"exclude","reason":"no-genetic-modification","confidence":"high","justification":"1965 asbestos-fibre carcinogenesis study; no genetic modification examined, predates engineered-mouse genetics."}
+]

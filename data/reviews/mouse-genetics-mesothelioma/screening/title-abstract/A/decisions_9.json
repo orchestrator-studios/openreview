@@ -1,0 +1,6 @@
+[
+  {"pmid":"4121226","decision":"exclude","reason":"no-genetic-modification","confidence":"low","justification":"Title-only; fibroblast anchorage in fibre carcinogenesis, no genetic modification indicated and no mouse or mesothelioma outcome mentioned."},
+  {"pmid":"5087349","decision":"exclude","reason":"no-genetic-modification","confidence":"low","justification":"Title-only; intrapleural asbestos in unspecified experimental animals, no genetic modification and no mesothelioma outcome indicated."},
+  {"pmid":"5732308","decision":"exclude","reason":"no-genetic-modification","confidence":"low","justification":"Title-only; generic experimental asbestos carcinogenesis, no genetic modification or mesothelioma-susceptibility focus indicated."},
+  {"pmid":"5219566","decision":"exclude","reason":"no-genetic-modification","confidence":"low","justification":"Title-only; carcinogenesis of asbestos fibers and natural oils, no genetic modification or mesothelioma outcome indicated."}
+]

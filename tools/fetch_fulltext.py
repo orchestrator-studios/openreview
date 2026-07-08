@@ -54,7 +54,12 @@ def _passed_ta(r):
 
 
 def pmc_id_for(pmid):
-    """Resolve a PubMed id to a PMC id (digits only) via elink, or None."""
+    """Resolve a PubMed id to *its own* PMC id via elink, or None.
+
+    Only the `pubmed_pmc` linkname is the article's own PMC full-text record. Other
+    dbto=pmc linksets (e.g. `pubmed_pmc_refs`) are the papers this one cites — following
+    those would fetch the wrong article, so they are ignored. A missing `pubmed_pmc`
+    link means the article is not in PMC (no open full text)."""
     q = urllib.parse.urlencode({"dbfrom": "pubmed", "db": "pmc", "id": pmid,
                                 "retmode": "json", "email": EMAIL})
     try:
@@ -63,7 +68,7 @@ def pmc_id_for(pmid):
         return None
     for ls in data.get("linksets", []):
         for db in ls.get("linksetdbs", []):
-            if db.get("dbto") == "pmc":
+            if db.get("linkname") == "pubmed_pmc":
                 links = db.get("links") or []
                 if links:
                     return str(links[0])
@@ -74,13 +79,20 @@ def _node_text(el):
     return "".join(el.itertext())
 
 
-def pmc_fulltext(pmcid):
-    """Fetch and flatten the body text of a PMC article, or '' if not available."""
+def pmc_fulltext(pmcid, expect_pmid):
+    """Fetch and flatten the body text of a PMC article, or '' if unavailable/mismatched.
+
+    Guard: the fetched article's own PMID (from article-meta) must equal expect_pmid.
+    If it carries a different PMID, the link was wrong and the text is rejected —
+    a wrong-paper full text is worse than none."""
     q = urllib.parse.urlencode({"db": "pmc", "id": pmcid, "retmode": "xml", "email": EMAIL})
     try:
         xml = _get(f"{EUTILS}/efetch.fcgi?{q}")
         root = ET.fromstring(xml)
     except Exception:
+        return ""
+    got = root.find(".//article-meta//article-id[@pub-id-type='pmid']")
+    if got is not None and (got.text or "").strip() and (got.text or "").strip() != str(expect_pmid):
         return ""
     body = root.find(".//body")
     if body is None:
@@ -149,7 +161,7 @@ def main():
         pmcid = pmc_id_for(pmid)
         time.sleep(PACE)
         if pmcid:
-            text = pmc_fulltext(pmcid)
+            text = pmc_fulltext(pmcid, pmid)
             time.sleep(PACE)
             if len(text) >= 500:                       # a real body, not just front matter
                 (ftdir / f"{pmid}.txt").write_text(text, encoding="utf-8")

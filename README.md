@@ -16,6 +16,12 @@ plain files you own. Think of it as a research assistant that shows all of its w
 Use it for a formal systematic review, or for any question where you want to search thoroughly and be able to
 show — to a reviewer, a co-author, or yourself in six months — exactly how you reached your answer.
 
+**Who it's for:** researchers who live in PubMed and care about defensible results — clinicians, grad students
+and postdocs, research librarians, epidemiologists, evidence-synthesis teams — and who are comfortable working
+through a coding agent. That's the one real cost of entry: you operate openreview through Claude Code, so you
+(or someone on your team) need to be willing to get set up with it. If you've used a coding agent before,
+you're past the hard part.
+
 ## How you use it
 
 There's no app to install and no website to log into. openreview is a **folder you keep on your computer**,
