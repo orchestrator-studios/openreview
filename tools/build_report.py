@@ -30,7 +30,7 @@ def render(slug, date="", live=False):
     # payload, so the report renders the corpus accounting from the one source of truth rather than
     # recomputing it — correct at any stage, including in-progress reviews.
     review["projection"] = repo.pipeline_from(review["protocol"], review["records"], slug)
-    date = date or (review["protocol"].get("searches", [{}])[-1].get("date", ""))
+    date = date or ((review["protocol"].get("searches") or [{}])[-1].get("date", ""))
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     blob = json.dumps(review, ensure_ascii=False).replace("</", "<\\/")
     return (template
