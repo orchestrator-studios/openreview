@@ -335,13 +335,14 @@ async function showModal(a){
   } else {
     const pass=a.ev==="pass";
     box.append(
-      el("div",{class:"am-k",text: pass?"✓ Evaluation passed":"⏸ Evaluation paused — needs you"}),
+      el("div",{class:"am-k",text: pass?"✓ Your report is ready":"⏸ Your review needs you"}),
       el("div",{class:"am-t",text:a.title}));
-    const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading the evaluation…"}));
+    const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading…"}));
     box.append(body,
-      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+"#eval", "See it →",
-        pass?"Open it to read the findings — Export freezes the whole thing to one shareable file."
-            :"Open it to see what's waiting and resolve it in chat."));
+      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+(pass?"#findings":"#eval"),
+        pass?"See the findings →":"Resolve it →",
+        pass?"The full report is compiled — the included studies, the data table, and the quality checks."
+            :"A few checks need your decision before the report is final — resolve them in chat."));
     try{
       const p=await (await fetch("/api/reviews/"+encodeURIComponent(a.slug)+"/pipeline",{cache:"no-store"})).json();
       body.replaceChildren(...evalSummary((p.workflow||{}).evaluation||{}, pass));
@@ -371,10 +372,11 @@ function protocolSummary(p){
 function evalSummary(ev, pass){
   const out=[];
   if(pass){
-    out.push(el("div",{class:"am-q2",text:"Every quality check cleared — the review is complete and ready to read or export."}));
+    out.push(el("div",{class:"am-q2",text:"Your review is finished, and the full report is compiled: the studies that made it in, the extracted-data table, and the completeness and integrity checks — which all passed."}));
+    out.push(el("div",{class:"am-q2",text:"Open the findings to read it, or Export the whole report as one shareable file."}));
     if((ev.advisories||[]).length) out.push(el("div",{class:"am-q2",text:ev.advisories.length+" advisory note"+(ev.advisories.length===1?"":"s")+" to review."}));
   } else {
-    out.push(el("div",{class:"am-q2",text:ev.explanation||"Some checks need your decision before this review is done."}));
+    out.push(el("div",{class:"am-q2",text:ev.explanation||"The report is almost done — a few checks need your decision first."}));
     if((ev.failures||[]).length){
       const ul=el("ul"); ev.failures.forEach(f=>ul.append(el("li",{text:(f.label||"")+" — "+(f.detail||"")})));
       out.push(el("div",{}, el("div",{class:"lbl",text:"To resolve"}), ul));

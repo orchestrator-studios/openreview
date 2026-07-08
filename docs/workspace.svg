@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 720" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="A desktop screen: a browser window showing the openreview live dashboard on the left, a Claude Code session top-right, and a file browser bottom-right showing the data/reviews folder — one folder per review, plain files you open in any editor.">
+  <defs>
+    <style>
+      .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;}
+      .serif{font-family:Georgia,"Times New Roman",serif;}
+      .ink{fill:#1b2529;} .ink2{fill:#4c595f;} .ink3{fill:#7f8b90;}
+    </style>
+    <linearGradient id="desk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a7186"/><stop offset="1" stop-color="#15303a"/>
+    </linearGradient>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="9" stdDeviation="14" flood-color="#06161d" flood-opacity="0.30"/>
+    </filter>
+    <clipPath id="brc"><rect x="36" y="48" width="650" height="596" rx="14"/></clipPath>
+    <clipPath id="clc"><rect x="706" y="48" width="418" height="286" rx="14"/></clipPath>
+    <clipPath id="flc"><rect x="706" y="354" width="418" height="290" rx="14"/></clipPath>
+  </defs>
+
+  <!-- desktop -->
+  <rect x="0" y="0" width="1160" height="720" fill="url(#desk)"/>
+  <rect x="0" y="0" width="1160" height="26" fill="#ffffff" opacity="0.10"/>
+  <text x="16" y="17" fill="#eef4f5" opacity="0.92" font-size="12" font-weight="600">◗ openreview workspace</text>
+  <text x="1144" y="17" text-anchor="end" fill="#eef4f5" opacity="0.8" font-size="11">◐ 9:41</text>
+
+  <!-- ============================ BROWSER · WATCH ============================ -->
+  <rect x="36" y="48" width="650" height="596" rx="14" fill="#ffffff" filter="url(#sh)"/>
+  <g clip-path="url(#brc)">
+    <rect x="36" y="48" width="650" height="88" fill="#e8eeef"/>
+    <!-- traffic lights -->
+    <circle cx="58" cy="66" r="5" fill="#ec6a5e"/><circle cx="74" cy="66" r="5" fill="#f5bf4f"/><circle cx="90" cy="66" r="5" fill="#61c554"/>
+    <!-- tab -->
+    <rect x="150" y="54" width="300" height="30" rx="8" fill="#ffffff"/>
+    <circle cx="166" cy="69" r="4" fill="#2f6377"/>
+    <text x="180" y="73" class="ink2" font-size="11">openreview — remote-monitoring-hf</text>
+    <!-- address bar -->
+    <rect x="54" y="96" width="576" height="28" rx="14" fill="#ffffff" stroke="#d3dbdc"/>
+    <path d="M70 110 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="#7f8b90" stroke-width="1.3"/>
+    <rect x="68" y="110" width="12" height="9" rx="1.5" fill="#7f8b90"/>
+    <text x="90" y="114" class="mono ink3" font-size="11">127.0.0.1:8765/dashboard/remote-monitoring-hf</text>
+    <!-- role pill -->
+    <rect x="592" y="58" width="86" height="20" rx="10" fill="#dbe8ec" stroke="#2f6377" stroke-width="1"/>
+    <text x="635" y="72" text-anchor="middle" fill="#214b5b" font-size="10.5" font-weight="700">① WATCH</text>
+
+    <!-- dashboard content -->
+    <text x="60" y="156" class="serif ink" font-size="14" font-weight="600">openreview<tspan class="ink3" font-family="-apple-system, Segoe UI, sans-serif" font-size="12" font-weight="400"> · remote-monitoring-hf</tspan></text>
+    <circle cx="616" cy="152" r="4" fill="#2c785a"/><text x="662" y="156" text-anchor="end" fill="#2c785a" font-size="11">live</text>
+
+    <text x="60" y="190" class="serif ink" font-size="18" font-weight="600">Does remote monitoring cut HF readmissions?</text>
+
+    <!-- nav stops -->
+    <text x="60" y="216" font-size="12.5">
+      <tspan class="ink3">Protocol</tspan><tspan class="ink3">   ·   </tspan><tspan fill="#214b5b" font-weight="700">● Pipeline activity</tspan><tspan class="ink3">   ·   </tspan><tspan class="ink3">Findings</tspan><tspan class="ink3">   ·   </tspan><tspan class="ink3">Eval</tspan>
+    </text>
+
+    <!-- reconciling line + stacked bar -->
+    <text x="60" y="248" class="mono ink2" font-size="11">532 retrieved  −  208 duplicates  =  324 unique</text>
+    <rect x="60" y="256" width="56"  height="22" rx="5" fill="#2c785a"/>
+    <rect x="116" y="256" width="470" height="22" fill="#ad4a37"/>
+    <rect x="586" y="256" width="76"  height="22" rx="5" fill="#b7c1c3"/>
+    <g font-size="11" class="ink2">
+      <rect x="60"  y="292" width="10" height="10" fill="#2c785a"/><text x="76"  y="301">included 27</text>
+      <rect x="176" y="292" width="10" height="10" fill="#ad4a37"/><text x="192" y="301">excluded 297</text>
+      <rect x="306" y="292" width="10" height="10" fill="#b7c1c3"/><text x="322" y="301">in screening</text>
+    </g>
+
+    <!-- PRISMA funnel -->
+    <g text-anchor="middle">
+      <rect x="181" y="324" width="360" height="36" rx="8" fill="#f4f7f7" stroke="#d7dedf"/>
+      <text x="361" y="347" class="ink2" font-size="12.5">Records identified — <tspan class="mono ink" font-weight="600">532</tspan></text>
+      <line x1="361" y1="360" x2="361" y2="388" stroke="#98a4a8"/><polygon points="355,384 367,384 361,392" fill="#98a4a8"/>
+
+      <rect x="211" y="392" width="300" height="36" rx="8" fill="#f4f7f7" stroke="#d7dedf"/>
+      <text x="361" y="415" class="ink2" font-size="12.5">Unique after de-dup — <tspan class="mono ink" font-weight="600">324</tspan></text>
+      <line x1="361" y1="428" x2="361" y2="456" stroke="#98a4a8"/><polygon points="355,452 367,452 361,460" fill="#98a4a8"/>
+
+      <rect x="256" y="460" width="210" height="36" rx="8" fill="#d7e9e0" stroke="#2c785a"/>
+      <text x="361" y="483" font-size="12.5" fill="#215c46">Studies included — <tspan class="mono" font-weight="700">27</tspan></text>
+    </g>
+
+    <text x="361" y="536" text-anchor="middle" font-size="11.5" fill="#214b5b">▸ every count is a link — click it for the papers behind it</text>
+    <text x="361" y="614" text-anchor="middle" font-size="10.5" class="ink3">PRISMA flow · live · updates on its own as Claude works</text>
+  </g>
+  <rect x="36" y="48" width="650" height="596" rx="14" fill="none" stroke="#c7d0d1"/>
+
+  <!-- ============================ CLAUDE CODE · COMMAND ============================ -->
+  <rect x="706" y="48" width="418" height="286" rx="14" fill="#192126" filter="url(#sh)"/>
+  <g clip-path="url(#clc)">
+    <rect x="706" y="48" width="418" height="36" fill="#1f292e"/>
+    <circle cx="726" cy="66" r="5" fill="#ec6a5e"/><circle cx="742" cy="66" r="5" fill="#f5bf4f"/><circle cx="758" cy="66" r="5" fill="#61c554"/>
+    <text x="782" y="70" fill="#aab7bc" font-size="12" font-weight="600">Claude Code</text>
+    <rect x="1026" y="55" width="88" height="20" rx="10" fill="#24333a" stroke="#3a4b52"/>
+    <text x="1070" y="69" text-anchor="middle" fill="#8fc0d0" font-size="10.5" font-weight="700">② COMMAND</text>
+
+    <g class="mono" font-size="12">
+      <text x="724" y="116" fill="#8fc0d0">❯ start a review: does remote</text>
+      <text x="724" y="134" fill="#8fc0d0">  monitoring cut HF readmissions?</text>
+      <text x="724" y="162" fill="#57b78c">● Wrote the protocol · 4 criteria</text>
+      <text x="724" y="182" fill="#57b78c">● PubMed search · 532 records</text>
+      <text x="724" y="202" fill="#aab7bc">  screening, dual independent…</text>
+      <text x="724" y="230" fill="#57b78c">● 27 included · evaluation passed</text>
+      <text x="724" y="262" fill="#8fc0d0">❯ </text>
+    </g>
+    <rect x="740" y="252" width="8" height="14" fill="#aab7bc" opacity="0.85"/>
+  </g>
+  <rect x="706" y="48" width="418" height="286" rx="14" fill="none" stroke="#2b373d"/>
+
+  <!-- ============================ FILES · READ (data/) ============================ -->
+  <rect x="706" y="354" width="418" height="290" rx="14" fill="#ffffff" filter="url(#sh)"/>
+  <g clip-path="url(#flc)">
+    <rect x="706" y="354" width="418" height="34" fill="#e8eeef"/>
+    <text x="724" y="376" class="ink" font-size="12" font-weight="600">Files</text>
+    <rect x="1030" y="360" width="84" height="20" rx="10" fill="#dbe8ec" stroke="#2f6377" stroke-width="1"/>
+    <text x="1072" y="374" text-anchor="middle" fill="#214b5b" font-size="10.5" font-weight="700">③ READ</text>
+
+    <!-- the point: everything you care about lives under data/reviews -->
+    <g class="mono" font-size="11.5">
+      <text x="724" y="414" class="ink" font-weight="600">data/reviews/</text>
+      <text x="1108" y="414" text-anchor="end" font-size="10.5" fill="#214b5b" class="serif">← your research lives here</text>
+      <text x="724" y="436" class="ink2">  remote-monitoring-hf/</text>
+      <text x="1108" y="436" text-anchor="end" font-size="10.5" fill="#7f8b90" class="serif">one folder per review</text>
+      <text x="724" y="456" class="ink3">      protocol.json</text>
+      <text x="724" y="474" class="ink3">      records.json</text>
+      <text x="724" y="492" class="ink3">      report.html</text>
+      <text x="724" y="512" class="ink2">  glp1-cognition/</text>
+      <text x="724" y="536" class="ink3" font-style="italic">schemas/  tools/  skills/  — the engine</text>
+    </g>
+
+    <rect x="718" y="552" width="394" height="80" rx="10" fill="#f4f7f7" stroke="#d7dedf"/>
+    <text x="734" y="576" class="ink2" font-size="12">Open a review's folder to read every decision by hand.</text>
+    <text x="734" y="596" class="ink3" font-size="11">Bring a Markdown viewer or a JSON-aware editor — VS Code,</text>
+    <text x="734" y="612" class="ink3" font-size="11">or any text editor — for the .json / .md files.</text>
+  </g>
+  <rect x="706" y="354" width="418" height="290" rx="14" fill="none" stroke="#c7d0d1"/>
+
+  <!-- tagline -->
+  <text x="580" y="692" text-anchor="middle" font-size="12.5" fill="#e3edee">Keep them side by side: <tspan font-weight="700">command</tspan> in Claude, <tspan font-weight="700">watch</tspan> the dashboard, and your <tspan font-weight="700">files</tspan> stay the ground truth — all three always agree.</text>
+</svg>

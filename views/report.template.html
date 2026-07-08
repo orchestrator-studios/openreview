@@ -560,13 +560,15 @@ function showEvalModal(ev, status){
   const host=document.getElementById("amodal"); if(!host) return;
   const box=el("div",{class:"amodal-box"+(pass?"":" paused")});
   box.append(
-    el("div",{class:"am-k",text: pass?"✓ Evaluation passed":"⏸ Evaluation paused — needs you"}),
+    el("div",{class:"am-k",text: pass?"✓ Your report is ready":"⏸ Your review needs you"}),
     el("div",{class:"am-t",text:P.title}));
   const body=el("div",{class:"am-body"}); box.append(body);
   if(pass){
-    body.append(el("div",{class:"am-q2",text:"Every quality check cleared — this review is complete and ready to read or export."}));
+    body.append(
+      el("div",{class:"am-q2",text:"Your review is finished, and the full report is compiled: the studies that made it in, the extracted-data table, and the completeness and integrity checks — which all passed."}),
+      el("div",{class:"am-q2",text:"Open the findings to read it, or use Download to save the whole report as one shareable file."}));
   } else {
-    body.append(el("div",{class:"am-q2",text:(ev&&ev.explanation)||"Some checks need your decision before this review is done."}));
+    body.append(el("div",{class:"am-q2",text:(ev&&ev.explanation)||"The report is almost done — a few checks need your decision first."}));
     if(ev&&(ev.failures||[]).length){
       const ul=el("ul"); ev.failures.forEach(f=>ul.append(el("li",{text:(f.label||"")+" — "+(f.detail||"")})));
       body.append(el("div",{}, el("div",{class:"lbl",text:"To resolve"}), ul));
@@ -574,7 +576,8 @@ function showEvalModal(ev, status){
   }
   box.append(el("div",{class:"am-actions"},
     el("button",{class:"am-cancel",type:"button",text:"Cancel",onclick:closeEvalModal}),
-    el("button",{class:"am-go",type:"button",text:"See the evaluation →",onclick:()=>{ closeEvalModal(); setTab("eval"); }})));
+    pass ? el("button",{class:"am-go",type:"button",text:"See the findings →",onclick:()=>{ closeEvalModal(); setTab("findings"); }})
+         : el("button",{class:"am-go",type:"button",text:"Resolve it →",onclick:()=>{ closeEvalModal(); setTab("eval"); }})));
   host.replaceChildren(el("div",{class:"amodal-backdrop",onclick:closeEvalModal}), box);
   host.hidden=false; document.body.style.overflow="hidden";
 }
@@ -913,11 +916,11 @@ tgl.addEventListener("click",()=>{ const cur=document.documentElement.getAttribu
   document.documentElement.setAttribute("data-theme", cur==="dark"?"light":"dark"); });
 
 // ---------- live mode (this same report served as the live dashboard) ----------
-// Inert in a static export (__LIVE__ === false). When served live by tools/server.py it
-// polls the pipeline projection, pulses a heartbeat, and — the moment the underlying data
-// changes under the agent's hands — surfaces a refresh affordance. (Step 2 will re-render
-// in place; for now a change surfaces a one-click refresh so you never lose your place
-// unexpectedly.)
+// Inert in a static export (__LIVE__ === false). When served live by tools/server.py it polls the
+// pipeline projection, pulses a heartbeat, updates the bar/PRISMA/eval in place, and auto-refreshes
+// the heavier baked tabs (Records, Findings) when their data changes — no manual refresh; it's a
+// real-time dashboard. The refresh preserves your current tab and scroll and defers while you're
+// interacting, so it never yanks the page out from under you.
 const LIVE = __LIVE__;
 const LIVE_SLUG = "__SLUG__";
 if (!LIVE) {
@@ -930,13 +933,33 @@ if (!LIVE) {
 if (LIVE) {
   const lw = document.getElementById("liveWrap"); if (lw) lw.hidden = false;
   const eb = document.getElementById("exportBtn"); if (eb) eb.hidden = false;   // single-file snapshot
-  const pill = el("button",{id:"refreshPill",type:"button",onclick:()=>location.reload()},"↻ Data changed — refresh");
-  document.body.append(pill);
-  let sig = null;
+
+  // Restore the tab + scroll position saved just before an auto-refresh reload, so a real-time
+  // refresh never throws away where the reader was.
+  try{
+    const saved = JSON.parse(sessionStorage.getItem("or_live")||"null");
+    if(saved && saved.slug===LIVE_SLUG){
+      sessionStorage.removeItem("or_live");
+      if(saved.tab && TABS.some(t=>t.id===saved.tab)) setTab(saved.tab);
+      if(typeof saved.y==="number") window.scrollTo({top:saved.y, behavior:"auto"});
+    }
+  }catch(e){}
+
+  let sig = null, pendingReload = false;
   // Seed the eval milestone from the baked-in projection so a review already past the gate at
-  // page-open (e.g. arriving here from the index "evaluation ready" modal) doesn't re-fire.
+  // page-open (e.g. arriving here from the index "report ready" modal) doesn't re-fire.
   let evPrev = ((DATA.projection&&DATA.projection.workflow&&DATA.projection.workflow.evaluation)||{}).status || "pending";
   let evShown = false;
+  const isOpen = id => { const e=document.getElementById(id); return !!(e && !e.hidden); };
+  function uiBusy(){
+    return isOpen("recmodal") || isOpen("helpmodal") || isOpen("amodal")
+        || (window.getSelection && String(window.getSelection()||"").length>0);
+  }
+  function maybeReload(){
+    if(!pendingReload || uiBusy()) return;      // never yank the page while the reader is mid-interaction
+    try{ sessionStorage.setItem("or_live", JSON.stringify({slug:LIVE_SLUG, tab:activeTab, y:window.scrollY})); }catch(e){}
+    location.reload();
+  }
   async function livePoll(){
     try{
       const r = await fetch("/api/reviews/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
@@ -947,12 +970,13 @@ if (LIVE) {
       const evNow = (wf.evaluation||{}).status || "pending";
       if(evPrev==="pending" && (evNow==="pass"||evNow==="paused") && !evShown){ evShown=true; showEvalModal(wf.evaluation||{}, evNow); }
       evPrev = evNow;
-      const s = JSON.stringify([t.unique,t.included,t.ta_excluded,t.ft_excluded,t.needs_adjudication,t.extraction_arms,wf.phase,wf.blocked]);
       const dot=document.getElementById("liveDot"); if(dot){dot.classList.remove("beat");void dot.offsetWidth;dot.classList.add("beat");}
       const lt=document.getElementById("liveTxt"); if(lt) lt.textContent = wf.blocked?"needs you":(wf.complete?"complete":(wf.phase_label||"live"));
-      // The rich tabs (records/extraction) are baked; when their underlying data changes, offer a refresh.
-      if(sig!==null && s!==sig){ const rp=document.getElementById("refreshPill"); if(rp) rp.style.display="block"; }
+      // Auto-refresh the baked tabs (Records / Findings) when their data actually changes — no button.
+      const s = JSON.stringify([t.unique,t.included,t.ta_excluded,t.ft_excluded,t.needs_adjudication,t.extraction_arms,wf.phase,wf.blocked]);
+      if(sig!==null && s!==sig) pendingReload = true;
       sig = s;
+      maybeReload();
     }catch(e){ const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="offline"; }
   }
   livePoll(); setInterval(livePoll, 5000);

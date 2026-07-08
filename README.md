@@ -31,14 +31,21 @@ heart-failure readmissions,"* *"screen the results against these criteria,"* *"w
 does the work and writes everything down. (It's built and tested with Claude Code; in principle any capable
 coding agent could operate it, but start there.)
 
-While you work, you see the review in three places, and they always agree:
+<p align="center">
+  <img src="docs/workspace.svg" alt="The steady state: a web browser showing the live dashboard, next to a Claude Code session in a terminal or the app, next to the plain files — all three always in sync." width="900">
+</p>
+
+The way you run this day to day: keep a **browser window with the dashboard open next to your Claude Code
+session** (the terminal or the desktop app) — and, if you like, a file browser or editor on the side to read
+the raw files. While you work, the review shows up in these three places, and they always agree:
 
 - **The conversation** — you and Claude, in plain language. This is how you drive everything: you ask, it
   acts, and it tells you what it did and what it needs you to decide.
 - **A live dashboard** — a page in your browser that shows the review taking shape: the search funnel, what
   was excluded and why, what's included so far. It updates on its own as Claude works. (One command to start
   it — see Quickstart.)
-- **The files** — every record, decision, and criterion is a plain file in the folder, yours to open, read,
+- **The files** — your research lives under `data/reviews/`, **one folder per review**; every record,
+  decision, and criterion is a plain `.json`/`.md` file, yours to open in any text editor or Markdown viewer
   and keep. Nothing is hidden in a database you can't see.
 
 The conversation is where you *act*, the dashboard is where you *watch*, the files are the *ground truth*
@@ -118,20 +125,34 @@ it. (There's also a **How this works** button on the dashboard itself.)
 
 ## What you see
 
-A review opens as a single view with four stops, left to right — the shape of a review:
+Everything a review produces lives in one **interactive report** — the same view you watch live on the
+dashboard and the one the export freezes to a file. It reads left to right as four stops, and *every number
+in it is a link*:
 
-- **Protocol** — your question, criteria, and search strategy (the queries in plain text; the exact commands
-  are one toggle away, for anyone who wants to reproduce them from a terminal).
-- **Pipeline activity** — where the work is. A snapshot bar (*retrieved − duplicates = unique*, green included
-  / red excluded / neutral in-screening) above the live **PRISMA flow**. Every count opens the records behind
-  it.
-- **Findings** — the included studies and the structured data extracted from them.
+- **Protocol** — your question and PICO, the inclusion criteria, the controlled list of exclusion reasons, and
+  the search strategy. The queries are shown in plain text, with the exact PubMed commands one toggle away for
+  anyone who wants to reproduce them from a terminal.
+- **Pipeline activity** — the live **PRISMA flow** every systematic reviewer knows: records identified →
+  duplicates removed → excluded at title/abstract → assessed at full text → included, under a reconciling
+  snapshot bar (*retrieved − duplicates = unique*, split green included / red excluded / neutral in-screening).
+  No count is a dead end — click *excluded at title/abstract*, a single exclusion reason, *assessed at full
+  text*, or *included*, and the exact papers behind that number open.
+- **Findings** — the included studies and a **compiled extraction table**: the structured fields pulled from
+  each study, one row per study arm, grouped and colour-coded by the outcome that matters, ready to read or
+  drop into a write-up.
 - **Eval** — a quality gate: completeness and integrity checks that either pass, or pause the review and tell
   you exactly what needs a human.
 
-The full **records list** is one click from any number — search it, filter it, and see each paper's
-provenance and screening trail. And one **Export** button freezes the whole view to a single self-contained
-HTML file you can email or attach to a submission — same numbers, no server needed.
+**The records explorer is where the audit trail pays off.** From any count you land in a searchable,
+filterable list of exactly those papers — and opening any one shows its abstract, **which query (or queries)
+surfaced it**, and its full **screening trail**: what each of the two independent reviewers decided, how
+confident they were, the inclusion criterion it met or the reason it was excluded, and how any conflict was
+adjudicated — plus whether it was judged on full text or only the abstract. You can follow any paper from the
+top-line PRISMA number all the way down to the sentence-level reason it's in or out.
+
+And one **Export** button freezes the whole thing — PRISMA counts, records, every screening trail, the
+extraction table — to a single self-contained HTML file you can email or attach to a submission. Same numbers,
+every drill-down link still works, no server needed.
 
 ## Honest about its limits
 
