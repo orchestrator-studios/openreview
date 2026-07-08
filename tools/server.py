@@ -21,6 +21,7 @@ Usage
 Stdlib only — no framework, no build step, consistent with the rest of the workspace.
 """
 import argparse
+import html as htmllib
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
@@ -82,6 +83,33 @@ class Handler(BaseHTTPRequestHandler):
     def _err(self, code, msg):
         self._send(code, {"error": msg})
 
+    def _missing_html(self, slug):
+        """A friendly 404 for the HTML routes — a review that was deleted (or a stale bookmark)
+        should land on a readable page with a way back, not a raw JSON error blob."""
+        safe = htmllib.escape(slug)
+        page = (
+            '<!doctype html><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            "<title>Review not found — openreview</title><style>"
+            "body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#e9eded;"
+            "color:#1b2529;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;}"
+            "@media(prefers-color-scheme:dark){body{background:#10161a;color:#e9eeef;}}"
+            ".card{max-width:460px;padding:34px;text-align:center;background:#fff;border:1px solid #d7dedf;"
+            "border-radius:16px;box-shadow:0 8px 30px rgba(20,40,48,.12);}"
+            "@media(prefers-color-scheme:dark){.card{background:#192126;border-color:#2b373d;}}"
+            "h1{font-family:Georgia,serif;font-size:22px;margin:0 0 10px;}"
+            "p{color:#4c595f;line-height:1.55;margin:0 0 20px;}"
+            "@media(prefers-color-scheme:dark){p{color:#aab7bc;}}"
+            "code{font-family:ui-monospace,Consolas,monospace;}"
+            "a{display:inline-block;background:#2f6377;color:#fff;text-decoration:none;padding:10px 18px;"
+            "border-radius:10px;font-weight:600;font-size:14px;}</style>"
+            '<div class="card"><h1>This review no longer exists</h1>'
+            f"<p>There's no review <code>{safe}</code> in this workspace — its folder under "
+            "<code>data/reviews/</code> may have been deleted or renamed.</p>"
+            '<a href="/">← Back to all reviews</a></div>'
+        )
+        return self._send(404, page, "text/html; charset=utf-8")
+
     def do_HEAD(self):
         self.do_GET()
 
@@ -101,7 +129,7 @@ class Handler(BaseHTTPRequestHandler):
             if parts[0] in ("dashboard", "pipeline") and len(parts) == 2:
                 slug = parts[1]
                 if not repo.has_protocol(slug):
-                    return self._err(404, f"no review '{slug}'")
+                    return self._missing_html(slug)
                 html = build_report.render(slug, live=True)
                 return self._send(200, html, "text/html; charset=utf-8")
 
@@ -109,7 +137,7 @@ class Handler(BaseHTTPRequestHandler):
             if parts[0] == "report" and len(parts) == 2:
                 slug = parts[1]
                 if not repo.has_protocol(slug):
-                    return self._err(404, f"no review '{slug}'")
+                    return self._missing_html(slug)
                 build_report.write(slug)                 # refresh the on-disk snapshot too
                 html = build_report.render(slug)         # live=False → frozen, self-contained
                 return self._send(200, html, "text/html; charset=utf-8", download=f"{slug}-report.html")

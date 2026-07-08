@@ -170,6 +170,7 @@ let evSeen = new Set();     // slugs whose evaluation milestone we've already an
 let dismissed = new Set();  // announcement keys the user cancelled — never re-raise this session
 let modalQueue = [];        // pending milestone announcements, shown one at a time
 let activeKey = null;       // key of the announcement currently on screen (null = none)
+let activeAnn = null;       // the announcement object on screen — so we can drop it if its review is deleted
 
 function el(tag, props, ...kids){
   const n=document.createElement(tag); props=props||{};
@@ -238,6 +239,11 @@ function render(list){
   const examples = list.filter(r=>r.example);
   const children = [];
 
+  // A review can be deleted mid-session — drop any queued announcement for a vanished review, and
+  // close an open modal whose review is gone (its detail fetch and "See it" link would 404).
+  modalQueue = modalQueue.filter(a=>slugs.has(a.slug));
+  if(activeAnn && !slugs.has(activeAnn.slug)) closeModal(false);
+
   // Milestone announcements — the two loud interrupts. (1) A protocol is defined: a brand-new
   // user review appears (the server lists a review the instant its protocol exists). (2) A review
   // reaches the evaluation gate (pass/paused). Both seed silently on the first load, so anything
@@ -296,12 +302,12 @@ function pumpModal(){
   let a;
   while((a=modalQueue.shift())){ if(!dismissed.has(a.key)) break; a=null; }
   if(!a) return;
-  activeKey = a.key;
+  activeKey = a.key; activeAnn = a;
   showModal(a);
 }
 function closeModal(dismiss){
   if(dismiss && activeKey) dismissed.add(activeKey);
-  activeKey = null;
+  activeKey = null; activeAnn = null;
   const host=$("amodal"); host.hidden=true; host.replaceChildren(); document.body.style.overflow="";
   pumpModal();                                       // show the next queued milestone, if any
 }

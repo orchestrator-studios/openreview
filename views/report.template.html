@@ -533,6 +533,7 @@ const TABS=[
 ];
 const tabsEl=document.getElementById("tabs");
 let activeTab="pipeline";
+let deleted=false;   // set once the live view learns its review was deleted (see showDeleted)
 TABS.forEach(t=>{
   const b=el("button",{class:"tab",type:"button",onclick:()=>setTab(t.id)},t.label, t.cnt!=null?el("span",{class:"cnt num",text:t.cnt}):null);
   b.dataset.tab=t.id; tabsEl.append(b);
@@ -554,7 +555,7 @@ function closeRecords(){ const m=document.getElementById("recmodal"); if(m){ m.h
 function openHelp(){ const m=document.getElementById("helpmodal"); if(m){ m.hidden=false; document.body.style.overflow="hidden"; } }
 function closeHelp(){ const m=document.getElementById("helpmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
 // The evaluation-ready milestone, fired live on this page (the counterpart to the index modals).
-function closeEvalModal(){ const h=document.getElementById("amodal"); if(h){ h.hidden=true; h.replaceChildren(); document.body.style.overflow=""; } }
+function closeEvalModal(){ if(deleted) return; const h=document.getElementById("amodal"); if(h){ h.hidden=true; h.replaceChildren(); document.body.style.overflow=""; } }
 function showEvalModal(ev, status){
   const pass = status==="pass";
   const host=document.getElementById("amodal"); if(!host) return;
@@ -945,7 +946,7 @@ if (LIVE) {
     }
   }catch(e){}
 
-  let sig = null, pendingReload = false;
+  let sig = null, pendingReload = false, liveTimer = null;
   // Seed the eval milestone from the baked-in projection so a review already past the gate at
   // page-open (e.g. arriving here from the index "report ready" modal) doesn't re-fire.
   let evPrev = ((DATA.projection&&DATA.projection.workflow&&DATA.projection.workflow.evaluation)||{}).status || "pending";
@@ -956,13 +957,34 @@ if (LIVE) {
         || (window.getSelection && String(window.getSelection()||"").length>0);
   }
   function maybeReload(){
-    if(!pendingReload || uiBusy()) return;      // never yank the page while the reader is mid-interaction
+    if(!pendingReload || uiBusy() || deleted) return;   // never yank the page mid-interaction, or if gone
     try{ sessionStorage.setItem("or_live", JSON.stringify({slug:LIVE_SLUG, tab:activeTab, y:window.scrollY})); }catch(e){}
     location.reload();
+  }
+  // The review this page shows was deleted out from under us. Stop polling, freeze the page as a
+  // clear last-snapshot, and offer the way back — never a stale page silently pretending to be live.
+  function showDeleted(){
+    if(deleted) return; deleted = true;
+    if(liveTimer){ clearInterval(liveTimer); liveTimer = null; }
+    pendingReload = false;
+    const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="deleted";
+    const dt=document.getElementById("liveDot"); if(dt) dt.style.background="var(--neg)";
+    const eb2=document.getElementById("exportBtn"); if(eb2) eb2.hidden=true;
+    const host=document.getElementById("amodal"); if(!host) return;
+    const box=el("div",{class:"amodal-box paused"});
+    box.append(
+      el("div",{class:"am-k",text:"This review was deleted"}),
+      el("div",{class:"am-t",text:P.title}),
+      el("div",{class:"am-body"},
+        el("div",{class:"am-q2",text:"This review no longer exists in the workspace — its folder under data/reviews/ has been removed. What you see behind this is the last snapshot before it went away; it is no longer live."})),
+      el("div",{class:"am-actions"}, el("a",{class:"am-go",href:"/",text:"← Back to all reviews"})));
+    host.replaceChildren(el("div",{class:"amodal-backdrop"}), box);   // no dismiss — there's nothing live to return to
+    host.hidden=false; document.body.style.overflow="hidden";
   }
   async function livePoll(){
     try{
       const r = await fetch("/api/reviews/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
+      if(r.status===404){ showDeleted(); return; }   // deleted (or renamed) — distinct from a transient outage
       if(!r.ok) throw 0;
       const p = await r.json(), t = p.totals||{}, wf = p.workflow||{};
       renderPipeline(p); renderEval((p.workflow||{}).evaluation);   // bar + PRISMA + eval update in place, live
@@ -979,6 +1001,6 @@ if (LIVE) {
       maybeReload();
     }catch(e){ const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="offline"; }
   }
-  livePoll(); setInterval(livePoll, 5000);
+  livePoll(); liveTimer = setInterval(livePoll, 5000);
 }
 </script>
