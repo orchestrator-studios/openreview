@@ -44,6 +44,21 @@ While you work, you see the review in three places, and they always agree:
 The conversation is where you *act*, the dashboard is where you *watch*, the files are the *ground truth*
 under both.
 
+### Three ways to talk to Claude
+
+It's the same chat window doing three different jobs — worth knowing all three from the first day:
+
+- **Command it.** This is how you run the system: start a review, tighten a criterion, re-run a search,
+  export the result. When a review says *Needs you* — a screening conflict, or a paused quality gate —
+  you resolve it right here in plain language (*"exclude 12345, wrong population"*). There are no commands
+  to memorize; you never touch a terminal unless you want to.
+- **Ask it how things work.** Anything on the dashboard you don't understand, ask the assistant that built
+  it: *"what does 'excluded at full text' mean here?"*, *"why is this review paused?"*, *"walk me through
+  what I'm looking at."* Being confused is never a dead end.
+- **Push it further.** The report and tables are a starting point, not the last word: *"group the included
+  studies by year,"* *"which exclusions were the closest calls?"*, *"chart the findings,"* *"draft a methods
+  paragraph from this."* Ask for the cut you want and it builds it from the same underlying files.
+
 ## Why you can trust it
 
 Anyone can produce a list of papers. What makes a review worth something is that you can *check* it — follow
@@ -65,10 +80,17 @@ If you want to distrust a conclusion, the system is arranged so you can.
 
 ## Quickstart
 
-You need [Claude Code](https://claude.com/claude-code), Python 3, and one library
-(`pip install -r requirements.txt`). PubMed needs no account and no API key.
+You need [Claude Code](https://claude.com/claude-code) and Python 3. PubMed needs no account and no API key.
 
-**1. Open the dashboard — your home base.**
+**1. Get the folder.** Clone (or download) this repo, then install the one dependency:
+
+```bash
+git clone https://github.com/orchestrator-studios/openreview.git
+cd openreview
+pip install -r requirements.txt
+```
+
+**2. Open the dashboard — your home base.**
 
 ```bash
 python tools/server.py
@@ -79,12 +101,20 @@ It ships with one finished example inside — a real PubMed review on how geneti
 susceptibility to asbestos-induced mesothelioma — so there is something to explore from the first minute.
 Because you haven't started your own review yet, the page also shows you how to begin.
 
-**2. Open the folder in Claude Code and just ask.** *"Start a review: does remote monitoring reduce
+**3. Open the folder in Claude Code and just ask.** *"Start a review: does remote monitoring reduce
 heart-failure readmissions after discharge?"* Claude interviews you for the criteria, writes the protocol,
 runs the PubMed search — and a card for your review appears on the dashboard on its own.
 
-**3. Watch it work, then check anything.** As Claude screens, the funnel fills. Click any number to see the
-papers behind it. Open the files in `data/reviews/<your-review>/` whenever you want the raw truth.
+**4. Watch it work, then check anything.** As Claude screens, the funnel fills. Click any number to see the
+papers behind it. The dashboard pings you at the two moments that matter — when your review first appears,
+and when it reaches the **evaluation gate** (passed, or paused for a decision only you can make) — so you can
+leave it open beside your chat and look over when it calls. Open the files in `data/reviews/<your-review>/`
+whenever you want the raw truth.
+
+**What to expect.** A thorough search can return hundreds of records, and screening each one *twice* — two
+independent AI passes — is real work: a review runs for a while and spends Claude usage as it goes, rather
+than finishing in one keystroke. You set the scope, so if you want the first run small, ask for a narrower
+question or a calibration sample before the full pass.
 
 ## What you see
 
@@ -108,9 +138,11 @@ HTML file you can email or attach to a submission — same numbers, no server ne
 - **LLM-assisted screening is a rigorous _aid_, not a replacement for dual _human_ screening under a
   registered protocol.** It instruments and records the process so it can be audited; it does not take
   responsibility for your included set off your shoulders.
-- **Screening reads titles and abstracts, not full text.** PubMed gives us those; true full-text retrieval
-  (PMC, publisher PDFs) isn't built yet. The bundled example's extracted data is drawn from abstracts too —
-  treat it as a demonstration of shape, not a clinical dataset.
+- **Full-text screening reaches only open-access papers.** The second screening pass fetches full text from
+  PubMed Central (PMID-verified) with an Unpaywall fallback; when neither yields open-access text it screens
+  the abstract instead and records `basis: abstract` on that record, so the limit is visible on the record,
+  not hidden. Paywalled PDFs behind a publisher login aren't retrieved. The bundled example leans on abstracts
+  for much of its extraction — treat it as a demonstration of shape, not a clinical dataset.
 - **Conflicts and low-confidence calls in the bundled example were adjudicated with a light touch** — the
   agreed decisions accepted and borderline title/abstract cases carried to full text — rather than
   hand-reviewed one by one. It's a demonstration of the mechanism working end to end, not a clinical result.

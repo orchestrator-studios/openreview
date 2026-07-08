@@ -45,7 +45,8 @@ def _reviews_index():
             is_ex = bool(repo.load_protocol(slug).get("example")) if repo.has_protocol(slug) else False
             out.append({"slug": slug, "title": slug, "question": "", "example": is_ex,
                         "totals": {"included": 0, "unique": 0, "needs_adjudication": 0},
-                        "phase_label": "starting", "blocked": False, "complete": False})
+                        "phase_label": "starting", "blocked": False, "complete": False,
+                        "eval_status": "pending"})
             continue
         wf = p.get("workflow", {})
         out.append({"slug": slug, "title": p["title"], "question": p["question"],
@@ -53,7 +54,10 @@ def _reviews_index():
                     "totals": p["totals"],
                     "phase_label": wf.get("phase_label", ""),
                     "blocked": wf.get("blocked", False),
-                    "complete": wf.get("complete", False)})
+                    "complete": wf.get("complete", False),
+                    # the evaluation gate's verdict: "pending" until it runs, then
+                    # "pass" or "paused" — the signal behind the index's eval-ready alert.
+                    "eval_status": wf.get("evaluation", {}).get("status", "pending")})
     return out
 
 

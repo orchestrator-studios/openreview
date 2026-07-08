@@ -112,6 +112,20 @@
   .firstcta .fc-t{font-family:var(--serif);font-size:19px;font-weight:600;margin-top:3px;line-height:1.2;}
   .firstcta .fc-s{font-size:13px;color:var(--ink-2);margin-top:4px;}
   .firstcta .fc-go{flex:none;font-weight:600;font-size:14px;border:1px solid currentColor;border-radius:9px;padding:9px 15px;white-space:nowrap;}
+
+  /* eval-ready alert — fires when a review reaches the evaluation gate (passes, or pauses for you) */
+  .evalcta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px;
+    padding:16px 20px;border-radius:14px;box-shadow:var(--shadow);animation:ctapop .5s ease-out;
+    transition:filter .15s;color:var(--ink);}
+  .evalcta:hover{filter:brightness(1.03);}
+  .evalcta.pass{border:1px solid var(--pos);background:var(--pos-soft);}
+  .evalcta.paused{border:1px solid var(--warn);background:var(--warn-soft);}
+  .evalcta .ec-k{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
+  .evalcta.pass .ec-k{color:var(--pos);} .evalcta.paused .ec-k{color:var(--warn);}
+  .evalcta .ec-t{font-family:var(--serif);font-size:19px;font-weight:600;margin-top:3px;line-height:1.2;}
+  .evalcta .ec-s{font-size:13px;color:var(--ink-2);margin-top:4px;max-width:70ch;}
+  .evalcta .ec-go{flex:none;font-weight:600;font-size:14px;border:1px solid currentColor;border-radius:9px;padding:9px 15px;white-space:nowrap;}
+  .evalcta.pass .ec-go{color:var(--pos);} .evalcta.paused .ec-go{color:var(--warn);}
   footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink-3);font-size:12px;}
   footer code{font-family:var(--mono);color:var(--ink-2);}
 </style></head>
@@ -146,6 +160,8 @@ const $ = id => document.getElementById(id);
 let known = null;           // Set of slugs seen so far (null until first load)
 let hadUserReviews = false; // have we seen a user (non-example) review yet this session?
 let ctaSlug = null;         // first user review's slug — keep its "open it" prompt up until clicked
+let evState = new Map();    // slug -> last-seen eval status ('pending'|'paused'|'pass')
+let evAlerts = new Map();   // slug -> {slug,kind,title} for reviews that reached the gate while watching
 
 function el(tag, props, ...kids){
   const n=document.createElement(tag); props=props||{};
@@ -214,6 +230,21 @@ function render(list){
   const examples = list.filter(r=>r.example);
   const children = [];
 
+  // Eval-ready alert: the counterpart to the birth CTA. When a user review crosses the
+  // evaluation gate — passes, or pauses needing a decision — while the user is watching,
+  // raise a persistent banner so the verdict pulls them back to the tab. State is seeded
+  // silently on the first load (known===null), so a review already finished at page-open
+  // (the bundled example, or a review left overnight) never fires — only a transition we
+  // actually witness does.
+  for(const r of users){
+    const now = r.eval_status || "pending";
+    if(known!==null && evState.get(r.slug)==="pending" && (now==="pass"||now==="paused") && !evAlerts.has(r.slug))
+      evAlerts.set(r.slug, {slug:r.slug, kind:now, title:r.title||r.slug});
+    evState.set(r.slug, now);
+  }
+  for(const slug of [...evAlerts.keys()]) if(!slugs.has(slug)) evAlerts.delete(slug);
+  for(const a of evAlerts.values()) if(slugs.has(a.slug)) children.push(evalCta(a));
+
   // First-review call-to-action: the instant the user's first own review appears (while they're
   // watching — not on a reload), guide them into it with a loud, obvious prompt. It persists across
   // polls until they click through, so it never just flashes and vanishes.
@@ -253,6 +284,18 @@ function firstReviewCta(r){
       el("div",{class:"fc-t",text:r.title||r.slug}),
       el("div",{class:"fc-s",text:"Claude has created it. Open it to watch the search and screening happen live."})),
     el("span",{class:"fc-go",text:"Open it →"}));
+}
+
+function evalCta(a){
+  const pass = a.kind==="pass";
+  return el("a",{class:"evalcta"+(pass?" pass":" paused"),href:"/dashboard/"+encodeURIComponent(a.slug)},
+    el("div",{},
+      el("div",{class:"ec-k",text: pass ? "✓ Evaluation passed" : "⏸ Evaluation paused — needs you"}),
+      el("div",{class:"ec-t",text:a.title}),
+      el("div",{class:"ec-s",text: pass
+        ? "Every quality check cleared. Open the review to read the findings — then Export freezes the whole thing to one shareable file."
+        : "The quality gate found checks that need your decision before this review is done. Open it to see what's waiting and resolve it in chat."})),
+    el("span",{class:"ec-go",text: pass ? "Open it →" : "Resolve it →"}));
 }
 
 async function poll(){
