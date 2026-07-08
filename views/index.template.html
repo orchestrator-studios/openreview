@@ -101,6 +101,17 @@
   .rev.ex{border-style:dashed;}
   .exlabel{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin-bottom:-2px;}
 
+  /* first-review call-to-action */
+  .firstcta{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px;
+    padding:16px 20px;border:1px solid var(--accent);border-radius:14px;background:var(--accent-soft);
+    color:var(--ink);box-shadow:var(--shadow);animation:ctapop .5s ease-out;transition:background .15s;}
+  @keyframes ctapop{0%{transform:scale(.98);opacity:.3;}100%{transform:scale(1);opacity:1;}}
+  .firstcta:hover{background:var(--accent);color:#fff;}
+  .firstcta .fc-k{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-ink);}
+  .firstcta:hover .fc-k,.firstcta:hover .fc-s{color:#fff;}
+  .firstcta .fc-t{font-family:var(--serif);font-size:19px;font-weight:600;margin-top:3px;line-height:1.2;}
+  .firstcta .fc-s{font-size:13px;color:var(--ink-2);margin-top:4px;}
+  .firstcta .fc-go{flex:none;font-weight:600;font-size:14px;border:1px solid currentColor;border-radius:9px;padding:9px 15px;white-space:nowrap;}
   footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink-3);font-size:12px;}
   footer code{font-family:var(--mono);color:var(--ink-2);}
 </style></head>
@@ -133,6 +144,8 @@
 const POLL_MS = Math.max(2, +(new URLSearchParams(location.search).get("poll")) || 4) * 1000;
 const $ = id => document.getElementById(id);
 let known = null;           // Set of slugs seen so far (null until first load)
+let hadUserReviews = false; // have we seen a user (non-example) review yet this session?
+let ctaSlug = null;         // first user review's slug — keep its "open it" prompt up until clicked
 
 function el(tag, props, ...kids){
   const n=document.createElement(tag); props=props||{};
@@ -201,6 +214,16 @@ function render(list){
   const examples = list.filter(r=>r.example);
   const children = [];
 
+  // First-review call-to-action: the instant the user's first own review appears (while they're
+  // watching — not on a reload), guide them into it with a loud, obvious prompt. It persists across
+  // polls until they click through, so it never just flashes and vanishes.
+  if(users.length && !hadUserReviews && known!==null && !ctaSlug) ctaSlug = users[0].slug;
+  hadUserReviews = hadUserReviews || users.length>0;
+  if(ctaSlug){
+    const r = users.find(u=>u.slug===ctaSlug);
+    if(r) children.push(firstReviewCta(r));
+  }
+
   // Guidance shows while the user has no review of their own — whether the workspace is
   // truly empty or holds only the bundled example. Once they have their own, it steps aside.
   if(users.length===0) children.push(guidancePanel(examples.length>0));
@@ -221,6 +244,15 @@ function render(list){
   else
     $("hSub").textContent = "Every review in this workspace, live. Click one to open its dashboard. New reviews appear the moment Claude creates them.";
   known=slugs;
+}
+
+function firstReviewCta(r){
+  return el("a",{class:"firstcta",href:"/dashboard/"+encodeURIComponent(r.slug)},
+    el("div",{},
+      el("div",{class:"fc-k",text:"✨ Your review is ready"}),
+      el("div",{class:"fc-t",text:r.title||r.slug}),
+      el("div",{class:"fc-s",text:"Claude has created it. Open it to watch the search and screening happen live."})),
+    el("span",{class:"fc-go",text:"Open it →"}));
 }
 
 async function poll(){

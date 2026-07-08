@@ -279,19 +279,30 @@
   .recmodal-close{position:sticky;top:12px;float:right;margin-top:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;height:32px;padding:0 12px;font-size:13px;cursor:pointer;z-index:2;}
   .recmodal-close:hover{color:var(--ink);}
   .recbody{clear:both;}
+  /* snapshot / backup markers (frozen export only) */
+  .snap{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--warn);
+    background:var(--warn-soft);border:1px solid var(--warn);border-radius:999px;padding:3px 11px;}
+  .snapbanner{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:11px 15px;
+    margin:16px 0 2px;font-size:13px;color:var(--ink);}
+  .snapbanner b{color:var(--warn);}
 </style>
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand">Living Review <small>· mouse-genetics-mesothelioma</small></div>
+    <div class="brand">openreview <small>· mouse-genetics-mesothelioma</small></div>
     <div class="tabs" id="tabs"></div>
     <span class="live" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
-    <a class="tgl" id="exportBtn" href="/report/mouse-genetics-mesothelioma" target="_blank" rel="noopener" hidden title="Open a self-contained, single-file snapshot you can save or share">Export ↗</a>
+    <span class="snap" id="snapBadge" hidden>◆ Snapshot — not live</span>
+    <a class="tgl" id="exportBtn" href="/report/mouse-genetics-mesothelioma" download="mouse-genetics-mesothelioma-report.html" hidden title="Download a self-contained backup of this review (a single HTML file you can save or share)">Download ↓</a>
     <button class="tgl" id="themeToggle" type="button">Theme</button>
   </div>
 </div>
 
 <div class="wrap">
+  <div class="snapbanner" id="snapBanner" hidden><b>Saved snapshot.</b> This is a frozen backup of the
+    review as it was exported — it does <b>not</b> update. For the live, current review, open the workspace
+    in Claude Code.</div>
+
   <header class="hero">
     <div class="eyebrow"><span class="dot"></span> Systematic review · PubMed / MEDLINE · run 2026-07-07</div>
     <h1 id="qTitle"></h1>
@@ -773,6 +784,11 @@ tgl.addEventListener("click",()=>{ const cur=document.documentElement.getAttribu
 // unexpectedly.)
 const LIVE = false;
 const LIVE_SLUG = "mouse-genetics-mesothelioma";
+if (!LIVE) {
+  // this is a downloaded/frozen backup — mark it clearly as not-live
+  const sb=document.getElementById("snapBadge"); if(sb) sb.hidden=false;
+  const bn=document.getElementById("snapBanner"); if(bn) bn.hidden=false;
+}
 if (LIVE) {
   const lw = document.getElementById("liveWrap"); if (lw) lw.hidden = false;
   const eb = document.getElementById("exportBtn"); if (eb) eb.hidden = false;   // single-file snapshot

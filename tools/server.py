@@ -61,7 +61,7 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *a):  # quiet; the dashboard polls frequently
         pass
 
-    def _send(self, code, body, ctype="application/json; charset=utf-8"):
+    def _send(self, code, body, ctype="application/json; charset=utf-8", download=None):
         if isinstance(body, (dict, list)):
             body = json.dumps(body, ensure_ascii=False)
         data = body.encode("utf-8")
@@ -69,6 +69,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
+        if download:  # force a file download rather than in-tab render
+            self.send_header("Content-Disposition", f'attachment; filename="{download}"')
         self.end_headers()
         if self.command != "HEAD":
             self.wfile.write(data)
@@ -99,14 +101,14 @@ class Handler(BaseHTTPRequestHandler):
                 html = build_report.render(slug, live=True)
                 return self._send(200, html, "text/html; charset=utf-8")
 
-            # export: regenerate the static (frozen) report from the data-access layer and serve it
+            # export: regenerate the frozen snapshot and send it as a file DOWNLOAD (not an in-tab render)
             if parts[0] == "report" and len(parts) == 2:
                 slug = parts[1]
                 if not repo.has_protocol(slug):
                     return self._err(404, f"no review '{slug}'")
                 build_report.write(slug)                 # refresh the on-disk snapshot too
-                html = build_report.render(slug)
-                return self._send(200, html, "text/html; charset=utf-8")
+                html = build_report.render(slug)         # live=False → frozen, self-contained
+                return self._send(200, html, "text/html; charset=utf-8", download=f"{slug}-report.html")
 
             if parts[0] == "api" and len(parts) >= 2 and parts[1] == "reviews":
                 if len(parts) == 2:
