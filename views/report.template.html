@@ -224,12 +224,58 @@
     .snum{display:none;}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+  .live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);margin-right:4px;}
+  .live .ldot{width:8px;height:8px;border-radius:50%;background:var(--pos);}
+  .live .ldot.beat{animation:beat 1.1s ease-out;}
+  @keyframes beat{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--pos) 60%,transparent);}100%{box-shadow:0 0 0 9px transparent;}}
+  #refreshPill{position:fixed;right:18px;bottom:18px;z-index:50;display:none;border:1px solid var(--accent);
+    background:var(--accent);color:#fff;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:600;
+    cursor:pointer;box-shadow:var(--shadow);}
+  /* live head: the corpus accounting + state, rendered from the canonical projection.
+     All selectors scoped to #livehead so class names (.seg, .recon, .num) can't collide
+     with the report's own. */
+  #livehead{margin:4px 0 30px;}
+  #livehead .lhstate{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;margin-bottom:16px;}
+  #livehead .lhstate .k{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
+  #livehead .lhstate .phase{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.15;margin-top:2px;}
+  #livehead .lhstate.blocked .phase{color:var(--warn);}
+  #livehead .lhstate.done .phase{color:var(--pos);}
+  #livehead .lhstate .next{font-size:14px;color:var(--ink);margin-top:2px;}
+  #livehead .acct{border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);padding:18px 20px;}
+  #livehead .eqn{display:flex;align-items:center;flex-wrap:wrap;gap:6px 4px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line-2);}
+  #livehead .eqterm{display:flex;flex-direction:column;gap:3px;padding:2px 6px;}
+  #livehead .eqterm .ev{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;transition:color .3s;}
+  #livehead .eqterm .ek{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;}
+  #livehead .eqterm.dup .ev{color:var(--warn);}
+  #livehead .eqop{font-family:var(--serif);font-size:22px;color:var(--ink-3);padding:0 12px;}
+  #livehead .bl{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:9px;}
+  #livehead .stack{display:flex;height:30px;border-radius:8px;overflow:hidden;border:1px solid var(--line-2);background:var(--surface-2);}
+  #livehead .stack .seg{height:100%;transition:width .45s ease;min-width:0;}
+  #livehead .stack .seg.pos{background:var(--pos);}
+  #livehead .stack .seg.neg{background:var(--neg);}
+  #livehead .stack .seg.neutral{background:var(--neutral);}
+  #livehead .legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:15px;}
+  #livehead .lg{border-left:3px solid var(--line);padding:2px 0 2px 12px;min-width:158px;}
+  #livehead .lg.pos{border-color:var(--pos);}
+  #livehead .lg.neg{border-color:var(--neg);}
+  #livehead .lg.neutral{border-color:var(--neutral);}
+  #livehead .lg .lh{display:flex;align-items:baseline;gap:8px;}
+  #livehead .lg .ln{font-family:var(--serif);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;}
+  #livehead .lg.pos .ln{color:var(--pos);}
+  #livehead .lg.neg .ln{color:var(--neg);}
+  #livehead .lg.neutral .ln{color:var(--ink);}
+  #livehead .lg .ll{font-size:12.5px;font-weight:600;color:var(--ink-2);}
+  #livehead .lg .lsplit{font-size:11.5px;color:var(--ink-3);line-height:1.55;margin-top:3px;}
+  #livehead .recon{margin-top:16px;font-size:12px;color:var(--ink-2);border-top:1px solid var(--line-2);padding-top:11px;font-family:var(--mono);}
+  #livehead .recon b{color:var(--ink);}
+  #livehead .recon .ok{color:var(--pos);font-weight:700;}
 </style>
 
 <div class="topbar">
   <div class="wrap">
     <div class="brand">Living Review <small>· __SLUG__</small></div>
     <div class="tabs" id="tabs"></div>
+    <span class="live" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
     <button class="tgl" id="themeToggle" type="button">Theme</button>
   </div>
 </div>
@@ -240,6 +286,8 @@
     <h1 id="qTitle"></h1>
     <p class="lede" id="qLede"></p>
   </header>
+
+  <div id="livehead"></div>
 
   <section class="panel" id="panel-method"></section>
   <section class="panel" id="panel-records"></section>
@@ -291,7 +339,9 @@ const N = R.length;
 const nInc = R.filter(r=>r.status==="included").length;
 const nTaExc = R.filter(isTaExc).length;
 const nFtExc = R.filter(isFtExc).length;
-const nPassedTa = N - nTaExc;                    // survived first pass
+const nPassedTa = N - nTaExc;                    // survived first pass (completed-review view)
+const PROJ = DATA.projection || {};              // canonical projection, correct at any stage
+const nScreened = N - ((PROJ.totals||{}).unscreened || 0);  // records with a screening decision so far
 const searchByLabel = {};
 (P.searches||[]).forEach(s=>{ const m=s.note.match(/label=([^;]+)/); if(m) searchByLabel[m[1]]=s; });
 // per-query returned + cumulative-new in execution order
@@ -392,7 +442,7 @@ function buildMethod(){
   ribbon.append(
     el("div",{class:"rnode"}, el("div",{class:"rk",text:"Retrieved"}), el("div",{class:"rv num",text:rawRetrievals}), el("div",{class:"rs",text:QORDER.length+" queries, with overlap"})),
     rnode("Unique records", N, "after de-duplication", {scope:"all"}),
-    rnode("Full-text assessed", nPassedTa, "passed title/abstract", {scope:"ta-passed"}),
+    rnode("Screened", nScreened, "of "+N+" so far", {scope:"all"}),
     rnode("Included", nInc, "met all criteria", {scope:"included"}, true),
   );
   p.append(ribbon);
@@ -669,12 +719,79 @@ function buildProtocol(){
   p.append(rc);
 }
 
+// ---------- live head: corpus accounting + state, from the canonical projection ----------
+// Correct at any stage (an in-progress review shows records as "In screening", not "assessed").
+// Updates in place on every live poll — the green/red bar moves as screening lands.
+function renderLiveHead(proj){
+  const host=document.getElementById("livehead"); if(!host) return;
+  host.replaceChildren();
+  if(!proj) return;
+  const wf=proj.workflow||{}, a=proj.accounting;
+  host.append(el("div",{class:"lhstate"+(wf.blocked?" blocked":(wf.complete?" done":""))},
+    el("div",{}, el("div",{class:"k",text:wf.blocked?"Phase · needs you":"Current phase"}),
+      el("div",{class:"phase",text:wf.phase_label||"—"})),
+    el("div",{}, el("div",{class:"k",text:"Next"}), el("div",{class:"next",text:wf.next_action||"—"}))));
+  if(!a) return;
+  const card=el("div",{class:"acct"});
+  const term=(cls,label,val)=>el("div",{class:"eqterm "+cls}, el("div",{class:"ev num",text:val}), el("div",{class:"ek",text:label}));
+  card.append(el("div",{class:"eqn"},
+    term("ret","Retrieved",a.retrieved), el("div",{class:"eqop",text:"−"}),
+    term("dup","Duplicates",a.duplicates), el("div",{class:"eqop",text:"="}),
+    term("uniq","Unique",a.unique)));
+  card.append(el("div",{class:"bl",text:"The "+a.unique+" unique records, fully broken down"}));
+  const U=a.unique||1, stack=el("div",{class:"stack"});
+  a.segments.forEach(s=>{ if(s.n>0) stack.append(el("div",{class:"seg "+s.tone,style:"width:"+(100*s.n/U)+"%",title:s.label+": "+s.n})); });
+  card.append(stack);
+  const legend=el("div",{class:"legend"});
+  a.segments.forEach(s=>{ const split=(s.split||[]).map(x=>x.label+" "+x.n).join(" · ");
+    legend.append(el("div",{class:"lg "+s.tone},
+      el("div",{class:"lh"}, el("span",{class:"ln num",text:s.n}), el("span",{class:"ll",text:s.label})),
+      split?el("div",{class:"lsplit",text:split}):null)); });
+  card.append(legend);
+  const parts=a.segments.map(s=>s.n).join(" + "), sum=a.segments.reduce((t,s)=>t+s.n,0);
+  card.append(el("div",{class:"recon"},
+    el("b",{text:a.retrieved})," − ",el("b",{text:a.duplicates})," = ",el("b",{text:a.unique}),
+    "  |  ",el("b",{text:a.unique})," = "+parts+" = ",el("b",{text:sum})," ",
+    el("span",{class:"ok",text:sum===a.unique?"✓":"⚠"})));
+  host.append(card);
+}
+
 // ---------- init ----------
 buildMethod(); buildRecords(); buildFindings(); buildProtocol();
-render(); setTab("method");
+render(); setTab("method"); renderLiveHead(DATA.projection);
 document.getElementById("footmeta").textContent =
   rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated __DATE__";
 const tgl=document.getElementById("themeToggle");
 tgl.addEventListener("click",()=>{ const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");
   document.documentElement.setAttribute("data-theme", cur==="dark"?"light":"dark"); });
+
+// ---------- live mode (this same report served as the live dashboard) ----------
+// Inert in a static export (__LIVE__ === false). When served live by tools/server.py it
+// polls the pipeline projection, pulses a heartbeat, and — the moment the underlying data
+// changes under the agent's hands — surfaces a refresh affordance. (Step 2 will re-render
+// in place; for now a change surfaces a one-click refresh so you never lose your place
+// unexpectedly.)
+const LIVE = __LIVE__;
+const LIVE_SLUG = "__SLUG__";
+if (LIVE) {
+  const lw = document.getElementById("liveWrap"); if (lw) lw.hidden = false;
+  const pill = el("button",{id:"refreshPill",type:"button",onclick:()=>location.reload()},"↻ Data changed — refresh");
+  document.body.append(pill);
+  let sig = null;
+  async function livePoll(){
+    try{
+      const r = await fetch("/api/reviews/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
+      if(!r.ok) throw 0;
+      const p = await r.json(), t = p.totals||{}, wf = p.workflow||{};
+      renderLiveHead(p);   // the corpus accounting + state update in place, live — the bar moves as screening lands
+      const s = JSON.stringify([t.unique,t.included,t.ta_excluded,t.ft_excluded,t.needs_adjudication,t.extraction_arms,wf.phase,wf.blocked]);
+      const dot=document.getElementById("liveDot"); if(dot){dot.classList.remove("beat");void dot.offsetWidth;dot.classList.add("beat");}
+      const lt=document.getElementById("liveTxt"); if(lt) lt.textContent = wf.blocked?"needs you":(wf.complete?"complete":(wf.phase_label||"live"));
+      // The rich tabs (records/extraction) are baked; when their underlying data changes, offer a refresh.
+      if(sig!==null && s!==sig){ const rp=document.getElementById("refreshPill"); if(rp) rp.style.display="block"; }
+      sig = s;
+    }catch(e){ const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="offline"; }
+  }
+  livePoll(); setInterval(livePoll, 5000);
+}
 </script>

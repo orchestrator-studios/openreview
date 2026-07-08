@@ -19,17 +19,23 @@ import repo
 TEMPLATE_PATH = repo.ROOT / "views" / "report.template.html"
 
 
-def render(slug, date=""):
+def render(slug, date="", live=False):
     """Bind a review's data into the shared template and return the self-contained HTML.
 
-    Pure — reads through `repo`, touches no files. Used by the CLI (which then writes it)
-    and by the dashboard server's export route (which serves it live)."""
+    Pure — reads through `repo`, touches no files. The same template is both the exported
+    static report (`live=False`, a frozen snapshot) and the live dashboard (`live=True`,
+    served by the server, which polls for changes on top of the baked-in data)."""
     review = repo.load_review(slug)
+    # Bake the canonical projection (the same funnel repo.py serves the pipeline view) into the
+    # payload, so the report renders the corpus accounting from the one source of truth rather than
+    # recomputing it — correct at any stage, including in-progress reviews.
+    review["projection"] = repo.pipeline_from(review["protocol"], review["records"], slug)
     date = date or (review["protocol"].get("searches", [{}])[-1].get("date", ""))
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     blob = json.dumps(review, ensure_ascii=False).replace("</", "<\\/")
     return (template
             .replace("__DATA__", blob)
+            .replace("__LIVE__", "true" if live else "false")
             .replace("__SLUG__", slug)
             .replace("__DATE__", date))
 

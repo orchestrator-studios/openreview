@@ -90,14 +90,25 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/health":
                 return self._send(200, {"ok": True})
 
+            # the dashboard IS the report, served live: the full rich view (records explorer,
+            # drill-downs, extraction table, protocol, links) rendered from current data, with a
+            # heartbeat and change-detection on top. One template; the export is the frozen twin.
             if parts[0] == "dashboard" and len(parts) == 2:
+                slug = parts[1]
+                if not repo.has_protocol(slug):
+                    return self._err(404, f"no review '{slug}'")
+                html = build_report.render(slug, live=True)
+                return self._send(200, html, "text/html; charset=utf-8")
+
+            # the pipeline monitor: the compact funnel + state-machine view (the former dashboard)
+            if parts[0] == "pipeline" and len(parts) == 2:
                 slug = parts[1]
                 if not repo.has_protocol(slug):
                     return self._err(404, f"no review '{slug}'")
                 html = TEMPLATE.read_text(encoding="utf-8")
                 return self._send(200, html, "text/html; charset=utf-8")
 
-            # export: regenerate the static report from the data-access layer and serve it
+            # export: regenerate the static (frozen) report from the data-access layer and serve it
             if parts[0] == "report" and len(parts) == 2:
                 slug = parts[1]
                 if not repo.has_protocol(slug):

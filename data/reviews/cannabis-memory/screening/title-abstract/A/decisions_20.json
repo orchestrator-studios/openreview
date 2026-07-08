@@ -1,0 +1,14 @@
+[
+  {"pmid":"4764355","decision":"include","confidence":"high","justification":"Oral THC in human volunteers with memory as an explicit outcome."},
+  {"pmid":"4582312","decision":"exclude","reason":"review-or-commentary","confidence":"low","justification":"Title 'Cannabis and its problems' with no abstract reads as a general commentary, not an empirical memory study."},
+  {"pmid":"4567504","decision":"include","confidence":"low","justification":"THC vs placebo on cognitive tasks in humans; memory component plausible though tasks not fully specified."},
+  {"pmid":"4684294","decision":"include","confidence":"low","justification":"Controlled human comparison of THC and marihuana; no abstract, memory outcome cannot be ruled out."},
+  {"pmid":"4405419","decision":"include","confidence":"high","justification":"Controlled human neuropsychological battery of THC/marijuana explicitly assessing memory."},
+  {"pmid":"4702274","decision":"include","confidence":"high","justification":"Marihuana and retrieval from short-term memory in humans."},
+  {"pmid":"4579626","decision":"exclude","reason":"review-or-commentary","confidence":"low","justification":"Non-English pharmacology overview of cannabis substances, not a primary human memory study."},
+  {"pmid":"4564953","decision":"include","confidence":"high","justification":"Marihuana effects on memory functions in humans."},
+  {"pmid":"4658175","decision":"include","confidence":"low","justification":"Clinical observations of IV THC patients; no abstract, memory testing cannot be confidently excluded."},
+  {"pmid":"4557583","decision":"include","confidence":"low","justification":"Propranolol effect on marihuana-induced cognitive dysfunction; memory plausibly among cognitive measures."},
+  {"pmid":"4485865","decision":"exclude","reason":"review-or-commentary","confidence":"medium","justification":"Social-psychology 'myth, mystery and fact' piece on cannabis consumption, not an empirical memory study."},
+  {"pmid":"4943948","decision":"include","confidence":"low","justification":"Human dose-response cannabis study; no abstract, memory outcome cannot be ruled out."}
+]

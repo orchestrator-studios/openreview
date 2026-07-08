@@ -1,0 +1,146 @@
+{
+  "slug": "cannabis-memory",
+  "title": "Cannabis use and memory function in humans",
+  "question": "In humans, is cannabis use — whether acute administration, chronic/regular use, or medicinal THC/CBD formulations — associated with changes in memory function (working memory, verbal or episodic memory, or memory consolidation), as measured by validated neuropsychological tests or neuroimaging in experimental, observational, or longitudinal studies?",
+  "pico": {
+    "population": "Humans of any age — healthy volunteers or clinical/patient samples",
+    "exposure": "Cannabis or a defined cannabinoid: acute administration (THC/CBD challenge, smoked/vaporized/oral), chronic or regular recreational use, or a medicinal THC/CBD formulation (nabiximols, dronabinol, prescribed cannabis)",
+    "comparator": "Non-users, placebo, or the participants' own pre-exposure / baseline",
+    "outcome": "Memory function — working memory, verbal memory, episodic memory, or memory consolidation — measured with a validated neuropsychological test or with neuroimaging of a memory process"
+  },
+  "inclusion_criteria": [
+    "Human participants (not animal, not in-vitro / cell work)",
+    "A cannabis or cannabinoid exposure is characterized (acute administration, chronic/regular use, or medicinal THC/CBD)",
+    "A memory outcome (working, verbal, episodic, or consolidation) is measured with a validated neuropsychological test or neuroimaging",
+    "Primary empirical study (experimental, observational, or longitudinal) — not a review, meta-analysis, commentary, or protocol"
+  ],
+  "exclusion_reasons": [
+    "not-human",
+    "no-cannabis-exposure",
+    "no-memory-outcome",
+    "not-validated-measure",
+    "in-vitro-or-animal",
+    "review-or-commentary",
+    "not-primary-research",
+    "memory-not-isolable",
+    "wrong-language",
+    "duplicate"
+  ],
+  "extraction_profile": {
+    "arm_noun": "outcome arm",
+    "summary_field": "effect_direction",
+    "fields": [
+      {
+        "key": "sample",
+        "label": "Sample",
+        "required": true,
+        "help": "population studied: healthy adults, adolescents, patients, chronic users, etc."
+      },
+      {
+        "key": "n",
+        "label": "N",
+        "required": false,
+        "help": "number of participants in this arm/comparison"
+      },
+      {
+        "key": "exposure_type",
+        "label": "Exposure",
+        "required": true,
+        "help": "acute administration, chronic/regular use, or medicinal THC/CBD"
+      },
+      {
+        "key": "cannabinoid",
+        "label": "Agent",
+        "required": false,
+        "help": "THC, CBD, THC:CBD, whole-plant/smoked, nabiximols, dronabinol, etc. (and dose if reported)"
+      },
+      {
+        "key": "design",
+        "label": "Design",
+        "required": true,
+        "help": "e.g. double-blind RCT/crossover, cross-sectional, longitudinal cohort"
+      },
+      {
+        "key": "memory_domain",
+        "label": "Memory domain",
+        "required": true,
+        "help": "working, verbal, episodic, or consolidation"
+      },
+      {
+        "key": "measure",
+        "label": "Measure",
+        "required": true,
+        "help": "validated test or neuroimaging paradigm (RAVLT, CVLT, n-back, digit span, fMRI encoding, etc.)"
+      },
+      {
+        "key": "comparator",
+        "label": "Comparator",
+        "required": false
+      },
+      {
+        "key": "result",
+        "label": "Result",
+        "required": false,
+        "help": "the reported effect, with numbers/direction as stated"
+      },
+      {
+        "key": "effect_direction",
+        "label": "Effect on memory",
+        "required": true,
+        "categorical": {
+          "values": {
+            "impaired": {
+              "label": "Memory impaired",
+              "tone": "negative"
+            },
+            "improved": {
+              "label": "Memory improved",
+              "tone": "positive"
+            },
+            "no-effect": {
+              "label": "No measurable effect",
+              "tone": "neutral"
+            },
+            "mixed": {
+              "label": "Mixed / dose- or domain-dependent",
+              "tone": "warn"
+            },
+            "unclear": {
+              "label": "Unclear",
+              "tone": "neutral"
+            }
+          }
+        }
+      },
+      {
+        "key": "notes",
+        "label": "Notes",
+        "required": false,
+        "in_table": false
+      }
+    ]
+  },
+  "searches": [
+    {
+      "database": "PubMed",
+      "query": "(cannabis OR cannabinoid OR cannabinoids OR marijuana OR marihuana OR \"delta-9-THC\" OR tetrahydrocannabinol OR cannabidiol OR nabiximols OR dronabinol OR \"medical cannabis\" OR \"medicinal cannabis\") AND (\"working memory\" OR \"episodic memory\" OR \"verbal memory\" OR \"memory consolidation\" OR \"verbal learning\" OR \"declarative memory\" OR \"prospective memory\" OR \"spatial memory\") AND humans[MeSH Terms]",
+      "date": "2026-07-07",
+      "count": 566,
+      "note": "label=broad; fetched=500; added=500"
+    },
+    {
+      "database": "PubMed",
+      "query": "(cannabis OR cannabinoid OR cannabinoids OR marijuana OR marihuana OR tetrahydrocannabinol OR THC OR cannabidiol OR CBD) AND (memory OR recall OR recognition OR encoding) AND (RAVLT OR \"Rey Auditory Verbal Learning\" OR CVLT OR \"California Verbal Learning\" OR \"Wechsler Memory\" OR \"n-back\" OR \"digit span\" OR \"paired associate\" OR \"logical memory\" OR \"list learning\" OR fMRI OR \"functional magnetic resonance\" OR hippocamp*) AND humans[MeSH Terms]",
+      "date": "2026-07-07",
+      "count": 399,
+      "note": "label=measures; fetched=399; added=226"
+    },
+    {
+      "database": "PubMed",
+      "query": "(THC OR tetrahydrocannabinol OR \"delta-9-tetrahydrocannabinol\" OR cannabidiol OR nabiximols OR dronabinol OR \"oral cannabis\" OR \"vaporized cannabis\" OR \"smoked cannabis\") AND (memory OR recall OR recognition OR \"verbal learning\" OR encoding) AND (acute OR administration OR challenge OR \"double-blind\" OR placebo-controlled OR intoxication OR crossover OR \"randomized controlled\") AND humans[MeSH Terms]",
+      "date": "2026-07-07",
+      "count": 362,
+      "note": "label=acute-experimental; fetched=362; added=236"
+    }
+  ]
+}

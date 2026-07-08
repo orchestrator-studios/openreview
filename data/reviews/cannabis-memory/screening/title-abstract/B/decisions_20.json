@@ -1,0 +1,14 @@
+[
+  {"pmid":"4764355","decision":"include","confidence":"medium","justification":"Oral THC effects on memory in normal human volunteers; on-topic exposure and memory outcome despite absent abstract."},
+  {"pmid":"4582312","decision":"exclude","reason":"review-or-commentary","confidence":"low","justification":"Generic title 'Cannabis and its problems' with no abstract suggests a discussion/commentary, no memory outcome."},
+  {"pmid":"4567504","decision":"include","confidence":"low","justification":"THC on cognitive tasks in humans; possible memory-related outcome though focus is temporal disintegration."},
+  {"pmid":"4684294","decision":"include","confidence":"low","justification":"Controlled THC vs marihuana comparison in humans; memory outcome not confirmed from title alone."},
+  {"pmid":"4405419","decision":"include","confidence":"high","justification":"Human neuropsychological test battery including memory following THC doses."},
+  {"pmid":"4702274","decision":"include","confidence":"medium","justification":"Marihuana and retrieval from short-term memory; on-topic exposure and explicit memory outcome."},
+  {"pmid":"4579626","decision":"exclude","reason":"review-or-commentary","confidence":"low","justification":"Pharmacology overview of cannabis active substances, not a primary human memory study."},
+  {"pmid":"4564953","decision":"include","confidence":"medium","justification":"Marihuana/alcohol effects on memory functions in humans; explicit memory outcome."},
+  {"pmid":"4658175","decision":"exclude","reason":"no-memory-outcome","confidence":"low","justification":"Clinical observations of IV THC patients; no memory outcome indicated in title."},
+  {"pmid":"4557583","decision":"include","confidence":"low","justification":"Propranolol on marihuana-induced cognitive dysfunction in humans; cognitive outcome may include memory."},
+  {"pmid":"4485865","decision":"exclude","reason":"review-or-commentary","confidence":"medium","justification":"Social psychology 'myth, mystery and fact' discussion piece with no memory outcome."},
+  {"pmid":"4943948","decision":"include","confidence":"low","justification":"Dose-response to cannabis in human subjects; memory outcome plausible but not confirmed."}
+]

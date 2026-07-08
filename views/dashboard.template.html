@@ -198,8 +198,8 @@
 </div>
 
 <script>
-// slug from /dashboard/<slug>; ?poll=<seconds> optional
-const SLUG = (location.pathname.match(/\/dashboard\/([^/]+)/) || [])[1] || new URLSearchParams(location.search).get("slug");
+// slug from /pipeline/<slug> (or legacy /dashboard/<slug>); ?poll=<seconds> optional
+const SLUG = (location.pathname.match(/\/(?:pipeline|dashboard)\/([^/]+)/) || [])[1] || new URLSearchParams(location.search).get("slug");
 const POLL_MS = Math.max(2, +(new URLSearchParams(location.search).get("poll")) || 5) * 1000;
 const API = "/api/reviews/" + encodeURIComponent(SLUG) + "/pipeline";
 
