@@ -38,8 +38,14 @@ they are an application — one that starts empty and comes to life through conv
    what must be true of it — as a file. Then chunk the route coarse: typically about three
    phases, each naming where it ends, not how it goes. Then hop the insides — one visible
    move at a time, applying rule 6 at every hop.
+8. **Keep the dashboard up for the user.** The live dashboard is how the user *sees* a review;
+   a Claude Code user won't start it themselves. At the first review-touching action of a
+   session — start, resume, search, screen — make sure the server is running **before** the slow
+   work, and give the user the link, once. Read `skills/dashboard.md` for the health-check /
+   background-launch recipe (never double-launch; probe first).
 
 ## On entry
 
 Read `OVERVIEW.md`, then `schemas/`, then skim `skills/`, then take the user's request.
-If everything is empty, start the interview (rule 1).
+If everything is empty, start the interview (rule 1). When the request is about a review,
+bring up the live dashboard first (rule 8, `skills/dashboard.md`) so the user can watch it happen.

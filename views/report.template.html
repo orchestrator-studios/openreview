@@ -283,6 +283,14 @@
   .recmodal-box{position:relative;z-index:1;background:var(--ground);width:min(1100px,100%);margin:0 auto;height:100%;overflow:auto;box-shadow:0 0 40px rgba(0,0,0,.3);padding:0 22px 48px;}
   .recmodal-close{position:sticky;top:12px;float:right;margin-top:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;height:32px;padding:0 12px;font-size:13px;cursor:pointer;z-index:2;}
   .recmodal-close:hover{color:var(--ink);}
+  .help{max-width:760px;margin:0 auto;padding-top:6px;}
+  .help h2{font-family:var(--serif);font-weight:600;font-size:23px;margin:18px 0 6px;}
+  .help h3{font-family:var(--serif);font-weight:600;font-size:16.5px;margin:24px 0 6px;color:var(--ink);}
+  .help p{color:var(--ink-2);margin:0 0 10px;line-height:1.6;}
+  .help p.lead{color:var(--ink);font-size:15.5px;}
+  .help ul{margin:0 0 12px;padding-left:20px;color:var(--ink-2);}
+  .help li{margin:6px 0;line-height:1.55;}
+  .help b{color:var(--ink);font-weight:600;} .help i{color:var(--ink-2);font-style:italic;}
   .recbody{clear:both;}
   /* snapshot / backup markers (frozen export only) */
   .snap{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--warn);
@@ -299,6 +307,7 @@
     <span class="live" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
     <span class="snap" id="snapBadge" hidden>◆ Snapshot — not live</span>
     <a class="tgl" id="exportBtn" href="/report/__SLUG__" download="__SLUG__-report.html" hidden title="Download a self-contained backup of this review (a single HTML file you can save or share)">Download ↓</a>
+    <button class="tgl" id="helpBtn" type="button" title="How this dashboard works">How this works</button>
     <button class="tgl" id="themeToggle" type="button">Theme</button>
   </div>
 </div>
@@ -330,6 +339,59 @@
     <div class="recmodal-box">
       <button class="recmodal-close" id="recmodalClose" type="button">✕ Close</button>
       <div id="panel-records" class="recbody"></div>
+    </div>
+  </div>
+
+  <div id="helpmodal" class="recmodal" hidden>
+    <div class="recmodal-backdrop" id="helpmodalBackdrop"></div>
+    <div class="recmodal-box">
+      <button class="recmodal-close" id="helpmodalClose" type="button">✕ Close</button>
+      <div class="help">
+        <h2>How this dashboard works</h2>
+        <p class="lead">This page is a live, always-honest picture of one systematic review. Claude does the
+          work through your chat; this page shows you the work as it happens, and lets you check any of it.</p>
+
+        <h3>The stops across the top</h3>
+        <p>A review reads left to right, and you can jump to any stop at any time:</p>
+        <ul>
+          <li><b>Protocol</b> — the question and the criteria Claude set out to find <i>before</i> it saw any
+            results. A new review opens here so you can check it first.</li>
+          <li><b>Pipeline activity</b> — where the work is: the search funnel (retrieved → de-duplicated →
+            screened → included), stage by stage.</li>
+          <li><b>Findings</b> — the studies that made it in, and the data pulled from each.</li>
+          <li><b>Eval</b> — a quality gate that either passes the review or pauses it and tells you exactly
+            what needs a human.</li>
+          <li><b>Records</b> — every paper, searchable, each with its full provenance and screening trail.
+            It's where every number lands when you click it.</li>
+        </ul>
+
+        <h3>Every number is a link</h3>
+        <p>No count is a dead end. Click <i>excluded at title/abstract</i>, a single exclusion reason, or
+          <i>included</i>, and the exact papers behind that number open in Records. If you want to distrust a
+          conclusion, follow it back to the evidence it rests on.</p>
+
+        <h3>The flow isn't a one-way conveyor</h3>
+        <p>Watching the highlighted stage move <i>backward</i> is normal — it's the review getting better, not
+          breaking. Claude loops back when the results tell it to: re-running or widening the queries after a
+          search came back too broad or too thin, re-screening a batch, or filling a gap the Eval gate flagged.
+          The highlighted stage always shows where things stand <i>right now</i>.</p>
+
+        <h3>Three ways to use Claude alongside this page</h3>
+        <ul>
+          <li><b>Command it</b> — run the review from chat: start it, tighten a criterion, re-run a search,
+            adjudicate a flagged record (<i>"exclude 12345, wrong population"</i>), export.</li>
+          <li><b>Ask it how things work</b> — anything here you don't understand, ask the assistant that built
+            it: <i>"why is this review paused?"</i>, <i>"what does 'excluded at full text' mean?"</i></li>
+          <li><b>Push it further</b> — the tables are a starting point: <i>"group the included studies by
+            year,"</i> <i>"chart the findings,"</i> <i>"draft a methods paragraph from this."</i></li>
+        </ul>
+
+        <h3>It calls you when it needs you</h3>
+        <p>The <b>reviews page</b> (the ‹ openreview link, top-left) alerts you at the moments that matter:
+          when a review first appears, and when it reaches the Eval gate — passed, or <b>paused</b> for a
+          screening conflict or a check only you can decide. And the <b>Download</b> button freezes this whole
+          view to a single self-contained HTML file — same numbers, no server needed — to email or attach.</p>
+      </div>
     </div>
   </div>
 
@@ -463,6 +525,8 @@ function drill(opts){
 }
 function openRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hidden=false; document.body.style.overflow="hidden"; } }
 function closeRecords(){ const m=document.getElementById("recmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
+function openHelp(){ const m=document.getElementById("helpmodal"); if(m){ m.hidden=false; document.body.style.overflow="hidden"; } }
+function closeHelp(){ const m=document.getElementById("helpmodal"); if(m){ m.hidden=true; document.body.style.overflow=""; } }
 // direct activation: clears every filter, then opens the modal on the full corpus
 function openAllRecords(){ Object.assign(S,{scope:"all",query:null,reason:null,effect:null,foundCount:null,search:""}); syncControls(); render(); openRecords(); }
 
@@ -768,13 +832,27 @@ function renderEval(ev){
 }
 
 // ---------- init ----------
+// Context-aware landing stop: open on whatever matters most for the review's current phase.
+// A freshly created review (protocol written, search not yet meaningful) lands on Protocol so
+// the user reviews the criteria first; once screening is underway it lands on Pipeline activity;
+// a paused review lands on Eval (that's what needs them); a finished one lands on Findings.
+function defaultTab(){
+  const wf=(DATA.projection&&DATA.projection.workflow)||{};
+  if(wf.complete) return "findings";
+  if(wf.evaluation&&wf.evaluation.status==="paused") return "eval";
+  if(["protocol","queries-written","queries-run","dedup"].includes(wf.phase)) return "protocol";
+  return "pipeline";
+}
 buildProtocol(); buildFindings(); buildRecords(); buildEval(DATA.projection);
 renderPipeline(DATA.projection);
-render(); setTab("pipeline");
+render(); setTab(defaultTab());
 // records modal close affordances
 document.getElementById("recmodalClose").addEventListener("click", closeRecords);
 document.getElementById("recmodalBackdrop").addEventListener("click", closeRecords);
-document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeRecords(); });
+document.getElementById("helpBtn").addEventListener("click", openHelp);
+document.getElementById("helpmodalClose").addEventListener("click", closeHelp);
+document.getElementById("helpmodalBackdrop").addEventListener("click", closeHelp);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape"){ closeRecords(); closeHelp(); } });
 document.getElementById("footmeta").textContent =
   rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated __DATE__";
 const tgl=document.getElementById("themeToggle");

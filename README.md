@@ -90,31 +90,31 @@ cd openreview
 pip install -r requirements.txt
 ```
 
-**2. Open the dashboard — your home base.**
+**2. Open the folder in Claude Code and just ask.** *"Start a review: does remote monitoring reduce
+heart-failure readmissions after discharge?"* Claude opens the **live dashboard** for you — a small local
+server at http://127.0.0.1:8765/ — then interviews you for the criteria, writes the protocol, and runs the
+PubMed search. A card for your review appears on the dashboard on its own. *(Prefer to run the dashboard
+yourself, or just want to explore the bundled example first? `python tools/server.py`. It ships with one
+finished example inside — a real PubMed review on genetic susceptibility to asbestos-induced mesothelioma in
+mice — so there's something to explore from the first minute.)*
 
-```bash
-python tools/server.py
-# → open http://127.0.0.1:8765/
-```
+**3. Follow along.** Click the card the moment it appears. It opens on the **Protocol** — the question and
+criteria Claude just wrote — so the first thing you do is check what it set out to find. Then move across the
+stops at the top: **Pipeline activity** as the funnel fills, **Findings** for the included studies, **Eval**
+for the quality gate. Every number is a link — click it to see the exact papers behind it. The dashboard also
+pings you at the two moments that matter: when your review first appears, and when it reaches the evaluation
+gate (passed, or paused for a decision only you can make) — so you can leave it open beside your chat and look
+over when it calls.
 
-It ships with one finished example inside — a real PubMed review on how genetic mutations affect mice's
-susceptibility to asbestos-induced mesothelioma — so there is something to explore from the first minute.
-Because you haven't started your own review yet, the page also shows you how to begin.
+**4. Expect some back-and-forth.** A review isn't a one-way conveyor. Claude loops back when it should —
+re-running or widening the queries after seeing the first results were too broad or too thin, re-screening a
+batch, filling a gap the Eval gate flagged. The highlighted stage shows where it is *right now*; watching it
+step backward is the review getting better, not breaking. And it's real work — a thorough search can return
+hundreds of records, and screening each one twice (two independent AI passes) runs for a while and spends
+Claude usage as it goes. Ask for a narrower question or a calibration sample if you want the first run small.
 
-**3. Open the folder in Claude Code and just ask.** *"Start a review: does remote monitoring reduce
-heart-failure readmissions after discharge?"* Claude interviews you for the criteria, writes the protocol,
-runs the PubMed search — and a card for your review appears on the dashboard on its own.
-
-**4. Watch it work, then check anything.** As Claude screens, the funnel fills. Click any number to see the
-papers behind it. The dashboard pings you at the two moments that matter — when your review first appears,
-and when it reaches the **evaluation gate** (passed, or paused for a decision only you can make) — so you can
-leave it open beside your chat and look over when it calls. Open the files in `data/reviews/<your-review>/`
-whenever you want the raw truth.
-
-**What to expect.** A thorough search can return hundreds of records, and screening each one *twice* — two
-independent AI passes — is real work: a review runs for a while and spends Claude usage as it goes, rather
-than finishing in one keystroke. You set the scope, so if you want the first run small, ask for a narrower
-question or a calibration sample before the full pass.
+Not sure what something on the dashboard means? Ask Claude — it built the page and will explain any part of
+it. (There's also a **How this works** button on the dashboard itself.)
 
 ## What you see
 
