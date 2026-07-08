@@ -1,5 +1,6 @@
 {
   "slug": "mouse-genetics-mesothelioma",
+  "example": true,
   "title": "Genetic mutations and susceptibility to asbestos-induced mesothelioma in mice",
   "question": "In mice, how do genetic mutations (germline or engineered) affect susceptibility to malignant mesothelioma following asbestos exposure?",
   "pico": {

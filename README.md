@@ -55,11 +55,12 @@ python tools/server.py
 # → open http://127.0.0.1:8765/
 ```
 
-That page is home. On a brand-new, empty workspace it greets you and shows you how to begin — there are no
-reviews yet, so it tells you to talk to Claude and then *waits, live*, for your first one to appear. In this
-repo it isn't empty: it already lists the bundled review. Click it and you drop into a finished pipeline —
-532 retrievals → 324 unique → 33 full-text → 23 included, every exclusion reason and included study, all
-drillable.
+That page is home. It ships with one **example review** already inside — badged as such — so you land on
+something real from the first second: click it and you drop into a finished pipeline (532 retrievals → 324
+unique → 33 full-text → 23 included, every exclusion reason and included study, all drillable). And because
+you haven't started a review of your own yet, the page shows the getting-started guidance right above the
+example — how to begin, and a live indicator that *waits* for your first review to appear. The moment you
+create one, that guidance steps aside and your reviews take over the page.
 
 **2. Talk to Claude — and keep the dashboard in the corner of your eye.** Everything is driven by
 conversation:
@@ -244,8 +245,8 @@ Screening is where a review is most easily biased, so it is the most instrumente
 - **Two independent reviewers.** For each record, the `slr-screener` agent is run twice, without
   shared context. Each returns a decision, a reason from the controlled vocabulary, a **confidence**,
   and a one-line justification — all recorded.
-- **Agreement is measured, not assumed.** The merge reports observed agreement and **Cohen's κ**. In
-  the demonstration pilot, κ = 0.875 across 16 records.
+- **Agreement is measured, not assumed.** The merge reports observed agreement and **Cohen's κ** for
+  every dual-screened batch, so the reliability of the screening is a number you can see, not a claim.
 - **Disagreements and low-confidence calls go to a human.** They do not get quietly auto-resolved;
   they collect in a queue you clear, and your adjudication is written into the record.
 - **You can read the trail.** Open any record in the report and you see both reviewers' calls, whether
@@ -323,7 +324,7 @@ accountability for the included set.
   bundled review draws from abstracts too — treat its extracted fields as a demonstration of shape, not a
   clinical dataset.
 - **The `slr-screener` agent is versioned here but not yet auto-discovered** as a first-class agent
-  type from this subdirectory; the pilot ran it via general-purpose agents reading its spec.
+  type; in practice it runs via general-purpose agents reading its spec.
 
 ---
 

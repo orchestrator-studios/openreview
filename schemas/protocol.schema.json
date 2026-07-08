@@ -8,6 +8,7 @@
   "additionalProperties": false,
   "properties": {
     "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "example": { "type": "boolean", "description": "True for the bundled demonstration review that ships with the workspace. The dashboard badges it and, while it is the only review present, shows the getting-started guidance alongside it." },
     "title": { "type": "string", "minLength": 1 },
     "question": { "type": "string", "minLength": 1 },
     "pico": {

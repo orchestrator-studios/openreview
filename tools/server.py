@@ -43,12 +43,14 @@ def _reviews_index():
         try:
             p = repo.pipeline(slug)
         except Exception:
-            out.append({"slug": slug, "title": slug, "question": "",
+            is_ex = bool(repo.load_protocol(slug).get("example")) if repo.has_protocol(slug) else False
+            out.append({"slug": slug, "title": slug, "question": "", "example": is_ex,
                         "totals": {"included": 0, "unique": 0, "needs_adjudication": 0},
                         "phase_label": "starting", "blocked": False, "complete": False})
             continue
         wf = p.get("workflow", {})
         out.append({"slug": slug, "title": p["title"], "question": p["question"],
+                    "example": bool(repo.load_protocol(slug).get("example")),
                     "totals": p["totals"],
                     "phase_label": wf.get("phase_label", ""),
                     "blocked": wf.get("blocked", False),

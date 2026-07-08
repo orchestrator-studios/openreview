@@ -95,6 +95,11 @@
   .prompt.copied::after{content:"copied ✓";color:var(--pos);}
   .watching{display:flex;align-items:center;gap:10px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-2);
             font-size:13px;color:var(--ink-2);}
+  .exhint{margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line-2);
+          font-size:13px;color:var(--ink-2);}
+  .exhint b{color:var(--ink);font-weight:600;}
+  .rev.ex{border-style:dashed;}
+  .exlabel{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin-bottom:-2px;}
 
   footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink-3);font-size:12px;}
   footer code{font-family:var(--mono);color:var(--ink-2);}
@@ -151,7 +156,8 @@ function stat(v,k,cls){ return el("div",{class:"st"+(cls?" "+cls:"")},
   el("div",{class:"sv num",text:(v==null?"—":v)}), el("div",{class:"sk",text:k})); }
 
 function reviewCard(r, isFresh){
-  return el("a",{class:"rev"+(isFresh?" fresh":""),href:"/dashboard/"+encodeURIComponent(r.slug)},
+  return el("a",{class:"rev"+(r.example?" ex":"")+(isFresh?" fresh":""),href:"/dashboard/"+encodeURIComponent(r.slug)},
+    r.example ? el("div",{class:"exlabel",text:"Example — a finished review to explore"}) : null,
     el("div",{class:"rtop"}, el("h3",{text:r.title||r.slug}), chip(r)),
     el("p",{class:"rq",text:r.question||""}),
     el("div",{class:"rstat"},
@@ -160,24 +166,25 @@ function reviewCard(r, isFresh){
       stat(r.totals.needs_adjudication||0, "to adjudicate")));
 }
 
-function emptyState(){
-  const p = (t)=> el("div",{class:"prompt",text:t,onclick:""});
+function guidancePanel(hasExample){
+  const p = (t)=> el("div",{class:"prompt",text:t});
   const prompts = [
     "Start a review: does remote monitoring reduce heart-failure readmissions after discharge?",
     "Search PubMed for GLP-1 receptor agonists and cognitive outcomes, then screen the results.",
   ].map(p);
   const box = el("div",{class:"empty"},
-    el("h2",{text:"No reviews yet — this is the starting line."}),
-    el("p",{class:"lead",text:"This workspace is empty. You don't set it up; you start using it, and it takes shape as you go."}),
+    el("h2",{text:"Start a review"}),
+    el("p",{class:"lead",text:"You don't set this workspace up — you use it. Tell Claude what you want to research, and it runs the search, screens the results, and keeps every decision as a file you can open."}),
     el("div",{class:"step"}, el("div",{class:"n",text:"1"}),
-      el("div",{class:"sx",html:"Open <b>Claude Code</b> in this folder — that's the whole interface."})),
-    el("div",{class:"step"}, el("div",{class:"n",text:"2"}),
-      el("div",{class:"sx",html:"Tell it what you want to research. Try one (click to copy):"})),
+      el("div",{class:"sx",html:"In <b>Claude Code</b>, say what you want to research. Try one (click to copy):"})),
     el("div",{class:"prompts"}, ...prompts),
+    el("div",{class:"step"}, el("div",{class:"n",text:"2"}),
+      el("div",{class:"sx",html:"Claude writes the protocol, runs the PubMed search, and screens the results."})),
     el("div",{class:"step"}, el("div",{class:"n",text:"3"}),
-      el("div",{class:"sx",html:"Claude writes the protocol, runs the search, and screens — and your review <b>appears right here</b>, live."})),
+      el("div",{class:"sx",html:"Your review <b>appears right here</b> — live, the moment it's created — and fills in as the work lands."})),
     el("div",{class:"watching"}, el("span",{class:"dot wait"}),
-      el("span",{text:"Watching for your first review — leave this open; it lands the moment Claude creates it."})));
+      el("span",{text:"Watching for your review — leave this open and it lands on its own."})),
+    hasExample ? el("div",{class:"exhint",html:"Want to see where this ends up? The <b>Example</b> below is a finished review. Open it and try to distrust a number — follow it back to the paper it rests on."}) : null);
   box.querySelectorAll(".prompt").forEach(node=>{
     node.addEventListener("click",()=>{
       navigator.clipboard && navigator.clipboard.writeText(node.textContent);
@@ -190,18 +197,29 @@ function emptyState(){
 function render(list){
   const host=$("reviews");
   const slugs=new Set(list.map(r=>r.slug));
-  if(!list.length){
-    $("hSub").textContent="Nothing here yet. Start talking to Claude in this folder and your first review appears below — live.";
-    host.replaceChildren(emptyState());
-    known=slugs; return;
+  const users = list.filter(r=>!r.example);
+  const examples = list.filter(r=>r.example);
+  const children = [];
+
+  // Guidance shows while the user has no review of their own — whether the workspace is
+  // truly empty or holds only the bundled example. Once they have their own, it steps aside.
+  if(users.length===0) children.push(guidancePanel(examples.length>0));
+
+  if(list.length){
+    const rank=r=>r.blocked?0:(r.complete?2:1);
+    const ordered=[...users.sort((a,b)=>rank(a)-rank(b)), ...examples];
+    const grid=el("div",{class:"grid"});
+    for(const r of ordered){ const isFresh = known && !known.has(r.slug); grid.append(reviewCard(r,isFresh)); }
+    children.push(grid);
   }
-  $("hSub").textContent="Every review in this workspace, live. Click one to open its dashboard. New reviews appear here the moment Claude creates them.";
-  // sort: needs-you first, then in-progress, then complete; newest-ish by keeping server order otherwise
-  const rank=r=>r.blocked?0:(r.complete?2:1);
-  list.sort((a,b)=>rank(a)-rank(b));
-  const grid=el("div",{class:"grid"});
-  for(const r of list){ const isFresh = known && !known.has(r.slug); grid.append(reviewCard(r,isFresh)); }
-  host.replaceChildren(grid);
+  host.replaceChildren(...children);
+
+  if(users.length===0)
+    $("hSub").textContent = examples.length
+      ? "Explore the example below, or start your own — tell Claude what you want to research and it appears here, live."
+      : "Tell Claude what you want to research and your first review appears here, live.";
+  else
+    $("hSub").textContent = "Every review in this workspace, live. Click one to open its dashboard. New reviews appear the moment Claude creates them.";
   known=slugs;
 }
 
@@ -211,8 +229,9 @@ async function poll(){
     if(!res.ok) throw new Error("http "+res.status);
     const list=await res.json();
     render(list);
-    if(!list.length) setLive("wait","watching for your first review");
-    else setLive("ok", list.length+" review"+(list.length===1?"":"s")+" · live");
+    const users=list.filter(r=>!r.example).length;
+    if(users===0) setLive("wait", list.length ? "watching for your review" : "watching for your first review");
+    else setLive("ok", users+" review"+(users===1?"":"s")+" · live");
   }catch(e){ setLive("err","server offline"); }
 }
 
