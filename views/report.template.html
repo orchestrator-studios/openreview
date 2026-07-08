@@ -47,15 +47,33 @@
   .brand .bk{color:var(--ink-3);font-family:var(--sans);}          /* back chevron — only meaningful when linked */
   .brand:not([href]) .bk{display:none;}                             /* frozen export: no server, so no back link */
   .brand small{color:var(--ink-3);font-family:var(--sans);font-weight:500;}
-  .tabs{display:flex;gap:2px;margin-left:auto;}
+  .tabs{display:flex;gap:2px;}
   .tab{padding:8px 13px;border-radius:8px;color:var(--ink-2);font-size:13px;font-weight:500;
     cursor:pointer;background:none;border:0;font-family:var(--sans);white-space:nowrap;}
   .tab:hover{background:var(--surface-2);color:var(--ink);}
   .tab.on{background:var(--accent-soft);color:var(--accent-ink);font-weight:600;}
   .tab .cnt{font-family:var(--mono);font-size:11px;opacity:.7;margin-left:5px;}
-  .tgl{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;
-    height:32px;padding:0 11px;font-size:12.5px;cursor:pointer;font-family:var(--sans);}
-  .tgl:hover{color:var(--ink);border-color:var(--ink-3);}
+  /* right-hand utility cluster: an ambient status pill, then tidy action / icon buttons */
+  .util{display:flex;align-items:center;gap:8px;margin-left:auto;}
+  .status{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-2);white-space:nowrap;
+    background:var(--surface-2);border:1px solid var(--line-2);border-radius:999px;padding:4px 11px;}
+  .status .ldot{width:7px;height:7px;border-radius:50%;background:var(--pos);flex:none;}
+  .status .ldot.beat{animation:beat 1.1s ease-out;}
+  .status.blocked{color:var(--warn);background:var(--warn-soft);border-color:var(--warn);}
+  .status.blocked .ldot{background:var(--warn);}
+  .status.err{color:var(--neg);background:color-mix(in srgb,var(--neg) 12%,transparent);border-color:var(--neg);}
+  .status.err .ldot{background:var(--neg);}
+  .status.off{color:var(--ink-3);} .status.off .ldot{background:var(--ink-3);}
+  .status.snap{color:var(--warn);background:var(--warn-soft);border-color:var(--warn);font-weight:600;}
+  .vsep{width:1px;height:22px;background:var(--line);margin:0 2px;flex:none;}
+  .act{display:inline-flex;align-items:center;gap:7px;height:32px;padding:0 12px;border-radius:8px;font-family:var(--sans);
+    border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font-size:12.5px;font-weight:600;
+    cursor:pointer;text-decoration:none;white-space:nowrap;}
+  .act:hover{color:var(--ink);border-color:var(--ink-3);background:var(--surface-2);}
+  .iconbtn{display:inline-grid;place-items:center;width:32px;height:32px;padding:0;border-radius:8px;
+    border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;}
+  .iconbtn:hover{color:var(--ink);border-color:var(--ink-3);background:var(--surface-2);}
+  .act svg,.iconbtn svg{width:16px;height:16px;display:block;}
 
   header.hero{padding:30px 0 22px;border-bottom:1px solid var(--line-2);}
   .eyebrow{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);
@@ -180,9 +198,6 @@
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
   [hidden]{display:none!important;}  /* the hidden attribute wins even when a class sets display (live/snap badges) */
-  .live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);margin-right:4px;}
-  .live .ldot{width:8px;height:8px;border-radius:50%;background:var(--pos);}
-  .live .ldot.beat{animation:beat 1.1s ease-out;}
   @keyframes beat{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--pos) 60%,transparent);}100%{box-shadow:0 0 0 9px transparent;}}
   #refreshPill{position:fixed;right:18px;bottom:18px;z-index:50;display:none;border:1px solid var(--accent);
     background:var(--accent);color:#fff;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:600;
@@ -315,9 +330,7 @@
   .amodal-box.paused .am-go{background:var(--warn);border-color:var(--warn);}
   .am-go:hover{filter:brightness(1.06);}
   .recbody{clear:both;}
-  /* snapshot / backup markers (frozen export only) */
-  .snap{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--warn);
-    background:var(--warn-soft);border:1px solid var(--warn);border-radius:999px;padding:3px 11px;}
+  /* snapshot / backup markers (frozen export only) — the pill uses .status.snap in the topbar cluster */
   .snapbanner{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:11px 15px;
     margin:16px 0 2px;font-size:13px;color:var(--ink);}
   .snapbanner b{color:var(--warn);}
@@ -327,11 +340,19 @@
   <div class="wrap">
     <a class="brand" id="brand" href="/" title="Back to all reviews"><span class="bk">‹</span> openreview <small>· __SLUG__</small></a>
     <div class="tabs" id="tabs"></div>
-    <span class="live" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
-    <span class="snap" id="snapBadge" hidden>◆ Snapshot — not live</span>
-    <a class="tgl" id="exportBtn" href="/report/__SLUG__" download="__SLUG__-report.html" hidden title="Download a self-contained backup of this review (a single HTML file you can save or share)">Download ↓</a>
-    <button class="tgl" id="helpBtn" type="button" title="How this dashboard works">How this works</button>
-    <button class="tgl" id="themeToggle" type="button">Theme</button>
+    <div class="util">
+      <span class="status" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
+      <span class="status snap" id="snapBadge" hidden>◆ Snapshot — not live</span>
+      <span class="vsep"></span>
+      <a class="act" id="exportBtn" href="/report/__SLUG__" download="__SLUG__-report.html" hidden title="Download this review as one self-contained HTML file — same numbers, every link works, no server needed">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export</a>
+      <button class="iconbtn" id="helpBtn" type="button" title="How this dashboard works" aria-label="How this works">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </button>
+      <button class="iconbtn" id="themeToggle" type="button" title="Switch light / dark theme" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -968,7 +989,7 @@ if (LIVE) {
     if(liveTimer){ clearInterval(liveTimer); liveTimer = null; }
     pendingReload = false;
     const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="deleted";
-    const dt=document.getElementById("liveDot"); if(dt) dt.style.background="var(--neg)";
+    const sw=document.getElementById("liveWrap"); if(sw){ sw.classList.remove("blocked","off"); sw.classList.add("err"); }
     const eb2=document.getElementById("exportBtn"); if(eb2) eb2.hidden=true;
     const host=document.getElementById("amodal"); if(!host) return;
     const box=el("div",{class:"amodal-box paused"});
@@ -994,12 +1015,14 @@ if (LIVE) {
       evPrev = evNow;
       const dot=document.getElementById("liveDot"); if(dot){dot.classList.remove("beat");void dot.offsetWidth;dot.classList.add("beat");}
       const lt=document.getElementById("liveTxt"); if(lt) lt.textContent = wf.blocked?"needs you":(wf.complete?"complete":(wf.phase_label||"live"));
+      const sw=document.getElementById("liveWrap"); if(sw){ sw.classList.remove("off"); sw.classList.toggle("blocked", !!wf.blocked); }
       // Auto-refresh the baked tabs (Records / Findings) when their data actually changes — no button.
       const s = JSON.stringify([t.unique,t.included,t.ta_excluded,t.ft_excluded,t.needs_adjudication,t.extraction_arms,wf.phase,wf.blocked]);
       if(sig!==null && s!==sig) pendingReload = true;
       sig = s;
       maybeReload();
-    }catch(e){ const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="offline"; }
+    }catch(e){ const lt=document.getElementById("liveTxt"); if(lt) lt.textContent="offline";
+      const sw=document.getElementById("liveWrap"); if(sw){ sw.classList.remove("blocked"); sw.classList.add("off"); } }
   }
   livePoll(); liveTimer = setInterval(livePoll, 5000);
 }
