@@ -1,0 +1,58 @@
+{
+  "41763006": {
+    "source": "unpaywall-oa",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": "https://doi.org/10.1016/j.comppsych.2026.152685"
+  },
+  "41733237": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": null
+  },
+  "41687467": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": null
+  },
+  "41615687": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 29079,
+    "pmcid": "12859723",
+    "url": null
+  },
+  "41608907": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 38030,
+    "pmcid": "12925671",
+    "url": null
+  },
+  "41499355": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 42947,
+    "pmcid": "12779070",
+    "url": null
+  },
+  "41481837": {
+    "source": "pmc",
+    "has_fulltext": true,
+    "chars": 35419,
+    "pmcid": "13064835",
+    "url": null
+  },
+  "41337954": {
+    "source": "abstract-only",
+    "has_fulltext": false,
+    "chars": 0,
+    "pmcid": null,
+    "url": null
+  }
+}

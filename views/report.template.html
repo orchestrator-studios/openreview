@@ -312,6 +312,14 @@
   #panel-eval .chk .ci{font-weight:700;font-family:var(--mono);line-height:1.35;}
   #panel-eval .chk.ok .ci{color:var(--pos);} #panel-eval .chk.fail .ci{color:var(--warn);} #panel-eval .chk.adv .ci{color:var(--warn);}
   #panel-eval .chk .cl{font-weight:600;color:var(--ink);} #panel-eval .chk .cd{color:var(--ink-2);}
+  /* protocol: search strategy shown as query text, commands optional */
+  #panel-protocol .qblock{margin:12px 0;}
+  #panel-protocol .qmeta{display:flex;gap:10px;align-items:baseline;margin-bottom:5px;}
+  #panel-protocol .qlabel{font-weight:600;color:var(--ink);font-size:13.5px;}
+  #panel-protocol .qwhen{font-size:11.5px;color:var(--ink-3);}
+  #panel-protocol .qtext{background:var(--surface-2);border:1px solid var(--line-2);border-radius:8px;padding:11px 13px;font-family:var(--mono);font-size:12.5px;color:var(--ink);white-space:pre-wrap;line-height:1.55;}
+  #panel-protocol .cmdtoggle{margin-top:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;}
+  #panel-protocol .cmdtoggle:hover{color:var(--ink);}
 </style>
 
 <div class="topbar">
@@ -333,6 +341,7 @@
 
   <section class="panel" id="panel-protocol"></section>
   <section class="panel" id="panel-pipeline">
+    <div id="pipesteps"></div>
     <div id="pipenext"></div>
     <div id="pipebar"></div>
     <div id="prisma"></div>
@@ -752,11 +761,20 @@ function buildProtocol(){
   const cc=el("div",{class:"pcard"}); cc.append(el("h3",{text:"Inclusion criteria (all must hold)"})); const ol=el("ol",{class:"crit"}); (P.inclusion_criteria||[]).forEach(c=>ol.append(el("li",{text:c}))); cc.append(ol);
   cc.append(el("h3",{style:"margin-top:16px",text:"Exclusion reasons (controlled vocabulary)"})); const ul=el("ul",{class:"vocab"}); (P.exclusion_reasons||[]).forEach(r=>ul.append(el("li",{text:r}))); cc.append(ul);
   p.append(cc);
-  // reproducibility
-  const rc=el("div",{class:"pcard"}); rc.append(el("h3",{text:"Reproducible search"}), el("p",{style:"font-size:13px;color:var(--ink-2)",text:"Exact commands run against NCBI E-utilities. Re-running appends only genuinely new records."}));
+  // search strategy — the query text by default; exact commands behind a toggle (not the default)
+  const rc=el("div",{class:"pcard"}); rc.append(el("h3",{text:"Search strategy"}), el("p",{style:"font-size:13px;color:var(--ink-2)",text:"The queries run on PubMed, in order. Re-running a search adds only genuinely new records."}));
   (P.searches||[]).forEach(s=>{ const lbl=(s.note.match(/label=([^;]+)/)||[])[1]||"";
-    rc.append(el("div",{class:"cmd",text:'python tools/pubmed_search.py __SLUG__ \\\n  --label '+lbl+' --date '+s.date+' \\\n  --query "'+s.query.replace(/"/g,'\\"')+'"'})); });
-  rc.append(el("div",{class:"cmd",style:"margin-top:12px",text:"python tools/validate.py __SLUG__\npython tools/build_views.py __SLUG__\npython tools/build_report.py __SLUG__"}));
+    rc.append(el("div",{class:"qblock"},
+      el("div",{class:"qmeta"}, el("span",{class:"qlabel",text:lbl||"query"}),
+        el("span",{class:"qwhen",text:[s.database||"PubMed", s.date, (s.count!=null?s.count+" hits":null)].filter(Boolean).join(" · ")})),
+      el("div",{class:"qtext",text:s.query}))); });
+  const cmdWrap=el("div",{style:"display:none;margin-top:10px"});
+  (P.searches||[]).forEach(s=>{ const lbl=(s.note.match(/label=([^;]+)/)||[])[1]||"";
+    cmdWrap.append(el("div",{class:"cmd",text:'python tools/pubmed_search.py __SLUG__ \\\n  --label '+lbl+' --date '+s.date+' \\\n  --query "'+s.query.replace(/"/g,'\\"')+'"'})); });
+  cmdWrap.append(el("div",{class:"cmd",style:"margin-top:12px",text:"python tools/validate.py __SLUG__\npython tools/build_views.py __SLUG__\npython tools/build_report.py __SLUG__"}));
+  const cmdToggle=el("button",{class:"cmdtoggle",type:"button",text:"Show exact commands"});
+  cmdToggle.addEventListener("click",()=>{ const open=cmdWrap.style.display==="none"; cmdWrap.style.display=open?"block":"none"; cmdToggle.textContent=open?"Hide exact commands":"Show exact commands"; });
+  rc.append(cmdToggle, cmdWrap);
   p.append(rc);
 }
 
@@ -765,10 +783,20 @@ function buildProtocol(){
 // Updates in place on every live poll — the green/red bar moves as screening lands.
 // ---------- Pipeline activity: the bar (corpus snapshot) + the PRISMA flow ----------
 function renderPipeline(proj){
-  const nx=document.getElementById("pipenext"), bar=document.getElementById("pipebar"), pr=document.getElementById("prisma");
-  [nx,bar,pr].forEach(e=>{ if(e) e.replaceChildren(); });
+  const steps=document.getElementById("pipesteps"), nx=document.getElementById("pipenext"), bar=document.getElementById("pipebar"), pr=document.getElementById("prisma");
+  [steps,nx,bar,pr].forEach(e=>{ if(e) e.replaceChildren(); });
   if(!proj || !bar) return;
   const wf=proj.workflow||{}, a=proj.accounting;
+  // horizontal position indicator — where we are in the overall flow, current stage highlighted
+  const phases=wf.phases||[];
+  if(steps && phases.length){
+    const stepper=el("div",{class:"stepper"});
+    phases.forEach((ph,i)=>stepper.append(el("div",{class:"stp "+ph.status},
+      el("div",{class:"node",text:ph.status==="done"?"✓":(ph.status==="blocked"?"!":String(i+1))}),
+      el("div",{class:"plabel",text:ph.label}),
+      el("div",{class:"pdetail",text:ph.detail||""}))));
+    steps.append(stepper);
+  }
   if(nx) nx.append(el("div",{class:"lhnext"+(wf.blocked?" blocked":"")},
     wf.complete ? el("span",{text:"Review complete."})
       : el("span",{}, (wf.blocked?"Needs you: ":"Next: "), el("b",{text:wf.next_action||"—"}))));
