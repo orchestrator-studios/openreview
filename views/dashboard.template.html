@@ -43,6 +43,14 @@
   @keyframes beat{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--pos) 60%,transparent);}100%{box-shadow:0 0 0 9px transparent;}}
   .dot.stale{background:var(--warn);} .dot.err{background:var(--neg);}
   .tgl{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;height:30px;padding:0 10px;font-size:12px;cursor:pointer;}
+  /* the five sections as tabs */
+  .dtabs{display:flex;flex-wrap:wrap;gap:2px;margin:20px 0 18px;border-bottom:1px solid var(--line);}
+  .dtab{padding:9px 15px;border:none;background:none;color:var(--ink-2);font-size:14px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--sans);}
+  .dtab:hover{color:var(--ink);}
+  .dtab.on{color:var(--accent-ink);border-bottom-color:var(--accent);font-weight:600;}
+  .dtab .cnt{font-family:var(--mono);font-size:11px;opacity:.7;margin-left:6px;font-variant-numeric:tabular-nums;}
+  .dpanel{display:none;}
+  .dpanel.on{display:block;}
 
   header.hero{padding:26px 0 18px;}
   .eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;}
@@ -157,36 +165,32 @@
 
   <div class="banner" id="banner"></div>
 
-  <section>
-    <div class="sh">Where we are</div>
-    <p class="ss"><b>Title/abstract screen</b> and <b>Full-text screen</b> are filters — each judges records against the criteria and drops the ones that fail (they collect under <b>Excluded</b> in the corpus below). The final <b>Evaluation</b> is a different thing: a quality gate on the whole review, not a per-record filter. The highlighted node is where we are now; the one thing to do next is spelled out.</p>
+  <div class="dtabs" id="dtabs"></div>
+
+  <section class="dpanel on" id="dp-where">
+    <p class="ss"><b>Title/abstract screen</b> and <b>Full-text screen</b> are filters — each judges records against the criteria and drops the ones that fail (they collect under <b>Excluded</b> in the corpus tab). The final <b>Evaluation</b> is a different thing: a quality gate on the whole review, not a per-record filter. The highlighted node is where we are now; the one thing to do next is spelled out.</p>
     <div class="card statebar" id="statebar"></div>
     <div class="stepper" id="stepper"></div>
     <div id="evalpanel"></div>
   </section>
 
-  <section>
-    <div class="sh">The corpus</div>
+  <section class="dpanel" id="dp-corpus">
     <p class="ss">Every retrieved record accounted for, live from <code id="src">records.json</code>: <b>Retrieved − Duplicates = Unique</b>, and every unique record is <b>Included</b>, <b>Excluded</b>, or still <b>In screening</b>. The buckets always sum back to unique.</p>
     <div id="accounting"></div>
   </section>
 
-  <section class="grid">
-    <div>
-      <div class="sh">Exclusions</div>
-      <p class="ss">By stage and reason.</p>
-      <div class="card" id="exclusions"></div>
-    </div>
-    <div>
-      <div class="sh">Search queries</div>
-      <p class="ss">Retrieval and cumulative-new, in execution order.</p>
-      <div class="card" id="queries"></div>
-    </div>
+  <section class="dpanel" id="dp-excl">
+    <p class="ss">Excluded records by stage and reason.</p>
+    <div class="card" id="exclusions"></div>
   </section>
 
-  <section>
-    <div class="sh">Included studies <span class="mono num" id="incCount" style="color:var(--pos)"></span></div>
-    <p class="ss">Everything that met all criteria, newest first.</p>
+  <section class="dpanel" id="dp-queries">
+    <p class="ss">Retrieval and cumulative-new, in execution order.</p>
+    <div class="card" id="queries"></div>
+  </section>
+
+  <section class="dpanel" id="dp-studies">
+    <p class="ss">Everything that met all criteria, newest first. <span class="mono num" id="incCount" style="color:var(--pos)"></span></p>
     <div class="card"><div class="studies" id="studies"></div></div>
   </section>
 
@@ -349,6 +353,7 @@ function apply(p){
   renderAccounting(p.accounting);
   renderExclusions(p.exclusions||{}); renderQueries(p.queries||[]);
   renderStudies(p.included_studies||[]);
+  updateDTabCounts(p);
 }
 
 async function poll(){
@@ -376,6 +381,37 @@ exportLink.addEventListener("click",e=>{
   exportLink.setAttribute("target","_blank"); exportLink.setAttribute("rel","noopener");
   setTimeout(()=>{ exportLink.textContent="Export report ↗"; }, 2500);
 });
+
+// ---------- the five sections, as tabs ----------
+const DTABS=[
+  {id:"where",   label:"Where we are"},
+  {id:"corpus",  label:"The corpus"},
+  {id:"excl",    label:"Exclusions"},
+  {id:"queries", label:"Search queries"},
+  {id:"studies", label:"Included studies"},
+];
+function buildDTabs(){
+  const bar=$("dtabs"); bar.replaceChildren();
+  DTABS.forEach(t=>{
+    const b=el("button",{class:"dtab"+(t.id==="where"?" on":""),type:"button"},t.label);
+    b.dataset.tab=t.id;
+    b.addEventListener("click",()=>setDTab(t.id));   // dashboard el() doesn't wire on* props
+    b.append(el("span",{class:"cnt",id:"dcnt-"+t.id}));
+    bar.append(b);
+  });
+}
+function setDTab(id){
+  document.querySelectorAll(".dtab").forEach(b=>b.classList.toggle("on",b.dataset.tab===id));
+  document.querySelectorAll(".dpanel").forEach(p=>p.classList.toggle("on",p.id==="dp-"+id));
+}
+function updateDTabCounts(p){
+  const t=p.totals||{};
+  const set=(id,v)=>{ const e=$("dcnt-"+id); if(e) e.textContent=(v==null||v===0)?"":v; };
+  set("excl", (t.ta_excluded||0)+(t.ft_excluded||0));
+  set("queries", (p.queries||[]).length);
+  set("studies", t.included||0);
+}
+buildDTabs();
 
 if(!SLUG){
   $("title").textContent="No review selected";

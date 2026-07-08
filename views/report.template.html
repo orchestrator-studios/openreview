@@ -232,43 +232,86 @@
     background:var(--accent);color:#fff;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:600;
     cursor:pointer;box-shadow:var(--shadow);}
   /* live head: the corpus accounting + state, rendered from the canonical projection.
-     All selectors scoped to #livehead so class names (.seg, .recon, .num) can't collide
+     All selectors scoped to #panel-pipeline so class names (.seg, .recon, .num) can't collide
      with the report's own. */
-  #livehead{margin:4px 0 30px;}
-  #livehead .lhstate{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;margin-bottom:16px;}
-  #livehead .lhstate .k{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
-  #livehead .lhstate .phase{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.15;margin-top:2px;}
-  #livehead .lhstate.blocked .phase{color:var(--warn);}
-  #livehead .lhstate.done .phase{color:var(--pos);}
-  #livehead .lhstate .next{font-size:14px;color:var(--ink);margin-top:2px;}
-  #livehead .acct{border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);padding:18px 20px;}
-  #livehead .eqn{display:flex;align-items:center;flex-wrap:wrap;gap:6px 4px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line-2);}
-  #livehead .eqterm{display:flex;flex-direction:column;gap:3px;padding:2px 6px;}
-  #livehead .eqterm .ev{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;transition:color .3s;}
-  #livehead .eqterm .ek{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;}
-  #livehead .eqterm.dup .ev{color:var(--warn);}
-  #livehead .eqop{font-family:var(--serif);font-size:22px;color:var(--ink-3);padding:0 12px;}
-  #livehead .bl{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:9px;}
-  #livehead .stack{display:flex;height:30px;border-radius:8px;overflow:hidden;border:1px solid var(--line-2);background:var(--surface-2);}
-  #livehead .stack .seg{height:100%;transition:width .45s ease;min-width:0;}
-  #livehead .stack .seg.pos{background:var(--pos);}
-  #livehead .stack .seg.neg{background:var(--neg);}
-  #livehead .stack .seg.neutral{background:var(--neutral);}
-  #livehead .legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:15px;}
-  #livehead .lg{border-left:3px solid var(--line);padding:2px 0 2px 12px;min-width:158px;}
-  #livehead .lg.pos{border-color:var(--pos);}
-  #livehead .lg.neg{border-color:var(--neg);}
-  #livehead .lg.neutral{border-color:var(--neutral);}
-  #livehead .lg .lh{display:flex;align-items:baseline;gap:8px;}
-  #livehead .lg .ln{font-family:var(--serif);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;}
-  #livehead .lg.pos .ln{color:var(--pos);}
-  #livehead .lg.neg .ln{color:var(--neg);}
-  #livehead .lg.neutral .ln{color:var(--ink);}
-  #livehead .lg .ll{font-size:12.5px;font-weight:600;color:var(--ink-2);}
-  #livehead .lg .lsplit{font-size:11.5px;color:var(--ink-3);line-height:1.55;margin-top:3px;}
-  #livehead .recon{margin-top:16px;font-size:12px;color:var(--ink-2);border-top:1px solid var(--line-2);padding-top:11px;font-family:var(--mono);}
-  #livehead .recon b{color:var(--ink);}
-  #livehead .recon .ok{color:var(--pos);font-weight:700;}
+  #panel-pipeline{margin:4px 0 30px;}
+  /* pipeline stepper — where we are */
+  #panel-pipeline .stepper{position:relative;display:flex;flex-wrap:wrap;gap:14px 0;padding:22px 12px 18px;margin-bottom:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);}
+  #panel-pipeline .stp{position:relative;flex:1;min-width:96px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px;}
+  #panel-pipeline .stp::before{content:"";position:absolute;top:17px;left:-50%;width:100%;height:2px;background:var(--line);z-index:0;}
+  #panel-pipeline .stp:first-child::before{display:none;}
+  #panel-pipeline .stp.done::before,#panel-pipeline .stp.active::before{background:var(--pos);}
+  #panel-pipeline .stp.blocked::before{background:var(--warn);}
+  #panel-pipeline .stp .node{position:relative;z-index:1;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:700;background:var(--surface-2);border:2px solid var(--line);color:var(--ink-3);transition:transform .2s;}
+  #panel-pipeline .stp.done .node{background:var(--pos);border-color:var(--pos);color:#fff;}
+  #panel-pipeline .stp.active .node{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);transform:scale(1.14);box-shadow:0 0 0 4px var(--accent-soft);}
+  #panel-pipeline .stp.blocked .node{border-color:var(--warn);background:var(--warn-soft);color:var(--warn);transform:scale(1.14);animation:pulse 1.7s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px var(--warn-soft);}50%{box-shadow:0 0 0 8px transparent;}}
+  #panel-pipeline .stp .plabel{font-size:12px;font-weight:600;color:var(--ink-2);margin-top:9px;line-height:1.25;}
+  #panel-pipeline .stp.active .plabel,#panel-pipeline .stp.blocked .plabel{color:var(--ink);}
+  #panel-pipeline .stp .pdetail{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.3;}
+  :root[data-theme="dark"] #panel-pipeline .stp.done .node{color:#0d1417;}
+  #panel-pipeline .lhnext{margin:0 2px 16px;font-size:13.5px;color:var(--ink-2);}
+  #panel-pipeline .lhnext b{color:var(--ink);font-weight:600;} #panel-pipeline .lhnext.blocked b{color:var(--warn);}
+  #panel-pipeline .acct{border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);padding:18px 20px;}
+  #panel-pipeline .eqn{display:flex;align-items:center;flex-wrap:wrap;gap:6px 4px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line-2);}
+  #panel-pipeline .eqterm{display:flex;flex-direction:column;gap:3px;padding:2px 6px;}
+  #panel-pipeline .eqterm .ev{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;transition:color .3s;}
+  #panel-pipeline .eqterm .ek{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;}
+  #panel-pipeline .eqterm.dup .ev{color:var(--warn);}
+  #panel-pipeline .eqop{font-family:var(--serif);font-size:22px;color:var(--ink-3);padding:0 12px;}
+  #panel-pipeline .bl{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:9px;}
+  #panel-pipeline .stack{display:flex;height:30px;border-radius:8px;overflow:hidden;border:1px solid var(--line-2);background:var(--surface-2);}
+  #panel-pipeline .stack .seg{height:100%;transition:width .45s ease;min-width:0;}
+  #panel-pipeline .stack .seg.pos{background:var(--pos);}
+  #panel-pipeline .stack .seg.neg{background:var(--neg);}
+  #panel-pipeline .stack .seg.neutral{background:var(--neutral);}
+  #panel-pipeline .legend{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:15px;}
+  #panel-pipeline .lg{border-left:3px solid var(--line);padding:2px 0 2px 12px;min-width:158px;}
+  #panel-pipeline .lg.pos{border-color:var(--pos);}
+  #panel-pipeline .lg.neg{border-color:var(--neg);}
+  #panel-pipeline .lg.neutral{border-color:var(--neutral);}
+  #panel-pipeline .lg .lh{display:flex;align-items:baseline;gap:8px;}
+  #panel-pipeline .lg .ln{font-family:var(--serif);font-size:23px;font-weight:600;font-variant-numeric:tabular-nums;}
+  #panel-pipeline .lg.pos .ln{color:var(--pos);}
+  #panel-pipeline .lg.neg .ln{color:var(--neg);}
+  #panel-pipeline .lg.neutral .ln{color:var(--ink);}
+  #panel-pipeline .lg .ll{font-size:12.5px;font-weight:600;color:var(--ink-2);}
+  #panel-pipeline .lg .lsplit{font-size:11.5px;color:var(--ink-3);line-height:1.55;margin-top:3px;}
+  #panel-pipeline .recon{margin-top:16px;font-size:12px;color:var(--ink-2);border-top:1px solid var(--line-2);padding-top:11px;font-family:var(--mono);}
+  #panel-pipeline .recon b{color:var(--ink);}
+  #panel-pipeline .recon .ok{color:var(--pos);font-weight:700;}
+  #panel-pipeline .lhnext{margin:0 2px 16px;font-size:14px;color:var(--ink-2);}
+  #panel-pipeline .lhnext b{color:var(--ink);font-weight:600;} #panel-pipeline .lhnext.blocked b{color:var(--warn);}
+  #panel-pipeline .lg.clickable{cursor:pointer;border-radius:6px;transition:background .12s;} #panel-pipeline .lg.clickable:hover{background:var(--surface-2);}
+  #pipebar{margin-bottom:22px;}
+  /* PRISMA flow — the stage-by-stage funnel */
+  #prisma{border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);padding:8px 20px 16px;}
+  #prisma .prband{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin:16px 0 4px;padding-top:12px;border-top:1px solid var(--line-2);}
+  #prisma .prband:first-child{border-top:none;padding-top:4px;}
+  #prisma .prow{display:flex;align-items:baseline;gap:10px;padding:5px 0;}
+  #prisma .prow.drop,#prisma .prow.wait,#prisma .prow.reason{padding-left:22px;}
+  #prisma .prow.reason{padding-top:1px;padding-bottom:1px;}
+  #prisma .plab{flex:1;color:var(--ink-2);font-size:13.5px;}
+  #prisma .prow.incl .plab{color:var(--ink);font-weight:600;}
+  #prisma .pcount{font-family:var(--serif);font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;border:none;background:none;color:var(--accent-ink);cursor:pointer;padding:0 2px;border-radius:5px;line-height:1.2;}
+  #prisma .pcount:hover{background:var(--accent-soft);text-decoration:underline;}
+  #prisma .pcount.static{color:var(--ink-3);cursor:default;}
+  #prisma .prow.drop .pcount{color:var(--neg);} #prisma .prow.incl .pcount{color:var(--pos);}
+  #prisma .preason{border:none;background:none;color:var(--ink-3);font-size:12px;cursor:pointer;padding:1px 4px;border-radius:5px;font-family:var(--mono);text-align:left;}
+  #prisma .preason:hover{background:var(--surface-2);color:var(--ink);}
+  /* eval gate */
+  #panel-eval .eval{border-radius:12px;padding:15px 18px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);}
+  #panel-eval .eval.pass{border-left:4px solid var(--pos);} #panel-eval .eval.paused{border-left:4px solid var(--warn);background:var(--warn-soft);}
+  #panel-eval .eval .eh{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-size:15.5px;font-weight:600;}
+  #panel-eval .eval.pass .eh{color:var(--pos);} #panel-eval .eval.paused .eh{color:var(--warn);}
+  #panel-eval .eval .ex{font-size:13px;color:var(--ink);margin:8px 0 10px;}
+  #panel-eval .eval .muted{color:var(--ink-3);font-size:13px;}
+  #panel-eval .checks{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  #panel-eval .chk{display:grid;grid-template-columns:18px 1fr;gap:9px;align-items:start;font-size:12.5px;}
+  #panel-eval .chk .ci{font-weight:700;font-family:var(--mono);line-height:1.35;}
+  #panel-eval .chk.ok .ci{color:var(--pos);} #panel-eval .chk.fail .ci{color:var(--warn);} #panel-eval .chk.adv .ci{color:var(--warn);}
+  #panel-eval .chk .cl{font-weight:600;color:var(--ink);} #panel-eval .chk .cd{color:var(--ink-2);}
 </style>
 
 <div class="topbar">
@@ -276,6 +319,7 @@
     <div class="brand">Living Review <small>· __SLUG__</small></div>
     <div class="tabs" id="tabs"></div>
     <span class="live" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
+    <a class="tgl" id="exportBtn" href="/report/__SLUG__" target="_blank" rel="noopener" hidden title="Open a self-contained, single-file snapshot you can save or share">Export ↗</a>
     <button class="tgl" id="themeToggle" type="button">Theme</button>
   </div>
 </div>
@@ -287,12 +331,15 @@
     <p class="lede" id="qLede"></p>
   </header>
 
-  <div id="livehead"></div>
-
-  <section class="panel" id="panel-method"></section>
-  <section class="panel" id="panel-records"></section>
-  <section class="panel" id="panel-findings"></section>
   <section class="panel" id="panel-protocol"></section>
+  <section class="panel" id="panel-pipeline">
+    <div id="pipenext"></div>
+    <div id="pipebar"></div>
+    <div id="prisma"></div>
+  </section>
+  <section class="panel" id="panel-findings"></section>
+  <section class="panel" id="panel-eval"></section>
+  <section class="panel" id="panel-records"></section>
 
   <footer>
     <p>Generated from <code>data/reviews/__SLUG__/</code> by <code>tools/build_report.py</code> — a
@@ -372,12 +419,17 @@ const SCREEN_METHOD_NOTE = SCREEN_METHODS.has("dual-independent")
 
 // ---------- filter state ----------
 const S = { scope:"all", query:null, reason:null, effect:null, foundCount:null, search:"" };
+const taOutcome = r => (((r.screening||{})["title-abstract"]||{}).outcome||{}).decision;
 function scopePass(r){
   switch(S.scope){
-    case "ta-passed": return !isTaExc(r);
+    case "ta-passed": return taOutcome(r)==="include";
     case "ta-excluded": return isTaExc(r);
     case "ft-excluded": return isFtExc(r);
     case "included": return r.status==="included";
+    case "excluded": return r.status==="excluded";
+    case "in-screening": return r.status==="unscreened" || r.status==="needs-adjudication";
+    case "awaiting-ta": return !((r.screening||{})["title-abstract"]) && r.status!=="excluded" && r.status!=="included";
+    case "awaiting-ft": return taOutcome(r)==="include" && !((r.screening||{})["full-text"]) && r.status!=="included";
     default: return true;
   }
 }
@@ -391,7 +443,7 @@ function matches(r){
     if(![r.title,r.abstract,(r.authors||[]).join(" "),r.journal,r.pmid].join(" ").toLowerCase().includes(q)) return false; }
   return true;
 }
-const SCOPE_LABEL = {"all":"All records","ta-passed":"Retained after title/abstract","ta-excluded":"Excluded at title/abstract","ft-excluded":"Excluded at full-text","included":"Included"};
+const SCOPE_LABEL = {"all":"All records","ta-passed":"Retained after title/abstract","ta-excluded":"Excluded at title/abstract","ft-excluded":"Excluded at full-text","included":"Included","excluded":"Excluded","in-screening":"In screening","awaiting-ta":"Awaiting title/abstract","awaiting-ft":"Awaiting full-text"};
 
 // ---------- hero ----------
 document.getElementById("qTitle").textContent = P.title;
@@ -399,13 +451,14 @@ document.getElementById("qLede").textContent = P.question;
 
 // ---------- tabs ----------
 const TABS=[
-  {id:"method",label:"Methodology"},
-  {id:"records",label:"Records",cnt:N},
-  {id:"findings",label:"Findings",cnt:nInc},
   {id:"protocol",label:"Protocol"},
+  {id:"pipeline",label:"Pipeline activity"},
+  {id:"findings",label:"Findings",cnt:nInc},
+  {id:"eval",label:"Eval"},
+  {id:"records",label:"Records",cnt:N},
 ];
 const tabsEl=document.getElementById("tabs");
-let activeTab="method";
+let activeTab="pipeline";
 TABS.forEach(t=>{
   const b=el("button",{class:"tab",type:"button",onclick:()=>setTab(t.id)},t.label, t.cnt!=null?el("span",{class:"cnt num",text:t.cnt}):null);
   b.dataset.tab=t.id; tabsEl.append(b);
@@ -433,19 +486,7 @@ function buildMethod(){
   const p=document.getElementById("panel-method");
   p.append(el("div",{},
     el("div",{class:"sec-h",text:"Methodology & audit trail"}),
-    el("p",{class:"sec-sub"},"The exact, reproducible path from search to the final included set. Every number below is a button — click it to open the Records tab filtered to precisely that set. Counts reconcile at each stage.")));
-
-  // ribbon
-  const ribbon=el("div",{class:"ribbon"});
-  const rnode=(k,v,s,opts,final)=>el("button",{class:"rnode"+(final?" final":""),type:"button",onclick:()=>drill(opts)},
-    el("div",{class:"rk",text:k}), el("div",{class:"rv num",text:v}), el("div",{class:"rs",text:s}));
-  ribbon.append(
-    el("div",{class:"rnode"}, el("div",{class:"rk",text:"Retrieved"}), el("div",{class:"rv num",text:rawRetrievals}), el("div",{class:"rs",text:QORDER.length+" queries, with overlap"})),
-    rnode("Unique records", N, "after de-duplication", {scope:"all"}),
-    rnode("Screened", nScreened, "of "+N+" so far", {scope:"all"}),
-    rnode("Included", nInc, "met all criteria", {scope:"included"}, true),
-  );
-  p.append(ribbon);
+    el("p",{class:"sec-sub"},"The exact, reproducible path from search to the final included set. The at-a-glance funnel and where-we-are are in the header above; this is the reproducible detail behind them. Every number below is a button — click it to open the Records tab filtered to precisely that set. Counts reconcile at each stage.")));
 
   const steps=el("div",{class:"steps"});
 
@@ -722,43 +763,111 @@ function buildProtocol(){
 // ---------- live head: corpus accounting + state, from the canonical projection ----------
 // Correct at any stage (an in-progress review shows records as "In screening", not "assessed").
 // Updates in place on every live poll — the green/red bar moves as screening lands.
-function renderLiveHead(proj){
-  const host=document.getElementById("livehead"); if(!host) return;
-  host.replaceChildren();
-  if(!proj) return;
+// ---------- Pipeline activity: the bar (corpus snapshot) + the PRISMA flow ----------
+function renderPipeline(proj){
+  const nx=document.getElementById("pipenext"), bar=document.getElementById("pipebar"), pr=document.getElementById("prisma");
+  [nx,bar,pr].forEach(e=>{ if(e) e.replaceChildren(); });
+  if(!proj || !bar) return;
   const wf=proj.workflow||{}, a=proj.accounting;
-  host.append(el("div",{class:"lhstate"+(wf.blocked?" blocked":(wf.complete?" done":""))},
-    el("div",{}, el("div",{class:"k",text:wf.blocked?"Phase · needs you":"Current phase"}),
-      el("div",{class:"phase",text:wf.phase_label||"—"})),
-    el("div",{}, el("div",{class:"k",text:"Next"}), el("div",{class:"next",text:wf.next_action||"—"}))));
-  if(!a) return;
-  const card=el("div",{class:"acct"});
-  const term=(cls,label,val)=>el("div",{class:"eqterm "+cls}, el("div",{class:"ev num",text:val}), el("div",{class:"ek",text:label}));
-  card.append(el("div",{class:"eqn"},
-    term("ret","Retrieved",a.retrieved), el("div",{class:"eqop",text:"−"}),
-    term("dup","Duplicates",a.duplicates), el("div",{class:"eqop",text:"="}),
-    term("uniq","Unique",a.unique)));
-  card.append(el("div",{class:"bl",text:"The "+a.unique+" unique records, fully broken down"}));
-  const U=a.unique||1, stack=el("div",{class:"stack"});
-  a.segments.forEach(s=>{ if(s.n>0) stack.append(el("div",{class:"seg "+s.tone,style:"width:"+(100*s.n/U)+"%",title:s.label+": "+s.n})); });
-  card.append(stack);
-  const legend=el("div",{class:"legend"});
-  a.segments.forEach(s=>{ const split=(s.split||[]).map(x=>x.label+" "+x.n).join(" · ");
-    legend.append(el("div",{class:"lg "+s.tone},
-      el("div",{class:"lh"}, el("span",{class:"ln num",text:s.n}), el("span",{class:"ll",text:s.label})),
-      split?el("div",{class:"lsplit",text:split}):null)); });
-  card.append(legend);
-  const parts=a.segments.map(s=>s.n).join(" + "), sum=a.segments.reduce((t,s)=>t+s.n,0);
-  card.append(el("div",{class:"recon"},
-    el("b",{text:a.retrieved})," − ",el("b",{text:a.duplicates})," = ",el("b",{text:a.unique}),
-    "  |  ",el("b",{text:a.unique})," = "+parts+" = ",el("b",{text:sum})," ",
-    el("span",{class:"ok",text:sum===a.unique?"✓":"⚠"})));
-  host.append(card);
+  if(nx) nx.append(el("div",{class:"lhnext"+(wf.blocked?" blocked":"")},
+    wf.complete ? el("span",{text:"Review complete."})
+      : el("span",{}, (wf.blocked?"Needs you: ":"Next: "), el("b",{text:wf.next_action||"—"}))));
+  // the bar — corpus disposition right now (a snapshot; clickable segments → Records)
+  if(a){
+    const card=el("div",{class:"acct"});
+    const term=(cls,label,val)=>el("div",{class:"eqterm "+cls}, el("div",{class:"ev num",text:val}), el("div",{class:"ek",text:label}));
+    card.append(el("div",{class:"eqn"},
+      term("ret","Retrieved",a.retrieved), el("div",{class:"eqop",text:"−"}),
+      term("dup","Duplicates",a.duplicates), el("div",{class:"eqop",text:"="}),
+      term("uniq","Unique",a.unique)));
+    card.append(el("div",{class:"bl",text:"The "+a.unique+" unique records, right now"}));
+    const U=a.unique||1, stack=el("div",{class:"stack"});
+    a.segments.forEach(s=>{ if(s.n>0) stack.append(el("div",{class:"seg "+s.tone,style:"width:"+(100*s.n/U)+"%",title:s.label+": "+s.n})); });
+    card.append(stack);
+    const scopeFor={included:"included",excluded:"excluded","in-screening":"in-screening"};
+    const legend=el("div",{class:"legend"});
+    a.segments.forEach(s=>{ const split=(s.split||[]).map(x=>x.label+" "+x.n).join(" · ");
+      const clickable=s.n>0 && scopeFor[s.key];
+      const lg=el("div",{class:"lg "+s.tone+(clickable?" clickable":"")},
+        el("div",{class:"lh"}, el("span",{class:"ln num",text:s.n}), el("span",{class:"ll",text:s.label})),
+        split?el("div",{class:"lsplit",text:split}):null);
+      if(clickable) lg.addEventListener("click",()=>drill({scope:scopeFor[s.key]}));
+      legend.append(lg); });
+    card.append(legend);
+    bar.append(card);
+  }
+  if(pr) pr.append(buildPrisma(proj));
+}
+
+function buildPrisma(proj){
+  const a=proj.accounting||{segments:[]}, ex=proj.exclusions||{};
+  const seg=k=>(a.segments||[]).find(s=>s.key===k)||{n:0,split:[]};
+  const splitN=(s,l)=>{ const x=(s.split||[]).find(y=>y.label===l); return x?x.n:0; };
+  const exc=seg("excluded"), insc=seg("in-screening"), incN=seg("included").n;
+  const taExc=splitN(exc,"at title/abstract"), ftExc=splitN(exc,"at full text");
+  const awaitTA=splitN(insc,"awaiting title/abstract"), awaitFT=splitN(insc,"awaiting full text"), awaitAdj=splitN(insc,"awaiting adjudication");
+  const passedTA=incN+ftExc+awaitFT;
+  const wrap=el("div",{});
+  const band=t=>wrap.append(el("div",{class:"prband",text:t}));
+  const row=(label,n,opts,cls)=>{
+    const cnt = opts ? el("button",{class:"pcount",type:"button",text:String(n)}) : el("span",{class:"pcount static",text:String(n)});
+    if(opts) cnt.addEventListener("click",()=>drill(opts));
+    wrap.append(el("div",{class:"prow"+(cls?" "+cls:"")}, el("span",{class:"plab",text:label}), cnt));
+  };
+  const reasons=(list,scope)=>{ (list||[]).forEach(([reason,n])=>{
+    const b=el("button",{class:"preason",type:"button",text:reason+" — "+n});
+    b.addEventListener("click",()=>drill({scope,reason}));
+    wrap.append(el("div",{class:"prow reason"}, b)); }); };
+  band("Identification");
+  row("Records identified (PubMed)", a.retrieved, null);
+  row("− duplicates removed", a.duplicates, null, "drop");
+  band("Screening");
+  row("Unique records", a.unique, {scope:"all"});
+  row("Excluded at title / abstract", taExc, taExc?{scope:"ta-excluded"}:null, "drop");
+  reasons(ex["title-abstract"], "ta-excluded");
+  row("Still to screen (title / abstract)", awaitTA, awaitTA?{scope:"awaiting-ta"}:null, "wait");
+  row("Assessed at full text", passedTA, passedTA?{scope:"ta-passed"}:null);
+  row("Excluded at full text", ftExc, ftExc?{scope:"ft-excluded"}:null, "drop");
+  reasons(ex["full-text"], "ft-excluded");
+  row("Awaiting full text", awaitFT, awaitFT?{scope:"awaiting-ft"}:null, "wait");
+  if(awaitAdj) row("Awaiting adjudication", awaitAdj, {scope:"in-screening"}, "wait");
+  band("Included");
+  row("Studies included", incN, incN?{scope:"included"}:null, "incl");
+  return wrap;
+}
+
+// ---------- Eval: the quality gate ----------
+function buildEval(proj){
+  const p=document.getElementById("panel-eval"); if(!p) return;
+  p.replaceChildren(el("div",{},
+    el("div",{class:"sec-h",text:"Evaluation"}),
+    el("p",{class:"sec-sub",text:"The quality gate: completeness and integrity checks over the whole review. Blocking checks pause the review and call for a human; advisories are surfaced but do not pause."})));
+  p.append(el("div",{id:"evalbox"}));
+  renderEval((proj.workflow||{}).evaluation);
+}
+function renderEval(ev){
+  const box=document.getElementById("evalbox"); if(!box) return;
+  box.replaceChildren();
+  if(!ev || ev.status==="pending"){
+    box.append(el("div",{class:"eval"}, el("div",{class:"muted",text:"Evaluation runs once the analysis of what we have is complete."})));
+    return;
+  }
+  const paused=ev.status==="paused", advN=(ev.advisories||[]).length;
+  const card=el("div",{class:"eval "+(paused?"paused":"pass")});
+  card.append(el("div",{class:"eh"}, el("span",{text:paused?"⏸":"✓"}),
+    el("span",{text:paused?"Paused for your review":("Evaluation passed"+(advN?" · "+advN+" advisory":""))})));
+  if(ev.explanation) card.append(el("div",{class:"ex",text:ev.explanation}));
+  const checks=el("div",{class:"checks"});
+  (ev.checks||[]).forEach(c=>{ const cls=c.ok?"ok":(c.severity==="advisory"?"adv":"fail"); const icon=c.ok?"✓":(c.severity==="advisory"?"!":"✗");
+    checks.append(el("div",{class:"chk "+cls}, el("div",{class:"ci",text:icon}),
+      el("div",{}, el("span",{class:"cl",text:c.label}), el("span",{class:"cd",text:" — "+c.detail})))); });
+  card.append(checks); box.append(card);
 }
 
 // ---------- init ----------
-buildMethod(); buildRecords(); buildFindings(); buildProtocol();
-render(); setTab("method"); renderLiveHead(DATA.projection);
+buildProtocol(); buildFindings(); buildRecords(); buildEval(DATA.projection);
+renderPipeline(DATA.projection);
+render(); setTab("pipeline");
 document.getElementById("footmeta").textContent =
   rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated __DATE__";
 const tgl=document.getElementById("themeToggle");
@@ -775,6 +884,7 @@ const LIVE = __LIVE__;
 const LIVE_SLUG = "__SLUG__";
 if (LIVE) {
   const lw = document.getElementById("liveWrap"); if (lw) lw.hidden = false;
+  const eb = document.getElementById("exportBtn"); if (eb) eb.hidden = false;   // single-file snapshot
   const pill = el("button",{id:"refreshPill",type:"button",onclick:()=>location.reload()},"↻ Data changed — refresh");
   document.body.append(pill);
   let sig = null;
@@ -783,7 +893,7 @@ if (LIVE) {
       const r = await fetch("/api/reviews/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
       if(!r.ok) throw 0;
       const p = await r.json(), t = p.totals||{}, wf = p.workflow||{};
-      renderLiveHead(p);   // the corpus accounting + state update in place, live — the bar moves as screening lands
+      renderPipeline(p); renderEval((p.workflow||{}).evaluation);   // bar + PRISMA + eval update in place, live
       const s = JSON.stringify([t.unique,t.included,t.ta_excluded,t.ft_excluded,t.needs_adjudication,t.extraction_arms,wf.phase,wf.blocked]);
       const dot=document.getElementById("liveDot"); if(dot){dot.classList.remove("beat");void dot.offsetWidth;dot.classList.add("beat");}
       const lt=document.getElementById("liveTxt"); if(lt) lt.textContent = wf.blocked?"needs you":(wf.complete?"complete":(wf.phase_label||"live"));

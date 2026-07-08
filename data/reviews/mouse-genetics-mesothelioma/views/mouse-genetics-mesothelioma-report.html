@@ -235,12 +235,24 @@
      All selectors scoped to #livehead so class names (.seg, .recon, .num) can't collide
      with the report's own. */
   #livehead{margin:4px 0 30px;}
-  #livehead .lhstate{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;margin-bottom:16px;}
-  #livehead .lhstate .k{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:600;}
-  #livehead .lhstate .phase{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.15;margin-top:2px;}
-  #livehead .lhstate.blocked .phase{color:var(--warn);}
-  #livehead .lhstate.done .phase{color:var(--pos);}
-  #livehead .lhstate .next{font-size:14px;color:var(--ink);margin-top:2px;}
+  /* pipeline stepper — where we are */
+  #livehead .stepper{position:relative;display:flex;flex-wrap:wrap;gap:14px 0;padding:22px 12px 18px;margin-bottom:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);}
+  #livehead .stp{position:relative;flex:1;min-width:96px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px;}
+  #livehead .stp::before{content:"";position:absolute;top:17px;left:-50%;width:100%;height:2px;background:var(--line);z-index:0;}
+  #livehead .stp:first-child::before{display:none;}
+  #livehead .stp.done::before,#livehead .stp.active::before{background:var(--pos);}
+  #livehead .stp.blocked::before{background:var(--warn);}
+  #livehead .stp .node{position:relative;z-index:1;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:700;background:var(--surface-2);border:2px solid var(--line);color:var(--ink-3);transition:transform .2s;}
+  #livehead .stp.done .node{background:var(--pos);border-color:var(--pos);color:#fff;}
+  #livehead .stp.active .node{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);transform:scale(1.14);box-shadow:0 0 0 4px var(--accent-soft);}
+  #livehead .stp.blocked .node{border-color:var(--warn);background:var(--warn-soft);color:var(--warn);transform:scale(1.14);animation:pulse 1.7s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px var(--warn-soft);}50%{box-shadow:0 0 0 8px transparent;}}
+  #livehead .stp .plabel{font-size:12px;font-weight:600;color:var(--ink-2);margin-top:9px;line-height:1.25;}
+  #livehead .stp.active .plabel,#livehead .stp.blocked .plabel{color:var(--ink);}
+  #livehead .stp .pdetail{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.3;}
+  :root[data-theme="dark"] #livehead .stp.done .node{color:#0d1417;}
+  #livehead .lhnext{margin:0 2px 16px;font-size:13.5px;color:var(--ink-2);}
+  #livehead .lhnext b{color:var(--ink);font-weight:600;} #livehead .lhnext.blocked b{color:var(--warn);}
   #livehead .acct{border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);padding:18px 20px;}
   #livehead .eqn{display:flex;align-items:center;flex-wrap:wrap;gap:6px 4px;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line-2);}
   #livehead .eqterm{display:flex;flex-direction:column;gap:3px;padding:2px 6px;}
@@ -276,6 +288,7 @@
     <div class="brand">Living Review <small>· mouse-genetics-mesothelioma</small></div>
     <div class="tabs" id="tabs"></div>
     <span class="live" id="liveWrap" hidden><span class="ldot" id="liveDot"></span><span id="liveTxt">live</span></span>
+    <a class="tgl" id="exportBtn" href="/report/mouse-genetics-mesothelioma" target="_blank" rel="noopener" hidden title="Open a self-contained, single-file snapshot you can save or share">Export ↗</a>
     <button class="tgl" id="themeToggle" type="button">Theme</button>
   </div>
 </div>
@@ -287,8 +300,7 @@
     <p class="lede" id="qLede"></p>
   </header>
 
-  <div id="livehead"></div>
-
+  <section class="panel" id="panel-overview"><div id="livehead"></div></section>
   <section class="panel" id="panel-method"></section>
   <section class="panel" id="panel-records"></section>
   <section class="panel" id="panel-findings"></section>
@@ -399,13 +411,14 @@ document.getElementById("qLede").textContent = P.question;
 
 // ---------- tabs ----------
 const TABS=[
+  {id:"overview",label:"Overview"},
   {id:"method",label:"Methodology"},
   {id:"records",label:"Records",cnt:N},
   {id:"findings",label:"Findings",cnt:nInc},
   {id:"protocol",label:"Protocol"},
 ];
 const tabsEl=document.getElementById("tabs");
-let activeTab="method";
+let activeTab="overview";
 TABS.forEach(t=>{
   const b=el("button",{class:"tab",type:"button",onclick:()=>setTab(t.id)},t.label, t.cnt!=null?el("span",{class:"cnt num",text:t.cnt}):null);
   b.dataset.tab=t.id; tabsEl.append(b);
@@ -433,19 +446,7 @@ function buildMethod(){
   const p=document.getElementById("panel-method");
   p.append(el("div",{},
     el("div",{class:"sec-h",text:"Methodology & audit trail"}),
-    el("p",{class:"sec-sub"},"The exact, reproducible path from search to the final included set. Every number below is a button — click it to open the Records tab filtered to precisely that set. Counts reconcile at each stage.")));
-
-  // ribbon
-  const ribbon=el("div",{class:"ribbon"});
-  const rnode=(k,v,s,opts,final)=>el("button",{class:"rnode"+(final?" final":""),type:"button",onclick:()=>drill(opts)},
-    el("div",{class:"rk",text:k}), el("div",{class:"rv num",text:v}), el("div",{class:"rs",text:s}));
-  ribbon.append(
-    el("div",{class:"rnode"}, el("div",{class:"rk",text:"Retrieved"}), el("div",{class:"rv num",text:rawRetrievals}), el("div",{class:"rs",text:QORDER.length+" queries, with overlap"})),
-    rnode("Unique records", N, "after de-duplication", {scope:"all"}),
-    rnode("Screened", nScreened, "of "+N+" so far", {scope:"all"}),
-    rnode("Included", nInc, "met all criteria", {scope:"included"}, true),
-  );
-  p.append(ribbon);
+    el("p",{class:"sec-sub"},"The exact, reproducible path from search to the final included set. The at-a-glance funnel and where-we-are are in the header above; this is the reproducible detail behind them. Every number below is a button — click it to open the Records tab filtered to precisely that set. Counts reconcile at each stage.")));
 
   const steps=el("div",{class:"steps"});
 
@@ -727,10 +728,20 @@ function renderLiveHead(proj){
   host.replaceChildren();
   if(!proj) return;
   const wf=proj.workflow||{}, a=proj.accounting;
-  host.append(el("div",{class:"lhstate"+(wf.blocked?" blocked":(wf.complete?" done":""))},
-    el("div",{}, el("div",{class:"k",text:wf.blocked?"Phase · needs you":"Current phase"}),
-      el("div",{class:"phase",text:wf.phase_label||"—"})),
-    el("div",{}, el("div",{class:"k",text:"Next"}), el("div",{class:"next",text:wf.next_action||"—"}))));
+  // pipeline stepper — the overall flow, with the current stage highlighted
+  const phases=wf.phases||[];
+  if(phases.length){
+    const stepper=el("div",{class:"stepper"});
+    phases.forEach((ph,i)=>stepper.append(el("div",{class:"stp "+ph.status},
+      el("div",{class:"node",text:ph.status==="done"?"✓":(ph.status==="blocked"?"!":String(i+1))}),
+      el("div",{class:"plabel",text:ph.label}),
+      el("div",{class:"pdetail",text:ph.detail||""}))));
+    host.append(stepper);
+  }
+  // the single next thing to do
+  host.append(el("div",{class:"lhnext"+(wf.blocked?" blocked":"")},
+    wf.complete ? el("span",{text:"Review complete."})
+      : el("span",{}, (wf.blocked?"Needs you: ":"Next: "), el("b",{text:wf.next_action||"—"}))));
   if(!a) return;
   const card=el("div",{class:"acct"});
   const term=(cls,label,val)=>el("div",{class:"eqterm "+cls}, el("div",{class:"ev num",text:val}), el("div",{class:"ek",text:label}));
@@ -758,7 +769,7 @@ function renderLiveHead(proj){
 
 // ---------- init ----------
 buildMethod(); buildRecords(); buildFindings(); buildProtocol();
-render(); setTab("method"); renderLiveHead(DATA.projection);
+render(); renderLiveHead(DATA.projection); setTab("overview");
 document.getElementById("footmeta").textContent =
   rawRetrievals+" retrievals · "+N+" unique · "+nTaExc+" excluded (title/abstract) · "+nFtExc+" excluded (full-text) · "+nInc+" included · generated 2026-07-07";
 const tgl=document.getElementById("themeToggle");
@@ -775,6 +786,7 @@ const LIVE = false;
 const LIVE_SLUG = "mouse-genetics-mesothelioma";
 if (LIVE) {
   const lw = document.getElementById("liveWrap"); if (lw) lw.hidden = false;
+  const eb = document.getElementById("exportBtn"); if (eb) eb.hidden = false;   // single-file snapshot
   const pill = el("button",{id:"refreshPill",type:"button",onclick:()=>location.reload()},"↻ Data changed — refresh");
   document.body.append(pill);
   let sig = null;
