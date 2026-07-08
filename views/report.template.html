@@ -510,7 +510,7 @@ function reasonBreak(pred){ const m={}; R.filter(pred).forEach(r=>{m[r.exclusion
   return Object.entries(m).sort((a,b)=>b[1]-a[1]); }
 const taReasons = reasonBreak(isTaExc);
 const ftReasons = reasonBreak(isFtExc);
-const nGeneArms = R.filter(r=>r.status==="included").reduce((n,r)=>n+(r.extraction.arms||[]).length,0);
+const nGeneArms = R.filter(r=>r.status==="included").reduce((n,r)=>n+((r.extraction&&r.extraction.arms)||[]).length,0);
 const SCREEN_METHODS = new Set(); R.forEach(r=>Object.values(r.screening||{}).forEach(s=>SCREEN_METHODS.add(s.method)));
 const nNeedsAdj = R.filter(r=>r.status==="needs-adjudication").length;
 const SCREEN_METHOD_NOTE = SCREEN_METHODS.has("dual-independent")
@@ -743,7 +743,7 @@ function buildFindings(){
   p.append(el("div",{class:"sec-h",style:"margin-top:22px",text:"Findings"}),
     el("p",{class:"sec-sub"},"The "+nInc+" included studies, grouped by extracted "+SUMMARY_LABEL.toLowerCase()+". Click a group to inspect those studies; the full extraction table follows."));
   const grid=el("div",{class:"fbars"});
-  const groups={}; R.filter(r=>r.status==="included").forEach(r=>(r.extraction.arms||[]).forEach(a=>{
+  const groups={}; R.filter(r=>r.status==="included").forEach(r=>((r.extraction&&r.extraction.arms)||[]).forEach(a=>{
     const sv=a[SUMMARY]; (groups[sv]=groups[sv]||{studies:new Set(),genes:new Set()});
     groups[sv].studies.add(r.pmid); if(a[FIRST]) groups[sv].genes.add(a[FIRST]); }));
   EFFECTS.filter(e=>groups[e]).forEach(e=>{ const g=groups[e];
@@ -757,8 +757,8 @@ function buildFindings(){
   const cols=["Study (PMID)"].concat(TABLE_FIELDS.map(f=>f.label));
   const t=el("table",{class:"xtable"}); const h=el("tr"); cols.forEach(c=>h.append(el("th",{text:c}))); t.append(el("thead",{},h));
   const tb=el("tbody");
-  R.filter(r=>r.status==="included").sort((a,b)=>{const va=(a.extraction.arms[0]||{})[FIRST]||"",vb=(b.extraction.arms[0]||{})[FIRST]||"";return va<vb?-1:va>vb?1:0;}).forEach(r=>{
-    (r.extraction.arms||[]).forEach(a=>{
+  R.filter(r=>r.status==="included").sort((a,b)=>{const va=(((a.extraction&&a.extraction.arms)||[])[0]||{})[FIRST]||"",vb=(((b.extraction&&b.extraction.arms)||[])[0]||{})[FIRST]||"";return va<vb?-1:va>vb?1:0;}).forEach(r=>{
+    ((r.extraction&&r.extraction.arms)||[]).forEach(a=>{
       const tr=el("tr");
       tr.append(el("td",{class:"study"}, cite(r)+" ("+r.pmid+")"));
       TABLE_FIELDS.forEach(f=>tr.append(armCell(f,a)));
