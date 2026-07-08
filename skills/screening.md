@@ -36,6 +36,16 @@ accountable for the final included set.
 
 5. **Validate & regenerate.** `python tools/validate.py <slug>` then rebuild views/report.
 
+## The full-text stage screens the acquired paper
+For `title-abstract`, `screen.py prep` batches the abstract. For `full-text`, first acquire the
+papers (`tools/fetch_fulltext.py`) and build the batches with `tools/prep_fulltext.py` instead of
+`screen.py prep` — those batches embed the fetched full text (small batches, since a paper is long)
+or the abstract when no full text was obtainable, each record carrying a `basis` of `full-text` or
+`abstract`. Tell the reviewer to judge on the `fulltext` field when present and fall back to the
+abstract otherwise. Everything downstream — the two independent passes, `screen.py merge`,
+adjudication — is identical to the title/abstract stage. A record whose `basis` is `abstract` was
+not truly full-text screened; carry that fact through to the report.
+
 ## Calibration (recommended before trusting a run)
 Screen a small `--sample` that you also judge yourself; compare the reviewers' outcomes to yours to
 estimate precision/recall. Report the figure in the review's methodology — that is what turns "an

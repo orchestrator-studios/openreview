@@ -21,6 +21,24 @@ Every record ends at `status` = `included` or `excluded`. Excluded records carry
 `screening_stage` and an `exclusion_reason` from the protocol's list. Screen in two passes:
 title/abstract first (cheap, catches most exclusions), then full-text for survivors.
 
+## 3b. Acquire full text before the full-text pass
+The search tool fetches only abstracts. Standard practice screens the second pass on the
+actual paper, so acquire open-access full text for the records that passed title/abstract:
+
+    python tools/fetch_fulltext.py <slug>
+
+This resolves each record to its own PubMed Central article (verified by PMID), falling back
+to an Unpaywall open-access flag, then abstract; it writes the body text to
+`fulltext/<pmid>.txt` and per-record provenance (which source was used) to
+`fulltext/_manifest.json`. Then build the full-text screening batches, which embed the fetched
+paper where available and the abstract otherwise, each tagged with its `basis`:
+
+    python tools/prep_fulltext.py <slug>
+
+Now run the full-text screening passes over those batches (`skills/screening.md`) and merge with
+`screen.py`. Records screened on the abstract because no full text was obtainable are marked
+`basis: abstract` — report that honestly; it is a real limitation, not a hidden one.
+
 ## 4. Extract  (see `skills/extraction.md`)
 For each included study, fill `extraction.arms[]`. A study reporting several genotypes gets
 several arms. Only included records may carry extraction (schema-enforced).
