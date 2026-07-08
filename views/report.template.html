@@ -94,6 +94,15 @@
     color:var(--ink-3);font-weight:600;padding:8px 9px;background:var(--surface-2);border-bottom:1px solid var(--line);white-space:nowrap;}
   .xtable td{padding:9px;border-bottom:1px solid var(--line-2);vertical-align:top;}
   .xtable td.study{white-space:nowrap;font-weight:500;}
+  /* hot Findings table: clickable rows that expand the full record inline (like Records) */
+  .xtable.hot>tbody>tr.xrow{cursor:pointer;}
+  .xtable.hot>tbody>tr.xrow:hover>td{background:var(--surface-2);}
+  .xtable.hot>tbody>tr.xopen>td{background:var(--surface-2);}
+  .xtable .xcaret{display:inline-block;color:var(--ink-3);font-size:10px;margin-right:7px;transition:transform .15s;}
+  .xtable.hot>tbody>tr.xopen .xcaret{transform:rotate(90deg);}
+  .xtable.hot>tbody>tr.xdetail[hidden]{display:none;}
+  .xtable.hot>tbody>tr.xdetail>td{padding:0;background:var(--surface-2);}
+  .xtable.hot .recdetail{padding:4px 16px 18px;}
 
   /* records explorer */
   .toolbar{position:sticky;top:56px;z-index:20;background:var(--ground);padding:8px 0 10px;
@@ -667,6 +676,27 @@ function screeningBlock(r){
   });
   return box;
 }
+// The full expandable detail for one record — abstract, provenance trail, screening block, its
+// extraction, and the PubMed link. Shared by the Record Explorer and the hot Findings table so both
+// show identical detail. Appends into the given container `bd`.
+function recDetail(r, bd){
+  const isInc=r.status==="included";
+  bd.append(el("div",{class:"trail"},
+    el("span",{class:"seg"},"Retrieved by "+(r.found_by||[]).join(", ")),
+    el("span",{class:"ar",text:"→"}),
+    el("span",{class:"seg"}, isInc?"Passed title/abstract":("Excluded at "+(r.screening_stage||"?"))),
+    isInc?el("span",{class:"ar",text:"→"}):null,
+    isInc?el("span",{class:"seg",text:"Full-text: included"}): (r.screening_stage==="full-text"?el("span",{class:"seg",text:"Reason: "+r.exclusion_reason}):null)));
+  if(r.abstract) bd.append(el("p",{class:"abs",text:r.abstract}));
+  bd.append(el("div",{class:"kv"},
+    el("span",{},"PMID ",el("b",{class:"mono",text:r.pmid})),
+    r.doi?el("span",{},"DOI ",el("b",{class:"mono",text:r.doi})):null,
+    el("span",{},"Status ",el("b",{text:r.status+(r.screening_stage?" ("+r.screening_stage+")":"")}))));
+  if(r.screening_note) bd.append(el("div",{class:"note"}, el("b",{text:(isInc?"Screening note: ":"Excluded — ")}), r.screening_note));
+  const sp=screeningBlock(r); if(sp) bd.append(sp);
+  if(isInc && r.extraction) bd.append(extractionTable(r.extraction));
+  bd.append(el("a",{class:"lnk",href:"https://pubmed.ncbi.nlm.nih.gov/"+r.pmid+"/",target:"_blank",rel:"noopener"},"Open on PubMed ↗"));
+}
 function recRow(r){
   const isInc=r.status==="included";
   const rt=el("div",{class:"rt"}, provMarkers(r));
@@ -677,24 +707,7 @@ function recRow(r){
     el("div",{}, el("div",{class:"ti",text:r.title}), el("div",{class:"au",text:(r.authors||[]).slice(0,4).join(", ")+((r.authors||[]).length>4?" …":"")+" · "+(r.journal||"")})), rt);
   const bd=el("div",{class:"bd"}); const rec=el("div",{class:"rec"},hd,bd); let built=false;
   hd.addEventListener("click",()=>{ rec.classList.toggle("open");
-    if(!built){ built=true;
-      const trail=el("div",{class:"trail"},
-        el("span",{class:"seg"},"Retrieved by "+(r.found_by||[]).join(", ")),
-        el("span",{class:"ar",text:"→"}),
-        el("span",{class:"seg"}, isInc?"Passed title/abstract":("Excluded at "+(r.screening_stage||"?"))),
-        isInc?el("span",{class:"ar",text:"→"}):null,
-        isInc?el("span",{class:"seg",text:"Full-text: included"}): (r.screening_stage==="full-text"?el("span",{class:"seg",text:"Reason: "+r.exclusion_reason}):null));
-      bd.append(trail);
-      if(r.abstract) bd.append(el("p",{class:"abs",text:r.abstract}));
-      bd.append(el("div",{class:"kv"},
-        el("span",{},"PMID ",el("b",{class:"mono",text:r.pmid})),
-        r.doi?el("span",{},"DOI ",el("b",{class:"mono",text:r.doi})):null,
-        el("span",{},"Status ",el("b",{text:r.status+(r.screening_stage?" ("+r.screening_stage+")":"")}))));
-      if(r.screening_note) bd.append(el("div",{class:"note"}, el("b",{text:(isInc?"Screening note: ":"Excluded — ")}), r.screening_note));
-      const sp=screeningBlock(r); if(sp) bd.append(sp);
-      if(isInc && r.extraction) bd.append(extractionTable(r.extraction));
-      bd.append(el("a",{class:"lnk",href:"https://pubmed.ncbi.nlm.nih.gov/"+r.pmid+"/",target:"_blank",rel:"noopener"},"Open on PubMed ↗"));
-    }});
+    if(!built){ built=true; recDetail(r, bd); }});
   return rec;
 }
 function chip(label,val,onclear){ return el("span",{class:"chip"}, label+": ", el("b",{text:val}), el("button",{type:"button",title:"Clear",onclick:onclear},"×")); }
@@ -751,18 +764,30 @@ function buildFindings(){
       el("div",{class:"fbh"}, el("span",{class:"swatch",style:"background:"+EFFECT_COLOR[e]}), el("span",{class:"fbn",text:EFFECT_LABEL[e]}), el("span",{class:"fbc num",text:g.studies.size})),
       el("div",{class:"genes"}, ...[...g.genes].map(gn=>el("span",{class:"gtag",text:gn}))))); });
   p.append(grid);
-  // full extraction table
+  // full extraction table — every row is hot: click it to expand the study's full record
+  // (abstract, provenance, screening trail, extraction, PubMed link) inline, exactly like Records.
   p.append(el("div",{class:"sec-h",style:"font-size:16px;margin-top:8px",text:"Extraction table"}),
-    el("p",{class:"sec-sub"},"One row per "+((PROFILE.arm_noun||"arm"))+" across all included studies."));
+    el("p",{class:"sec-sub"},"One row per "+((PROFILE.arm_noun||"arm"))+" across all included studies. Click any row to open the full study record."));
   const cols=["Study (PMID)"].concat(TABLE_FIELDS.map(f=>f.label));
-  const t=el("table",{class:"xtable"}); const h=el("tr"); cols.forEach(c=>h.append(el("th",{text:c}))); t.append(el("thead",{},h));
+  const colspan=cols.length;
+  const t=el("table",{class:"xtable hot"}); const h=el("tr"); cols.forEach(c=>h.append(el("th",{text:c}))); t.append(el("thead",{},h));
   const tb=el("tbody");
   R.filter(r=>r.status==="included").sort((a,b)=>{const va=(((a.extraction&&a.extraction.arms)||[])[0]||{})[FIRST]||"",vb=(((b.extraction&&b.extraction.arms)||[])[0]||{})[FIRST]||"";return va<vb?-1:va>vb?1:0;}).forEach(r=>{
     ((r.extraction&&r.extraction.arms)||[]).forEach(a=>{
-      const tr=el("tr");
-      tr.append(el("td",{class:"study"}, cite(r)+" ("+r.pmid+")"));
+      const tr=el("tr",{class:"xrow"});
+      tr.append(el("td",{class:"study"}, el("span",{class:"xcaret",text:"▸"}), cite(r)+" ("+r.pmid+")"));
       TABLE_FIELDS.forEach(f=>tr.append(armCell(f,a)));
-      tb.append(tr); }); });
+      // the paired detail row, expanded lazily on first click
+      const det=el("div",{class:"recdetail"});
+      const detTr=el("tr",{class:"xdetail",hidden:"hidden"}, el("td",{colspan:String(colspan)}, det));
+      let built=false;
+      tr.addEventListener("click",()=>{
+        const opening = detTr.hidden;
+        detTr.hidden = !opening;
+        tr.classList.toggle("xopen", opening);
+        if(opening && !built){ built=true; recDetail(r, det); }
+      });
+      tb.append(tr, detTr); }); });
   t.append(tb); p.append(el("div",{class:"xwrap"},t));
 }
 
