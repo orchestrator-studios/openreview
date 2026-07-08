@@ -20,8 +20,19 @@ story: one projection, read live, rendered many ways.
 """
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
+
+# Windows consoles default to a legacy codepage (cp1252) that can't encode the
+# box-drawing glyphs, arrows, and check marks these tools print, which would crash
+# an otherwise-successful run on a UnicodeEncodeError. Force UTF-8 for every tool
+# that goes through this module (all of them do). Runs once at import.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
