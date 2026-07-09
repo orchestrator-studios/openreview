@@ -10,9 +10,9 @@ serves it over HTTP, read fresh on each request.
 Routes
     GET /                                  → index: the reviews, linking to dashboards
     GET /dashboard/<slug>                  → the live review view (report.template.html, served live)
-    GET /api/reviews                       → [{slug, title, totals}]  (list)
-    GET /api/reviews/<slug>                → {protocol, records}      (full review)
-    GET /api/reviews/<slug>/pipeline       → the canonical funnel projection (polled live)
+    GET /api/studies                       → [{slug, mode, title, totals}]  (list, both modes)
+    GET /api/studies/<slug>                → the full study (shape depends on mode)
+    GET /api/studies/<slug>/pipeline       → the canonical projection (polled live)
     GET /health                            → {ok: true}
 
 Usage
@@ -32,12 +32,12 @@ import repo
 INDEX_TEMPLATE = repo.ROOT / "views" / "index.template.html"
 
 
-def _reviews_index():
+def _studies_index():
     """Every review that has at least a protocol — so a review shows up the instant Claude
     creates it, before any records exist. Resilient: one malformed review never blanks the
     whole index."""
     out = []
-    for slug in repo.list_reviews():
+    for slug in repo.list_studies():
         if not repo.has_study(slug):
             continue
         try:
@@ -107,7 +107,7 @@ class Handler(BaseHTTPRequestHandler):
             "border-radius:10px;font-weight:600;font-size:14px;}</style>"
             '<div class="card"><h1>This review no longer exists</h1>'
             f"<p>There's no review <code>{safe}</code> in this workspace — its folder under "
-            "<code>data/reviews/</code> may have been deleted or renamed.</p>"
+            "<code>data/reviews/</code> or <code>data/deep-research/</code> may have been deleted or renamed.</p>"
             '<a href="/">← Back to all reviews</a></div>'
         )
         return self._send(404, page, "text/html; charset=utf-8")
@@ -145,17 +145,17 @@ class Handler(BaseHTTPRequestHandler):
                 html = build_report.render(slug)         # live=False → frozen, self-contained
                 return self._send(200, html, "text/html; charset=utf-8", download=f"{slug}-report.html")
 
-            if parts[0] == "api" and len(parts) >= 2 and parts[1] == "reviews":
+            if parts[0] == "api" and len(parts) >= 2 and parts[1] == "studies":
                 if len(parts) == 2:
-                    return self._send(200, _reviews_index())
+                    return self._send(200, _studies_index())
                 slug = parts[2]
                 if not repo.has_study(slug):
-                    return self._err(404, f"no review '{slug}'")
+                    return self._err(404, f"no study '{slug}'")
                 if len(parts) == 3:
                     return self._send(200, repo.load_review(slug))
                 if len(parts) == 4 and parts[3] == "pipeline":
                     return self._send(200, repo.pipeline(slug))
-                return self._err(404, "unknown review sub-resource")
+                return self._err(404, "unknown study sub-resource")
 
             return self._err(404, f"no route for {path}")
         except Exception as e:  # never leak a stack trace to the client
@@ -169,7 +169,7 @@ def main():
     args = ap.parse_args()
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     base = f"http://{args.host}:{args.port}"
-    reviews = [s for s in repo.list_reviews() if repo.has_study(s)]
+    reviews = [s for s in repo.list_studies() if repo.has_study(s)]
     print(f"serving on {base}  (Ctrl-C to stop)")
     print(f"  ▶ open this →  {base}/     (your reviews; new ones appear live)")
     if reviews:

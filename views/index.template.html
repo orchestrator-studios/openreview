@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>openreview — your reviews</title>
+<title>openreview — your research</title>
 <style>
   :root{
     --ground:#e9eded; --surface:#ffffff; --surface-2:#f4f7f7;
@@ -100,6 +100,13 @@
   .exhint b{color:var(--ink);font-weight:600;}
   .rev.ex{border-style:dashed;}
   .exlabel{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin-bottom:-2px;}
+  /* mode badge — makes SLR vs deep research obvious at a glance */
+  .rmode{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:6px;}
+  .rmode::before{content:"";width:8px;height:8px;border-radius:2px;}
+  .rmode.slr{color:var(--accent-ink);} .rmode.slr::before{background:var(--accent);}
+  .rmode.research{color:#7a5cc0;} .rmode.research::before{background:#8a6fd6;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .rmode.research{color:#b6a3ea;}}
+  :root[data-theme="dark"] .rmode.research{color:#b6a3ea;}
 
   @keyframes ctapop{0%{transform:scale(.96);opacity:0;}100%{transform:scale(1);opacity:1;}}
 
@@ -135,7 +142,7 @@
 </style></head>
 <body>
 <div class="topbar"><div class="wrap">
-  <div class="brand">openreview<small>living workspace for PubMed research</small></div>
+  <div class="brand">openreview<small>living workspace for research</small></div>
   <div class="live"><span class="dot wait" id="dot"></span><span id="liveTxt">connecting…</span>
     <button class="tgl" id="theme" type="button">Theme</button></div>
 </div></div>
@@ -143,9 +150,10 @@
 <div class="wrap">
   <header class="hero">
     <div class="eyebrow">Your workspace</div>
-    <h1 id="hTitle">Reviews</h1>
-    <p id="hSub">Every review in this workspace, live. Click one to open its dashboard. New reviews appear here
-       the moment Claude creates them — keep this open beside your chat.</p>
+    <h1 id="hTitle">Studies</h1>
+    <p id="hSub">Every study in this workspace, live — systematic reviews and deep-research briefs alike. Click
+       one to open its dashboard. New studies appear here the moment Claude creates them — keep this open beside
+       your chat.</p>
   </header>
 
   <section>
@@ -154,7 +162,8 @@
 
   <footer>
     <p>Served by <code>tools/server.py</code> from the <code>repo.py</code> data-access layer, read fresh on
-       each poll. This page is a projection of <code>data/reviews/</code> — nothing here is hand-maintained.</p>
+       each poll. This page is a projection of your study folders (<code>data/reviews/</code>,
+       <code>data/deep-research/</code>) — nothing here is hand-maintained.</p>
   </footer>
 </div>
 
@@ -195,7 +204,8 @@ function stat(v,k,cls){ return el("div",{class:"st"+(cls?" "+cls:"")},
 
 function reviewCard(r, isFresh){
   return el("a",{class:"rev"+(r.example?" ex":"")+(isFresh?" fresh":""),href:"/dashboard/"+encodeURIComponent(r.slug)},
-    r.example ? el("div",{class:"exlabel",text:"Example — a finished review to explore"}) : null,
+    el("div",{class:"rmode "+(r.mode==="research"?"research":"slr"),text:(r.mode==="research"?"Deep research":"Systematic review")}),
+    r.example ? el("div",{class:"exlabel",text:"Example — a finished "+(r.mode==="research"?"brief":"review")+" to explore"}) : null,
     el("div",{class:"rtop"}, el("h3",{text:r.title||r.slug}), chip(r)),
     el("p",{class:"rq",text:r.question||""}),
     (r.mode==="research"
@@ -212,22 +222,22 @@ function reviewCard(r, isFresh){
 function guidancePanel(hasExample){
   const p = (t)=> el("div",{class:"prompt",text:t});
   const prompts = [
-    "Start a review: does remote monitoring reduce heart-failure readmissions after discharge?",
-    "Search PubMed for GLP-1 receptor agonists and cognitive outcomes, then screen the results.",
+    "Start a systematic review: does remote monitoring reduce heart-failure readmissions after discharge?",
+    "Do a deep-research brief on whether melatonin helps healthy adults fall asleep.",
   ].map(p);
   const box = el("div",{class:"empty"},
-    el("h2",{text:"Start a review"}),
-    el("p",{class:"lead",text:"You don't set this workspace up — you use it. Tell Claude what you want to research, and it runs the search, screens the results, and keeps every decision as a file you can open."}),
+    el("h2",{text:"Start a study"}),
+    el("p",{class:"lead",text:"You don't set this workspace up — you use it. Tell Claude what you want to research. It works two ways — an exhaustive, defensible systematic review, or a fast, cited deep-research brief — and keeps every step as a file you can open."}),
     el("div",{class:"step"}, el("div",{class:"n",text:"1"}),
       el("div",{class:"sx",html:"In <b>Claude Code</b>, say what you want to research. Try one (click to copy):"})),
     el("div",{class:"prompts"}, ...prompts),
     el("div",{class:"step"}, el("div",{class:"n",text:"2"}),
-      el("div",{class:"sx",html:"Claude writes the protocol, runs the PubMed search, and screens the results."})),
+      el("div",{class:"sx",html:"Claude picks the right mode (or asks) — then searches and screens for a review, or gathers and verifies sources for a brief."})),
     el("div",{class:"step"}, el("div",{class:"n",text:"3"}),
-      el("div",{class:"sx",html:"Your review <b>appears right here</b> — live, the moment it's created — and fills in as the work lands."})),
+      el("div",{class:"sx",html:"Your study <b>appears right here</b> — live, the moment it's created — and fills in as the work lands."})),
     el("div",{class:"watching"}, el("span",{class:"dot wait"}),
-      el("span",{text:"Watching for your review — leave this open and it lands on its own."})),
-    hasExample ? el("div",{class:"exhint",html:"Want to see where this ends up? The <b>Example</b> below is a finished review. Open it and try to distrust a number — follow it back to the paper it rests on."}) : null);
+      el("span",{text:"Watching for your study — leave this open and it lands on its own."})),
+    hasExample ? el("div",{class:"exhint",html:"Want to see where this ends up? The <b>Example</b> below is a finished study. Open it and try to distrust a number — follow it back to the source it rests on."}) : null);
   box.querySelectorAll(".prompt").forEach(node=>{
     node.addEventListener("click",()=>{
       navigator.clipboard && navigator.clipboard.writeText(node.textContent);
@@ -261,12 +271,12 @@ function render(list){
     for(const r of users){
       if(!protoSeen.has(r.slug)){
         protoSeen.add(r.slug);
-        enqueueModal({kind:"protocol", slug:r.slug, title:r.title||r.slug, question:r.question||""});
+        enqueueModal({kind:"protocol", slug:r.slug, title:r.title||r.slug, question:r.question||"", mode:r.mode});
       }
       const now = r.eval_status||"pending";
       if(evState.get(r.slug)==="pending" && (now==="pass"||now==="paused") && !evSeen.has(r.slug)){
         evSeen.add(r.slug);
-        enqueueModal({kind:"eval", ev:now, slug:r.slug, title:r.title||r.slug});
+        enqueueModal({kind:"eval", ev:now, slug:r.slug, title:r.title||r.slug, mode:r.mode});
       }
       evState.set(r.slug, now);
     }
@@ -289,9 +299,9 @@ function render(list){
   if(users.length===0)
     $("hSub").textContent = examples.length
       ? "Explore the example below, or start your own — tell Claude what you want to research and it appears here, live."
-      : "Tell Claude what you want to research and your first review appears here, live.";
+      : "Tell Claude what you want to research and your first study appears here, live.";
   else
-    $("hSub").textContent = "Every review in this workspace, live. Click one to open its dashboard. New reviews appear the moment Claude creates them.";
+    $("hSub").textContent = "Every study in this workspace, live — reviews and briefs alike. Click one to open its dashboard. New studies appear the moment Claude creates them.";
   known=slugs;
 }
 
@@ -330,35 +340,51 @@ async function showModal(a){
   host.replaceChildren(backdrop, box);
   host.hidden=false; document.body.style.overflow="hidden";
 
+  const research = a.mode==="research";
   if(a.kind==="protocol"){
     box.append(
-      el("div",{class:"am-k",text:"✨ A protocol has been defined"}),
+      el("div",{class:"am-k",text: research?"✨ A brief has been defined":"✨ A protocol has been defined"}),
       el("div",{class:"am-t",text:a.title}),
       el("div",{class:"am-q",text:a.question}));
-    const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading the protocol…"}));
+    const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:research?"Loading the brief…":"Loading the protocol…"}));
     box.append(body,
       actionsRow("/dashboard/"+encodeURIComponent(a.slug), "See it →",
-        "Opening it drops you into the live pipeline — the search is already under way."));
+        research?"Opening it drops you into the live brief — source-gathering is already under way."
+                :"Opening it drops you into the live pipeline — the search is already under way."));
     try{
-      const rev=await (await fetch("/api/reviews/"+encodeURIComponent(a.slug),{cache:"no-store"})).json();
-      body.replaceChildren(...protocolSummary(rev.protocol||{}));
-    }catch(e){ body.replaceChildren(el("div",{class:"am-q2",text:"(Couldn't load the protocol here — open the review to see it.)"})); }
+      const rev=await (await fetch("/api/studies/"+encodeURIComponent(a.slug),{cache:"no-store"})).json();
+      body.replaceChildren(...(research?briefSummary(rev.brief||{}):protocolSummary(rev.protocol||{})));
+    }catch(e){ body.replaceChildren(el("div",{class:"am-q2",text:"(Couldn't load it here — open the study to see it.)"})); }
   } else {
     const pass=a.ev==="pass";
     box.append(
-      el("div",{class:"am-k",text: pass?"✓ Your report is ready":"⏸ Your review needs you"}),
+      el("div",{class:"am-k",text: pass?(research?"✓ Your brief is ready":"✓ Your report is ready"):"⏸ Your study needs you"}),
       el("div",{class:"am-t",text:a.title}));
     const body=el("div",{class:"am-body"}, el("div",{class:"am-q2",text:"Loading…"}));
     box.append(body,
-      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+"#findings",
-        pass?"See the findings →":"Resolve it →",
-        pass?"The full report is compiled — the included studies, the data table, and the quality checks."
-            :"A few checks need your decision before the report is final — resolve them in chat."));
+      actionsRow("/dashboard/"+encodeURIComponent(a.slug)+(research?"":"#findings"),
+        pass?(research?"See the synthesis →":"See the findings →"):"Resolve it →",
+        pass?(research?"The brief is compiled — verified findings, each cited to its sources."
+                      :"The full report is compiled — the included studies, the data table, and the quality checks.")
+            :"A few checks need your decision before it's final — resolve them in chat."));
     try{
-      const p=await (await fetch("/api/reviews/"+encodeURIComponent(a.slug)+"/pipeline",{cache:"no-store"})).json();
-      body.replaceChildren(...evalSummary((p.workflow||{}).evaluation||{}, pass));
+      const p=await (await fetch("/api/studies/"+encodeURIComponent(a.slug)+"/pipeline",{cache:"no-store"})).json();
+      body.replaceChildren(...evalSummary((p.workflow||{}).evaluation||{}, pass, research));
     }catch(e){ body.replaceChildren(); }
   }
+}
+function briefSummary(b){
+  const out=[];
+  if((b.sub_questions||[]).length){
+    const ul=el("ul"); b.sub_questions.forEach(q=>ul.append(el("li",{text:(q&&q.text)?q.text:String(q)})));
+    out.push(el("div",{}, el("div",{class:"lbl",text:"Sub-questions"}), ul));
+  }
+  const sc=b.scope||{}; const bits=[];
+  if(sc.recency) bits.push(sc.recency);
+  if((sc.source_types||[]).length) bits.push(sc.source_types.join(", "));
+  if(bits.length) out.push(el("div",{}, el("div",{class:"lbl",text:"Scope"}), el("div",{class:"am-q2",text:bits.join(" · ")})));
+  if(!out.length) out.push(el("div",{class:"am-q2",text:"Brief defined. Open the study for the full detail."}));
+  return out;
 }
 function protocolSummary(p){
   const out=[];
@@ -380,11 +406,15 @@ function protocolSummary(p){
   if(!out.length) out.push(el("div",{class:"am-q2",text:"Protocol defined. Open the review for the full detail."}));
   return out;
 }
-function evalSummary(ev, pass){
+function evalSummary(ev, pass, research){
   const out=[];
   if(pass){
-    out.push(el("div",{class:"am-q2",text:"Your review is finished, and the full report is compiled: the studies that made it in, the extracted-data table, and the completeness and integrity checks — which all passed."}));
-    out.push(el("div",{class:"am-q2",text:"Open the findings to read it, or Export the whole report as one shareable file."}));
+    out.push(el("div",{class:"am-q2",text: research
+      ? "Your brief is compiled: findings that answer every sub-question, each verified and cited to its sources, and the completeness checks — which all passed."
+      : "Your review is finished, and the full report is compiled: the studies that made it in, the extracted-data table, and the completeness and integrity checks — which all passed."}));
+    out.push(el("div",{class:"am-q2",text: research
+      ? "Open the synthesis to read it, or Export the whole brief as one shareable file."
+      : "Open the findings to read it, or Export the whole report as one shareable file."}));
     if((ev.advisories||[]).length) out.push(el("div",{class:"am-q2",text:ev.advisories.length+" advisory note"+(ev.advisories.length===1?"":"s")+" to review."}));
   } else {
     out.push(el("div",{class:"am-q2",text:ev.explanation||"The report is almost done — a few checks need your decision first."}));
@@ -399,13 +429,13 @@ document.addEventListener("keydown", e=>{ if(e.key==="Escape" && activeKey) clos
 
 async function poll(){
   try{
-    const res=await fetch("/api/reviews",{cache:"no-store"});
+    const res=await fetch("/api/studies",{cache:"no-store"});
     if(!res.ok) throw new Error("http "+res.status);
     const list=await res.json();
     render(list);
     const users=list.filter(r=>!r.example).length;
-    if(users===0) setLive("wait", list.length ? "watching for your review" : "watching for your first review");
-    else setLive("ok", users+" review"+(users===1?"":"s")+" · live");
+    if(users===0) setLive("wait", list.length ? "watching for your study" : "watching for your first study");
+    else setLive("ok", users+" stud"+(users===1?"y":"ies")+" · live");
   }catch(e){ setLive("err","server offline"); }
 }
 

@@ -22,7 +22,7 @@ def load(p):
 
 
 def validate_review(slug, errors):
-    revdir = repo.review_dir(slug)
+    revdir = repo.study_dir(slug)
     protocol = records = None
 
     proto_schema = Draft7Validator(load(repo.SCHEMAS / "protocol.schema.json"))
@@ -87,7 +87,7 @@ def validate_review(slug, errors):
 
 def validate_research(slug, errors):
     """Validate a deep-research study: brief + sources + findings, and their cross-references."""
-    revdir = repo.review_dir(slug)
+    revdir = repo.study_dir(slug)
     brief_schema = Draft7Validator(load(repo.SCHEMAS / "brief.schema.json"))
     src_schema = Draft7Validator(load(repo.SCHEMAS / "sources.schema.json"))
     find_schema = Draft7Validator(load(repo.SCHEMAS / "findings.schema.json"))
@@ -130,7 +130,7 @@ def validate_research(slug, errors):
 
 
 def main():
-    slugs = [sys.argv[1]] if len(sys.argv) > 1 else repo.list_reviews()
+    slugs = [sys.argv[1]] if len(sys.argv) > 1 else repo.list_studies()
     if not slugs:
         print("no reviews found")
         return

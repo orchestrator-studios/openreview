@@ -136,7 +136,7 @@ def main():
     ap.add_argument("--refetch", action="store_true", help="re-process records already in the manifest")
     args = ap.parse_args()
 
-    revdir = repo.review_dir(args.slug)
+    revdir = repo.study_dir(args.slug)
     records = repo.load_records(args.slug)
     ftdir = revdir / "fulltext"
     ftdir.mkdir(parents=True, exist_ok=True)

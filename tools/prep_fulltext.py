@@ -31,7 +31,7 @@ def main():
     ap.add_argument("--ft-cap", type=int, default=24000, help="max chars of full text per record")
     args = ap.parse_args()
 
-    revdir = repo.review_dir(args.slug)
+    revdir = repo.study_dir(args.slug)
     protocol = repo.load_protocol(args.slug)
     records = repo.load_records(args.slug)
     ftdir = revdir / "fulltext"

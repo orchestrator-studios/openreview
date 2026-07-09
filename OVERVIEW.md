@@ -51,8 +51,8 @@ describe the SLR mode.
 - **Full text** for the full-text screening pass via **PubMed Central** (open-access article XML,
   fetched and PMID-verified) with **Unpaywall** as an open-access fallback and the abstract when
   neither yields text. Each record records which source was used.
-- Reviews are stored per-project under `data/reviews/<slug>/`, with fetched full text cached under
-  `<slug>/fulltext/`.
+- SLR reviews are stored per-project under `data/reviews/<slug>/`, with fetched full text cached
+  under `<slug>/fulltext/`. Deep-research briefs live under `data/deep-research/<slug>/`.
 
 ## What you'll ask of it
 

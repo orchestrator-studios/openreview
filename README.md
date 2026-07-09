@@ -1,44 +1,46 @@
 # openreview
 
-*Find **all** the literature on a question — exhaustively and defensibly — the way a systematic review does,
-without the heavyweight process. For the work where "did I miss anything?" is the question that matters.*
+*Two ways to research a question — an exhaustive, defensible **systematic review**, or a fast, cited
+**deep-research brief**. Both show all their work, so you can always trace the answer back to its sources.*
 
 > **Not affiliated with openreview.net** (the conference peer-review platform). Different project.
 
 ## What it is
 
-openreview is built for one job: **finding every relevant study on a question, and being able to prove you
-found them.** It searches PubMed exhaustively, screens everything that comes back against your own criteria,
-pulls out what matters, and records every step — so the result is auditable end to end: every paper you
-included, every one you excluded and why, every count tracing back to the records behind it. You run it by
-**talking to an AI assistant** (Claude): you say what you want, it does the searching and screening, and it
-keeps everything as plain files you own. Think of it as a research assistant that shows all of its work.
+openreview does research **two ways**, and both keep every step so the result is auditable end to end. You
+run either by **talking to an AI assistant** (Claude): you say what you want, it does the work, and it keeps
+everything as plain files you own. Think of it as a research assistant that shows all of its work.
 
-This is the systematic-review way of working — completeness first, every decision recorded — made light enough
-to use without the months-long process. Reach for it when missing a relevant study would be a failure and when
-you need to show, to a reviewer, a co-author, or yourself in six months, exactly what you searched, what came
-back, and why each paper is in or out.
+- **Systematic review (SLR)** — for finding *every* relevant study on a question and being able to prove it.
+  It searches PubMed exhaustively, screens everything that comes back against your own criteria, extracts what
+  matters, and records every step: every paper included, every one excluded and why, every count tracing back
+  to the records behind it. The systematic-review way of working — completeness first, every decision
+  recorded — made light enough to use without the months-long process.
+- **Deep research** — for a fast, sourced answer across the web and literature, to get up to speed or brief a
+  decision. It gathers sources, draws out findings that each **cite the sources they rest on**, verifies them,
+  and writes a synthesis — without the exhaustive search-and-screen of an SLR.
 
-**What it's *not* for:** getting up to speed on an unfamiliar topic, or a quick scan to see what's out there.
-For that, a general literature-search tool is faster and lighter. openreview optimizes for *coverage* and
-*defensibility*, not speed — a thorough run searches broadly and screens every record (twice), which takes
-time and effort you don't want to spend just to orient yourself. Use it when the goal is a complete,
-citable answer, not a first impression.
+**Which mode?** Reach for **SLR** when completeness is the point: missing a study is a failure, and the result
+must stand up to a reviewer. Reach for **deep research** when you want a solid, sourced answer quickly and
+*"did I miss one?"* isn't the bar. Same workspace, same audit habits — you (or Claude) pick per question, and
+Claude will ask if it isn't obvious.
 
-**Who it's for:** researchers who live in PubMed and care about defensible results — clinicians, grad students
-and postdocs, research librarians, epidemiologists, evidence-synthesis teams — and who are comfortable working
-through a coding agent. That's the one real cost of entry: you operate openreview through Claude Code, so you
-(or someone on your team) need to be willing to get set up with it. If you've used a coding agent before,
-you're past the hard part.
+**Who it's for:** researchers who care about defensible results — clinicians, grad students and postdocs,
+research librarians, epidemiologists, evidence-synthesis teams — and who are comfortable working through a
+coding agent. That's the one real cost of entry: you operate openreview through Claude Code, so you (or someone
+on your team) need to be willing to get set up with it. If you've used a coding agent before, you're past the
+hard part.
 
 ## How you use it
 
 There's no app to install and no website to log into. openreview is a **folder you keep on your computer**,
 operated through [Claude Code](https://claude.com/claude-code) — an AI assistant that can read files and run
-programs. You open the folder in Claude Code and talk to it: *"search PubMed for remote monitoring and
-heart-failure readmissions,"* *"screen the results against these criteria,"* *"why was this one excluded?"* It
-does the work and writes everything down. (It's built and tested with Claude Code; in principle any capable
-coding agent could operate it, but start there.)
+programs. You open the folder in Claude Code and talk to it. For a review: *"search PubMed for remote
+monitoring and heart-failure readmissions,"* *"screen the results against these criteria,"* *"why was this one
+excluded?"* For a deep-research brief: *"do a deep-research brief on whether melatonin helps adults fall
+asleep,"* *"which of these findings rests on a single source?"* It does the work and writes everything down.
+(It's built and tested with Claude Code; in principle any capable coding agent could operate it, but start
+there.)
 
 <p align="center">
   <img src="docs/workspace.svg" alt="The steady state: a web browser showing the live dashboard, next to a Claude Code session in a terminal or the app, next to the plain files — all three always in sync." width="900">
@@ -46,16 +48,17 @@ coding agent could operate it, but start there.)
 
 The way you run this day to day: keep a **browser window with the dashboard open next to your Claude Code
 session** (the terminal or the desktop app) — and, if you like, a file browser or editor on the side to read
-the raw files. While you work, the review shows up in these three places, and they always agree:
+the raw files. While you work, the study shows up in these three places, and they always agree:
 
 - **The conversation** — you and Claude, in plain language. This is how you drive everything: you ask, it
   acts, and it tells you what it did and what it needs you to decide.
-- **A live dashboard** — a page in your browser that shows the review taking shape: the search funnel, what
-  was excluded and why, what's included so far. It updates on its own as Claude works. (One command to start
-  it — see Quickstart.)
-- **The files** — your research lives under `data/reviews/`, **one folder per review**; every record,
-  decision, and criterion is a plain `.json`/`.md` file, yours to open in any text editor or Markdown viewer
-  and keep. Nothing is hidden in a database you can't see.
+- **A live dashboard** — a page in your browser that shows the work taking shape: for a review, the search
+  funnel and what's in or out; for a deep-research brief, the sources gathered and the verified findings. It
+  updates as Claude works. (One command to start it — see Quickstart.)
+- **The files** — your research lives under `data/reviews/` (systematic reviews) and `data/deep-research/`
+  (deep-research briefs), **one folder per study**; every record,
+  decision, source, and finding is a plain `.json`/`.md` file, yours to open in any text editor or Markdown
+  viewer and keep. Nothing is hidden in a database you can't see.
 
 The conversation is where you *act*, the dashboard is where you *watch*, the files are the *ground truth*
 under both.
@@ -182,7 +185,8 @@ For the curious — the design that makes the guarantees hold.
 
 - **A reusable engine, per-review data.** The engine (`schemas/`, `tools/`, `skills/`, and the versioned
   screening agent) knows nothing about any topic; each review supplies its own question, criteria, and the
-  shape of the data it extracts, all under `data/reviews/<slug>/`. Same machinery, any subject.
+  shape of the data it extracts, each study under its mode's root (`data/reviews/` or
+  `data/deep-research/`). Same machinery, any subject.
 - **One source of truth.** Every surface — the dashboard, the export, the files — reads the same projection
   from `tools/repo.py`. There is one definition of the funnel; nothing recomputes it, so nothing can disagree.
 - **The rules are enforced, not aspirational** (`tools/validate.py` fails otherwise): schemas are law; views

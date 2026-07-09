@@ -4,11 +4,11 @@
 Single source of truth for *where* review data lives, *how* it is read and written,
 and *what the canonical projections are*. Every tool (validate, screen, build_views,
 build_report) and the dashboard server go through here. Nothing else should open
-`protocol.json` / `records.json`, hardcode the `data/reviews` path, or re-derive the
+`protocol.json` / `records.json`, hardcode a study-root path, or re-derive the
 pipeline funnel — if two callers need the same number, it is defined once, here.
 
 Three layers, low to high:
-  1. paths + raw json     — review_dir, list_reviews, load_protocol/records, save_records
+  1. paths + raw json     — study_dir, list_studies, load_protocol/records, save_records
   2. shared helpers       — citation, query_labels
   3. projections          — pipeline(): the funnel counts, exclusion breakdowns, and
                             per-query retrieval that the PRISMA view, the HTML report,
@@ -36,25 +36,47 @@ for _stream in (sys.stdout, sys.stderr):
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-REVIEWS = DATA / "reviews"
 SCHEMAS = ROOT / "schemas"
+
+# Each research mode has its own top-level study root — nothing is privileged, and both are
+# defined here symmetrically. mode(slug) is derived from which root holds the slug's folder,
+# so the directory *is* the type. Adding a third mode is one entry in this map.
+STUDY_ROOTS = {
+    "slr":      DATA / "reviews",
+    "research": DATA / "deep-research",
+}
 
 
 # ----------------------------------------------------------------------------
 # 1. paths + raw json
 # ----------------------------------------------------------------------------
-def review_dir(slug):
-    return REVIEWS / slug
+def _root_of(slug):
+    """The study root that holds this slug, or None if it lives nowhere yet."""
+    for root in STUDY_ROOTS.values():
+        if (root / slug).exists():
+            return root
+    return None
+
+
+def study_dir(slug, for_mode=None):
+    """The folder for a study. For an existing study, wherever it already lives; for a new
+    one, pass `for_mode` to place it under that mode's root."""
+    if for_mode is not None:
+        return STUDY_ROOTS[for_mode] / slug
+    return (_root_of(slug) or STUDY_ROOTS["slr"]) / slug
 
 
 def views_dir(slug):
-    return review_dir(slug) / "views"
+    return study_dir(slug) / "views"
 
 
-def list_reviews():
-    if not REVIEWS.exists():
-        return []
-    return sorted(p.name for p in REVIEWS.iterdir() if p.is_dir())
+def list_studies():
+    """Every study across all mode roots, by slug (slugs are unique across roots)."""
+    names = set()
+    for root in STUDY_ROOTS.values():
+        if root.exists():
+            names.update(p.name for p in root.iterdir() if p.is_dir())
+    return sorted(names)
 
 
 def _read_json(p):
@@ -65,12 +87,20 @@ def _write_json(p, obj):
     Path(p).write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def mode(slug):
+    """The run type of a study, derived from which root directory holds it."""
+    for m, root in STUDY_ROOTS.items():
+        if (root / slug).exists():
+            return m
+    return "slr"
+
+
 def has_protocol(slug):
-    return (review_dir(slug) / "protocol.json").exists()
+    return (study_dir(slug) / "protocol.json").exists()
 
 
 def has_brief(slug):
-    return (review_dir(slug) / "brief.json").exists()
+    return (study_dir(slug) / "brief.json").exists()
 
 
 def has_study(slug):
@@ -78,40 +108,35 @@ def has_study(slug):
     return has_protocol(slug) or has_brief(slug)
 
 
-def mode(slug):
-    """The run type of a study: 'research' if it has a brief.json, else 'slr'."""
-    return "research" if (has_brief(slug) and not has_protocol(slug)) else "slr"
-
-
 def load_protocol(slug):
-    return _read_json(review_dir(slug) / "protocol.json")
+    return _read_json(study_dir(slug) / "protocol.json")
 
 
 def load_records(slug):
-    p = review_dir(slug) / "records.json"
+    p = study_dir(slug) / "records.json"
     return _read_json(p) if p.exists() else []
 
 
 def save_records(slug, records):
-    _write_json(review_dir(slug) / "records.json", records)
+    _write_json(study_dir(slug) / "records.json", records)
 
 
 def load_brief(slug):
-    return _read_json(review_dir(slug) / "brief.json")
+    return _read_json(study_dir(slug) / "brief.json")
 
 
 def load_sources(slug):
-    p = review_dir(slug) / "sources.json"
+    p = study_dir(slug) / "sources.json"
     return _read_json(p) if p.exists() else []
 
 
 def load_findings(slug):
-    p = review_dir(slug) / "findings.json"
+    p = study_dir(slug) / "findings.json"
     return _read_json(p) if p.exists() else []
 
 
 def synthesis_path(slug):
-    return review_dir(slug) / "synthesis.md"
+    return study_dir(slug) / "synthesis.md"
 
 
 def study_meta(slug):
@@ -699,7 +724,7 @@ def research_pipeline_from(brief, sources, findings, synthesis_exists, slug=None
         "mode": "research",
         "title": brief.get("title", slug),
         "question": brief.get("question", ""),
-        "source": f"data/reviews/{slug}" if slug else None,
+        "source": f"data/deep-research/{slug}" if slug else None,
         "workflow": wf,
         "totals": {
             "sources": n_src,

@@ -14,7 +14,7 @@ Every view — static or live — is built from four separable parts:
 
 ## The data-access layer (`tools/repo.py`)
 
-Nothing else opens `protocol.json` / `records.json`, hardcodes the `data/reviews` path, or re-derives the
+Nothing else opens `protocol.json` / `records.json`, hardcodes a study-root path, or re-derives the
 pipeline funnel. `repo.py` is the single source of truth for **where** data lives, **how** it is read and
 written, and **what the canonical projections are** (`repo.pipeline(slug)` — the funnel counts, exclusion
 breakdowns, and per-query retrieval). `validate.py`, `screen.py`, `build_views.py`, `build_report.py`, and
@@ -35,13 +35,13 @@ python tools/build_report.py <slug>     # → data/reviews/<slug>/views/<slug>-r
 
 **The live dashboard** is server-backed: it renders nothing to disk. `tools/server.py` (stdlib only)
 serves `dashboard.template.html` and a small read-only JSON API drawn from `repo.py`; the page polls
-`/api/reviews/<slug>/pipeline` and animates the funnel as screening decisions land in `records.json`.
+`/api/studies/<slug>/pipeline` and animates the funnel as screening decisions land in `records.json`.
 
 ```bash
 python tools/server.py                                  # http://127.0.0.1:8765
 #   /                                  index of reviews
 #   /dashboard/<slug>                  the live pipeline dashboard
-#   /api/reviews[/<slug>[/pipeline]]   the JSON the dashboard polls
+#   /api/studies[/<slug>[/pipeline]]   the JSON the dashboard polls
 ```
 
 Because the server reads through `repo.py` on every request, the dashboard is real-time by construction:

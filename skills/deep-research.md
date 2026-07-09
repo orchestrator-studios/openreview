@@ -5,7 +5,7 @@ synthesis** — without the exhaustive search-and-screen of an SLR. Use it to ge
 brief a decision. For exhaustive, defensible coverage, use `skills/systematic-review.md` instead
 (see `skills/modes.md` to choose).
 
-Each study is a folder under `data/reviews/<slug>/`, marked by `brief.json` (`mode: research`).
+Each study is a folder under `data/deep-research/<slug>/`, marked by `brief.json` (`mode: research`).
 
 ## 1. Brief first
 Write `brief.json` (schema: `schemas/brief.schema.json`): the `question`, and a set of

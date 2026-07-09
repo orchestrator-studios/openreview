@@ -48,7 +48,7 @@ def save(p, obj):
 
 
 def revdir(slug):
-    return repo.review_dir(slug)
+    return repo.study_dir(slug)
 
 
 def stagedir(slug, stage):

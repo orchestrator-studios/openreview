@@ -1,0 +1,6 @@
+[
+  { "id": "f1", "statement": "Melatonin reduces sleep-onset latency by roughly 7 minutes versus placebo in healthy adults.", "answers": ["efficacy"], "cites": ["s1", "s2"], "verification": "corroborated", "confidence": "high" },
+  { "id": "f2", "statement": "Lower doses (0.3-1 mg) taken 1-2 hours before bedtime are as effective as higher doses for sleep onset.", "answers": ["dose"], "cites": ["s2", "s3"], "verification": "corroborated", "confidence": "medium" },
+  { "id": "f3", "statement": "Short-term melatonin use shows no serious adverse events in healthy adults.", "answers": ["safety"], "cites": ["s4"], "verification": "single-source", "confidence": "medium" },
+  { "id": "f4", "statement": "Over-the-counter melatonin content often varies substantially from the labeled dose.", "answers": ["safety", "dose"], "cites": ["s5"], "verification": "single-source", "confidence": "medium" }
+]

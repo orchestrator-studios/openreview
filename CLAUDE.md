@@ -6,22 +6,22 @@ they are an application — one that starts empty and comes to life through conv
 | Structure | What lives here |
 |---|---|
 | `OVERVIEW.md` | What this system is: purpose, entities, rules, existing data sources, recurring asks. Filled in first, by interview. |
-| `data/` | The application's persistent objects — the system of record. Each study is a folder under `data/reviews/<slug>/`; its rendered views live in that folder's `views/` subfolder. |
+| `data/` | The application's persistent objects — the system of record. Each study is a folder under its mode's root — SLR reviews under `data/reviews/<slug>/`, deep-research briefs under `data/deep-research/<slug>/`; its rendered views live in that folder's `views/` subfolder. |
 | `schemas/` | The structure and validity rules for everything in `data/`. |
 | `tools/` | Deterministic operations: create, update, validate, query, transform, and acquire external data (searches, full-text retrieval). The *code* half of view logic. |
 | `skills/` | Operational knowledge: workflow rules, state transitions, how to use the tools correctly. |
-| `views/` | View *logic* — the reusable templates (e.g. `report.template.html`). Not rendered output: a study's rendered instances live in `data/reviews/<slug>/views/`. |
+| `views/` | View *logic* — the reusable templates (e.g. `report.template.html`). Not rendered output: a study's rendered instances live in its own `views/` subfolder, under its mode root. |
 
 ## Two research modes — this workspace's job
 
-This workspace provides **research capabilities**, and right now there are **two**. Every study
-under `data/reviews/<slug>/` is one mode or the other, and your job is to run whichever fits the
-user's want (ask if it isn't clear):
+This workspace provides **research capabilities**, and right now there are **two**. Each mode has
+its own top-level directory — the directory *is* the type — and your job is to run whichever fits
+the user's want (ask if it isn't clear):
 
 - **SLR** (systematic review) — exhaustive, defensible coverage; find *every* relevant study and
-  prove it. Defined by `protocol.json`. Skill: `skills/systematic-review.md`.
+  prove it. Lives in `data/reviews/<slug>/`, marked by `protocol.json`. Skill: `skills/systematic-review.md`.
 - **Deep research** — a fast, verified, cited answer across sources, without exhaustive screening.
-  Defined by `brief.json`. Skill: `skills/deep-research.md`.
+  Lives in `data/deep-research/<slug>/`, marked by `brief.json`. Skill: `skills/deep-research.md`.
 
 `skills/modes.md` is the router — read it to choose. The two modes share the shell (dashboard,
 `tools/repo.py` projection, `validate.py`, the every-count-is-a-link law); they differ in their

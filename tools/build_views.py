@@ -3,8 +3,10 @@
 
 This is the *code* half of the view logic (the templating is trivial here, so it lives inline);
 the rendered *instances* are written into the study folder, next to the data they project:
-    data/reviews/<slug>/views/<slug>-prisma.md       PRISMA-style flow + exclusion-reason breakdown
-    data/reviews/<slug>/views/<slug>-extraction.md   one row per (study, arm)
+    <study-root>/<slug>/views/<slug>-prisma.md       (SLR) PRISMA-style flow + exclusion-reason breakdown
+    <study-root>/<slug>/views/<slug>-extraction.md   (SLR) one row per (study, arm)
+    <study-root>/<slug>/views/<slug>-brief.md        (research) brief + sub-question coverage
+    <study-root>/<slug>/views/<slug>-findings.md     (research) findings grouped by sub-question
 
 Data access and the pipeline funnel are NOT computed here — they come from `tools/repo.py`,
 the shared data-access layer, so this view, the HTML report, and the live dashboard all render

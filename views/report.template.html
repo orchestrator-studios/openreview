@@ -1043,7 +1043,7 @@ if (LIVE) {
   }
   async function livePoll(){
     try{
-      const r = await fetch("/api/reviews/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
+      const r = await fetch("/api/studies/"+encodeURIComponent(LIVE_SLUG)+"/pipeline",{cache:"no-store"});
       if(r.status===404){ showDeleted(); return; }   // deleted (or renamed) — distinct from a transient outage
       if(!r.ok) throw 0;
       const p = await r.json(), t = p.totals||{}, wf = p.workflow||{};

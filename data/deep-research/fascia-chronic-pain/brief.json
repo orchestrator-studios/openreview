@@ -1,0 +1,33 @@
+{
+  "slug": "fascia-chronic-pain",
+  "mode": "research",
+  "title": "Fascia's role in chronic pain: disorders, mechanisms, and treatments",
+  "question": "What does current research say about the role of fascia in chronic pain — the disorders and mechanisms that implicate fascia, and the treatments that target it?",
+  "sub_questions": [
+    {
+      "id": "mechanism",
+      "text": "By what mechanisms is fascia thought to contribute to chronic pain (innervation and nociception, inflammation/fibrosis, mechanotransduction, fascial densification/stiffness, sensitization)?"
+    },
+    {
+      "id": "conditions",
+      "text": "Which chronic pain conditions and fascia disorders are most strongly linked to fascial dysfunction (e.g. chronic low back pain, myofascial pain syndrome, fibromyalgia, plantar fasciitis, neck/shoulder pain)?"
+    },
+    {
+      "id": "treatments",
+      "text": "What fascia-targeting treatments are used for chronic pain and what does the evidence say about their efficacy (manual/myofascial release, fascial manipulation, dry needling, hydrodissection, acupuncture, extracorporeal shockwave, exercise)?"
+    },
+    {
+      "id": "measurement",
+      "text": "How is fascial dysfunction measured or imaged in research (ultrasound elastography, gliding/shear-strain imaging, biopsy), and how strong is the objective evidence linking these measures to pain?"
+    },
+    {
+      "id": "directions",
+      "text": "What are the active research directions, controversies, and open questions in the fascia–chronic-pain field?"
+    }
+  ],
+  "scope": {
+    "recency": "prefer sources < 7 years old, but include foundational/landmark work where relevant",
+    "source_types": ["systematic-review", "review", "trial", "journal-article", "guideline"],
+    "notes": "Deep-research (non-exhaustive) synthesis to get up to speed on the state of fascia + chronic pain research. Emphasis on peer-reviewed literature; flag where evidence is preliminary or contested."
+  }
+}
