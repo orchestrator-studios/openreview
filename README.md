@@ -1,20 +1,29 @@
 # openreview
 
-*Do a thorough, defensible PubMed search the way a systematic review would — without the heavyweight process.
-Light enough for a Tuesday-afternoon question, rigorous enough to publish.*
+*Find **all** the literature on a question — exhaustively and defensibly — the way a systematic review does,
+without the heavyweight process. For the work where "did I miss anything?" is the question that matters.*
 
 > **Not affiliated with openreview.net** (the conference peer-review platform). Different project.
 
 ## What it is
 
-openreview helps you search PubMed, screen what comes back against your own criteria, and pull out what
-matters — and it records every step, so the result is auditable end to end: every paper you included, every
-one you excluded and why, every count tracing back to the records behind it. You run it by **talking to an AI
-assistant** (Claude): you say what you want, it does the searching and screening, and it keeps everything as
-plain files you own. Think of it as a research assistant that shows all of its work.
+openreview is built for one job: **finding every relevant study on a question, and being able to prove you
+found them.** It searches PubMed exhaustively, screens everything that comes back against your own criteria,
+pulls out what matters, and records every step — so the result is auditable end to end: every paper you
+included, every one you excluded and why, every count tracing back to the records behind it. You run it by
+**talking to an AI assistant** (Claude): you say what you want, it does the searching and screening, and it
+keeps everything as plain files you own. Think of it as a research assistant that shows all of its work.
 
-Use it for a formal systematic review, or for any question where you want to search thoroughly and be able to
-show — to a reviewer, a co-author, or yourself in six months — exactly how you reached your answer.
+This is the systematic-review way of working — completeness first, every decision recorded — made light enough
+to use without the months-long process. Reach for it when missing a relevant study would be a failure and when
+you need to show, to a reviewer, a co-author, or yourself in six months, exactly what you searched, what came
+back, and why each paper is in or out.
+
+**What it's *not* for:** getting up to speed on an unfamiliar topic, or a quick scan to see what's out there.
+For that, a general literature-search tool is faster and lighter. openreview optimizes for *coverage* and
+*defensibility*, not speed — a thorough run searches broadly and screens every record (twice), which takes
+time and effort you don't want to spend just to orient yourself. Use it when the goal is a complete,
+citable answer, not a first impression.
 
 **Who it's for:** researchers who live in PubMed and care about defensible results — clinicians, grad students
 and postdocs, research librarians, epidemiologists, evidence-synthesis teams — and who are comfortable working

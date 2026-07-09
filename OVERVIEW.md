@@ -3,7 +3,10 @@
 ## Purpose
 
 This workspace conducts **systematic literature reviews** and keeps every review as a
-durable, auditable record. It is not a one-off report generator: each review is a first-class
+durable, auditable record. Its purpose is **exhaustive, defensible coverage** of the literature
+on a question — finding every relevant study and proving it — not a quick scan to get up to
+speed on a topic (general search tools serve that better). It optimizes for completeness and
+auditability over speed. It is not a one-off report generator: each review is a first-class
 object with a protocol, a search log, a set of candidate records, screening decisions with
 reasons, and structured data extraction — assembled so the whole thing is reproducible and so
 future reviews reuse the same machinery. The first review it runs asks how genetic mutations
