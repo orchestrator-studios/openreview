@@ -51,10 +51,11 @@ After ANY write to data:
 Views are projections — never hand-edit them; change the data and regenerate.
 
 ## The quality gate
-Derived live in `repo.py` (exactly like the SLR gate — never a stored flag). It **pauses for a
-human** when a finding cites no source, a sub-question is unanswered, or a finding is still
-unverified; it **advises** when a finding rests on a single source. Passing means every
-sub-question is answered and every finding is cited and verified.
+Derived live in `repo.py` (exactly like the SLR gate — never a stored flag). It **pauses** when a
+finding cites no source, a sub-question is unanswered, a finding is still unverified, or the
+**synthesis isn't compiled** (step 6); it **advises** when a finding rests on a single source or a
+disputed one. Passing means every sub-question is answered, every finding is cited and verified,
+**and the synthesis is written** — so the gate can never read "pass" on a half-finished brief.
 
 ## Extending later
 Re-gather with new sources at any time; triage and draft findings for the new arrivals, then

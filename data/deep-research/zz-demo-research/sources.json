@@ -1,8 +1,0 @@
-[
-  { "id": "s1", "title": "Meta-analysis of melatonin and sleep-onset latency", "type": "meta-analysis", "citation": "Ferracioli-Oda 2013", "url": "https://example.org/s1", "found_by": ["efficacy"], "status": "cited", "basis": "fulltext" },
-  { "id": "s2", "title": "RCT of melatonin 3mg vs placebo on sleep onset", "type": "trial", "citation": "Zhdanova 2001", "url": "https://example.org/s2", "found_by": ["efficacy", "dose"], "status": "cited", "basis": "abstract" },
-  { "id": "s3", "title": "Dose-response of melatonin timing before bedtime", "type": "trial", "citation": "Burgess 2010", "url": "https://example.org/s3", "found_by": ["dose"], "status": "cited", "basis": "fulltext" },
-  { "id": "s4", "title": "Safety and tolerability review of short-term melatonin", "type": "review", "citation": "Besag 2019", "url": "https://example.org/s4", "found_by": ["safety"], "status": "cited", "basis": "fulltext" },
-  { "id": "s5", "title": "Consumer melatonin content variability", "type": "web", "citation": "Erland 2017", "found_by": ["safety"], "status": "read", "basis": "abstract" },
-  { "id": "s6", "title": "Blog post on melatonin megadoses", "type": "web", "citation": "Sleepblog 2022", "found_by": ["dose"], "status": "discarded", "basis": "snippet" }
-]

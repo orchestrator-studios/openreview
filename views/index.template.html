@@ -433,9 +433,15 @@ async function poll(){
     if(!res.ok) throw new Error("http "+res.status);
     const list=await res.json();
     render(list);
-    const users=list.filter(r=>!r.example).length;
-    if(users===0) setLive("wait", list.length ? "watching for your study" : "watching for your first study");
-    else setLive("ok", users+" stud"+(users===1?"y":"ies")+" · live");
+    const users=list.filter(r=>!r.example).length;   // the reader's own studies — drives the empty state
+    const total=list.length;                          // everything on screen, examples included
+    if(users===0){ setLive("wait", total ? "watching for your study" : "watching for your first study"); }
+    else {
+      const nR=list.filter(r=>r.mode!=="research").length, nB=total-nR, parts=[];
+      if(nR) parts.push(nR+" review"+(nR===1?"":"s"));
+      if(nB) parts.push(nB+" brief"+(nB===1?"":"s"));
+      setLive("ok", total+" stud"+(total===1?"y":"ies")+" · "+parts.join(", ")+" · live");
+    }
   }catch(e){ setLive("err","server offline"); }
 }
 

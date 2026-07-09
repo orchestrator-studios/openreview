@@ -345,7 +345,9 @@ def workflow_state(protocol, records, *, retrieved, included, ta_excluded, ft_ex
     active_idx = next((i for i, (_, _, done, _) in enumerate(specs) if not done), None)
     phases = []
     for i, (key, label, done, detail) in enumerate(specs):
-        if done:
+        if active_idx is not None and i > active_idx:
+            status = "pending"          # a later phase is never "done" while an earlier one is still active
+        elif done:
             status = "done"
         elif i == active_idx:
             status = "blocked" if blocked else "active"
@@ -544,8 +546,12 @@ def pipeline_from(protocol, records, slug=None):
 _SRC_TRIAGED = {"read", "cited", "discarded"}
 
 
-def _research_evaluation(findings, *, reached, coverage_gaps, uncited, unverified, n_findings):
-    """The research gate — same optimistic, block-vs-advisory design as `_evaluation`."""
+def _research_evaluation(findings, *, reached, coverage_gaps, uncited, unverified, n_findings,
+                         synthesis_exists):
+    """The research gate — same optimistic, block-vs-advisory design as `_evaluation`.
+
+    Includes a `synthesis-compiled` block check: a brief cannot read "pass" until step 6
+    (the synthesis) is written, so the gate agrees with the state machine's `complete`."""
     single = [f for f in findings if f.get("verification") == "single-source"]
     disputed = [f for f in findings if f.get("verification") == "disputed"]
     checks = [
@@ -565,6 +571,10 @@ def _research_evaluation(findings, *, reached, coverage_gaps, uncited, unverifie
          "ok": not unverified,
          "detail": (f"{len(unverified)} finding(s) still unverified" if unverified
                     else "every finding checked")},
+        {"key": "synthesis-compiled", "label": "The synthesis is compiled", "severity": "block",
+         "ok": synthesis_exists,
+         "detail": ("synthesis.md not written yet — compile it to finish the brief"
+                    if not synthesis_exists else "synthesis compiled")},
         {"key": "no-disputes-open", "label": "No unresolved source conflicts", "severity": "advisory",
          "ok": not disputed,
          "detail": (f"{len(disputed)} finding(s) rest on disputed sources" if disputed
@@ -606,7 +616,8 @@ def _research_workflow(brief, sources, findings, *, synthesis_exists, coverage_g
     ev_reached = p_findings and p_verify
 
     ev = _research_evaluation(findings, reached=ev_reached, coverage_gaps=coverage_gaps,
-                              uncited=uncited, unverified=unverified, n_findings=n_find)
+                              uncited=uncited, unverified=unverified, n_findings=n_find,
+                              synthesis_exists=synthesis_exists)
     ev_paused = ev["status"] == "paused"
     blocked = ev_paused
 
@@ -631,7 +642,9 @@ def _research_workflow(brief, sources, findings, *, synthesis_exists, coverage_g
     active_idx = next((i for i, (_, _, done, _) in enumerate(specs) if not done), None)
     phases = []
     for i, (key, label, done, detail) in enumerate(specs):
-        if done:
+        if active_idx is not None and i > active_idx:
+            status = "pending"          # a later phase is never "done" while an earlier one is still active
+        elif done:
             status = "done"
         elif i == active_idx:
             status = "blocked" if blocked else "active"
