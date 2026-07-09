@@ -12,6 +12,21 @@ reasons, and structured data extraction — assembled so the whole thing is repr
 future reviews reuse the same machinery. The first review it runs asks how genetic mutations
 in mice affect susceptibility to malignant mesothelioma after asbestos exposure.
 
+## Two modes
+
+The workspace offers two research capabilities; each study is one or the other (`skills/modes.md`):
+
+- **SLR** — the systematic review described above: exhaustive, auditable, PRISMA-shaped. Defined by
+  `protocol.json` (`mode: slr`).
+- **Deep research** — a faster, cited-answer mode: gather sources, extract findings that each cite a
+  source, verify them, synthesise. For getting up to speed or briefing a decision, not exhaustive
+  coverage. Defined by `brief.json` (`mode: research`); its things are the *brief*, *sources*, and
+  *findings* (the analogs of protocol, records, extraction). See `schemas/` and `skills/deep-research.md`.
+
+The two share one shell (dashboard, the `tools/repo.py` projection, validation, the rule that every
+count is a link); they differ in data shape, quality gate, and rendered view. The entities below
+describe the SLR mode.
+
 ## The things
 
 - **Review** — one systematic-review project: a question, its protocol, and everything found for it.

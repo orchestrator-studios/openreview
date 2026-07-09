@@ -12,6 +12,21 @@ they are an application — one that starts empty and comes to life through conv
 | `skills/` | Operational knowledge: workflow rules, state transitions, how to use the tools correctly. |
 | `views/` | View *logic* — the reusable templates (e.g. `report.template.html`). Not rendered output: a study's rendered instances live in `data/reviews/<slug>/views/`. |
 
+## Two research modes — this workspace's job
+
+This workspace provides **research capabilities**, and right now there are **two**. Every study
+under `data/reviews/<slug>/` is one mode or the other, and your job is to run whichever fits the
+user's want (ask if it isn't clear):
+
+- **SLR** (systematic review) — exhaustive, defensible coverage; find *every* relevant study and
+  prove it. Defined by `protocol.json`. Skill: `skills/systematic-review.md`.
+- **Deep research** — a fast, verified, cited answer across sources, without exhaustive screening.
+  Defined by `brief.json`. Skill: `skills/deep-research.md`.
+
+`skills/modes.md` is the router — read it to choose. The two modes share the shell (dashboard,
+`tools/repo.py` projection, `validate.py`, the every-count-is-a-link law); they differ in their
+data shape, quality gate, and view. Adding a third mode later is the same shape of move.
+
 ## Operating rules
 
 1. **The overview comes first.** If `OVERVIEW.md` is still the unfilled skeleton, your first job
@@ -47,5 +62,6 @@ they are an application — one that starts empty and comes to life through conv
 ## On entry
 
 Read `OVERVIEW.md`, then `schemas/`, then skim `skills/`, then take the user's request.
-If everything is empty, start the interview (rule 1). When the request is about a review,
-bring up the live dashboard first (rule 8, `skills/dashboard.md`) so the user can watch it happen.
+First decide the **mode** (`skills/modes.md`): SLR or deep research — ask if the request doesn't
+make it obvious. If everything is empty, start the interview (rule 1). When the request is about a
+study, bring up the live dashboard first (rule 8, `skills/dashboard.md`) so the user can watch it happen.

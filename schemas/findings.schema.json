@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "findings.schema.json",
+  "title": "Findings file",
+  "description": "The claims a deep-research study asserts, each answering sub-questions and citing sources. The audit spine of 'research' mode: claim -> source.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "statement", "answers", "cites", "verification"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "statement": { "type": "string", "minLength": 1 },
+      "answers": {
+        "type": "array",
+        "minItems": 1,
+        "description": "Sub-question ids (from brief.json) this finding addresses.",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "cites": {
+        "type": "array",
+        "minItems": 1,
+        "description": "Source ids (from sources.json) this finding rests on. Every finding cites at least one.",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "verification": {
+        "type": "string",
+        "description": "unverified (gate blocks) -> corroborated (>=2 sources) | single-source (advisory) | disputed (sources conflict).",
+        "enum": ["unverified", "corroborated", "single-source", "disputed"]
+      },
+      "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+      "note": { "type": "string" }
+    }
+  }
+}

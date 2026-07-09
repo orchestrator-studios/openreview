@@ -85,6 +85,50 @@ def validate_review(slug, errors):
                     errors.append(f"[{slug}] records.json: pmid {pmid} status needs-adjudication but no stage is awaiting it")
 
 
+def validate_research(slug, errors):
+    """Validate a deep-research study: brief + sources + findings, and their cross-references."""
+    revdir = repo.review_dir(slug)
+    brief_schema = Draft7Validator(load(repo.SCHEMAS / "brief.schema.json"))
+    src_schema = Draft7Validator(load(repo.SCHEMAS / "sources.schema.json"))
+    find_schema = Draft7Validator(load(repo.SCHEMAS / "findings.schema.json"))
+
+    brief = load(revdir / "brief.json")
+    for e in brief_schema.iter_errors(brief):
+        errors.append(f"[{slug}] brief.json: {list(e.path)}: {e.message}")
+    subq_ids = {q.get("id") for q in brief.get("sub_questions", []) if isinstance(q, dict)}
+
+    sources = []
+    sp = revdir / "sources.json"
+    if sp.exists():
+        sources = load(sp)
+        for e in src_schema.iter_errors(sources):
+            errors.append(f"[{slug}] sources.json: {list(e.path)}: {e.message}")
+    src_ids = set()
+    for i, s in enumerate(sources if isinstance(sources, list) else []):
+        sid = s.get("id", f"#{i}")
+        if sid in src_ids:
+            errors.append(f"[{slug}] sources.json: duplicate id {sid}")
+        src_ids.add(sid)
+
+    fp = revdir / "findings.json"
+    if fp.exists():
+        findings = load(fp)
+        for e in find_schema.iter_errors(findings):
+            errors.append(f"[{slug}] findings.json: {list(e.path)}: {e.message}")
+        fid_seen = set()
+        for i, f in enumerate(findings if isinstance(findings, list) else []):
+            fid = f.get("id", f"#{i}")
+            if fid in fid_seen:
+                errors.append(f"[{slug}] findings.json: duplicate id {fid}")
+            fid_seen.add(fid)
+            for a in f.get("answers", []):
+                if a not in subq_ids:
+                    errors.append(f"[{slug}] findings.json: {fid} answers unknown sub-question '{a}'")
+            for c in f.get("cites", []):
+                if c not in src_ids:
+                    errors.append(f"[{slug}] findings.json: {fid} cites unknown source '{c}'")
+
+
 def main():
     slugs = [sys.argv[1]] if len(sys.argv) > 1 else repo.list_reviews()
     if not slugs:
@@ -92,7 +136,10 @@ def main():
         return
     errors = []
     for slug in slugs:
-        validate_review(slug, errors)
+        if repo.mode(slug) == "research":
+            validate_research(slug, errors)
+        else:
+            validate_review(slug, errors)
     if errors:
         print(f"FAIL — {len(errors)} problem(s):")
         for e in errors:

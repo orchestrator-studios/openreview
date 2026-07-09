@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "sources.schema.json",
+  "title": "Sources file",
+  "description": "All sources gathered for one deep-research study. The 'research' mode's analog of records.json.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "title", "status", "found_by"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "title": { "type": "string", "minLength": 1 },
+      "url": { "type": "string" },
+      "doi": { "type": "string" },
+      "citation": { "type": "string" },
+      "type": { "type": "string", "description": "e.g. journal-article, guideline, trial, review, preprint, web, dataset" },
+      "year": { "type": "integer", "minimum": 1800, "maximum": 2100 },
+      "authors": { "type": "array", "items": { "type": "string" } },
+      "found_by": {
+        "type": "array",
+        "minItems": 1,
+        "description": "Which sub-question ids or query labels surfaced this source (traceability rule).",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "status": {
+        "type": "string",
+        "description": "gathered (not yet read) -> read | cited | discarded.",
+        "enum": ["gathered", "read", "cited", "discarded"]
+      },
+      "basis": {
+        "type": "string",
+        "description": "Depth of the read that informed any finding citing this source.",
+        "enum": ["fulltext", "abstract", "snippet"]
+      },
+      "note": { "type": "string" }
+    }
+  }
+}

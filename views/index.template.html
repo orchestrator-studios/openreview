@@ -198,10 +198,15 @@ function reviewCard(r, isFresh){
     r.example ? el("div",{class:"exlabel",text:"Example — a finished review to explore"}) : null,
     el("div",{class:"rtop"}, el("h3",{text:r.title||r.slug}), chip(r)),
     el("p",{class:"rq",text:r.question||""}),
-    el("div",{class:"rstat"},
-      stat(r.totals.included, "included", "inc"),
-      stat(r.totals.unique, "records"),
-      stat(r.totals.needs_adjudication||0, "to adjudicate")));
+    (r.mode==="research"
+      ? el("div",{class:"rstat"},
+          stat(r.totals.findings!=null?r.totals.findings:r.totals.included, "findings", "inc"),
+          stat(r.totals.sources!=null?r.totals.sources:r.totals.unique, "sources"),
+          stat(r.totals.unverified||0, "to verify"))
+      : el("div",{class:"rstat"},
+          stat(r.totals.included, "included", "inc"),
+          stat(r.totals.unique, "records"),
+          stat(r.totals.needs_adjudication||0, "to adjudicate"))));
 }
 
 function guidancePanel(hasExample){

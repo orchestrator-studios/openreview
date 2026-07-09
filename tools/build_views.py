@@ -84,6 +84,51 @@ def build_extraction(slug):
     return "\n".join(lines) + "\n"
 
 
+def build_brief(slug):
+    """Deep-research: the brief + coverage of sub-questions (the 'research' analog of PRISMA)."""
+    p = repo.pipeline(slug)
+    t = p["totals"]
+    lines = [f"# Research brief — {p['title']}", ""]
+    lines.append("_Generated from data by `tools/build_views.py` — do not edit by hand._\n")
+    lines.append(f"**Question:** {p['question']}\n")
+    lines.append("## Sub-questions (coverage)")
+    for q in p["sub_questions"]:
+        mark = "✓" if q["findings"] else "·"
+        lines.append(f"- {mark} **{q['id']}** — {q['text']} ({q['findings']} finding(s))")
+    lines.append("")
+    lines.append("## Totals")
+    lines.append(f"- Sources gathered: **{t['sources']}** ({t['read']} read/cited/discarded)")
+    lines.append(f"- Findings: **{t['findings']}**  ·  unverified: **{t['unverified']}**")
+    lines.append(f"- Sub-questions covered: **{t['covered']}/{t['sub_questions']}**")
+    lines.append("")
+    lines.append("## Source types")
+    lines.append("| Type | n |")
+    lines.append("|---|---|")
+    for typ, n in p["source_types"]:
+        lines.append(f"| {typ} | {n} |")
+    return "\n".join(lines) + "\n"
+
+
+def build_findings(slug):
+    """Deep-research: findings grouped by sub-question, each with its citations and verification."""
+    p = repo.pipeline(slug)
+    by_id = {s["id"]: s for s in p["sources"]}
+    lines = [f"# Findings — {p['title']}", ""]
+    lines.append("_Generated from data by `tools/build_views.py` — do not edit by hand._\n")
+    for q in p["sub_questions"]:
+        lines.append(f"## {q['text']}")
+        hits = [f for f in p["findings"] if q["id"] in f["answers"]]
+        if not hits:
+            lines.append("_No findings yet._\n")
+            continue
+        for f in hits:
+            cites = ", ".join(by_id.get(c, {}).get("citation", c) for c in f["cites"])
+            conf = f" · confidence {f['confidence']}" if f.get("confidence") else ""
+            lines.append(f"- {f['statement']} _(({f['verification']}{conf}) — {cites})_")
+        lines.append("")
+    return "\n".join(lines) + "\n"
+
+
 def main():
     if len(sys.argv) < 2:
         print("usage: python tools/build_views.py <slug>")
@@ -91,6 +136,11 @@ def main():
     slug = sys.argv[1]
     outdir = repo.views_dir(slug)
     outdir.mkdir(parents=True, exist_ok=True)
+    if repo.mode(slug) == "research":
+        (outdir / f"{slug}-brief.md").write_text(build_brief(slug), encoding="utf-8")
+        (outdir / f"{slug}-findings.md").write_text(build_findings(slug), encoding="utf-8")
+        print(f"wrote {(outdir / f'{slug}-brief.md').relative_to(repo.ROOT)} and {slug}-findings.md")
+        return
     (outdir / f"{slug}-prisma.md").write_text(build_prisma(slug), encoding="utf-8")
     (outdir / f"{slug}-extraction.md").write_text(build_extraction(slug), encoding="utf-8")
     print(f"wrote {(outdir / f'{slug}-prisma.md').relative_to(repo.ROOT)} and {slug}-extraction.md")

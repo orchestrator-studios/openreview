@@ -38,20 +38,22 @@ def _reviews_index():
     whole index."""
     out = []
     for slug in repo.list_reviews():
-        if not repo.has_protocol(slug):
+        if not repo.has_study(slug):
             continue
         try:
             p = repo.pipeline(slug)
         except Exception:
-            is_ex = bool(repo.load_protocol(slug).get("example")) if repo.has_protocol(slug) else False
+            is_ex = bool(repo.study_meta(slug).get("example")) if repo.has_study(slug) else False
             out.append({"slug": slug, "title": slug, "question": "", "example": is_ex,
+                        "mode": repo.mode(slug),
                         "totals": {"included": 0, "unique": 0, "needs_adjudication": 0},
                         "phase_label": "starting", "blocked": False, "complete": False,
                         "eval_status": "pending"})
             continue
         wf = p.get("workflow", {})
         out.append({"slug": slug, "title": p["title"], "question": p["question"],
-                    "example": bool(repo.load_protocol(slug).get("example")),
+                    "example": bool(repo.study_meta(slug).get("example")),
+                    "mode": p.get("mode", "slr"),
                     "totals": p["totals"],
                     "phase_label": wf.get("phase_label", ""),
                     "blocked": wf.get("blocked", False),
@@ -129,7 +131,7 @@ class Handler(BaseHTTPRequestHandler):
             # template frozen is the export (/report).
             if parts[0] in ("dashboard", "pipeline") and len(parts) == 2:
                 slug = parts[1]
-                if not repo.has_protocol(slug):
+                if not repo.has_study(slug):
                     return self._missing_html(slug)
                 html = build_report.render(slug, live=True)
                 return self._send(200, html, "text/html; charset=utf-8")
@@ -137,7 +139,7 @@ class Handler(BaseHTTPRequestHandler):
             # export: regenerate the frozen snapshot and send it as a file DOWNLOAD (not an in-tab render)
             if parts[0] == "report" and len(parts) == 2:
                 slug = parts[1]
-                if not repo.has_protocol(slug):
+                if not repo.has_study(slug):
                     return self._missing_html(slug)
                 build_report.write(slug)                 # refresh the on-disk snapshot too
                 html = build_report.render(slug)         # live=False → frozen, self-contained
@@ -147,7 +149,7 @@ class Handler(BaseHTTPRequestHandler):
                 if len(parts) == 2:
                     return self._send(200, _reviews_index())
                 slug = parts[2]
-                if not repo.has_protocol(slug):
+                if not repo.has_study(slug):
                     return self._err(404, f"no review '{slug}'")
                 if len(parts) == 3:
                     return self._send(200, repo.load_review(slug))
@@ -167,7 +169,7 @@ def main():
     args = ap.parse_args()
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     base = f"http://{args.host}:{args.port}"
-    reviews = [s for s in repo.list_reviews() if repo.has_protocol(s)]
+    reviews = [s for s in repo.list_reviews() if repo.has_study(s)]
     print(f"serving on {base}  (Ctrl-C to stop)")
     print(f"  ▶ open this →  {base}/     (your reviews; new ones appear live)")
     if reviews:

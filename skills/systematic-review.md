@@ -1,6 +1,10 @@
 # Skill: running a systematic review
 
-The workflow, end to end. Each review is a folder under `data/reviews/<slug>/`.
+> This is the **SLR** mode — exhaustive, defensible coverage. For a fast, cited answer without
+> exhaustive screening, use `skills/deep-research.md` instead; `skills/modes.md` helps you choose.
+
+The workflow, end to end. Each review is a folder under `data/reviews/<slug>/`, marked by
+`protocol.json` (`mode: slr`).
 
 ## 1. Protocol first
 Write `protocol.json` (schema: `schemas/protocol.schema.json`) before searching: the question,
